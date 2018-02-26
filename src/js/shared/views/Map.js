@@ -10,6 +10,8 @@ import FooterIos from "../../ios/Footer.ios";
 import HeaderIos from "../../ios/Header.ios";
 import FabButton from "../../android/FabButton";
 
+var Strings = require('../res/strings/StringsEN.js');
+
 let footer;
 let fab;
 let header;
@@ -19,11 +21,11 @@ export default class Map extends Component {
     render() {
         if(Platform.OS == "ios"){
             footer = <FooterIos navigation={this.props.navigation} activePage={'Map'}/>
-            header = <HeaderIos title="Map"/>
+            header = <HeaderIos title={Strings.PAGE_HEADERS_MAP}/>
         }
         if(Platform.OS == "android"){
             fab = <FabButton/>
-            header =<HeaderAndroid buttonClick={() => this.props.navigation.navigate("DrawerOpen")} title="Map" tabs={false}/>
+            header =<HeaderAndroid buttonClick={() => this.props.navigation.navigate("DrawerOpen")} title={Strings.PAGE_HEADERS_MAP} tabs={false}/>
         }
 
         return(

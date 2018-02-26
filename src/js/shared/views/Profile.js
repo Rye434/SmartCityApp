@@ -10,6 +10,7 @@ import FooterIos from "../../ios/Footer.ios";
 import HeaderIos from "../../ios/Header.ios";
 import FabButton from "../../android/FabButton";
 
+var Strings = require('../res/strings/StringsEN.js');
 
 let footer;
 let fab;
@@ -19,11 +20,11 @@ export default class Profile extends Component {
 
     render() {
         if(Platform.OS == "ios"){
-            header = <HeaderIos title="Profile" targetTextLeft={"Back"} buttonClickLeft={() => this.props.navigation.navigate("Requests")}/>
+            header = <HeaderIos title={Strings.PAGE_HEADERS_PROFILE} targetTextLeft={Strings.HEADER_RETURN} buttonClickLeft={() => this.props.navigation.navigate("Requests")}/>
         }
         if(Platform.OS == "android"){
             fab = <FabButton/>
-            header =<HeaderAndroid buttonClick={() => this.props.navigation.navigate("DrawerOpen")} title="Profile" tabs={false}/>
+            header =<HeaderAndroid buttonClick={() => this.props.navigation.navigate("DrawerOpen")} title={Strings.PAGE_HEADERS_PROFILE} tabs={false}/>
         }
         return(
             <Container>

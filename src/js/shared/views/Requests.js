@@ -10,6 +10,8 @@ import FooterIos from "../../ios/Footer.ios";
 import HeaderIos from "../../ios/Header.ios";
 import FabButton from "../../android/FabButton";
 
+var Strings = require('../res/strings/StringsEN.js');
+
 let footer;
 let fab;
 let header;
@@ -19,11 +21,11 @@ export default class Requests extends Component {
     render() {
         if(Platform.OS === "ios"){
             footer = <FooterIos navigation={this.props.navigation} activePage={'Requests'}/>
-            header = <HeaderIos title="Requests"  targetTextRight={"Profile"} buttonClickRight={() => this.props.navigation.navigate("Profile")}/>
+            header = <HeaderIos title={Strings.PAGE_HEADERS_REQUESTS}  targetTextRight={Strings.PAGE_HEADERS_PROFILE} buttonClickRight={() => this.props.navigation.navigate("Profile")}/>
         }
         if(Platform.OS == "android"){
             fab = <FabButton/>
-            header =<HeaderAndroid buttonClick={() => this.props.navigation.navigate("DrawerOpen")} title="Requests" tabs={false}/>
+            header =<HeaderAndroid buttonClick={() => this.props.navigation.navigate("DrawerOpen")} title={Strings.PAGE_HEADERS_REQUESTS} tabs={false}/>
         }
         return(
             <Container>

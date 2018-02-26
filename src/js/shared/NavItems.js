@@ -13,20 +13,21 @@ import Phone from "./views/Phone";
 import Verification from "./views/Verification";
 import CreateProfile from "./views/CreateProfile";
 
+var Strings = require('./res/strings/StringsEN.js');
 
 export const RoutesNavIos = [
     {
-        name: "Map",
+        name: Strings.PAGE_HEADERS_MAP,
         route: "Map",
         icon: "compass"
     },
     {
-        name: "Camera",
+        name: Strings.PAGE_HEADERS_CAMERA,
         route: "Camera",
         icon: "camera"
     },
     {
-        name: "Requests",
+        name: Strings.PAGE_HEADERS_REQUESTS,
         route: "Requests",
         icon: "time"
     }
@@ -56,6 +57,23 @@ export const LoginFlow = StackNavigator({
 
 
 
+export const routesAndroid = [
+    {
+        name: Strings.PAGE_HEADERS_MAP,
+        route: "Map",
+        icon: "compass"
+    },
+    {
+        name: Strings.PAGE_HEADERS_CAMERA,
+        route: "Camera",
+        icon: "camera"
+    },
+    {
+        name: Strings.PAGE_HEADERS_REQUESTS,
+        route: "Requests",
+        icon: "time"
+    }
+];
 
 
 export const AndroidSideBar = DrawerNavigator({

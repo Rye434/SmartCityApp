@@ -12,6 +12,9 @@ import FooterIos from "../../ios/Footer.ios";
 import HeaderIos from "../../ios/Header.ios";
 import Phone from "./Phone";
 
+var Strings = require('../res/strings/StringsEN.js');
+
+
 let target;
 
 export default class CreateProfile extends Component {
@@ -27,27 +30,27 @@ export default class CreateProfile extends Component {
             <KeyboardAvoidingView style={{flex: 1, flexDirection:'column', justifyContent:'center', alignItems:'center'}} behavior="padding">
                 <Form style={{flex:0,width: 350, paddingTop:88, paddingBottom:48, flexDirection:'column', justifyContent:'center', alignItems:'center'}}>
                     <Item fixedLabel style={{width:300, marginLeft:0}}>
-                        <Label>First Name</Label>
+                        <Label>{Strings.FIELDS_FIRST_NAME}</Label>
                         <Input/>
                     </Item>
                     <Item fixedLabel style={{width:300, marginLeft:0}}>
-                        <Label>Last Name</Label>
+                        <Label>{Strings.FIELDS_LAST_NAME}</Label>
                         <Input/>
                     </Item>
                     <Item fixedLabel style={{width:300, marginLeft:0}}>
-                        <Label>Phone</Label>
+                        <Label>{Strings.FIELDS_PHONE}</Label>
                         <Input/>
                     </Item>
                     <Item fixedLabel style={{width:300, marginLeft:0}}>
-                        <Label>Password</Label>
+                        <Label>{Strings.FIELDS_PASSWORD}</Label>
                         <Input secureTextEntry={true}/>
                     </Item>
                     <Item fixedLabel style={{width:300, marginLeft:0}}>
-                        <Label>Confirm</Label>
+                        <Label>{Strings.FIELDS_CONFIRM}</Label>
                         <Input secureTextEntry={true}/>
                     </Item>
                     <Item>
-                    <Button onPress={() => this.props.navigation.navigate(target)} style={{marginTop:24}}><Text>Save</Text></Button>
+                    <Button onPress={() => this.props.navigation.navigate(target)} style={{marginTop:24}}><Text>{Strings.BUTTONS_SAVE}</Text></Button>
                     </Item>
                 </Form>
             </KeyboardAvoidingView>

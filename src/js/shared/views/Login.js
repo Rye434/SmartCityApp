@@ -7,10 +7,9 @@ import {
     Image
 } from 'react-native';
 import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text, Drawer, Input, Label, Form, Item } from 'native-base';
-import HeaderAndroid from '../../android/Header.android';
-import FooterIos from "../../ios/Footer.ios";
-import HeaderIos from "../../ios/Header.ios";
-import Phone from "./Phone";
+
+var Strings = require('../res/strings/StringsEN.js');
+
 
 let target;
 
@@ -28,15 +27,15 @@ export default class Login extends Component {
                 <Image source={{uri: 'http://via.placeholder.com/150x150'}} style={{height: 150, width: 150,flex:0}}/>
                 <Form style={{flex:0,width: 350, paddingTop:88, paddingBottom:48, flexDirection:'column', justifyContent:'center', alignItems:'center'}}>
                     <Item fixedLabel style={{width:300, marginLeft:0}}>
-                        <Label>Phone</Label>
+                        <Label>{Strings.FIELDS_PHONE}</Label>
                         <Input/>
                     </Item>
                     <Item fixedLabel style={{width:300, marginLeft:0}}>
-                        <Label>Password</Label>
+                        <Label>{Strings.FIELDS_PASSWORD}</Label>
                         <Input secureTextEntry={true}/>
                     </Item>
                     <Item style={{marginLeft:0}}>
-                        <Button  onPress={() => this.props.navigation.navigate(target)} style={{marginTop:24}}><Text>Login</Text></Button>
+                        <Button  onPress={() => this.props.navigation.navigate(target)} style={{marginTop:24}}><Text>{Strings.BUTTONS_LOGIN}</Text></Button>
                     </Item>
                 </Form>
             </KeyboardAvoidingView>

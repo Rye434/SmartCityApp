@@ -11,25 +11,9 @@ import {
     Left,
     Thumbnail
 } from "native-base";
+import {routesAndroid} from "../NavItems";
 
-
-export const routes = [
-    {
-        name: "Map",
-        route: "Map",
-        icon: "compass"
-    },
-    {
-        name: "Camera",
-        route: "Camera",
-        icon: "camera"
-    },
-    {
-        name: "Requests",
-        route: "Requests",
-        icon: "time"
-    }
-];
+var Strings = require('../res/strings/StringsEN.js');
 
 
 
@@ -52,7 +36,7 @@ export default class SideBar extends React.Component {
                     </View>
                     </TouchableOpacity>
                     <List
-                        dataArray={routes}
+                        dataArray={routesAndroid}
                         contentContainerStyle={{ marginTop: 16 }}
                         renderRow={data => {
                             return (
