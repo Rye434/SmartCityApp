@@ -26,7 +26,7 @@ export default class Map extends Component {
         return(
             <Container>
                 <Content>
-                    <Text>Map</Text>
+                    <Text>Mapppp</Text>
 
                 </Content>
                 {fab}

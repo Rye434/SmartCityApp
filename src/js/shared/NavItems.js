@@ -3,7 +3,7 @@ import {Container, Content, Icon, Left, List, ListItem, Text} from "native-base"
 import {DrawerNavigator, StackNavigator} from 'react-navigation';
 
 
-import Services from "./views/Services";
+
 import Requests from "./views/Requests";
 import Map from "./views/Map";
 import Camera from "./views/Camera";

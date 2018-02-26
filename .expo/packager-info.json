@@ -1,5 +1,8 @@
 {
   "expoServerPort": 19000,
-  "packagerPort": 19001,
-  "packagerPid": 4289
+  "packagerPort": 19002,
+  "packagerPid": 38418,
+  "expoServerNgrokUrl": "https://xb-ujv.jakewagnr.smartcity.exp.direct",
+  "packagerNgrokUrl": "https://packager.xb-ujv.jakewagnr.smartcity.exp.direct",
+  "ngrokPid": 37852
 }
