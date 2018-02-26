@@ -18,7 +18,7 @@ class FooterIos extends Component {
                         }}
                                 active={'Map' == this.props.activePage ? true: false}>
                             <Icon name={'compass'}/>
-                            <Text style={{fontSize:12}}>Portfolio</Text>
+                            <Text style={{fontSize:12}}>Map</Text>
                         </Button>
                     </FooterTab>
                     <FooterTab>
@@ -27,7 +27,7 @@ class FooterIos extends Component {
                         }}
                                 active={'Camera' == this.props.activePage ? true: false}>
                             <Icon name={'camera'}/>
-                            <Text style={{fontSize:12}}>Portfolio</Text>
+                            <Text style={{fontSize:12}}>Camera</Text>
                         </Button>
                     </FooterTab>
                     <FooterTab>
@@ -36,7 +36,7 @@ class FooterIos extends Component {
                         }}
                                 active={'Requests' == this.props.activePage ? true: false}>
                             <Icon name={'time'}/>
-                            <Text style={{fontSize:12}}>Portfolio</Text>
+                            <Text style={{fontSize:12}}>Requests</Text>
                         </Button>
                     </FooterTab>
 

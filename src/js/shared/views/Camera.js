@@ -12,18 +12,22 @@ import FabButton from "../../android/FabButton";
 
 let footer;
 let fab;
+let header;
 
 export default class Camera extends Component {
 
     render() {
         if(Platform.OS == "ios"){
             footer = <FooterIos navigation={this.props.navigation} activePage={'Camera'}/>
+            header = <HeaderIos title="Camera"/>
         }
         if(Platform.OS == "android"){
             fab = <FabButton/>
+            header =<HeaderAndroid buttonClick={() => this.props.navigation.navigate("DrawerOpen")} title="Camera" tabs={false}/>
         }
         return(
             <Container>
+                {header}
                 <Content>
                     <Text>Camera</Text>
                 </Content>
@@ -35,14 +39,4 @@ export default class Camera extends Component {
     }
 }
 
-if(Platform.OS == "android") {
-    Camera.navigationOptions = ({navigation}) => ({
-        header: <HeaderAndroid buttonClick={() => navigation.navigate("DrawerOpen")} title="Camera"/>
-    });
-}
 
-if(Platform.OS == "ios") {
-    Camera.navigationOptions = ({navigation}) => ({
-        header: <HeaderIos title="Camera"/>
-    });
-}

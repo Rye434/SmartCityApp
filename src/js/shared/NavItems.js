@@ -1,13 +1,17 @@
 import React from "react";
 import {Container, Content, Icon, Left, List, ListItem, Text} from "native-base";
 import {DrawerNavigator, StackNavigator} from 'react-navigation';
-
+import SideBar from "./components/SideBar";
 
 
 import Requests from "./views/Requests";
 import Map from "./views/Map";
 import Camera from "./views/Camera";
 import Profile from "./views/Profile";
+import Login from "./views/Login";
+import Phone from "./views/Phone";
+import Verification from "./views/Verification";
+import CreateProfile from "./views/CreateProfile";
 
 
 export const RoutesNavIos = [
@@ -36,66 +40,43 @@ export const AppRouteIos = StackNavigator({
         Profile: {screen: Profile}
     },
     {
-        headerMode:'float'
+        headerMode:'none'
     });
 
+export const LoginFlow = StackNavigator({
+        Phone: {screen: Phone},
+        Verification: {screen:Verification},
+        CreateProfile: {screen: CreateProfile},
+        Login: {screen: Login},
+        AppRouteIos: {screen: AppRouteIos},
+    },
+    {
+        headerMode:'none'
+    })
 
 
-export const MapNavigator = StackNavigator({
-    Map: {
-        screen: Map,
-    }
-});
 
 
-export const RequestsNavigator = StackNavigator({
-    Requests: {
-        screen: Requests,
 
-    }
-});
-
-export const ProfileNavigator = StackNavigator({
-    Profile: {
-        screen: Profile,
-
-    }
-});
-
-
- export const DrawerList = DrawerNavigator({
-    Map: {
-        screen: MapNavigator,
-        navigationOptions: {
-                drawerLabel: 'Map',
-                drawerIcon: ({ tintColor }) => (
-                    <Icon name="compass" style={{color:tintColor}} />
-                ),
-        },
-     },
-     Requests: {
-         screen: RequestsNavigator,
-         navigationOptions: {
-             drawerLabel: 'Requests',
-             drawerIcon: ({ tintColor }) => (
-                 <Icon name="time" style={{color:tintColor}} />
-             ),
-         },
-     },
-     Profile: {
-         screen: ProfileNavigator,
-         navigationOptions: {
-             drawerLabel: 'Profile',
-             drawerIcon: ({ tintColor }) => (
-                 <Icon name="person" style={{color:tintColor}} />
-             ),
-         },
-     },
-
-});
+export const AndroidSideBar = DrawerNavigator({
+        Map: { screen: Map },
+        Camera: { screen: Camera },
+        Requests: { screen: Requests },
+        Profile: { screen: Profile },
+    },
+    {
+        contentComponent: props => <SideBar {...props} />,
+    });
 
 export const AppRouteAndroid = StackNavigator({
-    Drawer: { screen: DrawerList },
+    Phone: {screen: Phone},
+    Verification: {screen:Verification},
+    CreateProfile: {screen: CreateProfile},
+    Login: {screen: Login},
+    AndroidSideBar: {screen: AndroidSideBar},
+    Camera: { screen: Camera },
+    Map: { screen: Map },
+    Requests: { screen: Requests },
 }, {
     headerMode: 'none',
 });

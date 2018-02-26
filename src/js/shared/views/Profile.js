@@ -13,18 +13,21 @@ import FabButton from "../../android/FabButton";
 
 let footer;
 let fab;
+let header;
 
 export default class Profile extends Component {
 
     render() {
         if(Platform.OS == "ios"){
-            footer = <FooterIos navigation={this.props.navigation}/>
+            header = <HeaderIos title="Profile" targetTextLeft={"Back"} buttonClickLeft={() => this.props.navigation.navigate("Requests")}/>
         }
         if(Platform.OS == "android"){
             fab = <FabButton/>
+            header =<HeaderAndroid buttonClick={() => this.props.navigation.navigate("DrawerOpen")} title="Profile" tabs={false}/>
         }
         return(
             <Container>
+                {header}
                 <Content>
                 <Text>Profile</Text>
                 </Content>
@@ -36,14 +39,4 @@ export default class Profile extends Component {
     }
 }
 
-if(Platform.OS == "android") {
-    Profile.navigationOptions = ({navigation}) => ({
-        header: <HeaderAndroid buttonClick={() => navigation.navigate("DrawerOpen")} title="Profile" tabs={true}/>
-    });
-}
 
-if(Platform.OS == "ios") {
-    Profile.navigationOptions = ({navigation}) => ({
-        header: <HeaderIos title="Profile" tabs={true}/>
-    });
-}

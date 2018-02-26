@@ -12,18 +12,22 @@ import FabButton from "../../android/FabButton";
 
 let footer;
 let fab;
+let header;
 
 export default class Requests extends Component {
 
     render() {
         if(Platform.OS === "ios"){
             footer = <FooterIos navigation={this.props.navigation} activePage={'Requests'}/>
+            header = <HeaderIos title="Requests"  targetTextRight={"Profile"} buttonClickRight={() => this.props.navigation.navigate("Profile")}/>
         }
         if(Platform.OS == "android"){
             fab = <FabButton/>
+            header =<HeaderAndroid buttonClick={() => this.props.navigation.navigate("DrawerOpen")} title="Requests" tabs={false}/>
         }
         return(
             <Container>
+                {header}
                 <Content>
                    <Text>History</Text>
                 </Content>
@@ -35,14 +39,4 @@ export default class Requests extends Component {
     }
 }
 
-if(Platform.OS === "android") {
-    Requests.navigationOptions = ({navigation}) => ({
-        header: <HeaderAndroid buttonClick={() => navigation.navigate("DrawerOpen")} title="Requests"/>
-    });
-}
 
-if(Platform.OS === "ios") {
-    Requests.navigationOptions = ({navigation}) => ({
-        header: <HeaderIos title="Requests"/>
-    });
-}

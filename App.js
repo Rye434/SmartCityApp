@@ -13,7 +13,7 @@ import thunk from 'redux-thunk';
 import {createStore, applyMiddleware} from "redux";
 import stocksApp from "./src/js/shared/reducers/Reducers";
 
-import {AppRouteAndroid, AppRouteIos, AppRoute, AppNavigator} from "./src/js/shared/NavItems";
+import {AppRouteAndroid, AppRouteIos, AppRoute, AppNavigator, LoginFlow} from "./src/js/shared/NavItems";
 
 let state = {
     activeButton: 'Portfolio'
@@ -57,7 +57,7 @@ export default class App extends Component {
     if(Platform.OS === 'ios'){
       return (
           <Provider store={store}>
-            <AppRouteIos/>
+            <LoginFlow/>
           </Provider>
         );
     }

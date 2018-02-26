@@ -12,21 +12,25 @@ import FabButton from "../../android/FabButton";
 
 let footer;
 let fab;
+let header;
 
 export default class Map extends Component {
 
     render() {
         if(Platform.OS == "ios"){
             footer = <FooterIos navigation={this.props.navigation} activePage={'Map'}/>
+            header = <HeaderIos title="Map"/>
         }
         if(Platform.OS == "android"){
             fab = <FabButton/>
+            header =<HeaderAndroid buttonClick={() => this.props.navigation.navigate("DrawerOpen")} title="Map" tabs={false}/>
         }
 
         return(
             <Container>
+                {header}
                 <Content>
-                    <Text>Mapppp</Text>
+                    <Text>Map</Text>
 
                 </Content>
                 {fab}
@@ -37,14 +41,4 @@ export default class Map extends Component {
     }
 }
 
-if(Platform.OS == "android") {
-    Map.navigationOptions = ({navigation}) => ({
-        header: <HeaderAndroid buttonClick={() => navigation.navigate("DrawerOpen")} title="Map"/>
-    });
-}
 
-if(Platform.OS == "ios") {
-    Map.navigationOptions = ({navigation}) => ({
-        header: <HeaderIos title="Map"/>
-    });
-}
