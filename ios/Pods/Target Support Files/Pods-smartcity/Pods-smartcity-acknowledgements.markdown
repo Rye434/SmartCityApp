@@ -775,6 +775,10 @@ Copyright 2017 Google
 
 Copyright 2016 Google
 
+## GooglePlaces
+
+Copyright 2017 Google
+
 ## GoogleSignIn
 
 Copyright 2015 Google Inc. All Rights Reserved.

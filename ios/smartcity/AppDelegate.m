@@ -4,7 +4,12 @@
 #import "ExpoKit.h"
 #import "EXViewController.h"
 
+@import GoogleMaps;
+
+
 @interface AppDelegate ()
+
+
 
 @property (nonatomic, strong) EXViewController *rootViewController;
 
@@ -19,6 +24,7 @@
     [[ExpoKit sharedInstance] application:application didFinishLaunchingWithOptions:launchOptions];
     _rootViewController = [ExpoKit sharedInstance].rootViewController;
     _window.rootViewController = _rootViewController;
+    [GMSServices provideAPIKey:@"AIzaSyAf5hvqV6z0OL08xfpmuNYwPqGjeJuXseg"];
     
     [_rootViewController loadReactApplication];
     [_window makeKeyAndVisible];

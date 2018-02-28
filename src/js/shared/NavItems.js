@@ -92,9 +92,10 @@ export const AppRouteAndroid = StackNavigator({
     CreateProfile: {screen: CreateProfile},
     Login: {screen: Login},
     AndroidSideBar: {screen: AndroidSideBar},
-    Camera: { screen: Camera },
     Map: { screen: Map },
+    Camera: { screen: Camera },
     Requests: { screen: Requests },
+    Profile: { screen: Profile }
 }, {
     headerMode: 'none',
 });

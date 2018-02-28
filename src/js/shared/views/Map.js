@@ -9,6 +9,7 @@ import HeaderAndroid from '../../android/Header.android';
 import FooterIos from "../../ios/Footer.ios";
 import HeaderIos from "../../ios/Header.ios";
 import FabButton from "../../android/FabButton";
+import IssueMap from "../components/map/IssueMap";
 
 var Strings = require('../res/strings/StringsEN.js');
 
@@ -32,7 +33,7 @@ export default class Map extends Component {
             <Container>
                 {header}
                 <Content>
-                    <Text>Map</Text>
+                    <IssueMap/>
 
                 </Content>
                 {fab}

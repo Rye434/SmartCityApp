@@ -28,8 +28,13 @@
       </intent-filter>
     </activity>
 
+
+
+    <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyCHHltdISA5_SWgYvkWkTPXnHkQMPbmMEY"/>
+
     <!-- The Facebook SDK runs FacebookInitProvider on startup and crashes if there isn't an ID here -->
     <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="fb0"/>
   </application>
 
 </manifest>
+

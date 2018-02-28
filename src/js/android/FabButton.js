@@ -6,8 +6,6 @@ export default class FabButton extends Component {
 
     render() {
         return (
-            <Container>
-                <View style={{ flex: 1 }}>
                     <Fab
                         containerStyle={{ }}
                         style={{ backgroundColor: '#5067FF' }}
@@ -15,8 +13,6 @@ export default class FabButton extends Component {
                         onPress={() => this.props.navigation.navigate("Camera")}>
                         <Icon name="camera" />
                     </Fab>
-                </View>
-            </Container>
         );
     }
 }

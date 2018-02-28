@@ -3,6 +3,9 @@
 
 module.exports = {
 
+    MAPS_API_KEY_ANDROID: "AIzaSyCHHltdISA5_SWgYvkWkTPXnHkQMPbmMEY",
+    MAPS_API_KEY_IOS: "AIzaSyAf5hvqV6z0OL08xfpmuNYwPqGjeJuXseg",
+
     APP_NAME:"SmartCity",
     
 
