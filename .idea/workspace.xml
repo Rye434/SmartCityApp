@@ -2,50 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c847f5de-5cb3-4828-a41e-d7545b517e20" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/js/shared/components/map/IssueMap.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/js/shared/components/camera/CameraView.js" />
       <change beforePath="$PROJECT_DIR$/.expo/packager-info.json" afterPath="$PROJECT_DIR$/.expo/packager-info.json" />
       <change beforePath="$PROJECT_DIR$/.expo/settings.json" afterPath="$PROJECT_DIR$/.expo/settings.json" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/android/app/build.gradle" afterPath="$PROJECT_DIR$/android/app/build.gradle" />
-      <change beforePath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" />
-      <change beforePath="$PROJECT_DIR$/ios/Podfile" afterPath="$PROJECT_DIR$/ios/Podfile" />
-      <change beforePath="$PROJECT_DIR$/ios/Podfile.lock" afterPath="$PROJECT_DIR$/ios/Podfile.lock" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Local Podspecs/React.podspec.json" afterPath="$PROJECT_DIR$/ios/Pods/Local Podspecs/React.podspec.json" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Local Podspecs/yoga.podspec.json" afterPath="$PROJECT_DIR$/ios/Pods/Local Podspecs/yoga.podspec.json" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Manifest.lock" afterPath="$PROJECT_DIR$/ios/Pods/Manifest.lock" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Pods.xcodeproj/project.pbxproj" afterPath="$PROJECT_DIR$/ios/Pods/Pods.xcodeproj/project.pbxproj" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Target Support Files/Amplitude-iOS/Amplitude-iOS.xcconfig" afterPath="$PROJECT_DIR$/ios/Pods/Target Support Files/Amplitude-iOS/Amplitude-iOS.xcconfig" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Target Support Files/Analytics/Analytics.xcconfig" afterPath="$PROJECT_DIR$/ios/Pods/Target Support Files/Analytics/Analytics.xcconfig" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Target Support Files/AppAuth/AppAuth.xcconfig" afterPath="$PROJECT_DIR$/ios/Pods/Target Support Files/AppAuth/AppAuth.xcconfig" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Target Support Files/Bolts/Bolts.xcconfig" afterPath="$PROJECT_DIR$/ios/Pods/Target Support Files/Bolts/Bolts.xcconfig" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Target Support Files/Branch/Branch.xcconfig" afterPath="$PROJECT_DIR$/ios/Pods/Target Support Files/Branch/Branch.xcconfig" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Target Support Files/CocoaLumberjack/CocoaLumberjack.xcconfig" afterPath="$PROJECT_DIR$/ios/Pods/Target Support Files/CocoaLumberjack/CocoaLumberjack.xcconfig" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Target Support Files/DoubleConversion/DoubleConversion.xcconfig" afterPath="$PROJECT_DIR$/ios/Pods/Target Support Files/DoubleConversion/DoubleConversion.xcconfig" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Target Support Files/ExpoKit/ExpoKit.xcconfig" afterPath="$PROJECT_DIR$/ios/Pods/Target Support Files/ExpoKit/ExpoKit.xcconfig" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Target Support Files/FBSDKCoreKit/FBSDKCoreKit.xcconfig" afterPath="$PROJECT_DIR$/ios/Pods/Target Support Files/FBSDKCoreKit/FBSDKCoreKit.xcconfig" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Target Support Files/FBSDKLoginKit/FBSDKLoginKit.xcconfig" afterPath="$PROJECT_DIR$/ios/Pods/Target Support Files/FBSDKLoginKit/FBSDKLoginKit.xcconfig" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Target Support Files/FBSDKShareKit/FBSDKShareKit.xcconfig" afterPath="$PROJECT_DIR$/ios/Pods/Target Support Files/FBSDKShareKit/FBSDKShareKit.xcconfig" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Target Support Files/Folly/Folly.xcconfig" afterPath="$PROJECT_DIR$/ios/Pods/Target Support Files/Folly/Folly.xcconfig" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Target Support Files/GLog/GLog.xcconfig" afterPath="$PROJECT_DIR$/ios/Pods/Target Support Files/GLog/GLog.xcconfig" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Target Support Files/GPUImage/GPUImage.xcconfig" afterPath="$PROJECT_DIR$/ios/Pods/Target Support Files/GPUImage/GPUImage.xcconfig" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Target Support Files/Pods-smartcity/Pods-smartcity-acknowledgements.markdown" afterPath="$PROJECT_DIR$/ios/Pods/Target Support Files/Pods-smartcity/Pods-smartcity-acknowledgements.markdown" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Target Support Files/Pods-smartcity/Pods-smartcity-acknowledgements.plist" afterPath="$PROJECT_DIR$/ios/Pods/Target Support Files/Pods-smartcity/Pods-smartcity-acknowledgements.plist" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Target Support Files/Pods-smartcity/Pods-smartcity-resources.sh" afterPath="$PROJECT_DIR$/ios/Pods/Target Support Files/Pods-smartcity/Pods-smartcity-resources.sh" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Target Support Files/Pods-smartcity/Pods-smartcity.debug.xcconfig" afterPath="$PROJECT_DIR$/ios/Pods/Target Support Files/Pods-smartcity/Pods-smartcity.debug.xcconfig" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Target Support Files/Pods-smartcity/Pods-smartcity.release.xcconfig" afterPath="$PROJECT_DIR$/ios/Pods/Target Support Files/Pods-smartcity/Pods-smartcity.release.xcconfig" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Target Support Files/React/React.xcconfig" afterPath="$PROJECT_DIR$/ios/Pods/Target Support Files/React/React.xcconfig" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Target Support Files/lottie-ios/lottie-ios.xcconfig" afterPath="$PROJECT_DIR$/ios/Pods/Target Support Files/lottie-ios/lottie-ios.xcconfig" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Target Support Files/yoga/yoga.xcconfig" afterPath="$PROJECT_DIR$/ios/Pods/Target Support Files/yoga/yoga.xcconfig" />
-      <change beforePath="$PROJECT_DIR$/ios/smartcity.xcodeproj/project.pbxproj" afterPath="$PROJECT_DIR$/ios/smartcity.xcodeproj/project.pbxproj" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/java/com/missingpixel/smartcity/generated/ExponentBuildConstants.java" afterPath="$PROJECT_DIR$/android/app/src/main/java/com/missingpixel/smartcity/generated/ExponentBuildConstants.java" />
       <change beforePath="$PROJECT_DIR$/ios/smartcity.xcworkspace/xcuserdata/jakewagnr.xcuserdatad/UserInterfaceState.xcuserstate" afterPath="$PROJECT_DIR$/ios/smartcity.xcworkspace/xcuserdata/jakewagnr.xcuserdatad/UserInterfaceState.xcuserstate" />
-      <change beforePath="$PROJECT_DIR$/ios/smartcity/AppDelegate.m" afterPath="$PROJECT_DIR$/ios/smartcity/AppDelegate.m" />
       <change beforePath="$PROJECT_DIR$/ios/smartcity/Supporting/EXBuildConstants.json" afterPath="$PROJECT_DIR$/ios/smartcity/Supporting/EXBuildConstants.json" />
       <change beforePath="$PROJECT_DIR$/ios/smartcity/Supporting/EXBuildConstants.plist" afterPath="$PROJECT_DIR$/ios/smartcity/Supporting/EXBuildConstants.plist" />
       <change beforePath="$PROJECT_DIR$/ios/smartcity/Supporting/EXBuildConstants.plist.bak" afterPath="$PROJECT_DIR$/ios/smartcity/Supporting/EXBuildConstants.plist.bak" />
-      <change beforePath="$PROJECT_DIR$/src/js/android/FabButton.js" afterPath="$PROJECT_DIR$/src/js/android/FabButton.js" />
-      <change beforePath="$PROJECT_DIR$/src/js/shared/NavItems.js" afterPath="$PROJECT_DIR$/src/js/shared/NavItems.js" />
-      <change beforePath="$PROJECT_DIR$/src/js/shared/res/constants/AppConstants.js" afterPath="$PROJECT_DIR$/src/js/shared/res/constants/AppConstants.js" />
+      <change beforePath="$PROJECT_DIR$/src/js/shared/views/Camera.js" afterPath="$PROJECT_DIR$/src/js/shared/views/Camera.js" />
       <change beforePath="$PROJECT_DIR$/src/js/shared/views/Map.js" afterPath="$PROJECT_DIR$/src/js/shared/views/Map.js" />
+      <change beforePath="$PROJECT_DIR$/src/js/shared/views/Requests.js" afterPath="$PROJECT_DIR$/src/js/shared/views/Requests.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -62,7 +30,7 @@
       <file leaf-file-name="StringsEN.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/js/shared/res/strings/StringsEN.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
+            <state relative-caret-position="272">
               <caret line="17" column="19" lean-forward="false" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="19" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
@@ -71,36 +39,36 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Map.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/js/shared/views/Map.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="356">
-              <caret line="34" column="25" lean-forward="true" selection-start-line="34" selection-start-column="25" selection-end-line="34" selection-end-column="25" />
-              <folding>
-                <element signature="e#0#41#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IssueMap.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/js/shared/components/map/IssueMap.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="509">
-              <caret line="35" column="22" lean-forward="false" selection-start-line="35" selection-start-column="22" selection-end-line="35" selection-end-column="22" />
-              <folding>
-                <element signature="e#0#41#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="NavItems.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="NavItems.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/js/shared/NavItems.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="246">
-              <caret line="81" column="39" lean-forward="true" selection-start-line="81" selection-start-column="39" selection-end-line="81" selection-end-column="39" />
+            <state relative-caret-position="1190">
+              <caret line="83" column="6" lean-forward="false" selection-start-line="83" selection-start-column="6" selection-end-line="83" selection-end-column="6" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Camera.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/js/shared/views/Camera.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="463">
+              <caret line="37" column="24" lean-forward="true" selection-start-line="37" selection-start-column="16" selection-end-line="37" selection-end-column="24" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CameraView.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/js/shared/components/camera/CameraView.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="218">
+              <caret line="25" column="80" lean-forward="false" selection-start-line="25" selection-start-column="80" selection-end-line="25" selection-end-column="80" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -131,8 +99,6 @@
         <option value="$PROJECT_DIR$/src/js/ios/Header.ios.js" />
         <option value="$PROJECT_DIR$/src/js/constants/AppConstants.js" />
         <option value="$PROJECT_DIR$/src/js/shared/res/StringsEN.js" />
-        <option value="$PROJECT_DIR$/src/js/shared/views/Requests.js" />
-        <option value="$PROJECT_DIR$/src/js/shared/views/Camera.js" />
         <option value="$PROJECT_DIR$/src/js/shared/views/Profile.js" />
         <option value="$PROJECT_DIR$/src/js/shared/components/SideBar.js" />
         <option value="$PROJECT_DIR$/src/js/shared/res/strings/StringsEN.js" />
@@ -140,11 +106,15 @@
         <option value="$PROJECT_DIR$/src/js/shared/views/Login.js" />
         <option value="$PROJECT_DIR$/src/js/shared/views/Verification.js" />
         <option value="$PROJECT_DIR$/src/js/shared/views/CreateProfile.js" />
-        <option value="$PROJECT_DIR$/src/js/shared/views/Map.js" />
         <option value="$PROJECT_DIR$/src/js/shared/res/constants/AppConstants.js" />
         <option value="$PROJECT_DIR$/src/js/shared/NavItems.js" />
         <option value="$PROJECT_DIR$/src/js/shared/components/map/IssueMap.js" />
         <option value="$PROJECT_DIR$/src/js/android/FabButton.js" />
+        <option value="$PROJECT_DIR$/src/js/shared/components/camera/Camera.js" />
+        <option value="$PROJECT_DIR$/src/js/shared/views/Map.js" />
+        <option value="$PROJECT_DIR$/src/js/shared/views/Requests.js" />
+        <option value="$PROJECT_DIR$/src/js/shared/views/Camera.js" />
+        <option value="$PROJECT_DIR$/src/js/shared/components/camera/CameraView.js" />
       </list>
     </option>
   </component>
@@ -180,6 +150,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -242,6 +213,15 @@
               <item name="js" type="462c0819:PsiDirectoryNode" />
               <item name="shared" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="camera" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="smartcity" type="b2602c69:ProjectViewProjectNode" />
+              <item name="smartcity" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+              <item name="shared" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
               <item name="map" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -290,7 +270,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -343,27 +322,28 @@
       <workItem from="1519780919189" duration="1000" />
       <workItem from="1519780927434" duration="9000" />
       <workItem from="1519780941808" duration="5727000" />
+      <workItem from="1520000817399" duration="85000" />
+      <workItem from="1520216760562" duration="757000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23808000" />
+    <option name="totallyTimeSpent" value="24983000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="4" y="22" width="1676" height="1028" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.244713" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22186495" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -404,20 +384,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/js/ios/Footer.ios.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="34" column="68" lean-forward="false" selection-start-line="34" selection-start-column="68" selection-end-line="34" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/js/shared/views/Map.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="19" column="83" lean-forward="false" selection-start-line="19" selection-start-column="83" selection-end-line="19" selection-end-column="83" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/js/shared/views/Camera.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -600,20 +566,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/js/shared/views/Camera.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="27" column="134" lean-forward="false" selection-start-line="27" selection-start-column="134" selection-end-line="27" selection-end-column="134" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/js/shared/views/Requests.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/js/shared/views/Profile.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="246">
@@ -625,7 +577,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="561">
           <caret line="52" column="133" lean-forward="false" selection-start-line="52" selection-start-column="133" selection-end-line="52" selection-end-column="133" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -633,9 +584,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="441">
           <caret line="31" column="122" lean-forward="false" selection-start-line="31" selection-start-column="122" selection-end-line="31" selection-end-column="122" />
-          <folding>
-            <element signature="e#0#41#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -643,15 +591,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="645">
           <caret line="38" column="135" lean-forward="false" selection-start-line="38" selection-start-column="135" selection-end-line="38" selection-end-column="135" />
-          <folding>
-            <element signature="e#0#41#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/js/shared/res/strings/StringsEN.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
+        <state relative-caret-position="272">
           <caret line="17" column="19" lean-forward="false" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="19" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
@@ -663,7 +608,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="24" lean-forward="false" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -671,7 +615,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="484">
           <caret line="58" column="36" lean-forward="false" selection-start-line="58" selection-start-column="36" selection-end-line="58" selection-end-column="36" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -679,7 +622,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="21" column="25" lean-forward="true" selection-start-line="21" selection-start-column="25" selection-end-line="21" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -687,7 +629,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="500">
           <caret line="51" column="24" lean-forward="false" selection-start-line="51" selection-start-column="24" selection-end-line="51" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -695,9 +636,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="7" lean-forward="true" selection-start-line="0" selection-start-column="7" selection-end-line="0" selection-end-column="7" />
-          <folding>
-            <element signature="e#0#43#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -705,7 +643,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" column="53" lean-forward="false" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="53" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -713,7 +650,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="6" column="62" lean-forward="false" selection-start-line="6" selection-start-column="23" selection-end-line="6" selection-end-column="62" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -721,6 +657,28 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="15" column="21" lean-forward="false" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/android/Header.android.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="13" column="33" lean-forward="true" selection-start-line="11" selection-start-column="24" selection-end-line="13" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/expo/src/Expo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="233">
+          <caret line="172" column="6" lean-forward="false" selection-start-line="172" selection-start-column="6" selection-end-line="172" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/shared/NavItems.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1190">
+          <caret line="83" column="6" lean-forward="false" selection-start-line="83" selection-start-column="6" selection-end-line="83" selection-end-column="6" />
           <folding />
         </state>
       </provider>
@@ -729,27 +687,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="509">
           <caret line="35" column="22" lean-forward="false" selection-start-line="35" selection-start-column="22" selection-end-line="35" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/js/android/Header.android.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="13" column="33" lean-forward="true" selection-start-line="11" selection-start-column="24" selection-end-line="13" selection-end-column="33" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/js/shared/views/Map.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="356">
-          <caret line="34" column="25" lean-forward="true" selection-start-line="34" selection-start-column="25" selection-end-line="34" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="272">
+          <caret line="27" column="63" lean-forward="false" selection-start-line="27" selection-start-column="63" selection-end-line="27" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/shared/views/Requests.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="26" column="63" lean-forward="false" selection-start-line="26" selection-start-column="63" selection-end-line="26" selection-end-column="63" />
         </state>
       </provider>
     </entry>
@@ -757,15 +708,26 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="17" column="1" lean-forward="true" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/js/shared/NavItems.js">
+    <entry file="file://$PROJECT_DIR$/src/js/shared/views/Camera.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="246">
-          <caret line="81" column="39" lean-forward="true" selection-start-line="81" selection-start-column="39" selection-end-line="81" selection-end-column="39" />
-          <folding />
+        <state relative-caret-position="463">
+          <caret line="37" column="24" lean-forward="true" selection-start-line="37" selection-start-column="16" selection-end-line="37" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/shared/components/camera/CameraView.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="218">
+          <caret line="25" column="80" lean-forward="false" selection-start-line="25" selection-start-column="80" selection-end-line="25" selection-end-column="80" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -25,7 +25,7 @@ export default class Map extends Component {
             header = <HeaderIos title={Strings.PAGE_HEADERS_MAP}/>
         }
         if(Platform.OS == "android"){
-            fab = <FabButton/>
+            fab = <FabButton navigation={this.props.navigation}/>
             header =<HeaderAndroid buttonClick={() => this.props.navigation.navigate("DrawerOpen")} title={Strings.PAGE_HEADERS_MAP} tabs={false}/>
         }
 

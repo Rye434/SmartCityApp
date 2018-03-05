@@ -24,7 +24,7 @@ export default class Requests extends Component {
             header = <HeaderIos title={Strings.PAGE_HEADERS_REQUESTS}  targetTextRight={Strings.PAGE_HEADERS_PROFILE} buttonClickRight={() => this.props.navigation.navigate("Profile")}/>
         }
         if(Platform.OS == "android"){
-            fab = <FabButton/>
+            fab = <FabButton navigation={this.props.navigation}/>
             header =<HeaderAndroid buttonClick={() => this.props.navigation.navigate("DrawerOpen")} title={Strings.PAGE_HEADERS_REQUESTS} tabs={false}/>
         }
         return(
