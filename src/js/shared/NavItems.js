@@ -12,6 +12,8 @@ import Login from "./views/Login";
 import Phone from "./views/Phone";
 import Verification from "./views/Verification";
 import CreateProfile from "./views/CreateProfile";
+import CameraView from "./views/CameraView";
+import SubmissionFlow from "./views/SubmissionFlow";
 
 var Strings = require('./res/strings/StringsEN.js');
 
@@ -37,6 +39,8 @@ export const RoutesNavIos = [
 export const AppRouteIos = StackNavigator({
         Map: {screen: Map},
         Camera: {screen: Camera},
+        CameraView: { screen: CameraView },
+        SubmissionFlow: { screen: SubmissionFlow },
         Requests: {screen: Requests},
         Profile: {screen: Profile}
     },
@@ -94,6 +98,8 @@ export const AppRouteAndroid = StackNavigator({
     AndroidSideBar: {screen: AndroidSideBar},
     Map: { screen: Map },
     Camera: { screen: Camera },
+    SubmissionFlow: { screen: SubmissionFlow },
+    CameraView: { screen: CameraView },
     Requests: { screen: Requests },
     Profile: { screen: Profile }
 }, {

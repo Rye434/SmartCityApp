@@ -1,12 +1,12 @@
 import axios from "axios/index";
 
+export const CACHE_PHOTO = "CACHE_PHOTO";
 
-export const ACTIVE_BUTTON = "ACTIVE_BUTTON";
 
+export function cachePhoto(obj) {
 
-export function activeButton(route) {
     return{
-        type: ACTIVE_BUTTON,
-        button: route
+        type: CACHE_PHOTO,
+        photo: obj
     }
 }

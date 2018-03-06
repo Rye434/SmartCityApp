@@ -16,7 +16,7 @@ import stocksApp from "./src/js/shared/reducers/Reducers";
 import {AppRouteAndroid, AppRouteIos, AppRoute, AppNavigator, LoginFlow} from "./src/js/shared/NavItems";
 
 let state = {
-    activeButton: 'Portfolio'
+    photoCached: {}
 }
 
 let store = createStore(stocksApp, state,  applyMiddleware(thunk));

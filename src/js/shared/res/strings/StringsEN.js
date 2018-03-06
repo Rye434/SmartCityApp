@@ -22,7 +22,9 @@ module.exports = {
     BUTTONS_CONFIRM:"Confirm",
     BUTTONS_SAVE:"Save",
 
-
+    CAMERA_WARNING:"Caution",
+    CAMERA_WARNING_MESSAGE:"Always be aware of your surroundings before taking a picture",
+    CAMERA_WARMING_BUTTON:"Proceed"
 
 
 }

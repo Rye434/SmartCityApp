@@ -9,7 +9,8 @@ import HeaderAndroid from '../../android/Header.android';
 import FooterIos from "../../ios/Footer.ios";
 import HeaderIos from "../../ios/Header.ios";
 import FabButton from "../../android/FabButton";
-import CameraView from "../components/camera/CameraView";
+import CameraView from "./CameraView";
+import CameraWarning from "../components/camera/CameraWarning";
 
 var Strings = require('../res/strings/StringsEN.js');
 
@@ -31,9 +32,7 @@ export default class Camera extends Component {
         return(
             <Container>
                 {header}
-                <Content>
-                    <CameraView/>
-                </Content>
+                <CameraWarning navigation={this.props.navigation}/>
                 {fab}
                 {footer}
             </Container>

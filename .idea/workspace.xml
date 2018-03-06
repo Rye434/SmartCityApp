@@ -2,18 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c847f5de-5cb3-4828-a41e-d7545b517e20" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/js/shared/components/camera/CameraView.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/js/shared/components/camera/CameraWarning.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/js/shared/views/SubmissionFlow.js" />
       <change beforePath="$PROJECT_DIR$/.expo/packager-info.json" afterPath="$PROJECT_DIR$/.expo/packager-info.json" />
-      <change beforePath="$PROJECT_DIR$/.expo/settings.json" afterPath="$PROJECT_DIR$/.expo/settings.json" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/android/app/src/main/java/com/missingpixel/smartcity/generated/ExponentBuildConstants.java" afterPath="$PROJECT_DIR$/android/app/src/main/java/com/missingpixel/smartcity/generated/ExponentBuildConstants.java" />
-      <change beforePath="$PROJECT_DIR$/ios/smartcity.xcworkspace/xcuserdata/jakewagnr.xcuserdatad/UserInterfaceState.xcuserstate" afterPath="$PROJECT_DIR$/ios/smartcity.xcworkspace/xcuserdata/jakewagnr.xcuserdatad/UserInterfaceState.xcuserstate" />
-      <change beforePath="$PROJECT_DIR$/ios/smartcity/Supporting/EXBuildConstants.json" afterPath="$PROJECT_DIR$/ios/smartcity/Supporting/EXBuildConstants.json" />
-      <change beforePath="$PROJECT_DIR$/ios/smartcity/Supporting/EXBuildConstants.plist" afterPath="$PROJECT_DIR$/ios/smartcity/Supporting/EXBuildConstants.plist" />
-      <change beforePath="$PROJECT_DIR$/ios/smartcity/Supporting/EXBuildConstants.plist.bak" afterPath="$PROJECT_DIR$/ios/smartcity/Supporting/EXBuildConstants.plist.bak" />
+      <change beforePath="$PROJECT_DIR$/App.js" afterPath="$PROJECT_DIR$/App.js" />
+      <change beforePath="$PROJECT_DIR$/src/js/shared/NavItems.js" afterPath="$PROJECT_DIR$/src/js/shared/NavItems.js" />
+      <change beforePath="$PROJECT_DIR$/src/js/shared/actions/Actions.js" afterPath="$PROJECT_DIR$/src/js/shared/actions/Actions.js" />
+      <change beforePath="$PROJECT_DIR$/src/js/shared/components/camera/CameraView.js" afterPath="$PROJECT_DIR$/src/js/shared/views/CameraView.js" />
+      <change beforePath="$PROJECT_DIR$/src/js/shared/reducers/Reducers.js" afterPath="$PROJECT_DIR$/src/js/shared/reducers/Reducers.js" />
+      <change beforePath="$PROJECT_DIR$/src/js/shared/res/strings/StringsEN.js" afterPath="$PROJECT_DIR$/src/js/shared/res/strings/StringsEN.js" />
       <change beforePath="$PROJECT_DIR$/src/js/shared/views/Camera.js" afterPath="$PROJECT_DIR$/src/js/shared/views/Camera.js" />
-      <change beforePath="$PROJECT_DIR$/src/js/shared/views/Map.js" afterPath="$PROJECT_DIR$/src/js/shared/views/Map.js" />
-      <change beforePath="$PROJECT_DIR$/src/js/shared/views/Requests.js" afterPath="$PROJECT_DIR$/src/js/shared/views/Requests.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -30,8 +29,8 @@
       <file leaf-file-name="StringsEN.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/js/shared/res/strings/StringsEN.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="17" column="19" lean-forward="false" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="19" />
+            <state relative-caret-position="442">
+              <caret line="26" column="35" lean-forward="false" selection-start-line="26" selection-start-column="35" selection-end-line="26" selection-end-column="35" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -39,12 +38,34 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="Actions.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/js/shared/actions/Actions.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="9" column="18" lean-forward="false" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Reducers.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/js/shared/reducers/Reducers.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="15" column="5" lean-forward="false" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="NavItems.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/js/shared/NavItems.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1190">
-              <caret line="83" column="6" lean-forward="false" selection-start-line="83" selection-start-column="6" selection-end-line="83" selection-end-column="6" />
-              <folding />
+            <state relative-caret-position="168">
+              <caret line="42" column="51" lean-forward="false" selection-start-line="42" selection-start-column="51" selection-end-line="42" selection-end-column="51" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -52,8 +73,8 @@
       <file leaf-file-name="Camera.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/js/shared/views/Camera.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="463">
-              <caret line="37" column="24" lean-forward="true" selection-start-line="37" selection-start-column="16" selection-end-line="37" selection-end-column="24" />
+            <state relative-caret-position="419">
+              <caret line="34" column="67" lean-forward="false" selection-start-line="34" selection-start-column="67" selection-end-line="34" selection-end-column="67" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -61,13 +82,37 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CameraView.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/js/shared/components/camera/CameraView.js">
+      <file leaf-file-name="CameraWarning.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/js/shared/components/camera/CameraWarning.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="218">
-              <caret line="25" column="80" lean-forward="false" selection-start-line="25" selection-start-column="80" selection-end-line="25" selection-end-column="80" />
+            <state relative-caret-position="391">
+              <caret line="23" column="1" lean-forward="true" selection-start-line="23" selection-start-column="1" selection-end-line="23" selection-end-column="1" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CameraView.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/js/shared/views/CameraView.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="44" column="55" lean-forward="false" selection-start-line="44" selection-start-column="55" selection-end-line="44" selection-end-column="55" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SubmissionFlow.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/js/shared/views/SubmissionFlow.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="232">
+              <caret line="21" column="48" lean-forward="false" selection-start-line="21" selection-start-column="48" selection-end-line="21" selection-end-column="48" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -95,26 +140,31 @@
         <option value="$PROJECT_DIR$/app.json" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/src/js/ios/Footer.ios.js" />
-        <option value="$PROJECT_DIR$/App.js" />
         <option value="$PROJECT_DIR$/src/js/ios/Header.ios.js" />
         <option value="$PROJECT_DIR$/src/js/constants/AppConstants.js" />
         <option value="$PROJECT_DIR$/src/js/shared/res/StringsEN.js" />
         <option value="$PROJECT_DIR$/src/js/shared/views/Profile.js" />
         <option value="$PROJECT_DIR$/src/js/shared/components/SideBar.js" />
-        <option value="$PROJECT_DIR$/src/js/shared/res/strings/StringsEN.js" />
         <option value="$PROJECT_DIR$/src/js/shared/views/Phone.js" />
         <option value="$PROJECT_DIR$/src/js/shared/views/Login.js" />
         <option value="$PROJECT_DIR$/src/js/shared/views/Verification.js" />
         <option value="$PROJECT_DIR$/src/js/shared/views/CreateProfile.js" />
         <option value="$PROJECT_DIR$/src/js/shared/res/constants/AppConstants.js" />
-        <option value="$PROJECT_DIR$/src/js/shared/NavItems.js" />
         <option value="$PROJECT_DIR$/src/js/shared/components/map/IssueMap.js" />
         <option value="$PROJECT_DIR$/src/js/android/FabButton.js" />
         <option value="$PROJECT_DIR$/src/js/shared/components/camera/Camera.js" />
         <option value="$PROJECT_DIR$/src/js/shared/views/Map.js" />
         <option value="$PROJECT_DIR$/src/js/shared/views/Requests.js" />
-        <option value="$PROJECT_DIR$/src/js/shared/views/Camera.js" />
         <option value="$PROJECT_DIR$/src/js/shared/components/camera/CameraView.js" />
+        <option value="$PROJECT_DIR$/src/js/shared/res/strings/StringsEN.js" />
+        <option value="$PROJECT_DIR$/src/js/shared/views/Camera.js" />
+        <option value="$PROJECT_DIR$/src/js/shared/components/camera/CameraWarning.js" />
+        <option value="$PROJECT_DIR$/App.js" />
+        <option value="$PROJECT_DIR$/src/js/shared/reducers/Reducers.js" />
+        <option value="$PROJECT_DIR$/src/js/shared/actions/Actions.js" />
+        <option value="$PROJECT_DIR$/src/js/shared/views/CameraView.js" />
+        <option value="$PROJECT_DIR$/src/js/shared/NavItems.js" />
+        <option value="$PROJECT_DIR$/src/js/shared/views/SubmissionFlow.js" />
       </list>
     </option>
   </component>
@@ -278,13 +328,14 @@
     <property name="HbShouldOpenHtmlAsHb" value="" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/js/shared/views" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/js/shared/views" />
       <recent name="$PROJECT_DIR$/src/js/shared/res" />
       <recent name="$PROJECT_DIR$/src/js/shared/res/strings" />
       <recent name="$PROJECT_DIR$/src" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/js/shared/views" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -324,21 +375,24 @@
       <workItem from="1519780941808" duration="5727000" />
       <workItem from="1520000817399" duration="85000" />
       <workItem from="1520216760562" duration="757000" />
+      <workItem from="1520275881220" duration="4000" />
+      <workItem from="1520345218408" duration="5615000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24983000" />
+    <option name="totallyTimeSpent" value="30602000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="4" y="22" width="1676" height="1028" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.244713" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22186495" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -384,20 +438,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/js/shared/views/Camera.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="19" column="86" lean-forward="false" selection-start-line="19" selection-start-column="86" selection-end-line="19" selection-end-column="86" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/js/shared/views/Requests.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="17" column="14" lean-forward="false" selection-start-line="17" selection-start-column="14" selection-end-line="17" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/js/shared/views/Profile.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
@@ -528,13 +568,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/js/shared/views/Services.js" />
-    <entry file="file://$PROJECT_DIR$/src/js/shared/reducers/Reducers.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
@@ -594,23 +627,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/js/shared/res/strings/StringsEN.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="17" column="19" lean-forward="false" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="19" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/js/shared/actions/Actions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="24" lean-forward="false" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/js/ios/Footer.ios.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="484">
@@ -622,13 +638,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="21" column="25" lean-forward="true" selection-start-line="21" selection-start-column="25" selection-end-line="21" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/App.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="500">
-          <caret line="51" column="24" lean-forward="false" selection-start-line="51" selection-start-column="24" selection-end-line="51" selection-end-column="24" />
         </state>
       </provider>
     </entry>
@@ -667,22 +676,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/expo/src/Expo.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="233">
-          <caret line="172" column="6" lean-forward="false" selection-start-line="172" selection-start-column="6" selection-end-line="172" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/js/shared/NavItems.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1190">
-          <caret line="83" column="6" lean-forward="false" selection-start-line="83" selection-start-column="6" selection-end-line="83" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/expo/src/Expo.js" />
     <entry file="file://$PROJECT_DIR$/src/js/shared/components/map/IssueMap.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="509">
@@ -711,22 +705,88 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/shared/actions/Actions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="18" lean-forward="false" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="7" lean-forward="true" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+          <folding>
+            <element signature="e#2#43#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/shared/res/strings/StringsEN.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="26" column="35" lean-forward="false" selection-start-line="26" selection-start-column="35" selection-end-line="26" selection-end-column="35" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/shared/reducers/Reducers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="5" lean-forward="false" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/js/shared/views/Camera.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="463">
-          <caret line="37" column="24" lean-forward="true" selection-start-line="37" selection-start-column="16" selection-end-line="37" selection-end-column="24" />
+        <state relative-caret-position="419">
+          <caret line="34" column="67" lean-forward="false" selection-start-line="34" selection-start-column="67" selection-end-line="34" selection-end-column="67" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/js/shared/components/camera/CameraView.js">
+    <entry file="file://$PROJECT_DIR$/src/js/shared/components/camera/CameraWarning.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="25" column="80" lean-forward="false" selection-start-line="25" selection-start-column="80" selection-end-line="25" selection-end-column="80" />
+        <state relative-caret-position="391">
+          <caret line="23" column="1" lean-forward="true" selection-start-line="23" selection-start-column="1" selection-end-line="23" selection-end-column="1" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/shared/NavItems.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="42" column="51" lean-forward="false" selection-start-line="42" selection-start-column="51" selection-end-line="42" selection-end-column="51" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/shared/views/CameraView.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="44" column="55" lean-forward="false" selection-start-line="44" selection-start-column="55" selection-end-line="44" selection-end-column="55" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/shared/views/SubmissionFlow.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="232">
+          <caret line="21" column="48" lean-forward="false" selection-start-line="21" selection-start-column="48" selection-end-line="21" selection-end-column="48" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
           </folding>
         </state>
       </provider>
