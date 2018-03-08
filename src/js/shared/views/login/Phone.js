@@ -8,11 +8,9 @@ import {
     Keyboard
 } from 'react-native';
 import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text, Drawer, Input, Label, Form, Item } from 'native-base';
-import HeaderAndroid from '../../android/Header.android';
-import FooterIos from "../../ios/Footer.ios";
-import HeaderIos from "../../ios/Header.ios";
 
-var Strings = require('../res/strings/StringsEN.js');
+
+var Strings = require('../../res/strings/StringsEN.js');
 
 
 let target;

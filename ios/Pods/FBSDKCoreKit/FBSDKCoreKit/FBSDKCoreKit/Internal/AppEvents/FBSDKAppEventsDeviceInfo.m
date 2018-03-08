@@ -37,7 +37,7 @@
 
 static const u_int FB_GROUP1_RECHECK_DURATION    = 30 * 60;  // seconds
 
-// Apple reports storage in binary gigabytes (1024^3) in their About menus, etc.
+// Apple reports storage in binary gigabytes (1024^3) in their About.js menus, etc.
 static const u_int FB_GIGABYTE = 1024 * 1024 * 1024;  // bytes
 
 @implementation FBSDKAppEventsDeviceInfo

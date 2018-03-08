@@ -8,12 +8,14 @@ import Requests from "./views/Requests";
 import Map from "./views/Map";
 import Camera from "./views/Camera";
 import Profile from "./views/Profile";
-import Login from "./views/Login";
-import Phone from "./views/Phone";
-import Verification from "./views/Verification";
-import CreateProfile from "./views/CreateProfile";
+import Login from "./views/login/Login";
+import Phone from "./views/login/Phone";
+import Verification from "./views/login/Verification";
+import CreateProfile from "./views/login/CreateProfile";
 import CameraView from "./views/CameraView";
 import SubmissionFlow from "./views/SubmissionFlow";
+import About from "./views/About";
+import Feedback from "./views/Feedback";
 
 var Strings = require('./res/strings/StringsEN.js');
 
@@ -42,7 +44,9 @@ export const AppRouteIos = StackNavigator({
         CameraView: { screen: CameraView },
         SubmissionFlow: { screen: SubmissionFlow },
         Requests: {screen: Requests},
-        Profile: {screen: Profile}
+        Profile: {screen: Profile},
+        About: {screen: About},
+        Feedback: {screen: Feedback},
     },
     {
         headerMode:'none'
@@ -76,6 +80,14 @@ export const routesAndroid = [
         name: Strings.PAGE_HEADERS_REQUESTS,
         route: "Requests",
         icon: "time"
+    },
+    {
+        name: Strings.PAGE_HEADERS_ABOUT,
+        route: "About",
+    },
+    {
+        name: Strings.PAGE_HEADERS_FEEDBACK,
+        route: "Feedback",
     }
 ];
 
@@ -85,6 +97,8 @@ export const AndroidSideBar = DrawerNavigator({
         Camera: { screen: Camera },
         Requests: { screen: Requests },
         Profile: { screen: Profile },
+        About: {screen: About},
+        Feedback: {screen: Feedback},
     },
     {
         contentComponent: props => <SideBar {...props} />,
@@ -101,7 +115,9 @@ export const AppRouteAndroid = StackNavigator({
     SubmissionFlow: { screen: SubmissionFlow },
     CameraView: { screen: CameraView },
     Requests: { screen: Requests },
-    Profile: { screen: Profile }
+    Profile: { screen: Profile },
+    About: {screen: About},
+    Feedback: {screen: Feedback},
 }, {
     headerMode: 'none',
 });

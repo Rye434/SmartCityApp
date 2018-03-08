@@ -12,6 +12,12 @@ import {connect} from "react-redux";
 var Strings = require('../res/strings/StringsEN.js');
 
 
+
+//TODO: add issue submission confirmation alert
+
+
+
+
 class SubmissionFlow extends Component {
 
     render() {

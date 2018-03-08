@@ -16,7 +16,13 @@ export default class HeaderAndroid extends Component {
                     <Body>
                     <Title>{this.props.title}</Title>
                     </Body>
-                    <Right />
+                    <Right>
+                        <Right>
+                            <Button transparent onPress={this.props.buttonClickRight}>
+                                <Text>{this.props.targetTextRight}</Text>
+                            </Button>
+                        </Right>
+                    </Right>
                 </Header>
 
         );

@@ -7,8 +7,11 @@ module.exports = {
     PAGE_HEADERS_CAMERA:"Camera",
     PAGE_HEADERS_REQUESTS:"Requests",
     PAGE_HEADERS_PROFILE:"Profile",
+    PAGE_HEADERS_ABOUT:"About",
+    PAGE_HEADERS_FEEDBACK:"Feedback",
 
     HEADER_RETURN:"Back",
+    HEADER_EDIT:"Edit",
 
     FIELDS_PHONE:"Phone",
     FIELDS_PASSWORD:"Password",
@@ -24,7 +27,10 @@ module.exports = {
 
     CAMERA_WARNING:"Caution",
     CAMERA_WARNING_MESSAGE:"Always be aware of your surroundings before taking a picture",
-    CAMERA_WARMING_BUTTON:"Proceed"
+    CAMERA_WARMING_BUTTON:"Proceed",
+
+
+
 
 
 }

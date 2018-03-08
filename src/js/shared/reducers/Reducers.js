@@ -1,4 +1,4 @@
-import {CACHE_PHOTO} from "../actions/Actions";
+import {CACHE_PHOTO, EDIT_MODAL} from "../actions/Actions";
 
 
 export default function stocksApp(state, action) {
@@ -8,6 +8,11 @@ export default function stocksApp(state, action) {
         case CACHE_PHOTO:
             let photoCached = action.photo
             newState = Object.assign({}, state, {photoCached});
+            console.log(newState)
+            break;
+        case EDIT_MODAL:
+            let editModal = action.editModal
+            newState = Object.assign({}, state, {editModal});
             console.log(newState)
             break;
         default:

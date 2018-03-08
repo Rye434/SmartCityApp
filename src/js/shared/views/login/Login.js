@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text, Drawer, Input, Label, Form, Item } from 'native-base';
 
-var Strings = require('../res/strings/StringsEN.js');
+var Strings = require('../../res/strings/StringsEN.js');
 
 
 let target;

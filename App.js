@@ -1,5 +1,3 @@
-
-
 import React, { Component } from 'react';
 import {
   Platform,
@@ -16,7 +14,8 @@ import stocksApp from "./src/js/shared/reducers/Reducers";
 import {AppRouteAndroid, AppRouteIos, AppRoute, AppNavigator, LoginFlow} from "./src/js/shared/NavItems";
 
 let state = {
-    photoCached: {}
+    photoCached: {},
+    editModal: false
 }
 
 let store = createStore(stocksApp, state,  applyMiddleware(thunk));

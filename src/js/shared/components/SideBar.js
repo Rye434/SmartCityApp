@@ -42,7 +42,8 @@ export default class SideBar extends React.Component {
                             return (
                                 <ListItem
                                     button
-                                    onPress={() => this.handleOnPress(data.route)}>
+                                    onPress={() => this.handleOnPress(data.route)}
+                                    style={{borderBottomWidth: 0}}>
                                     <Left>
                                         <Icon active name={data.icon} style={{color: "#777", fontSize: 26, width: 30}}/>
                                         <Text>
