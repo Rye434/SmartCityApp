@@ -29,6 +29,10 @@ module.exports = {
     CAMERA_WARNING_MESSAGE:"Always be aware of your surroundings before taking a picture",
     CAMERA_WARMING_BUTTON:"Proceed",
 
+    REQUEST_SEGMENT_PUBLIC:"All",
+    REQUEST_SEGMENT_PERSONAL:"Mine",
+    REQUEST_SEGMENT_ACKNOWLEDGED:"Acknowledged",
+
 
 
 

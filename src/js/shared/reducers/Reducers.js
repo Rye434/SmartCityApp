@@ -1,4 +1,4 @@
-import {CACHE_PHOTO, EDIT_MODAL} from "../actions/Actions";
+import {CACHE_PHOTO, EDIT_MODAL, FILTER_SEGMENT_TOGGLE,} from "../actions/Actions";
 
 
 export default function stocksApp(state, action) {
@@ -13,6 +13,25 @@ export default function stocksApp(state, action) {
         case EDIT_MODAL:
             let editModal = action.editModal
             newState = Object.assign({}, state, {editModal});
+            console.log(newState)
+            break;
+        case FILTER_SEGMENT_TOGGLE:
+            let filterButton = action.filterActive
+            if(filterButton == 1){
+                filterSegment = [true,false,false]
+                newState = Object.assign({}, state, {filterSegment});
+                break;
+            }
+            if(filterButton == 2) {
+                filterSegment = [false, true,false]
+                newState = Object.assign({}, state, {filterSegment});
+                break;
+            }
+            if(filterButton == 3) {
+                filterSegment = [false,false, true]
+                newState = Object.assign({}, state, {filterSegment});
+                break;
+            }
             console.log(newState)
             break;
         default:

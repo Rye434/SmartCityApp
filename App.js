@@ -15,7 +15,8 @@ import {AppRouteAndroid, AppRouteIos, AppRoute, AppNavigator, LoginFlow} from ".
 
 let state = {
     photoCached: {},
-    editModal: false
+    editModal: false,
+    filterSegment:[true,false,false]
 }
 
 let store = createStore(stocksApp, state,  applyMiddleware(thunk));
