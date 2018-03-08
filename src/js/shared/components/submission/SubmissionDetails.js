@@ -6,11 +6,10 @@ import {
     Image
 } from 'react-native';
 import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text, Drawer } from 'native-base';
-import SubmissionDetails from "../../shared/components/submission/SubmissionDetails";
-import * as actions from "../actions/Actions";
+import * as actions from "../../actions/Actions";
 import {connect} from "react-redux";
 
-var Strings = require('../res/strings/StringsEN.js');
+var Strings = require('../../res/strings/StringsEN.js');
 
 
 
@@ -19,14 +18,17 @@ var Strings = require('../res/strings/StringsEN.js');
 
 
 
-class SubmissionFlow extends Component {
+class SubmissionDetails extends Component {
 
     render() {
 
         return(
-            <Content>
-                <SubmissionDetails/>
-            </Content>
+            <View>
+                <Image
+                    style={{height:667,width:375}}
+                    source={{uri: this.props.imageSource.uri}}
+                />
+            </View>
         )
     }
 }
@@ -47,4 +49,4 @@ const mapDistpatchToProps = (dispatch) => {
 
 
 
-export default connect(mapStateToProps,mapDistpatchToProps)(SubmissionFlow)
+export default connect(mapStateToProps,mapDistpatchToProps)(SubmissionDetails)
