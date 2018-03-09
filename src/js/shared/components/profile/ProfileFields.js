@@ -4,7 +4,7 @@ import {
     StyleSheet,
     View
 } from 'react-native';
-import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text, Drawer } from 'native-base';
+import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text, Drawer, Item, Input } from 'native-base';
 
 
 var Strings = require('../../res/strings/StringsEN.js');
@@ -17,7 +17,20 @@ export default class ProfileFields extends Component {
         return(
             <View>
 
-                    <Text>Profile</Text>
+                <Text>Name</Text>
+                <Text>{Strings.PROFILE_PHONE}</Text>
+                <Text>phone#</Text>
+                <Item></Item>
+
+                <Text>{Strings.PROFILE_EMAIL}</Text>
+                <Text>Email Field</Text>
+                <Item></Item>
+
+                <Text>{Strings.PROFILE_ADDRESS}</Text>
+                <Text>Address Field</Text>
+                <Text>Address Field</Text>
+                <Text>Address Field</Text>
+                <Item></Item>
 
             </View>
         )

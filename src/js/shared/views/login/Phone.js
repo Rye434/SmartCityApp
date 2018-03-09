@@ -14,7 +14,9 @@ var Strings = require('../../res/strings/StringsEN.js');
 
 
 let target;
-let userExists = true; //for testing login flow, use True/False values
+let userExists = false; //for testing login flow, use True/False values
+
+//TODO
 
 export default class Phone extends Component {
 
@@ -34,7 +36,7 @@ export default class Phone extends Component {
                         <Label>{Strings.FIELDS_PHONE}</Label>
                         <Input keyboardType='numeric'/>
                     </Item>
-                    <Button style={{marginLeft:0}} onPress={() => this.props.navigation.navigate(target)}><Text>{Strings.BUTTONS_VERIFY}</Text></Button>
+                    <Button style={{marginLeft:0}} onPress={() => this.props.navigation.navigate(target)}><Text>{Strings.BUTTONS_CONFIRM}</Text></Button>
                 </Form>
             </KeyboardAvoidingView>
         )
