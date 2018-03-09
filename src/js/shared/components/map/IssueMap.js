@@ -14,6 +14,12 @@ var Strings = require('../../res/strings/StringsEN');
 let height = Dimensions.get('window').height;
 let width = Dimensions.get('window').width;
 
+
+
+//TODO: the detail popup when pins are clicked.
+
+
+
 export default class IssueMap extends Component {
 
     render() {

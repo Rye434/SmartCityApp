@@ -14,7 +14,7 @@ let placeholder;
 
 class RequestList extends Component {
     render() {
-        filterValues = this.props.filter;
+        filterValues = this.props.filter; //object that is [Bool,bool,bool]
 
         if(filterValues[0]==true){
             placeholder = "Public"
