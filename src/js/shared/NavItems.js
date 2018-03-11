@@ -16,6 +16,7 @@ import CameraView from "./views/CameraView";
 import SubmissionFlow from "./views/SubmissionFlow";
 import About from "./views/About";
 import Feedback from "./views/Feedback";
+import PhoneOrFacebook from "./views/login/PhoneOrFacebook";
 
 var Strings = require('./res/strings/StringsEN.js');
 
@@ -53,6 +54,7 @@ export const AppRouteIos = StackNavigator({
     });
 
 export const LoginFlow = StackNavigator({
+        PhoneOrFacebook:{screen: PhoneOrFacebook},
         Phone: {screen: Phone},
         Verification: {screen:Verification},
         CreateProfile: {screen: CreateProfile},
@@ -105,6 +107,7 @@ export const AndroidSideBar = DrawerNavigator({
     });
 
 export const AppRouteAndroid = StackNavigator({
+    PhoneOrFacebook: {screen: PhoneOrFacebook},
     Phone: {screen: Phone},
     Verification: {screen:Verification},
     CreateProfile: {screen: CreateProfile},
