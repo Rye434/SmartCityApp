@@ -44,5 +44,7 @@ module.exports = {
     VERIFICATION_HEADER:"Enter Verification Code",
     VERIFICATION_MESSAGE:"A text message with a verification code has been sent to your phone number. Enter the code to continue.",
 
+    USER_CURRENT_LOCATION:"Current location"
+
 
 }

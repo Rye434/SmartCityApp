@@ -10,6 +10,9 @@ import FooterIos from "../../ios/Footer.ios";
 import HeaderIos from "../../ios/Header.ios";
 import FabButton from "../../android/FabButton";
 import IssueMap from "../components/map/IssueMap";
+import AddressSearch from "../components/map/AddressSearch";
+import {connect} from "react-redux";
+import * as actions from "../actions/Actions";
 
 var Strings = require('../res/strings/StringsEN.js');
 
@@ -17,7 +20,8 @@ let footer;
 let fab;
 let header;
 
-export default class Map extends Component {
+class Map extends Component {
+
 
     render() {
         if(Platform.OS == "ios"){
@@ -33,8 +37,8 @@ export default class Map extends Component {
             <Container>
                 {header}
                 <Content>
+                    <AddressSearch/>
                     <IssueMap/>
-
                 </Content>
                 {fab}
                 {footer}
@@ -45,3 +49,17 @@ export default class Map extends Component {
 }
 
 
+
+function mapStateToProps(state) {
+    return{
+    }
+}
+
+const mapDistpatchToProps = (dispatch) => {
+    return {
+    }
+}
+
+
+
+export default connect(mapStateToProps,mapDistpatchToProps)(Map)
