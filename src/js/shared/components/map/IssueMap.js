@@ -3,12 +3,12 @@ import {
     Platform,
     StyleSheet,
     View,
-    Dimensions
+    Dimensions,
+    Image
 } from 'react-native';
 import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text, Drawer, Spinner } from 'native-base';
-import { MapView, Animated } from 'expo';
+import { MapView, Animated, Marker} from 'expo';
 import {connect} from "react-redux";
-import AddressSearch from "./AddressSearch";
 import * as actions from "../../actions/Actions";
 
 
@@ -18,7 +18,7 @@ let height;
 let width = Dimensions.get('window').width;
 let topSpace;
 
-
+let searchedLocation;
 
 class IssueMap extends Component {
     componentWillMount() {
@@ -34,11 +34,12 @@ class IssueMap extends Component {
     }
 
     render() {
+
         if(Platform.OS == 'ios'){
             height = Dimensions.get('window').height*.8;
         }
         if(Platform.OS == 'android'){
-            height = Dimensions.get('window').height*.9;
+            height = Dimensions.get('window').height;
             topSpace = Dimensions.get('window').height*.1;
         }
 
@@ -48,6 +49,15 @@ class IssueMap extends Component {
             <Spinner color='blue' />
             )
         }else{
+            searchedLocation= [
+                {
+                    image: require('../../res/assets/img/Button.png'),
+                    coordinates: {
+                        latitude: this.props.mapRegion.latitude,
+                        longitude: this.props.mapRegion.longitude
+                    },
+                }
+            ];
         return(
             <View>
             <MapView.Animated
@@ -61,8 +71,23 @@ class IssueMap extends Component {
                             }}
                     showsUserLocation={true}
                     followUserLocation={true}
-                    onUserLocationChange={this.props.mapRegion.longitude}
+                    onUserLocationChange={this.props.mapRegion}
                     region={this.props.mapRegion}>
+
+
+
+
+                {searchedLocation.map((marker, i) => (
+                    <MapView.Marker
+                        key={i}
+                        coordinate={marker.coordinates}
+                        // onPress={()=>{this.handleMarkerClick(marker.title)}}
+                        >
+                        <Image source={marker.image} style={{width:24,height:24}}/>
+                    </MapView.Marker>
+
+                ))}
+
             </MapView.Animated>
             </View>
                 )

@@ -17,19 +17,19 @@ export default class ProfileFields extends Component {
         return(
             <View>
 
-                <Text>Name</Text>
+                <Text>will hold user value: name</Text>
                 <Text>{Strings.PROFILE_PHONE}</Text>
-                <Text>phone#</Text>
+                <Text>will hold user value: phone</Text>
                 <Item></Item>
 
                 <Text>{Strings.PROFILE_EMAIL}</Text>
-                <Text>Email Field</Text>
+                <Text>will hold user value: email</Text>
                 <Item></Item>
 
                 <Text>{Strings.PROFILE_ADDRESS}</Text>
-                <Text>Address Field</Text>
-                <Text>Address Field</Text>
-                <Text>Address Field</Text>
+                <Text>will hold user value: Address Field</Text>
+                <Text>will hold user value: Address Field</Text>
+                <Text>will hold user value: Address Field</Text>
                 <Item></Item>
 
             </View>

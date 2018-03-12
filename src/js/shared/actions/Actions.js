@@ -47,8 +47,8 @@ export function updateLocation(position) {
         mapRegion:{
             latitude: position.geometry.location.lat,
             longitude: position.geometry.location.lng,
-            latitudeDelta: 0.0922,
-            longitudeDelta: 0.0421,
+            latitudeDelta: 0.0122,
+            longitudeDelta: 0.0071,
         }
     }
 }
