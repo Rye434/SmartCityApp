@@ -30,7 +30,7 @@ export default class Login extends Component {
                 <Form style={{flex:0,width: 350, paddingTop:88, paddingBottom:48, flexDirection:'column', justifyContent:'center', alignItems:'center'}}>
                     <Item fixedLabel style={{width:300, marginLeft:0}}>
                         <Label>{Strings.FIELDS_PHONE}</Label>
-                        <Input/>
+                        <Input onChange={()=>console.log("Phone")}/>
                     </Item>
                     <Item style={{marginLeft:0}}>
                         <Button  onPress={() => this.props.navigation.navigate(target)} style={{marginTop:24}}><Text>{Strings.BUTTONS_VERIFY}</Text></Button>

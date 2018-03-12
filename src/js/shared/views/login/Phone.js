@@ -34,7 +34,7 @@ export default class Phone extends Component {
                 <Form style={{flex:0,width: 350, paddingTop:24, paddingBottom:48, flexDirection:'row',marginLeft:0}}>
                     <Item inlineLabel style={{width:250}}>
                         <Label>{Strings.FIELDS_PHONE}</Label>
-                        <Input keyboardType='numeric'/>
+                        <Input keyboardType='phone-pad' onChange={()=>console.log("Phone")}/>
                     </Item>
                     <Button style={{marginLeft:0}} onPress={() => this.props.navigation.navigate(target)}><Text>{Strings.BUTTONS_CONFIRM}</Text></Button>
                 </Form>
