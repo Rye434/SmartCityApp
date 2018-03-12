@@ -16,6 +16,7 @@ import {AppRouteAndroid, AppRouteIos, AppRoute, AppNavigator, LoginFlow} from ".
 let state = {
     photoCached: {},
     editModal: false,
+    mapModal: false,
     filterSegment:[true,false,false],
     mapRegion:null,
 }

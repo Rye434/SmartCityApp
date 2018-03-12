@@ -1,4 +1,4 @@
-import {CACHE_PHOTO, EDIT_MODAL, FILTER_SEGMENT_TOGGLE, USER_LOCATION,} from "../actions/Actions";
+import {CACHE_PHOTO, EDIT_MODAL, FILTER_SEGMENT_TOGGLE, MAP_MODAL, USER_LOCATION,} from "../actions/Actions";
 
 
 export default function stocksApp(state, action) {
@@ -13,6 +13,11 @@ export default function stocksApp(state, action) {
         case EDIT_MODAL:
             let editModal = action.editModal
             newState = Object.assign({}, state, {editModal});
+            console.log(newState)
+            break;
+        case MAP_MODAL:
+            let mapModal = action.mapModal
+            newState = Object.assign({}, state, {mapModal});
             console.log(newState)
             break;
         case FILTER_SEGMENT_TOGGLE:

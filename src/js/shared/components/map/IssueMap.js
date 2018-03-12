@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text, Drawer, Spinner } from 'native-base';
 import { MapView, Animated, Marker} from 'expo';
+import MapModal from './MapModal';
 import {connect} from "react-redux";
 import * as actions from "../../actions/Actions";
 
@@ -20,6 +21,9 @@ let topSpace;
 
 let searchedLocation;
 let searchedMarker;
+
+let customMarker;
+let customImage = require('../../res/assets/img/Button.png');
 
 class IssueMap extends Component {
     componentWillMount() {
@@ -38,10 +42,13 @@ class IssueMap extends Component {
 
         if(Platform.OS == 'ios'){
             height = Dimensions.get('window').height*.8;
+            customMarker =  <Image source={customImage} resizeMode="contain" style={{width: 24, height: 24}}/>;
+
         }
         if(Platform.OS == 'android'){
             height = Dimensions.get('window').height;
             topSpace = Dimensions.get('window').height*.1;
+
         }
 
 
@@ -52,7 +59,6 @@ class IssueMap extends Component {
         }else{
             searchedLocation= [
                 {
-                    image: require('../../res/assets/img/Button.png'),
                     coordinates: {
                         latitude: this.props.mapRegion.latitude,
                         longitude: this.props.mapRegion.longitude
@@ -66,14 +72,16 @@ class IssueMap extends Component {
                     <MapView.Marker
                         key={i}
                         coordinate={marker.coordinates}
-                        // onPress={()=>{this.handleMarkerClick(marker.title)}}
+                        onPress={()=>this.props.showMapModal()}
                     >
-                        <Image source={marker.image} resizeMode="contain" style={{width: 24, height: 24}}/>
+                        {customMarker}
                     </MapView.Marker>
                 ))
             }
         return(
             <View>
+            <MapModal/>
+
             <MapView.Animated
                 provider='google'
                         style={{
@@ -91,9 +99,6 @@ class IssueMap extends Component {
 
 
 
-
-
-
             </MapView.Animated>
             </View>
                 )
@@ -106,6 +111,7 @@ class IssueMap extends Component {
 function mapStateToProps(state) {
     return{
         mapRegion: state.mapRegion,
+        mapModal: state.mapModal
     }
 }
 
@@ -113,6 +119,9 @@ const mapDistpatchToProps = (dispatch) => {
     return {
         getUserLocation: (position) => {
             return dispatch(actions.getUserLocation(position))
+        },
+        showMapModal: () => {
+            return dispatch(actions.mapModal(true))
         }
     }
 }
