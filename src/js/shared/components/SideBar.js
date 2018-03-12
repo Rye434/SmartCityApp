@@ -29,9 +29,8 @@ export default class SideBar extends React.Component {
             <Container>
                 <Content>
                     <TouchableOpacity onPress={() => this.props.navigation.navigate("Profile")}>
-                    <View style={{backgroundColor:'#3F51B5' ,height:160,flexDirection:'row', justifyContent:'flex-start', alignItems:'flex-end'}}>
 
-                        <Thumbnail large source={{uri: "http://i.pravatar.cc/300"}} style={{marginLeft:12, marginBottom:12}}/>
+                    <View style={{backgroundColor:'#3F51B5' ,height:160,flexDirection:'row', justifyContent:'flex-start', alignItems:'flex-end'}}>
                         <Text style={{color:'white', paddingBottom:16,paddingLeft:8, fontSize:24}}>John Smith</Text>
                     </View>
                     </TouchableOpacity>

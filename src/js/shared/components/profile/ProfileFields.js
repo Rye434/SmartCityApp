@@ -20,17 +20,17 @@ export default class ProfileFields extends Component {
                 <Text>Name</Text>
                 <Text>{Strings.PROFILE_PHONE}</Text>
                 <Text>phone#</Text>
-                <Item></Item>
+                <Item/>
 
                 <Text>{Strings.PROFILE_EMAIL}</Text>
                 <Text>Email Field</Text>
-                <Item></Item>
+                <Item/>
 
                 <Text>{Strings.PROFILE_ADDRESS}</Text>
                 <Text>Address Field</Text>
                 <Text>Address Field</Text>
                 <Text>Address Field</Text>
-                <Item></Item>
+                <Item/>
 
             </View>
         )

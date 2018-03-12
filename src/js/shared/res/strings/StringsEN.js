@@ -14,11 +14,16 @@ module.exports = {
     HEADER_EDIT:"Edit",
 
     FIELDS_PHONE:"Phone",
-    FIELDS_PASSWORD:"Password",
     FIELDS_CODE:"Code",
     FIELDS_FIRST_NAME:"First name",
     FIELDS_LAST_NAME:"Last name",
     FIELDS_CONFIRM:"Confirm",
+    FIELDS_EMAIL:"Email",
+    FIELDS_ADDRESS:"Address",
+    FIELDS_ADDRESS_LINE2:"Address Line 2",
+    FIELDS_POSTAL:"Postal Code",
+    FIELDS_CITY:"City",
+    FIELDS_PROVINCE:"Province",
     FIELDS_COUNTRY:"Country",
 
     BUTTONS_VERIFY:"Verify",
@@ -44,7 +49,25 @@ module.exports = {
     VERIFICATION_HEADER:"Enter Verification Code",
     VERIFICATION_MESSAGE:"A text message with a verification code has been sent to your phone number. Enter the code to continue.",
 
-    USER_CURRENT_LOCATION:"Current location"
+    USER_CURRENT_LOCATION:"Current location",
 
+    ABOUT_TITLE:"Smart City",
+    ABOUT_VERSION:"1.0.0.0",
+    ABOUT_DESCRIPTION:"Smart City is a simplified blah blah blah",
+    ABOUT_CONTACT:"Contact Information:",
+    ABOUT_RILEY_NAME:"Riley Griffith",
+    ABOUT_RILEY_EMAIL:"grif0193@algonquinlive.com",
+    ABOUT_JACOB_NAME:"Jacob Wagner",
+    ABOUT_JACOB_EMAIL:"wagn0070@algonquinlive.com",
+    ABOUT_MICHEL_NAME:"Michel Toutain",
+    ABOUT_MICHEL_EMAIL:"tout0004@algonquinlive.com",
+    ABOUT_ALISON_NAME:"Alison Kapcala",
+    ABOUT_ALISON_EMAIL:"kapc0003@algonquinlive.com",
+    ABOUT_ROBSON_NAME:"Robson Miranda",
+    ABOUT_ROBSON_EMAIL:"stra0165@algonquinlive.com",
+    ABOUT_YANMING_NAME:"Yanming Meng",
+    ABOUT_YANMING_EMAIL:"meng0028@algonquinlive.com",
+    ABOUT_ZAHEED_NAME:"Zaheed Jaffer",
+    ABOUT_ZAHEED_EMAIL:"jaff0021@algonquinlive.com",
 
 }

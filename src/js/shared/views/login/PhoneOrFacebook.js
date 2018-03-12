@@ -25,7 +25,7 @@ export default class PhoneOrFacebook extends Component {
         return(
             <KeyboardAvoidingView style={{flex: 1, flexDirection:'column', justifyContent:'center', alignItems:'center'}} behavior="padding">
                     <Item style={{marginLeft:0}}>
-                        <Button  onPress={() => this.props.navigation.navigate(target)} style={{marginTop:24}}><Text>{Strings.BUTTONS_VERIFY}</Text></Button>
+                        <Button  onPress={() => this.props.navigation.navigate('CreateProfile')} style={{marginTop:24}}><Text>{Strings.BUTTONS_VERIFY}</Text></Button>
                     </Item>
             </KeyboardAvoidingView>
         )
