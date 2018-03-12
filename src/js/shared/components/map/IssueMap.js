@@ -19,6 +19,7 @@ let width = Dimensions.get('window').width;
 let topSpace;
 
 let searchedLocation;
+let searchedMarker;
 
 class IssueMap extends Component {
     componentWillMount() {
@@ -58,6 +59,19 @@ class IssueMap extends Component {
                     },
                 }
             ];
+
+
+            if(this.props.mapRegion.latitudeDelta != 0.0922){
+                searchedMarker = searchedLocation.map((marker, i) => (
+                    <MapView.Marker
+                        key={i}
+                        coordinate={marker.coordinates}
+                        // onPress={()=>{this.handleMarkerClick(marker.title)}}
+                    >
+                        <Image source={marker.image} resizeMode="contain" style={{width: 24, height: 24}}/>
+                    </MapView.Marker>
+                ))
+            }
         return(
             <View>
             <MapView.Animated
@@ -73,20 +87,12 @@ class IssueMap extends Component {
                     followUserLocation={true}
                     onUserLocationChange={this.props.mapRegion}
                     region={this.props.mapRegion}>
+                {searchedMarker}
 
 
 
 
-                {searchedLocation.map((marker, i) => (
-                    <MapView.Marker
-                        key={i}
-                        coordinate={marker.coordinates}
-                        // onPress={()=>{this.handleMarkerClick(marker.title)}}
-                        >
-                        <Image source={marker.image} style={{width:24,height:24}}/>
-                    </MapView.Marker>
 
-                ))}
 
             </MapView.Animated>
             </View>
