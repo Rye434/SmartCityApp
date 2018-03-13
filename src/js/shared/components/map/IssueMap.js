@@ -88,7 +88,7 @@ class IssueMap extends Component {
                             paddingTop:topSpace,
                             flex:1,
                             width: width,
-                            height: height,
+                            height: height*1.1,
 
                             }}
                     showsUserLocation={true}

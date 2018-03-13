@@ -13,7 +13,13 @@ class MapModal extends Component {
     render() {
 
         if(Platform.OS == 'android'){
-            modalSpaceHeight = Dimensions.get('window').height*.75
+            if(Dimensions.get('window').height<=700) {
+                modalSpaceHeight = Dimensions.get('window').height * .75
+            }
+            if(Dimensions.get('window').height>700) {
+                modalSpaceHeight = Dimensions.get('window').height * .85
+            }
+
         }
         if(Platform.OS == 'ios'){
             modalSpaceHeight = Dimensions.get('window').height*.70

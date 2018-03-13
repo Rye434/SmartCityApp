@@ -28,9 +28,12 @@ class Map extends Component {
             footer = <FooterIos navigation={this.props.navigation} activePage={'Map'}/>
             header = <HeaderIos title={Strings.PAGE_HEADERS_MAP}/>
         }
-        if(Platform.OS == "android"){
+        if(Platform.OS == "android" && this.props.mapModal == false){
             fab = <FabButton navigation={this.props.navigation}/>
             header =<HeaderAndroid buttonClick={() => this.props.navigation.navigate("DrawerOpen")} title={Strings.PAGE_HEADERS_MAP} tabs={false}/>
+        }
+        if(Platform.OS == "android" && this.props.mapModal == true){
+            fab = null;
         }
 
         return(
@@ -52,6 +55,7 @@ class Map extends Component {
 
 function mapStateToProps(state) {
     return{
+        mapModal: state.mapModal,
     }
 }
 
