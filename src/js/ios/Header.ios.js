@@ -7,7 +7,7 @@ export default class HeaderIos extends Component {
         return (
                 <Header hasTabs={this.props.tabs}>
                     <Left>
-                        <Button primary transparent onPress={this.props.buttonClickLeft}>
+                        <Button transparent onPress={this.props.buttonClickLeft}>
                             <Text>{this.props.targetTextLeft}</Text>
                         </Button>
                     </Left>
@@ -15,7 +15,7 @@ export default class HeaderIos extends Component {
                     <Title>{this.props.title}</Title>
                     </Body>
                     <Right>
-                        <Button primary transparent onPress={this.props.buttonClickRight}>
+                        <Button transparent onPress={this.props.buttonClickRight}>
                             <Text>{this.props.targetTextRight}</Text>
                         </Button>
                     </Right>

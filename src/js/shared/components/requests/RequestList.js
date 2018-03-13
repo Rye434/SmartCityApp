@@ -27,11 +27,7 @@ class RequestList extends Component {
         }
 
         return (
-            <View>
-            <Text>{placeholder}</Text>
-                {/*<RequestListItem/>*/}
-            </View>
-
+            <RequestListItem/>
         );
     }
 }

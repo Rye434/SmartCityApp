@@ -30,6 +30,8 @@ module.exports = {
     BUTTONS_LOGIN:"Login",
     BUTTONS_CONFIRM:"Confirm",
     BUTTONS_SAVE:"Save",
+    BUTTONS_FACEBOOK:"Facebook",
+    BUTTONS_PHONE:"Phone",
 
     CAMERA_WARNING:"Caution",
     CAMERA_WARNING_MESSAGE:"Always be aware of your surroundings before taking a picture",
@@ -71,5 +73,8 @@ module.exports = {
     ABOUT_YANMING_EMAIL:"meng0028@algonquinlive.com",
     ABOUT_ZAHEED_NAME:"Zaheed Jaffer",
     ABOUT_ZAHEED_EMAIL:"jaff0021@algonquinlive.com",
+
+    PHONE_FACEBOOK_HEADER:"Welcome to Smart City",
+    PHONE_FACEBOOK_MESSAGE:"To continue with your request please Sign Up with:",
 
 }
