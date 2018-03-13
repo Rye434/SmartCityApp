@@ -23,11 +23,13 @@ export default class PhoneOrFacebook extends Component {
             target = "AndroidSideBar"
         }
         return(
-            <KeyboardAvoidingView style={{flex: 1, flexDirection:'column', justifyContent:'center', alignItems:'center'}} behavior="padding">
-                    <Item style={{marginLeft:0}}>
-                        <Button  onPress={() => this.props.navigation.navigate('CreateProfile')} style={{marginTop:24}}><Text>{Strings.BUTTONS_VERIFY}</Text></Button>
-                    </Item>
-            </KeyboardAvoidingView>
+
+            <View>
+                <Text>{Strings.PHONE_FACEBOOK_HEADER}</Text>
+                <Text>{Strings.PHONE_FACEBOOK_MESSAGE}</Text>
+                <Button  onPress={() => this.props.navigation.navigate('CreateProfile')} style={{marginTop:24}}><Icon name="keypad" ></Icon><Text>{Strings.BUTTONS_PHONE}</Text></Button>
+                <Button  onPress={() => this.props.navigation.navigate(target)} style={{marginTop:24}}><Text> <Icon name="logo-facebook" style={{color:'white'}}/> {Strings.BUTTONS_FACEBOOK}</Text></Button>
+            </View>
         )
 
     }
