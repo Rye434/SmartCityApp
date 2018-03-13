@@ -95,12 +95,13 @@ export default {
   checkboxTickColor: "#fff",
 
   // Color
-  brandPrimary: "#d23fcd",
-  brandInfo: "#62B1F6",
-  brandSuccess: "#5cb85c",
-  brandDanger: "#d9534f",
-  brandWarning: "#f0ad4e",
-  brandDark: "#000",
+
+  brandPrimary: "#1c4888", //primary color
+  brandInfo: "#5473b8",    //primary light
+  brandSuccess: "#059980", //secondary color
+  brandDanger: "#006a54",  //secondary dark
+  brandWarning: "#53cbaf", //secondary light
+  brandDark: "#222",
   brandLight: "#f4f4f4",
 
   // Font
@@ -118,26 +119,26 @@ export default {
 
   // Footer
   footerHeight: isIphoneX ? 89 : 55,
-  footerDefaultBg: platform === "ios" ? "#F8F8F8" : "#4179F7",
+  footerDefaultBg: platform === "ios" ? "#1c4888" : "#4179F7",
   footerPaddingBottom: isIphoneX ? 34 : 0,
 
   // FooterTab
-  tabBarTextColor: "#2874F0",
+  tabBarTextColor: "#eee",
   tabBarTextSize: platform === "ios" ? 14 : 11,
-  activeTab: "#fff",
+  activeTab: "#1c4888",
   sTabBarActiveTextColor: "#007aff",
-  tabBarActiveTextColor: "#2874F0",
-  tabActiveBgColor: "#cde1f9",
+  tabBarActiveTextColor: "#eee",
+  tabActiveBgColor: "#5473b8",
 
   // Header
   toolbarBtnColor: platform === "ios" ? "#007aff" : "#fff",
-  toolbarDefaultBg: platform === "ios" ? "#F8F8F8" : "#3F51B5",
+  toolbarDefaultBg: platform === "ios" ? "#1c4888" : "#3F51B5",
   toolbarHeight: platform === "ios" ? (isIphoneX ? 88 : 64) : 56,
   toolbarSearchIconSize: platform === "ios" ? 20 : 23,
   toolbarInputColor: platform === "ios" ? "#CECDD2" : "#fff",
   searchBarHeight: platform === "ios" ? 30 : 40,
   searchBarInputHeight: platform === "ios" ? 30 : 50,
-  toolbarBtnTextColor: "#000",
+  toolbarBtnTextColor: "#eee",
   toolbarDefaultBorder: "#a7a6ab",
   iosStatusbar: platform === "ios" ? "dark-content" : "light-content",
   get statusBarColor() {
@@ -231,7 +232,7 @@ export default {
   titleFontSize: platform === "ios" ? 17 : 19,
   subTitleFontSize: platform === "ios" ? 12 : 14,
   subtitleColor: platform === "ios" ? "#8e8e93" : "#FFF",
-  titleFontColor: platform === "ios" ? "#000" : "#FFF",
+  titleFontColor: platform === "ios" ? "#eee" : "#FFF",
 
   // Other
   borderRadiusBase: platform === "ios" ? 5 : 2,
