@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import {
     Platform,
     StyleSheet,
-    View
+    View,
+    KeyboardAvoidingView
 } from 'react-native';
-import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text, Drawer, List, ListItem } from 'native-base';
+import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text, Drawer, List, ListItem} from 'native-base';
 import HeaderAndroid from '../../android/Header.android';
 import HeaderIos from "../../ios/Header.ios";
 import FabButton from "../../android/FabButton";
@@ -37,10 +38,10 @@ class Profile extends Component {
             <Container>
                 {header}
                 <Content>
-                <ProfileEditModal/>
 
+                    <ProfileEditModal/>
 
-                <ProfileFields/>
+                    <ProfileFields/>
 
 
                     <List>
