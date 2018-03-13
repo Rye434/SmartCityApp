@@ -50,6 +50,8 @@ module.exports = {
     VERIFICATION_MESSAGE:"A text message with a verification code has been sent to your phone number. Enter the code to continue.",
 
     USER_CURRENT_LOCATION:"Current location",
+    MAP_MODAL_MORE_INFO_BUTTON:"More Information",
+    MAP_MODAL_ACKNOWLEDGE:"Acknowledge",
 
     ABOUT_TITLE:"Smart City",
     ABOUT_VERSION:"1.0.0.0",
