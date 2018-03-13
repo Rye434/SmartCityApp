@@ -18,6 +18,7 @@ import material from './native-base-theme/variables/material';
 let state = {
     photoCached: {},
     editModal: false,
+    mapModal: false,
     filterSegment:[true,false,false],
     mapRegion:null,
 }
