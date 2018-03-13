@@ -20,7 +20,7 @@ module.exports = {
     FIELDS_CONFIRM:"Confirm",
     FIELDS_EMAIL:"Email",
     FIELDS_ADDRESS:"Address",
-    FIELDS_ADDRESS_LINE2:"Address Line 2",
+    FIELDS_ADDRESS_LINE2:"Line 2",
     FIELDS_POSTAL:"Postal Code",
     FIELDS_CITY:"City",
     FIELDS_PROVINCE:"Province",

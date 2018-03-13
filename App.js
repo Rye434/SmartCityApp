@@ -4,7 +4,7 @@ import {
   StyleSheet,
   View
 } from 'react-native';
-import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text, Drawer } from 'native-base';
+import { StyleProvider, Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text, Drawer } from 'native-base';
 
 import {Provider} from "react-redux";
 import thunk from 'redux-thunk';
@@ -12,6 +12,8 @@ import {createStore, applyMiddleware} from "redux";
 import stocksApp from "./src/js/shared/reducers/Reducers";
 
 import {AppRouteAndroid, AppRouteIos, AppRoute, AppNavigator, LoginFlow} from "./src/js/shared/NavItems";
+import getTheme from './native-base-theme/components'
+import material from './native-base-theme/variables/material';
 
 let state = {
     photoCached: {},
@@ -48,18 +50,22 @@ export default class App extends Component {
 
     if(Platform.OS === 'android') {
         return (
+            <StyleProvider style={getTheme(material)}>
             <Provider store={store}>
                 <Container>
                 <AppRouteAndroid/>
                 </Container>
             </Provider>
+            </StyleProvider>
         );
     }
     if(Platform.OS === 'ios'){
       return (
+          <StyleProvider style={getTheme(material)}>
           <Provider store={store}>
             <LoginFlow/>
           </Provider>
+          </StyleProvider>
         );
     }
 

@@ -143,12 +143,12 @@ export default {
   get statusBarColor() {
     return color(this.toolbarDefaultBg)
       .darken(0.2)
-      .hex();
+      .hexString();
   },
   get darkenHeader() {
     return color(this.tabBgColor)
       .darken(0.03)
-      .hex();
+      .hexString();
   },
 
   // Icon
@@ -219,8 +219,8 @@ export default {
   tabFontSize: 15,
 
   // Text
-  textColor: "#000",
-  inverseTextColor: "#fff",
+  textColor: "#222",
+  inverseTextColor: "#eee",
   noteFontSize: 14,
   get defaultTextColor() {
     return this.textColor;
