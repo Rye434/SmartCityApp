@@ -3,7 +3,8 @@ import axios from "axios/index";
 export const CACHE_PHOTO = "CACHE_PHOTO";
 export const EDIT_MODAL = "EDIT_MODAL";
 export const FILTER_SEGMENT_TOGGLE = "FILTER_SEGMENT_TOGGLE";
-export const USER_LOCATION = "USER_LOCATION"
+export const USER_LOCATION = "USER_LOCATION";
+export const MAP_MODAL = "MAP_MODAL";
 
 
 export function cachePhoto(obj) {
@@ -47,8 +48,15 @@ export function updateLocation(position) {
         mapRegion:{
             latitude: position.geometry.location.lat,
             longitude: position.geometry.location.lng,
-            latitudeDelta: 0.0922,
-            longitudeDelta: 0.0421,
+            latitudeDelta: 0.0122,
+            longitudeDelta: 0.0071,
         }
+    }
+}
+
+export function mapModal(bool) {
+    return{
+        type: MAP_MODAL,
+        mapModal: bool
     }
 }

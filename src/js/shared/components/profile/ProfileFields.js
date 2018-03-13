@@ -17,7 +17,7 @@ export default class ProfileFields extends Component {
         return(
             <View>
 
-                <Text>Name</Text>
+                <Text>will hold user value: name</Text>
                 <Text>{Strings.PROFILE_PHONE}</Text>
                 <Text>phone#</Text>
                 <Item/>

@@ -40,7 +40,7 @@ class AddressSearch extends Component {
                             // available options: https://developers.google.com/places/web-service/autocomplete
                             key: 'AIzaSyDvOmGVpn_LXS2ATViAcvZTniJHW3DDxQA',
                             language: 'en', // language of the results
-                            types: 'geocode', // default: 'geocode'
+                            types: '', // default: 'geocode'
                         }}
 
                         styles={{
