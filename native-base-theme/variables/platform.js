@@ -131,8 +131,8 @@ export default {
   tabActiveBgColor: "#5473b8",
 
   // Header
-  toolbarBtnColor: platform === "ios" ? "#007aff" : "#fff",
-  toolbarDefaultBg: platform === "ios" ? "#1c4888" : "#3F51B5",
+  toolbarBtnColor: platform === "ios" ? "#eee" : "#eee",
+  toolbarDefaultBg: platform === "ios" ? "#1c4888" : "#1c4888",
   toolbarHeight: platform === "ios" ? (isIphoneX ? 88 : 64) : 56,
   toolbarSearchIconSize: platform === "ios" ? 20 : 23,
   toolbarInputColor: platform === "ios" ? "#CECDD2" : "#fff",
@@ -197,11 +197,11 @@ export default {
   radioColor: this.brandPrimary,
 
   // Segment
-  segmentBackgroundColor: platform === "ios" ? "#F8F8F8" : "#3F51B5",
-  segmentActiveBackgroundColor: platform === "ios" ? "#007aff" : "#fff",
-  segmentTextColor: platform === "ios" ? "#007aff" : "#fff",
-  segmentActiveTextColor: platform === "ios" ? "#fff" : "#3F51B5",
-  segmentBorderColor: platform === "ios" ? "#007aff" : "#fff",
+  segmentBackgroundColor: platform === "ios" ? "#1c4888" : "#1c4888",
+  segmentActiveBackgroundColor: platform === "ios" ? "#eee" : "#eee",
+  segmentTextColor: platform === "ios" ? "#eee" : "#eee",
+  segmentActiveTextColor: platform === "ios" ? "#1c4888" : "#1c4888",
+  segmentBorderColor: platform === "ios" ? "#eee" : "#eee",
   segmentBorderColorMain: platform === "ios" ? "#a7a6ab" : "#3F51B5",
 
   // Spinner

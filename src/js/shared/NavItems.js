@@ -71,7 +71,7 @@ export const routesAndroid = [
     {
         name: Strings.PAGE_HEADERS_MAP,
         route: "Map",
-        icon: "compass"
+        icon: "md-map"
     },
     {
         name: Strings.PAGE_HEADERS_CAMERA,

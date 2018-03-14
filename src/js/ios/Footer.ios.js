@@ -17,7 +17,7 @@ class FooterIos extends Component {
                             this.props.navigation.navigate('Map')
                         }}
                                 active={'Map' == this.props.activePage ? true: false}>
-                            <Icon name={'compass'}/>
+                            <Icon name={'ios-map-outline'}/>
                             <Text style={{fontSize:12}}>Map</Text>
                         </Button>
                     </FooterTab>
@@ -35,7 +35,7 @@ class FooterIos extends Component {
                             this.props.navigation.navigate('Requests')
                         }}
                                 active={'Requests' == this.props.activePage ? true: false}>
-                            <Icon name={'time'}/>
+                            <Icon name={'ios-paper-outline'}/>
                             <Text style={{fontSize:12}}>Requests</Text>
                         </Button>
                     </FooterTab>

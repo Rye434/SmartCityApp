@@ -4,13 +4,14 @@ import {
     StyleSheet,
     View,
     KeyboardAvoidingView,
-    Image
+    Image,
+    Dimensions
 } from 'react-native';
 import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text, Drawer, Input, Label, Form, Item } from 'native-base';
 
 var Strings = require('../../res/strings/StringsEN.js');
-
-
+var Style = require('../../res/assets/styles/Styles');
+var dimension = Dimensions.get('window').width;
 let target;
 
 export default class PhoneOrFacebook extends Component {
@@ -24,11 +25,16 @@ export default class PhoneOrFacebook extends Component {
         }
         return(
 
-            <View>
-                <Text>{Strings.PHONE_FACEBOOK_HEADER}</Text>
-                <Text>{Strings.PHONE_FACEBOOK_MESSAGE}</Text>
-                <Button  onPress={() => this.props.navigation.navigate('CreateProfile')} style={{marginTop:24}}><Icon name="keypad" ></Icon><Text>{Strings.BUTTONS_PHONE}</Text></Button>
-                <Button  onPress={() => this.props.navigation.navigate(target)} style={{marginTop:24}}><Text> <Icon name="logo-facebook" style={{color:'white'}}/> {Strings.BUTTONS_FACEBOOK}</Text></Button>
+            <View style={{flex:1, justifyContent:'center',alignItems:'center'}}>
+                <Text style={Style.text.h1}>{Strings.PHONE_FACEBOOK_HEADER}</Text>
+                <Text style={Style.text.h2}>{Strings.PHONE_FACEBOOK_MESSAGE}</Text>
+                <View style={{width: dimension*.9}}>
+                    <Button primary onPress={() => this.props.navigation.navigate(target)} title="facebookLogin" style={Style.loginButton}><Text style={Style.loginButton.text}> <Icon name="logo-facebook" style={Style.loginButton.icon}/> {Strings.BUTTONS_FACEBOOK}</Text></Button>
+                    <View style={{flexDirection:'row', justifyContent:"center"}}>
+                        <View style={Style.line}></View><Text>or</Text><View style={Style.line}></View>
+                    </View>
+                    <Button success onPress={() => this.props.navigation.navigate('CreateProfile')} title="phoneLogin" style={Style.loginButton}><Text style={Style.loginButton.text}><Icon name="keypad" style={Style.loginButton.icon} ></Icon>{Strings.BUTTONS_PHONE}</Text></Button>
+                </View>
             </View>
         )
 

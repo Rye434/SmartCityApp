@@ -9,7 +9,7 @@ import {
 import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text, Drawer, Input, Label, Form, Item } from 'native-base';
 
 var Strings = require('../../res/strings/StringsEN.js');
-
+var Style = require('../../res/assets/styles/Styles');
 
 let target;
 
@@ -23,7 +23,7 @@ export default class Login extends Component {
             target = "AndroidSideBar"
         }
         return(
-            <KeyboardAvoidingView style={{flex: 1, flexDirection:'column', justifyContent:'center', alignItems:'center'}} behavior="padding">
+            <KeyboardAvoidingView style={Style.keyboardView} behavior="padding">
                 <Text>{Strings.LOGIN_PHONE}</Text>
                 <Text>{Strings.LOGIN_MESSAGE}</Text>
 

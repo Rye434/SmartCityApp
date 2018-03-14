@@ -8,7 +8,7 @@ export default class FabButton extends Component {
         return (
                     <Fab
                         containerStyle={{ }}
-                        style={{ backgroundColor: '#5067FF' }}
+                        style={{ backgroundColor: '#059980' }}
                         position="bottomRight"
                         onPress={() => this.props.navigation.navigate("Camera")}>
                         <Icon name="camera" />

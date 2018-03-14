@@ -13,7 +13,6 @@ import stocksApp from "./src/js/shared/reducers/Reducers";
 
 import {AppRouteAndroid, AppRouteIos, AppRoute, AppNavigator, LoginFlow} from "./src/js/shared/NavItems";
 import getTheme from './native-base-theme/components'
-import material from './native-base-theme/variables/material';
 import platform from './native-base-theme/variables/platform';
 
 let state = {
@@ -52,7 +51,7 @@ export default class App extends Component {
 
     if(Platform.OS === 'android') {
         return (
-            <StyleProvider style={getTheme(material)}>
+            <StyleProvider style={getTheme(platform)}>
             <Provider store={store}>
                 <Container>
                 <AppRouteAndroid/>
