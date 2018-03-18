@@ -3,13 +3,14 @@ import {
     Platform,
     StyleSheet,
     View,
-    Image
+    Image,
+    TouchableOpacity, Dimensions
 } from 'react-native';
-import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text, Drawer } from 'native-base';
+import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text, Drawer, Spinner } from 'native-base';
 import * as actions from "../../actions/Actions";
 import {connect} from "react-redux";
 
-var Strings = require('../../res/strings/StringsEN.js');
+var Strings = require('../../res/strings/StringsEN');
 
 
 
@@ -18,16 +19,23 @@ var Strings = require('../../res/strings/StringsEN.js');
 
 
 
-class SubmissionDetails extends Component {
+class Details extends Component {
 
     render() {
-
         return(
-            <View>
-                <Image
-                    style={{height:667,width:375}}
-                    source={{uri: this.props.imageSource.uri}}
-                />
+            <View
+                style={{
+                    flex: 1,
+                    backgroundColor: 'transparent',
+                    flexDirection: 'column',
+                }}>
+
+
+
+
+
+
+
             </View>
         )
     }
@@ -49,4 +57,4 @@ const mapDistpatchToProps = (dispatch) => {
 
 
 
-export default connect(mapStateToProps,mapDistpatchToProps)(SubmissionDetails)
+export default connect(mapStateToProps,mapDistpatchToProps)(Details)

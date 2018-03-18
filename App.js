@@ -19,6 +19,7 @@ let state = {
     photoCached: {},
     editModal: false,
     mapModal: false,
+    detailModal: false,
     filterSegment:[true,false,false],
     mapRegion:null,
 }

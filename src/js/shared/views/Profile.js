@@ -31,7 +31,7 @@ class Profile extends Component {
         if(Platform.OS == "android"){
             fab = <FabButton/>
             header =<HeaderAndroid buttonClick={() => this.props.navigation.navigate("DrawerOpen")}
-                                   title={Strings.PAGE_HEADERS_PROFILE} tabs={false}
+                                   title={Strings.PAGE_HEADERS_PROFILE} headerIcon={'menu'}
                                    buttonClickRight={()=> this.props.modalVisible()} targetTextRight={Strings.HEADER_EDIT}/>
         }
         return(

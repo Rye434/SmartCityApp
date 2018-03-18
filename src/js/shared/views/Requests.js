@@ -29,7 +29,7 @@ class Requests extends Component {
         }
         if(Platform.OS == "android"){
             fab = <FabButton navigation={this.props.navigation}/>
-            header =<HeaderAndroid buttonClick={() => this.props.navigation.navigate("DrawerOpen")} title={Strings.PAGE_HEADERS_REQUESTS} tabs={true}/>
+            header =<HeaderAndroid buttonClick={() => this.props.navigation.navigate("DrawerOpen")} title={Strings.PAGE_HEADERS_REQUESTS} headerIcon={'menu'}/>
         }
         return(
             <Container>

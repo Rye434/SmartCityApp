@@ -33,7 +33,6 @@ module.exports = {
         width: dimension *.9,
         height: 56,
         borderRadius: 15,
-        lineHeight:3,
         text:{
             width:dimension *.9,
             lineHeight: 56,

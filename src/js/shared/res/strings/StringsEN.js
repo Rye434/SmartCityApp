@@ -2,6 +2,7 @@
 //then can reference as Strings.CONSTANT_NAME_IN_ALL_CAPS
 
 module.exports = {
+    APP_TITLE:"Smart City",
 
     PAGE_HEADERS_MAP:"Map",
     PAGE_HEADERS_CAMERA:"Camera",
@@ -9,9 +10,17 @@ module.exports = {
     PAGE_HEADERS_PROFILE:"Profile",
     PAGE_HEADERS_ABOUT:"About",
     PAGE_HEADERS_FEEDBACK:"Feedback",
+    PAGE_HEADERS_DETAIL:'Detail',
 
     HEADER_RETURN:"Back",
     HEADER_EDIT:"Edit",
+    HEADER_FILTER:"Filter",
+    HEADER_CANCEL:"Cancel",
+
+    ALERT_TITLE:"Are you sure?",
+    ALERT_MESSAGE:"If you leave now you will lose any unsaved data",
+    ALERT_NEGATIVE:"Cancel",
+    ALERT_POSITIVE:"Ok",
 
     FIELDS_PHONE:"Phone",
     FIELDS_CODE:"Code",

@@ -33,23 +33,32 @@ class CameraView extends React.Component {
                             style={{
                                 flex: 1,
                                 backgroundColor: 'transparent',
-                                flexDirection: 'row',
+                                flexDirection: 'column',
                             }}>
                             <TouchableOpacity
                                 style={{
                                     flex: 1,
-                                    alignSelf: 'flex-end',
-                                    alignItems: 'center',
+                                    alignSelf: 'flex-start'
+                                }}
+                                onPress={()=>this.props.navigation.navigate('Camera')}>
+                                <Icon name={"close"} style={{fontSize:56, color:"white", paddingLeft:16}}/>
+                            </TouchableOpacity>
+                            <TouchableOpacity
+                                style={{
+                                    flex: 1,
+                                    alignSelf: 'center',
+                                    justifyContent:'flex-end'
                                 }}
                                 onPress={async () => {
-                                        if (this.camera) {
-                                            let photo = await this.camera.takePictureAsync();
-                                            this.props.cachePhoto(photo);
-                                            this.props.navigation.navigate('SubmissionFlow');
-                                        }
+                                    if (this.camera) {
+                                        let photo = await this.camera.takePictureAsync();
+                                        this.props.cachePhoto(photo);
+                                        this.props.navigation.navigate('SubmissionFlow');
                                     }
-                                }>
-                                <Icon name={"radio-button-on"} style={{fontSize:72, color:"white"}}/>
+
+                                }}>
+                                <Icon name={"radio-button-on"}
+                                      style={{fontSize:72, color:"white"}}/>
                             </TouchableOpacity>
                         </View>
                     </Camera>

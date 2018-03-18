@@ -9,6 +9,7 @@ import {
 import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text, Drawer, Spinner } from 'native-base';
 import { MapView, Animated, Marker} from 'expo';
 import MapModal from './MapModal';
+import DetailModal from './DetailModal';
 import {connect} from "react-redux";
 import * as actions from "../../actions/Actions";
 
@@ -80,6 +81,8 @@ class IssueMap extends Component {
             }
         return(
             <View>
+
+            <DetailModal/>
             <MapModal/>
 
             <MapView.Animated

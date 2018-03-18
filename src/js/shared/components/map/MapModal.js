@@ -8,25 +8,26 @@ var Strings = require('../../res/strings/StringsEN');
 
 let modalSpaceHeight;
 
+
 class MapModal extends Component {
 
     render() {
 
         if(Platform.OS == 'android'){
             if(Dimensions.get('window').height<=700) {
-                modalSpaceHeight = Dimensions.get('window').height * .72
+                modalSpaceHeight = Dimensions.get('window').height-168
             }
             if(Dimensions.get('window').height>700) {
-                modalSpaceHeight = Dimensions.get('window').height * .80
+                modalSpaceHeight = Dimensions.get('window').height-168
             }
 
         }
         if(Platform.OS == 'ios'){
             if(Dimensions.get('window').height<=700) {
-                modalSpaceHeight = Dimensions.get('window').height * .68
+                modalSpaceHeight = Dimensions.get('window').height-199
             }
             if(Dimensions.get('window').height>700) {
-                modalSpaceHeight = Dimensions.get('window').height * .7
+                modalSpaceHeight = Dimensions.get('window').height-199
             }
         }
 
@@ -39,7 +40,7 @@ class MapModal extends Component {
                 <TouchableOpacity onPress={this.props.showMapModal}>
 
                     <TouchableWithoutFeedback>
-                <View style={{height:144, width:Dimensions.get('window').width*.9, marginLeft:Dimensions.get('window').width*.05,
+                <View style={{height:144, width:Dimensions.get('window').width,
                     marginTop:modalSpaceHeight,alignItems: 'center', backgroundColor:'white'}}>
 
                     <View style={{flexDirection:'row', marginTop:8, marginBottom:8}}>
@@ -52,7 +53,7 @@ class MapModal extends Component {
                     </View>
                     <View style={{flex:1,flexDirection:'row'}}>
                         <Button block info
-                                //onPress={this.props.showMapModal}
+                                onPress={this.props.toggleModals}
                                 style={{height:40, flex:1, marginLeft:8,marginRight:4}}>
                             <Text>{Strings.MAP_MODAL_MORE_INFO_BUTTON}</Text>
                         </Button>
@@ -83,6 +84,12 @@ const mapDistpatchToProps = (dispatch) => {
     return {
         showMapModal: () => {
             return dispatch(actions.mapModal(false))
+        },
+        showDetailModal: () => {
+            return dispatch(actions.detailModal(true))
+        },
+        toggleModals: () => {
+            return dispatch(actions.toggleModals())
         }
     }
 }
