@@ -28,7 +28,7 @@ export default class Feedback extends Component {
         if(Platform.OS == "android"){
             fab = <FabButton/>
             header =<HeaderAndroid buttonClick={() => this.props.navigation.navigate("DrawerOpen")}
-                                   title={Strings.PAGE_HEADERS_FEEDBACK} tabs={false}
+                                   title={Strings.PAGE_HEADERS_FEEDBACK} headerIcon={'menu'}
             />
         }
         return(

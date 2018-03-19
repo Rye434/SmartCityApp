@@ -26,11 +26,15 @@ class Map extends Component {
     render() {
         if(Platform.OS == "ios"){
             footer = <FooterIos navigation={this.props.navigation} activePage={'Map'}/>
-            header = <HeaderIos title={Strings.PAGE_HEADERS_MAP}/>
+            header = <HeaderIos title={Strings.APP_TITLE} buttonClickRight={console.log('buttonRight')}
+                                targetTextRight={Strings.HEADER_FILTER}/>
         }
         if(Platform.OS == "android" && this.props.mapModal == false){
             fab = <FabButton navigation={this.props.navigation}/>
-            header =<HeaderAndroid buttonClick={() => this.props.navigation.navigate("DrawerOpen")} title={Strings.PAGE_HEADERS_MAP} tabs={false}/>
+            header =<HeaderAndroid buttonClick={() => this.props.navigation.navigate("DrawerOpen")} title={Strings.APP_TITLE}
+                                   targetTextRight={<Icon name='funnel' style={{color:'white'}}/>}
+                                   buttonClickRight={console.log('buttonRight')}
+                                   headerIcon={'menu'}/>
         }
         if(Platform.OS == "android" && this.props.mapModal == true){
             fab = null;

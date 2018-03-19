@@ -68,6 +68,10 @@ module.exports = {
             textAlign:'center'
         }
 
+    },
+    loginBackgroundImage:{
+        width: deviceWidth,
+        height: deviceHeight
     }
 
 };

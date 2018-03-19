@@ -5,7 +5,7 @@ export const EDIT_MODAL = "EDIT_MODAL";
 export const FILTER_SEGMENT_TOGGLE = "FILTER_SEGMENT_TOGGLE";
 export const USER_LOCATION = "USER_LOCATION";
 export const MAP_MODAL = "MAP_MODAL";
-
+export const DETAIL_MODAL = "DETAIL_MODAL";
 
 export function cachePhoto(obj) {
 
@@ -59,4 +59,20 @@ export function mapModal(bool) {
         type: MAP_MODAL,
         mapModal: bool
     }
+}
+
+export function detailModal(bool) {
+    return{
+        type:DETAIL_MODAL,
+        detailModal: bool
+    }
+}
+
+export function toggleModals() {
+    return(dispatch)=>{
+        dispatch(detailModal(true));
+        dispatch(mapModal(false));
+
+    }
+
 }

@@ -9,8 +9,8 @@ export default class HeaderAndroid extends Component {
 
                 <Header hasTabs={this.props.tabs}>
                     <Left>
-                        <Button transparent>
-                            <Icon name='menu' onPress={this.props.buttonClick}/>
+                        <Button transparent onPress={this.props.buttonClick}>
+                            <Icon name={this.props.headerIcon}/>
                         </Button>
                     </Left>
                     <Body>

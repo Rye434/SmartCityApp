@@ -15,7 +15,6 @@ import CameraWarning from "../components/camera/CameraWarning";
 var Strings = require('../res/strings/StringsEN.js');
 
 let footer;
-let fab;
 let header;
 
 export default class Camera extends Component {
@@ -26,14 +25,12 @@ export default class Camera extends Component {
             header = <HeaderIos title={Strings.PAGE_HEADERS_CAMERA}/>
         }
         if(Platform.OS == "android"){
-            fab = <FabButton navigation={this.props.navigation}/>
-            header =<HeaderAndroid buttonClick={() => this.props.navigation.navigate("DrawerOpen")} title={Strings.PAGE_HEADERS_CAMERA} tabs={false}/>
+            header =<HeaderAndroid buttonClick={() => this.props.navigation.navigate("DrawerOpen")} title={Strings.PAGE_HEADERS_CAMERA} headerIcon={'menu'}/>
         }
         return(
             <Container>
                 {header}
                 <CameraWarning navigation={this.props.navigation}/>
-                {fab}
                 {footer}
             </Container>
         )
