@@ -41,6 +41,7 @@ module.exports = {
     BUTTONS_SAVE:"Save",
     BUTTONS_FACEBOOK:"Facebook",
     BUTTONS_PHONE:"Phone",
+    BUTTONS_SUBMIT:"Submit",
 
     CAMERA_WARNING:"Caution",
     CAMERA_WARNING_MESSAGE:"Always be aware of your surroundings before taking a picture",
