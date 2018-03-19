@@ -13,23 +13,25 @@ import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Rig
 var Strings = require('../../res/strings/StringsEN.js');
 var Style = require('../../res/assets/styles/Styles');
 var dimension = Dimensions.get('window').width;
-let target;
 
+let target;
+let imgSrc;
 
 export default class PhoneOrFacebook extends Component {
 
     render() {
         if(Platform.OS == 'ios'){
             target = "Map"
+            imgSrc = (require('../../res/assets/img/smart-city-gradient.png'))
         }
         if(Platform.OS == 'android'){
             target = "AndroidSideBar"
+            imgSrc = {uri:"smartcitygradient"}
         }
 
         return(
-
+            <Image style={Style.loginBackgroundImage} source={imgSrc}>
             <View style={{flex:1, justifyContent:'center',alignItems:'center'}}>
-                <Image style={Style.loginBackgroundImage} source={require('../../res/assets/img/smart-city-gradient.png')}/>
                 <Text style={Style.text.h1}>{Strings.PHONE_FACEBOOK_HEADER}</Text>
                 <Text style={Style.text.h2}>{Strings.PHONE_FACEBOOK_MESSAGE}</Text>
                 <View style={{width: dimension*.9}}>
@@ -46,6 +48,7 @@ export default class PhoneOrFacebook extends Component {
                     </Button>
                 </View>
             </View>
+            </Image>
         )
 
     }

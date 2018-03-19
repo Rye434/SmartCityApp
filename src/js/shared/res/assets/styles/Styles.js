@@ -70,6 +70,7 @@ module.exports = {
 
     },
     loginBackgroundImage:{
+        flex:1,
         width: deviceWidth,
         height: deviceHeight
     }

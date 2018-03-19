@@ -22,7 +22,7 @@ var Strings = require('../res/strings/StringsEN.js');
 class SubmissionFlow extends Component {
 
     render() {
-
+        console.log(this.props.imageSource);
         return(
             <Content>
                 <View
@@ -33,12 +33,11 @@ class SubmissionFlow extends Component {
                     }}>
                     <Image
                         style={{height:Dimensions.get('window').height,width:Dimensions.get('window').width}}
-                        source={{uri: this.props.imageSource.uri}}>
+                        source={{uri: 'data:image/png;base64,'+ this.props.imageSource.base64 }}>
                         <TouchableOpacity
                             style={{
                                 flex: 1,
                                 alignSelf: 'flex-start',
-                                alignItems: 'left',
                             }}
                             onPress={()=>this.props.navigation.navigate('CameraView')}>
                             <Icon name={"close"} style={{fontSize:56, color:"white", paddingLeft:16}}/>
