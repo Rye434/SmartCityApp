@@ -75,6 +75,6 @@ module.exports = {
     ABOUT_ZAHEED_EMAIL:"jaff0021@algonquinlive.com",
 
     PHONE_FACEBOOK_HEADER:"Welcome to Smart City",
-    PHONE_FACEBOOK_MESSAGE:"To continue with your request please Sign Up with:",
+    PHONE_FACEBOOK_MESSAGE:"To continue with your request \n please Sign Up with:",
 
 }

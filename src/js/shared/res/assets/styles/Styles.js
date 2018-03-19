@@ -3,8 +3,8 @@
 
 import {Dimensions} from 'react-native';
 
-var dimension = Dimensions.get('window').width;
-var Height = Dimensions.get('window').height;
+const deviceHeight = Dimensions.get("window").height;
+const deviceWidth = Dimensions.get("window").width;
 
 module.exports = {
 
@@ -18,9 +18,6 @@ module.exports = {
             brandLight: "#f4f4f4",
     },
 
-    item:{
-        marginLeft: 0,
-    },
 
     keyboardView:{
         flex: 1,
@@ -28,38 +25,47 @@ module.exports = {
         justifyContent:'center',
         alignItems:'center'
     },
-
     loginButton:{
-        width: dimension *.9,
+        flex:0,
+        padding:0,
+        margin:0,
+        width: deviceWidth *.9,
         height: 56,
-        borderRadius: 15,
-        lineHeight:3,
+        borderRadius: 12,
+        marginBottom:6,
+        marginTop:6,
+
         text:{
-            width:dimension *.9,
-            lineHeight: 56,
-            fontSize: 18,
-            textAlign: 'center'
-        },
+            flexWrap:'wrap',
+            paddingLeft:6,
+            width:deviceWidth *.5,
+            fontSize: 20,
+            color:'#eee',
+         },
         icon:{
-            color:'white',
-            fontSize:35
+            right: -deviceWidth*.33,
+            // width:dimension*.4,
+            marginRight:0,
+            marginLeft:0,
+            fontSize:35,
+            textAlign:'right'
         }
     },
     line:{
-        width:dimension *.4,
-        borderWidth: .5,
-        borderColor:'black',
+        width:deviceWidth *.4,
+        borderWidth: 1,
         margin:10,
+        backgroundColor:'black'
     },
-
     text:{
         h1:{
             fontSize: 24,
-            paddingBottom: Height*.01
+            paddingBottom: deviceHeight*.01
         },
         h2:{
             fontSize:16,
-            paddingBottom: Height*.05
+            paddingBottom: deviceHeight*.05,
+            textAlign:'center'
         }
 
     }
