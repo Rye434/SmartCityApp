@@ -24,6 +24,7 @@ export default class Login extends Component {
         }
         return(
             <KeyboardAvoidingView style={Style.keyboardView} behavior="padding">
+                <Text>Login.js</Text>
                 <Text>{Strings.LOGIN_PHONE}</Text>
                 <Text>{Strings.LOGIN_MESSAGE}</Text>
 

@@ -56,6 +56,8 @@ module.exports = {
 
     LOGIN_PHONE:"Phone Number",
     LOGIN_MESSAGE:"Enter a phone number that can be used to verify your identity with a text message.",
+    LOGIN_ALREADY:"Already have an account?",
+    LOGIN_LOGIN: "Login",
 
     VERIFICATION_HEADER:"Enter Verification Code",
     VERIFICATION_MESSAGE:"A text message with a verification code has been sent to your phone number. Enter the code to continue.",

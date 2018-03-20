@@ -5,7 +5,9 @@ import {
     View,
     ScrollView,
     KeyboardAvoidingView,
-    Dimensions
+    Dimensions,
+    Image
+
 } from 'react-native';
 // import {StyleProvider, Container, Header, Body, Title, Content} from 'native-base';
 import {  StyleProvider, Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text, Drawer, Input, Label, Form, Item } from 'native-base';
@@ -27,8 +29,9 @@ export default class CreateProfile extends Component {
             target = "AndroidSideBar"
         }
         return(
-
+            <Image style={Style.image.loginBackgroundImage} source={require('../../res/assets/img/smart-city-gradient.png')}>
         <ScrollView style={{flex:1, marginTop:16, }}>
+            <Text>CreateProfile.js</Text>
             <Button transparent><Text>Back</Text></Button>
             <KeyboardAvoidingView style={{flex: 1, flexDirection:'column', alignItems:'center'}} behavior="padding">
                 <Form style={{flex:0,width: dimens*.84, alignItems:'flex-start'}}>
@@ -93,6 +96,7 @@ export default class CreateProfile extends Component {
                 </Item>
             </View>
         </ScrollView>
+            </Image>
 
         )
 

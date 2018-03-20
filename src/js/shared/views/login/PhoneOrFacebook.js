@@ -5,6 +5,7 @@ import {
     View,
     KeyboardAvoidingView,
     Image,
+    ImageBackground,
     Dimensions,
     Text
 } from 'react-native';
@@ -27,25 +28,32 @@ export default class PhoneOrFacebook extends Component {
         }
 
         return(
-
+            <Image style={Style.image.loginBackgroundImage} source={require('../../res/assets/img/smart-city-gradient.png')}>
             <View style={{flex:1, justifyContent:'center',alignItems:'center'}}>
-                <Image style={Style.loginBackgroundImage} source={require('../../res/assets/img/smart-city-gradient.png')}/>
+                <Image style={Style.image.icon} source={require('../../res/assets/img/smart-city-logo.png')}/>
                 <Text style={Style.text.h1}>{Strings.PHONE_FACEBOOK_HEADER}</Text>
                 <Text style={Style.text.h2}>{Strings.PHONE_FACEBOOK_MESSAGE}</Text>
                 <View style={{width: dimension*.9}}>
-                    <Button primary onPress={() => this.props.navigation.navigate(target)} title="facebookLogin" style={Style.loginButton}>
-                        <Icon iconLeft name="logo-facebook" style={Style.loginButton.icon}/>
-                        <Text style={Style.loginButton.text}>{Strings.BUTTONS_FACEBOOK}</Text>
+                    <Button primary onPress={() => this.props.navigation.navigate(target)} title="facebookLogin" style={Style.button.loginButton}>
+                        <Icon iconLeft name="logo-facebook" style={Style.button.icon}/>
+                        <Text style={Style.button.textFacebook}>{Strings.BUTTONS_FACEBOOK}</Text>
                     </Button>
                     <View style={{flexDirection:'row', justifyContent:"center"}}>
-                        <View style={Style.line}/><Text style={{fontSize:18}}>or</Text><View style={Style.line}/>
+                        <View style={Style.line}/><Text style={{fontSize:18, backgroundColor: 'rgba(0,0,0,0)', color:'#eee'}}>or</Text><View style={Style.line}/>
                     </View>
-                    <Button success onPress={() => this.props.navigation.navigate('CreateProfile')} title="phoneLogin" style={Style.loginButton}>
-                        <Icon iconLeft name="keypad" style={Style.loginButton.icon}/>
-                        <Text style={Style.loginButton.text}>{Strings.BUTTONS_PHONE}</Text>
+                    <Button light onPress={() => this.props.navigation.navigate('Phone')} title="phoneLogin" style={Style.button.loginButton}>
+                        <Icon iconLeft name="keypad" style={Style.button.icon}/>
+                        <Text style={[Style.button.textPhone, Style.theme.textPhone]}>{Strings.BUTTONS_PHONE}</Text>
+                    </Button>
+                    <Button transparent title="Login" onPress={() => this.props.navigation.navigate(target)} style={Style.button.loginButton2}>
+                        <Text style={Style.text.loginText.already}>{Strings.LOGIN_ALREADY}</Text><Text style={Style.text.loginText.login}>
+                        {Strings.LOGIN_LOGIN}
+                        </Text>
                     </Button>
                 </View>
+
             </View>
+            </Image>
         )
 
     }

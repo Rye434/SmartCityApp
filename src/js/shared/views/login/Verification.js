@@ -10,14 +10,16 @@ import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Rig
 
 
 var Strings = require('../../res/strings/StringsEN.js');
-
+var Style = require('../../res/assets/styles/Styles');
 
 
 export default class Verification extends Component {
 
     render() {
         return(
+            <Image style={Style.image.loginBackgroundImage} source={require('../../res/assets/img/smart-city-gradient.png')}>
             <KeyboardAvoidingView style={{flex: 1, flexDirection:'column', justifyContent:'center', alignItems:'center'}} behavior="padding">
+                <Text>verification.js</Text>
                 <Text>{Strings.VERIFICATION_HEADER}</Text>
                 <Text>{Strings.VERIFICATION_MESSAGE}</Text>
 
@@ -30,6 +32,7 @@ export default class Verification extends Component {
                 </Form>
                 <Button><Text>Didn't get a verification code?</Text></Button>
             </KeyboardAvoidingView>
+            </Image>
         )
 
     }
