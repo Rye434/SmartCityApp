@@ -25,9 +25,11 @@ class DetailModal extends Component {
                 visible={this.props.detailModal}
                 animationType={'slide'}
                 onRequestClose={this.props.showDetailModal}>
-                <Button transparent onPress={this.props.showDetailModal}>{arrow}</Button>
 
-                <Image source={{uri: 'http://via.placeholder.com/350x350'}}  style={{height: 350, width: 350}}></Image>
+
+                <Image source={{uri: 'http://via.placeholder.com/250x500'}}  style={{height: 250, width: 500}}>
+                    <Button transparent onPress={this.props.showDetailModal}>{arrow}</Button>
+                </Image>
 
                 <View>
                     <Text>Pothole</Text>

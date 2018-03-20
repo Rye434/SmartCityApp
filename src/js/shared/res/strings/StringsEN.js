@@ -93,4 +93,5 @@ module.exports = {
     DETAIL_MODAL_STATUS:"Request Status",
     DETAIL_MODAL_DESCRIPTION:"Description",
 
+
 }

@@ -32,6 +32,7 @@ export default class SideBar extends React.Component {
 
                     <View style={{backgroundColor:'#3F51B5' ,height:160,flexDirection:'row', justifyContent:'flex-start', alignItems:'flex-end'}}>
                         <Text style={{color:'white', paddingBottom:16,paddingLeft:8, fontSize:24}}>John Smith</Text>
+                        {/*<Text style={{color:'white', paddingBottom:16,paddingLeft:8, fontSize:12}}>John.Smith@Address.ca</Text>*/}
                     </View>
                     </TouchableOpacity>
                     <List
