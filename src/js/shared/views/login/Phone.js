@@ -29,19 +29,37 @@ export default class Phone extends Component {
         }
         return(
             <Image style={Style.image.loginBackgroundImage} source={require('../../res/assets/img/smart-city-gradient.png')}>
-                <Button transparent>
-                    <Text>Back</Text>
-                </Button>
+                <Header style={{backgroundColor: 'rgba(0,0,0,0)', borderBottomWidth:0}}>
+                    <Left>
+                        <Button transparent>
+                            <Icon name='arrow-back' />
+                            <Text>Back</Text>
+                        </Button>
+                    </Left>
+                    <Body>
+
+                    </Body>
+                    <Right>
+                        <Button transparent onPress={() => this.props.navigation.navigate(target)}>
+                            <Text>Next</Text>
+                        </Button>
+                    </Right>
+                </Header>
+
 
             <KeyboardAvoidingView style={{flex: 1, flexDirection:'column', justifyContent:'center', alignItems:'center'}} behavior="padding">
                 <Text style={Style.text.h1}>{Strings.LOGIN_PHONE}</Text>
                 <Text style={Style.text.h2}>{Strings.LOGIN_MESSAGE}</Text>
-                <Form style={{flex:0,width: 350, paddingTop:24, paddingBottom:48, flexDirection:'row',marginLeft:0}}>
+                <Form style={{flex:0,width: 350, paddingTop:24, paddingBottom:48, alignItems:'center',flexDirection:'column',marginLeft:0}}>
                     <View  style={Style.view.input}>
-                        {/*<Text>{Strings.FIELDS_PHONE}</Text>*/}
-                        <Input keyboardType='phone-pad' onChange={()=>console.log("Phone")} style={Style.view.input}/>
+                        <Label style={Style.view.profileLabelText}>{Strings.FIELDS_COUNTRY}</Label>
+                        <Input keyboardType='phone-pad' onChange={()=>console.log("Phone")}placeholder="+1" placeholderTextColor='#888' />
+                    </View>
+                    <View  style={Style.view.input}>
+                        <Text style={Style.view.profileLabelText}>{Strings.FIELDS_NUMBER}</Text>
+                        <Input keyboardType='phone-pad' onChange={()=>console.log("Phone")} placeholder="Required" placeholderTextColor='#888'/>
                     </View >
-                    <Button style={{marginLeft:0}} onPress={() => this.props.navigation.navigate(target)}><Text>{Strings.BUTTONS_CONFIRM}</Text></Button>
+                    {/*<Button style={{marginLeft:0}} onPress={() => this.props.navigation.navigate(target)}><Text>{Strings.BUTTONS_CONFIRM}</Text></Button>*/}
                 </Form>
             </KeyboardAvoidingView>
             </Image>

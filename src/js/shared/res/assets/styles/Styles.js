@@ -27,55 +27,92 @@ module.exports = {
     },
     view:{
         input:{
-            width:250,
+            width:deviceWidth*.8,
             flexDirection:'row',
-            backgroundColor:'rgba(255,255,255,0.3)',
+            backgroundColor:'rgba(255,255,255,0.5)',
             borderRadius:10,
+            marginBottom:10,
+            alignItems:'center'
 
+        },
+        profileLabelText:{
+            color:"#1c4888",
+            marginLeft:deviceWidth*.09
+        },
+        input2:{
+            marginBottom:deviceHeight*.03
         }
     },
     button: {
         loginButton: {
-            flex: 0,
-            padding: 0,
-            margin: 0,
+            button: {
+                flex: 0,
+                padding: 0,
+                margin: 0,
+                width: deviceWidth * .9,
+                height: 56,
+                borderRadius: 12,
+                marginBottom: 6,
+                marginTop: 6,
+            },
+            textFacebook: {
+                flexWrap: 'wrap',
+                paddingLeft: 6,
+                width: deviceWidth * .5,
+                fontSize: 20,
+                color: '#eee'
+            },
+            textPhone: {
+                flexWrap: 'wrap',
+                paddingLeft: 6,
+                width: deviceWidth * .5,
+                fontSize: 20,
+                color: '#5473b8'
+
+            },
+            iconPhone: {
+                right: -deviceWidth * .33,
+                // width:dimension*.4,
+                marginRight: 0,
+                marginLeft: 0,
+                fontSize: 35,
+                textAlign: 'right',
+                color: '#5473b8'
+            },
+            iconFacebook:{
+                right: -deviceWidth * .33,
+                // width:dimension*.4,
+                marginRight: 0,
+                marginLeft: 0,
+                fontSize: 35,
+                textAlign: 'right',
+                color: '#eee'
+            }
+        },
+        loginBackButton:{
+           icon:{
+               marginRight:2
+           },
+            text:{
+                paddingLeft:5
+            },
+            button:{
+                marginTop:deviceHeight*0.025
+            }
+
+        },
+
+        loginButton2: {
+            paddingTop: deviceHeight * .15,
             width: deviceWidth * .9,
-            height: 56,
-            borderRadius: 12,
-            marginBottom: 6,
-            marginTop: 6,
+            justifyContent: 'center'
         },
-        textFacebook: {
-            flexWrap: 'wrap',
-            paddingLeft: 6,
-            width: deviceWidth * .5,
-            fontSize: 20,
-            color: '#eee'
-        },
-        textPhone: {
-            flexWrap: 'wrap',
-            paddingLeft: 6,
-            width: deviceWidth * .5,
-            fontSize: 20,
-            color: '#5473b8'
+        verificationResend:{
+            paddingTop: deviceHeight * .15,
+            width: deviceWidth * .9,
+            alignSelf:'center'
+        }
 
-        },
-        icon: {
-            right: -deviceWidth * .33,
-            // width:dimension*.4,
-            marginRight: 0,
-            marginLeft: 0,
-            fontSize: 35,
-            textAlign: 'right',
-            color: '#5473b8'
-        },
-
-
-    loginButton2: {
-        paddingTop: deviceHeight * .15,
-        width: deviceWidth * .9,
-        justifyContent: 'center'
-    }
 },
     line:{
         width:deviceWidth *.4,
@@ -97,7 +134,8 @@ module.exports = {
             paddingBottom: deviceHeight*.05,
             textAlign:'center',
             color: '#eee',
-            backgroundColor: 'rgba(0,0,0,0)'
+            backgroundColor: 'rgba(0,0,0,0)',
+            width:deviceWidth*0.8
         },
         loginText:{
             already:{
@@ -118,7 +156,8 @@ module.exports = {
 
         },
         input:{
-            backgroundColor:'#eee'
+            backgroundColor:'blue',
+            marginBottom:10
         }
 
     },

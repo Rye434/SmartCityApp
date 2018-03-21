@@ -30,63 +30,60 @@ export default class CreateProfile extends Component {
         }
         return(
             <Image style={Style.image.loginBackgroundImage} source={require('../../res/assets/img/smart-city-gradient.png')}>
+                <Header style={{backgroundColor: 'rgba(0,0,0,0)', borderBottomWidth:0}}>
+                    <Left>
+                        <Button transparent onPress={() => this.props.navigation.navigate(target)}>
+                            <Icon name='arrow-back' />
+                            <Text>Back</Text>
+                        </Button>
+                    </Left>
+                    <Body>
+
+                    </Body>
+                    <Right>
+                        <Button transparent onPress={() => this.props.navigation.navigate(target)}>
+                            <Text>Done</Text>
+                        </Button>
+                    </Right>
+                </Header>
         <ScrollView style={{flex:1, marginTop:16, }}>
-            <Text>CreateProfile.js</Text>
-            <Button transparent><Text>Back</Text></Button>
+
             <KeyboardAvoidingView style={{flex: 1, flexDirection:'column', alignItems:'center'}} behavior="padding">
+                <Text style={[Style.text.h1, Style.view.input2]}>Create Profile</Text>
                 <Form style={{flex:0,width: dimens*.84, alignItems:'flex-start'}}>
+                        <View floatingLabel style={Style.view.input}>
+                        <Input onChange={()=>console.log("First-Name")} placeholder={Strings.FIELDS_FIRST_NAME}/>
+                        </View>
+                        <View floatingLabel style={[Style.view.input, Style.view.input2]}>
+                        <Input onChange={()=>console.log("LastName")} placeholder={Strings.FIELDS_LAST_NAME}/>
+                        </View>
 
-                        <Item floatingLabel style={Style.item}>
-                        <Label>{Strings.FIELDS_FIRST_NAME}</Label>
-                        <Input onChange={()=>console.log("First-Name")}/>
-                        </Item>
-                        <Item floatingLabel style={{marginLeft:0}}>
-                        <Label>{Strings.FIELDS_LAST_NAME}</Label>
-                        <Input onChange={()=>console.log("LastName")}/>
-                        </Item>
+                        <View floatingLabel keyboardType='email-address' style={[Style.view.input, Style.view.input2]}>
+                        <Input onChange={()=>console.log("Email")} placeholder={Strings.FIELDS_EMAIL}/>
+                        </View>
 
+                        <View floatingLabel style={Style.view.input}>
+                        <Input onChange={()=>console.log("Address")} placeholder={Strings.FIELDS_ADDRESS}/>
+                        </View>
 
+                        <View floatingLabel style={Style.view.input}>
+                        <Input onChange={()=>console.log("AddressLine")} placeholder={Strings.FIELDS_ADDRESS_LINE2}/>
+                        </View>
+                        <View floatingLabel style={Style.view.input}>
+                        <Input onChange={()=>console.log("City")} placeholder={Strings.FIELDS_CITY}/>
+                        </View>
 
-                        <Item floatingLabel keyboardType='email-address' style={Style.item}>
-                        <Label>{Strings.FIELDS_EMAIL}</Label>
-                        <Input onChange={()=>console.log("Email")}/>
-                        </Item>
+                        <View floatingLabel style={Style.view.input}>
+                        <Input onChange={()=>console.log("Postal")} placeholder={Strings.FIELDS_PROVINCE}/>
+                        </View>
 
+                        <View floatingLabel style={Style.view.input}>
+                        <Input onChange={()=>console.log("Province")} placeholder={Strings.FIELDS_POSTAL}/>
+                        </View>
 
-
-                        <Item floatingLabel style={Style.item}>
-                        <Label>{Strings.FIELDS_ADDRESS}</Label>
-                        <Input onChange={()=>console.log("Address")}/>
-                        </Item>
-
-
-
-                        <Item floatingLabel style={Style.item}>
-                        <Label>{Strings.FIELDS_ADDRESS_LINE2}</Label>
-                        <Input onChange={()=>console.log("AddressLine")}/>
-                        </Item>
-                        <Item floatingLabel style={Style.item}>
-                        <Label>{Strings.FIELDS_CITY}</Label>
-                        <Input onChange={()=>console.log("City")}/>
-                        </Item>
-
-
-
-                        <Item floatingLabel style={Style.item}>
-                        <Label>{Strings.FIELDS_PROVINCE}</Label>
-                        <Input onChange={()=>console.log("Postal")}/>
-                        </Item>
-
-                        <Item floatingLabel style={Style.item}>
-                        <Label>{Strings.FIELDS_POSTAL}</Label>
-                        <Input onChange={()=>console.log("Province")}/>
-                        </Item>
-
-
-                        <Item floatingLabel style={Style.item}>
-                        <Label>{Strings.FIELDS_COUNTRY}</Label>
-                        <Input onChange={()=>console.log("Country")}/>
-                        </Item>
+                        <View floatingLabel style={Style.view.input}>
+                        <Input onChange={()=>console.log("Country")} placeholder={Strings.FIELDS_COUNTRY}/>
+                        </View>
 
                 </Form>
             </KeyboardAvoidingView>

@@ -23,6 +23,7 @@ module.exports = {
     ALERT_POSITIVE:"Ok",
 
     FIELDS_PHONE:"Phone",
+    FIELDS_NUMBER:"Number",
     FIELDS_CODE:"Code",
     FIELDS_FIRST_NAME:"First name",
     FIELDS_LAST_NAME:"Last name",
