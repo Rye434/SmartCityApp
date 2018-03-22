@@ -20,22 +20,22 @@ let footer;
 let fab;
 let header;
 
-var BUTTONS = ["Option 0", "Option 1", "Option 2", "Delete", "Cancel"];
-var DESTRUCTIVE_INDEX = 7;
-var CANCEL_INDEX = 4;
+
+var DESTRUCTIVE_INDEX = 100;
+
 
 class Map extends Component {
 
     openActionSheet = () => {
         ActionSheet.show(
             {
-                options: BUTTONS,
-                cancelButtonIndex: CANCEL_INDEX,
+                options: this.props.services,
+                cancelButtonIndex: this.props.services.length - 1,
                 destructiveButtonIndex: DESTRUCTIVE_INDEX,
                 title: Strings.HEADER_FILTER
             },
             buttonIndex => {
-                this.setState({ clicked: BUTTONS[buttonIndex] });
+                this.props.updateActionSheetValue(buttonIndex)
             }
         )
     }
@@ -78,12 +78,15 @@ class Map extends Component {
 function mapStateToProps(state) {
     return{
         mapModal: state.mapModal,
+        services: state.services
     }
 }
 
 const mapDistpatchToProps = (dispatch) => {
     return {
-
+        updateActionSheetValue: (buttonIndex) => {
+        return dispatch(actions.updateActionSheetValue(buttonIndex))
+    },
     }
 }
 

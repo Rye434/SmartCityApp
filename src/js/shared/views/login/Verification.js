@@ -22,8 +22,8 @@ export default class Verification extends Component {
             <Image style={Style.image.loginBackgroundImage} source={require('../../res/assets/img/smart-city-gradient.png')}>
                 <Header style={{backgroundColor: 'rgba(0,0,0,0)', borderBottomWidth:0}}>
                     <Left>
-                        <Button transparent>
-                            <Icon name='arrow-back' />
+                        <Button transparent onPress={() => this.props.navigation.navigate('Phone')}>
+                            <Icon name='arrow-back'/>
                             <Text>Back</Text>
                         </Button>
                     </Left>
@@ -33,6 +33,7 @@ export default class Verification extends Component {
                     <Right>
                         <Button transparent onPress={() => this.props.navigation.navigate('CreateProfile')}>
                             <Text>Next</Text>
+                            <Icon name='arrow-forward'/>
                         </Button>
                     </Right>
                 </Header>

@@ -32,7 +32,7 @@ export default class CreateProfile extends Component {
             <Image style={Style.image.loginBackgroundImage} source={require('../../res/assets/img/smart-city-gradient.png')}>
                 <Header style={{backgroundColor: 'rgba(0,0,0,0)', borderBottomWidth:0}}>
                     <Left>
-                        <Button transparent onPress={() => this.props.navigation.navigate(target)}>
+                        <Button transparent onPress={() => this.props.navigation.navigate('Phone')}>
                             <Icon name='arrow-back' />
                             <Text>Back</Text>
                         </Button>
@@ -43,10 +43,11 @@ export default class CreateProfile extends Component {
                     <Right>
                         <Button transparent onPress={() => this.props.navigation.navigate(target)}>
                             <Text>Done</Text>
+                            <Icon name='arrow-forward'/>
                         </Button>
                     </Right>
                 </Header>
-        <ScrollView style={{flex:1, marginTop:16, }}>
+        <ScrollView style={{flex:1,height:Dimensions.get('window').height, marginTop:16, }}>
 
             <KeyboardAvoidingView style={{flex: 1, flexDirection:'column', alignItems:'center'}} behavior="padding">
                 <Text style={[Style.text.h1, Style.view.input2]}>Create Profile</Text>
@@ -87,11 +88,6 @@ export default class CreateProfile extends Component {
 
                 </Form>
             </KeyboardAvoidingView>
-            <View style={{marginBottom:20, justifyContent:'center', alignItems:'center'}}>
-                <Item >
-                    <Button onPress={() => this.props.navigation.navigate(target)} style={{marginTop:24}}><Text>{Strings.BUTTONS_SAVE}</Text></Button>
-                </Item>
-            </View>
         </ScrollView>
             </Image>
 

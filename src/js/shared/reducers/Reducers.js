@@ -1,4 +1,4 @@
-import {CACHE_PHOTO, EDIT_MODAL, FILTER_SEGMENT_TOGGLE, MAP_MODAL, USER_LOCATION, DETAIL_MODAL, STORE_REQUESTS, STORE_SERVICES} from "../actions/Actions";
+import {CACHE_PHOTO, EDIT_MODAL, FILTER_SEGMENT_TOGGLE, MAP_MODAL, USER_LOCATION, DETAIL_MODAL, STORE_REQUESTS, STORE_SERVICES, SERVICES, UPDATE_ACTION_SHEET_VALUE} from "../actions/Actions";
 
 
 export default function stocksApp(state, action) {
@@ -58,6 +58,17 @@ export default function stocksApp(state, action) {
             let storeServices = action.storeServices
             newState = Object.assign({}, state, {storeServices});
           //  console.log(newState)
+            break;
+        case SERVICES:
+            let services = action.services
+            newState = Object.assign({}, state, {services});
+            //  console.log(newState)
+            break;
+        case UPDATE_ACTION_SHEET_VALUE:
+            let actionSheetValue = action.actionSheetValue
+            newState = Object.assign({}, state, {actionSheetValue});
+            //  console.log(newState)
+            alert(actionSheetValue)
             break;
         default:
             return state;

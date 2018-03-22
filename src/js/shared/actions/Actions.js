@@ -8,6 +8,8 @@ export const MAP_MODAL = "MAP_MODAL";
 export const DETAIL_MODAL = "DETAIL_MODAL";
 export const STORE_REQUESTS = "STORE_REQUESTS";
 export const STORE_SERVICES = "STORE_SERVICES";
+export const SERVICES = "SERVICES";
+export const UPDATE_ACTION_SHEET_VALUE = "UPDATE_ACTION_SHEET_VALUE";
 
 
 var Constants = require('../res/constants/AppConstants');
@@ -103,10 +105,23 @@ export function services(obj) {
         payload.push(obj.list[service].description)
         console.log(payload)
     }
-    
+    payload.sort();
+    payload.unshift('All');
+    payload.push('Cancel');
+
+    return{
+        type: SERVICES,
+        services: payload
+    }
 
 }
 
+export function updateActionSheetValue(buttonIndex) {
+    return{
+        type: UPDATE_ACTION_SHEET_VALUE,
+        actionSheetValue: buttonIndex
+    }
+}
 
 // API calls
 export function fetchRequestList(){
