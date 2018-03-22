@@ -9,38 +9,38 @@ const deviceWidth = Dimensions.get("window").width;
 module.exports = {
 
     theme: {
-            primaryColor: "#1c4888", //primary color
-            primaryLight: "#5473b8",    //primary light
-            secondaryColor: "#059980", //secondary color
-            secondaryDark: "#006a54",  //secondary dark
-            secondaryLight: "#53cbaf", //secondary light
-            brandDark: "#222",
-            brandLight: "#f4f4f4",
+        primaryColor: "#1c4888", //primary color
+        primaryLight: "#5473b8",    //primary light
+        secondaryColor: "#059980", //secondary color
+        secondaryDark: "#006a54",  //secondary dark
+        secondaryLight: "#53cbaf", //secondary light
+        brandDark: "#222",
+        brandLight: "#f4f4f4",
     },
 
 
-    keyboardView:{
+    keyboardView: {
         flex: 1,
-        flexDirection:'column',
-        justifyContent:'center',
-        alignItems:'center'
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center'
     },
-    view:{
-        input:{
-            width:deviceWidth*.8,
-            flexDirection:'row',
-            backgroundColor:'rgba(255,255,255,0.5)',
-            borderRadius:10,
-            marginBottom:10,
-            alignItems:'center'
+    view: {
+        input: {
+            width: deviceWidth * .8,
+            flexDirection: 'row',
+            backgroundColor: 'rgba(255,255,255,0.5)',
+            borderRadius: 10,
+            marginBottom: 10,
+            alignItems: 'center'
 
         },
-        profileLabelText:{
-            color:"#1c4888",
-            marginLeft:deviceWidth*.09
+        profileLabelText: {
+            color: "#1c4888",
+            marginLeft: deviceWidth * .09
         },
-        input2:{
-            marginBottom:deviceHeight*.03
+        input2: {
+            marginBottom: deviceHeight * .03
         }
     },
     button: {
@@ -79,7 +79,7 @@ module.exports = {
                 textAlign: 'right',
                 color: '#5473b8'
             },
-            iconFacebook:{
+            iconFacebook: {
                 right: -deviceWidth * .33,
                 // width:dimension*.4,
                 marginRight: 0,
@@ -89,15 +89,15 @@ module.exports = {
                 color: '#eee'
             }
         },
-        loginBackButton:{
-           icon:{
-               marginRight:2
-           },
-            text:{
-                paddingLeft:5
+        loginBackButton: {
+            icon: {
+                marginRight: 2
             },
-            button:{
-                marginTop:deviceHeight*0.025
+            text: {
+                paddingLeft: 5
+            },
+            button: {
+                marginTop: deviceHeight * 0.025
             }
 
         },
@@ -107,57 +107,57 @@ module.exports = {
             width: deviceWidth * .9,
             justifyContent: 'center'
         },
-        verificationResend:{
+        verificationResend: {
             paddingTop: deviceHeight * .15,
             width: deviceWidth * .9,
-            alignSelf:'center'
+            alignSelf: 'center'
         }
 
-},
-    line:{
-        width:deviceWidth *.4,
-        borderWidth: 1,
-        borderColor:'#eee',
-        margin:10,
-        backgroundColor:'#eee'
     },
-    text:{
-        h1:{
+    line: {
+        width: deviceWidth * .4,
+        borderWidth: 1,
+        borderColor: '#eee',
+        margin: 10,
+        backgroundColor: '#eee'
+    },
+    text: {
+        h1: {
             fontSize: 24,
-            fontWeight:'bold',
-            paddingBottom: deviceHeight*.01,
-            color:'#eee',
-            backgroundColor: 'rgba(0,0,0,0)',
-        },
-        h2:{
-            fontSize:16,
-            paddingBottom: deviceHeight*.05,
-            textAlign:'center',
+            fontWeight: 'bold',
+            paddingBottom: deviceHeight * .01,
             color: '#eee',
             backgroundColor: 'rgba(0,0,0,0)',
-            width:deviceWidth*0.8
         },
-        loginText:{
-            already:{
-                flexWrap:'wrap',
-                paddingRight:3,
+        h2: {
+            fontSize: 16,
+            paddingBottom: deviceHeight * .05,
+            textAlign: 'center',
+            color: '#eee',
+            backgroundColor: 'rgba(0,0,0,0)',
+            width: deviceWidth * 0.8
+        },
+        loginText: {
+            already: {
+                flexWrap: 'wrap',
+                paddingRight: 3,
                 fontSize: 16,
-                color:'#eee',
-                textAlign:'right'
+                color: '#eee',
+                textAlign: 'right'
 
             },
-            login:{
-                flexWrap:'wrap',
-                paddingLeft:3,
+            login: {
+                flexWrap: 'wrap',
+                paddingLeft: 3,
                 fontSize: 16,
-                color:'#eee',
-                textDecorationLine:'underline'
+                color: '#eee',
+                textDecorationLine: 'underline'
             },
 
         },
-        input:{
-            backgroundColor:'blue',
-            marginBottom:10
+        input: {
+            backgroundColor: 'blue',
+            marginBottom: 10
         }
 
     },
@@ -168,16 +168,16 @@ module.exports = {
             height: deviceHeight
 
         },
-        icon:{
-            width:deviceWidth*.5,
-            height:deviceHeight*.3,
-            paddingBottom:6
+        icon: {
+            width: deviceWidth * .5,
+            height: deviceHeight * .3,
+            paddingBottom: 6
         },
-    loginBackgroundImage:{
-        flex:1,
-        width: deviceWidth,
-        height: deviceHeight
+        loginBackgroundImage: {
+            flex: 1,
+            width: deviceWidth,
+            height: deviceHeight
+        }
+
     }
-
-};
-
+}

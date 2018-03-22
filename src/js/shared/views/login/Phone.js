@@ -14,7 +14,7 @@ var Strings = require('../../res/strings/StringsEN.js');
 var Style = require('../../res/assets/styles/Styles');
 
 let target;
-let userExists = true; //for testing login flow, use True/False values
+let userExists = false; //for testing login flow, use True/False values
 
 //TODO
 
@@ -22,7 +22,7 @@ export default class Phone extends Component {
 
     render() {
         if(userExists == true){
-            target = "Login"
+            target = "Map"
         }
         if(userExists == false){
             target = "Verification"
@@ -31,17 +31,19 @@ export default class Phone extends Component {
             <Image style={Style.image.loginBackgroundImage} source={require('../../res/assets/img/smart-city-gradient.png')}>
                 <Header style={{backgroundColor: 'rgba(0,0,0,0)', borderBottomWidth:0}}>
                     <Left>
-                        <Button transparent>
+                        <Button transparent onPress={()=>this.props.navigation.navigate('PhoneOrFacebook')}>
                             <Icon name='arrow-back' />
                             <Text>Back</Text>
+
                         </Button>
                     </Left>
                     <Body>
 
                     </Body>
                     <Right>
-                        <Button transparent onPress={() => this.props.navigation.navigate(target)}>
+                        <Button transparent onPress={()=>this.props.navigation.navigate(target)}>
                             <Text>Next</Text>
+                            <Icon name='arrow-forward' />
                         </Button>
                     </Right>
                 </Header>
@@ -53,7 +55,7 @@ export default class Phone extends Component {
                 <Form style={{flex:0,width: 350, paddingTop:24, paddingBottom:48, alignItems:'center',flexDirection:'column',marginLeft:0}}>
                     <View  style={Style.view.input}>
                         <Label style={Style.view.profileLabelText}>{Strings.FIELDS_COUNTRY}</Label>
-                        <Input keyboardType='phone-pad' onChange={()=>console.log("Phone")}placeholder="+1" placeholderTextColor='#888' />
+                        <Input keyboardType='phone-pad' onChange={()=>console.log("Phone")} placeholder="+1" placeholderTextColor='#888' />
                     </View>
                     <View  style={Style.view.input}>
                         <Text style={Style.view.profileLabelText}>{Strings.FIELDS_NUMBER}</Text>
