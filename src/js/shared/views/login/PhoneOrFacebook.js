@@ -42,7 +42,7 @@ export default class PhoneOrFacebook extends Component {
                     <View style={{flexDirection:'row', justifyContent:"center"}}>
                         <View style={Style.line}/><Text style={{fontSize:18}}>or</Text><View style={Style.line}/>
                     </View>
-                    <Button success onPress={() => this.props.navigation.navigate('CreateProfile')} title="phoneLogin" style={Style.loginButton}>
+                    <Button success onPress={() => this.props.navigation.navigate('Phone')} title="phoneLogin" style={Style.loginButton}>
                         <Icon iconLeft name="keypad" style={Style.loginButton.icon}/>
                         <Text style={Style.loginButton.text}>{Strings.BUTTONS_PHONE}</Text>
                     </Button>

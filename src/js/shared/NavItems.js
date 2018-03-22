@@ -8,7 +8,6 @@ import Requests from "./views/Requests";
 import Map from "./views/Map";
 import Camera from "./views/Camera";
 import Profile from "./views/Profile";
-import Login from "./views/login/Login";
 import Phone from "./views/login/Phone";
 import Verification from "./views/login/Verification";
 import CreateProfile from "./views/login/CreateProfile";
@@ -62,7 +61,6 @@ export const LoginFlow = StackNavigator({
         Phone: {screen: Phone},
         Verification: {screen:Verification},
         CreateProfile: {screen: CreateProfile},
-        Login: {screen: Login},
         AppRouteIos: {screen: AppRouteIos},
     },
     {
@@ -115,7 +113,6 @@ export const AppRouteAndroid = StackNavigator({
     Phone: {screen: Phone},
     Verification: {screen:Verification},
     CreateProfile: {screen: CreateProfile},
-    Login: {screen: Login},
     AndroidSideBar: {screen: AndroidSideBar},
     Map: { screen: Map },
     Camera: { screen: Camera },
