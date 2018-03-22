@@ -22,6 +22,7 @@ let state = {
     detailModal: false,
     filterSegment:[true,false,false],
     mapRegion:null,
+    storeRequests:null,
 }
 
 let store = createStore(stocksApp, state,  applyMiddleware(thunk));

@@ -19,6 +19,7 @@ var Strings = require('../res/strings/StringsEN.js');
 let footer;
 let fab;
 let header;
+let nav;
 
 class Profile extends Component {
 
@@ -27,6 +28,17 @@ class Profile extends Component {
             header = <HeaderIos title={Strings.PAGE_HEADERS_PROFILE} targetTextLeft={Strings.HEADER_RETURN}
                                 buttonClickLeft={() => this.props.navigation.navigate("Requests")}
                                 buttonClickRight={()=> this.props.modalVisible()} targetTextRight={Strings.HEADER_EDIT}/>
+            nav =
+                <List>
+                    <ListItem onPress={() => this.props.navigation.navigate("About")}>
+                        <Text>{Strings.PAGE_HEADERS_ABOUT}</Text>
+                    </ListItem>
+                    <ListItem onPress={() => this.props.navigation.navigate("Feedback")}>
+                        <Text>{Strings.PAGE_HEADERS_FEEDBACK}</Text>
+                    </ListItem>
+                </List>
+
+
         }
         if(Platform.OS == "android"){
             fab = <FabButton/>
@@ -43,15 +55,7 @@ class Profile extends Component {
 
                     <ProfileFields/>
 
-
-                    <List>
-                        <ListItem onPress={() => this.props.navigation.navigate("About")}>
-                            <Text>{Strings.PAGE_HEADERS_ABOUT}</Text>
-                        </ListItem>
-                        <ListItem onPress={() => this.props.navigation.navigate("Feedback")}>
-                            <Text>{Strings.PAGE_HEADERS_FEEDBACK}</Text>
-                        </ListItem>
-                    </List>
+                    {nav}
 
                 </Content>
                 {footer}

@@ -6,6 +6,11 @@ export const FILTER_SEGMENT_TOGGLE = "FILTER_SEGMENT_TOGGLE";
 export const USER_LOCATION = "USER_LOCATION";
 export const MAP_MODAL = "MAP_MODAL";
 export const DETAIL_MODAL = "DETAIL_MODAL";
+export const STORE_REQUESTS = "STORE_REQUESTS";
+
+
+var Constants = require('../res/constants/AppConstants');
+
 
 export function cachePhoto(obj) {
 
@@ -75,4 +80,37 @@ export function toggleModals() {
 
     }
 
+}
+
+export function storeRequests(obj) {
+    return{
+        type:STORE_REQUESTS,
+        storeRequests: obj
+    }
+}
+
+
+// API calls
+export function fetchRequestList(){
+    console.log("REQUEST_LIST: FETCH");
+    return (dispatch)=>{
+        axios.post(Constants.BASE_URL + '/registerservice/api/requests/getPublicRequests',
+            {},
+            {
+                headers: {
+                    'PTM_HEADER_ORG_ID': Constants.ORGANIZATION_ID,
+                    'PTM_HEADER_APP_ID': Constants.MGIS_APP_ID,
+                    'PTM_LANGUAGE': 'eng',
+                    'Content-Type': 'application/json',
+                }
+            },
+        )
+            .then((response) => {
+                //console.log(response.request.response)
+                dispatch(storeRequests(JSON.parse(response.request.response)))
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
 }

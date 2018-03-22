@@ -17,6 +17,7 @@ export default class HeaderIos extends Component {
                     <Right>
                         <Button transparent onPress={this.props.buttonClickRight}>
                             <Text>{this.props.targetTextRight}</Text>
+                            {this.props.iconRight}
                         </Button>
                     </Right>
                 </Header>
