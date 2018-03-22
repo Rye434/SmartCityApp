@@ -18,6 +18,7 @@ import About from "./views/About";
 import Feedback from "./views/Feedback";
 import PhoneOrFacebook from "./views/login/PhoneOrFacebook";
 import SubmissionDetails from "./views/SubmissionDetails";
+import RequestListDetail from "./views/RequestListDetail";
 
 var Strings = require('./res/strings/StringsEN.js');
 
@@ -49,7 +50,8 @@ export const AppRouteIos = StackNavigator({
         Profile: {screen: Profile},
         About: {screen: About},
         Feedback: {screen: Feedback},
-        SubmissionDetails: {screen: SubmissionDetails}
+        SubmissionDetails: {screen: SubmissionDetails},
+        RequestListDetail: {screen: RequestListDetail}
     },
     {
         headerMode:'none'
@@ -123,7 +125,8 @@ export const AppRouteAndroid = StackNavigator({
     Profile: { screen: Profile },
     About: {screen: About},
     Feedback: {screen: Feedback},
-    SubmissionDetails: {screen: SubmissionDetails}
+    SubmissionDetails: {screen: SubmissionDetails},
+    RequestListDetail: {screen: RequestListDetail}
 }, {
     headerMode: 'none',
 });

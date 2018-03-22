@@ -36,6 +36,11 @@ class IssueMap extends Component {
             (error) => alert(error.message),
             {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
         );
+    }
+
+    componentDidMount(){
+        this.props.fetchRequestList();
+        this.props.fetchServicesList();
 
     }
 
@@ -125,6 +130,12 @@ const mapDistpatchToProps = (dispatch) => {
         },
         showMapModal: () => {
             return dispatch(actions.mapModal(true))
+        },
+        fetchRequestList: () => {
+            return dispatch(actions.fetchRequestList())
+        },
+        fetchServicesList: () => {
+            return dispatch(actions.fetchServiceList())
         }
     }
 }

@@ -16,13 +16,13 @@ class RequestListItem extends Component {
         }
         return (
             <List>
-                <ListItem thumbnail >
+                <ListItem thumbnail onPress={()=>this.props.navigation.navigate('RequestListDetail')} >
                     <Left>
                     <Thumbnail square size={80} source={{ uri: 'http://via.placeholder.com/80x80' }} />
                     </Left>
                     <Body>
-                        <Text>Giant Fucking Pothole</Text>
-                        <Text note> Distance </Text>
+                        <Text>{this.props.title}</Text>
+                        <Text note> Distance {this.props.date.slice(0,9)} </Text>
                     </Body>
                     <Right>{arrow}</Right>
                 </ListItem>

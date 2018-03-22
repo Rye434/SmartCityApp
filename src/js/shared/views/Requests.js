@@ -25,7 +25,7 @@ class Requests extends Component {
     render() {
         if(Platform.OS === "ios"){
             footer = <FooterIos navigation={this.props.navigation} activePage={'Requests'}/>
-            header = <HeaderIos title={Strings.PAGE_HEADERS_REQUESTS}  targetTextRight={Strings.PAGE_HEADERS_PROFILE} buttonClickRight={() => this.props.navigation.navigate("Profile")} tabs={true}/>
+            header = <HeaderIos title={Strings.PAGE_HEADERS_REQUESTS}  iconRight={<Icon name='ios-contact'/>} buttonClickRight={() => this.props.navigation.navigate("Profile")} tabs={true}/>
         }
         if(Platform.OS == "android"){
             fab = <FabButton navigation={this.props.navigation}/>
@@ -48,7 +48,7 @@ class Requests extends Component {
                     </Segment>
                 </View>
                 <Content>
-                    <RequestList filter={this.props.filterSegment}/>
+                    <RequestList filter={this.props.filterSegment} navigation={this.props.navigation}/>
                 </Content>
                 {fab}
                 {footer}
