@@ -14,7 +14,7 @@ var Strings = require('../../res/strings/StringsEN.js');
 var Style = require('../../res/assets/styles/Styles');
 
 let target;
-let userExists = false; //for testing login flow, use True/False values
+let userExists = true; //for testing login flow, use True/False values
 
 //TODO
 

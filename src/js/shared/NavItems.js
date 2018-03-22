@@ -8,7 +8,6 @@ import Requests from "./views/Requests";
 import Map from "./views/Map";
 import Camera from "./views/Camera";
 import Profile from "./views/Profile";
-import Login from "./views/login/Login";
 import Phone from "./views/login/Phone";
 import Verification from "./views/login/Verification";
 import CreateProfile from "./views/login/CreateProfile";
@@ -18,6 +17,7 @@ import About from "./views/About";
 import Feedback from "./views/Feedback";
 import PhoneOrFacebook from "./views/login/PhoneOrFacebook";
 import SubmissionDetails from "./views/SubmissionDetails";
+import RequestListDetail from "./views/RequestListDetail";
 
 var Strings = require('./res/strings/StringsEN.js');
 
@@ -49,7 +49,8 @@ export const AppRouteIos = StackNavigator({
         Profile: {screen: Profile},
         About: {screen: About},
         Feedback: {screen: Feedback},
-        SubmissionDetails: {screen: SubmissionDetails}
+        SubmissionDetails: {screen: SubmissionDetails},
+        RequestListDetail: {screen: RequestListDetail}
     },
     {
         headerMode:'none'
@@ -60,7 +61,6 @@ export const LoginFlow = StackNavigator({
         Phone: {screen: Phone},
         Verification: {screen:Verification},
         CreateProfile: {screen: CreateProfile},
-        Login: {screen: Login},
         AppRouteIos: {screen: AppRouteIos},
     },
     {
@@ -113,7 +113,6 @@ export const AppRouteAndroid = StackNavigator({
     Phone: {screen: Phone},
     Verification: {screen:Verification},
     CreateProfile: {screen: CreateProfile},
-    Login: {screen: Login},
     AndroidSideBar: {screen: AndroidSideBar},
     Map: { screen: Map },
     Camera: { screen: Camera },
@@ -123,7 +122,8 @@ export const AppRouteAndroid = StackNavigator({
     Profile: { screen: Profile },
     About: {screen: About},
     Feedback: {screen: Feedback},
-    SubmissionDetails: {screen: SubmissionDetails}
+    SubmissionDetails: {screen: SubmissionDetails},
+    RequestListDetail: {screen: RequestListDetail}
 }, {
     headerMode: 'none',
 });

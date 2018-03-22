@@ -16,24 +16,43 @@ class RequestList extends Component {
     render() {
         filterValues = this.props.filter; //object that is [Bool,bool,bool]
 
-        if(filterValues[0]==true){
+        if (filterValues[0] == true) {
             placeholder = "Public"
         }
-        if(filterValues[1]==true){
+        if (filterValues[1] == true) {
             placeholder = "Personal"
         }
-        if(filterValues[2]==true){
+        if (filterValues[2] == true) {
             placeholder = "Acknowledged"
         }
 
-        return (
-            <RequestListItem/>
-        );
+
+        //             <StockListItem {...this.props.companyList[item]} key={i}
+        //                            edit={this.props.editMode}
+        //                            name={this.props.companyList[item].companyName} left={left}
+        //                            right={right}/>
+        //
+        return(
+            <List>
+        {
+            Object.keys(this.props.storeRequests.list).map(function (item, i) {
+                return (
+                    <RequestListItem key={i} {...this.props.storeRequests.list[item]}
+                                     title={this.props.storeRequests.list[item].serviceGroup}
+                                     navigation={this.props.navigation}
+                                     date={this.props.storeRequests.list[item].dateSubmitted}/>
+                )
+
+            }.bind(this))}
+            </List>
+    )
+
     }
 }
 
 function mapStateToProps(state) {
     return{
+        storeRequests: state.storeRequests,
 
     }
 }

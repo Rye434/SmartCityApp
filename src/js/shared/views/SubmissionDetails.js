@@ -31,7 +31,7 @@ class SubmissionDetails extends Component {
             Strings.ALERT_MESSAGE,
             [
                 {text: Strings.ALERT_NEGATIVE, onPress: ()=> console.log('alert closed'), style:'cancel'},
-                {text: Strings.ALERT_POSITIVE, onPress: () => this.props.navigation.navigate('Map') }
+                {text: Strings.ALERT_POSITIVE, onPress: () => this.props.navigation.navigate('Camera') }
             ],
             { cancelable: false }
         )

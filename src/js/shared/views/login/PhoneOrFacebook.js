@@ -14,17 +14,20 @@ import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Rig
 var Strings = require('../../res/strings/StringsEN.js');
 var Style = require('../../res/assets/styles/Styles');
 var dimension = Dimensions.get('window').width;
-let target;
 
+let target;
+let imgSrc;
 
 export default class PhoneOrFacebook extends Component {
 
     render() {
         if(Platform.OS == 'ios'){
             target = "Map"
+            imgSrc = (require('../../res/assets/img/smart-city-gradient.png'))
         }
         if(Platform.OS == 'android'){
             target = "AndroidSideBar"
+            imgSrc = {uri:"smartcitygradient"}
         }
 
         return(

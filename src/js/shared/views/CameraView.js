@@ -51,7 +51,7 @@ class CameraView extends React.Component {
                                 }}
                                 onPress={async () => {
                                     if (this.camera) {
-                                        let photo = await this.camera.takePictureAsync();
+                                        let photo = await this.camera.takePictureAsync({base64:true});
                                         this.props.cachePhoto(photo);
                                         this.props.navigation.navigate('SubmissionFlow');
                                     }

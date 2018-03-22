@@ -42,6 +42,7 @@ module.exports = {
     BUTTONS_SAVE:"Save",
     BUTTONS_FACEBOOK:"Facebook",
     BUTTONS_PHONE:"Phone",
+    BUTTONS_SUBMIT:"Submit",
 
     CAMERA_WARNING:"Caution",
     CAMERA_WARNING_MESSAGE:"Always be aware of your surroundings before taking a picture",
@@ -88,5 +89,12 @@ module.exports = {
 
     PHONE_FACEBOOK_HEADER:"Welcome to Smart City",
     PHONE_FACEBOOK_MESSAGE:"To continue with your request \n please Sign Up with:",
+
+    DETAIL_MODAL_ACKNOWLEDGE:"Acknowledge - ",
+    DETAIL_MODAL_DATE:"Date Submitted",
+    DETAIL_MODAL_DISTANCE:"Distance",
+    DETAIL_MODAL_STATUS:"Request Status",
+    DETAIL_MODAL_DESCRIPTION:"Description",
+
 
 }

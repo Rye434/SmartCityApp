@@ -172,7 +172,11 @@ module.exports = {
             width:deviceWidth*.5,
             height:deviceHeight*.3,
             paddingBottom:6
-        }
+        },
+    loginBackgroundImage:{
+        flex:1,
+        width: deviceWidth,
+        height: deviceHeight
     }
 
 };
