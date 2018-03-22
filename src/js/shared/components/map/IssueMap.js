@@ -40,6 +40,8 @@ class IssueMap extends Component {
 
     componentDidMount(){
         this.props.fetchRequestList();
+        this.props.fetchServicesList();
+
     }
 
     render() {
@@ -131,6 +133,9 @@ const mapDistpatchToProps = (dispatch) => {
         },
         fetchRequestList: () => {
             return dispatch(actions.fetchRequestList())
+        },
+        fetchServicesList: () => {
+            return dispatch(actions.fetchServiceList())
         }
     }
 }

@@ -7,6 +7,7 @@ export const USER_LOCATION = "USER_LOCATION";
 export const MAP_MODAL = "MAP_MODAL";
 export const DETAIL_MODAL = "DETAIL_MODAL";
 export const STORE_REQUESTS = "STORE_REQUESTS";
+export const STORE_SERVICES = "STORE_SERVICES";
 
 
 var Constants = require('../res/constants/AppConstants');
@@ -89,6 +90,13 @@ export function storeRequests(obj) {
     }
 }
 
+export function storeServices(obj) {
+    return{
+        type:STORE_SERVICES,
+        storeServices: obj
+    }
+}
+
 
 // API calls
 export function fetchRequestList(){
@@ -108,6 +116,30 @@ export function fetchRequestList(){
             .then((response) => {
                 //console.log(response.request.response)
                 dispatch(storeRequests(JSON.parse(response.request.response)))
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+}
+
+export function fetchServiceList(){
+    console.log("SERVICE_LIST: FETCH");
+    return (dispatch)=>{
+        axios.post(Constants.BASE_URL + '/registerservice/api/requests/getServiceList',
+            {},
+            {
+                headers: {
+                    'PTM_HEADER_ORG_ID': Constants.ORGANIZATION_ID,
+                    'PTM_HEADER_APP_ID': Constants.MGIS_APP_ID,
+                    'PTM_LANGUAGE': 'eng',
+                    'Content-Type': 'application/json',
+                }
+            },
+        )
+            .then((response) => {
+                //console.log(response.request.response)
+                dispatch(storeServices(JSON.parse(response.request.response)))
             })
             .catch(function (error) {
                 console.log(error);
