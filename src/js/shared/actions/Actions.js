@@ -97,6 +97,16 @@ export function storeServices(obj) {
     }
 }
 
+export function services(obj) {
+    let payload = []
+    for(var service in obj.list ){
+        payload.push(obj.list[service].description)
+        console.log(payload)
+    }
+    
+
+}
+
 
 // API calls
 export function fetchRequestList(){
@@ -140,9 +150,11 @@ export function fetchServiceList(){
             .then((response) => {
                 //console.log(response.request.response)
                 dispatch(storeServices(JSON.parse(response.request.response)))
+                dispatch(services(JSON.parse(response.request.response)))
             })
             .catch(function (error) {
                 console.log(error);
             });
     }
 }
+

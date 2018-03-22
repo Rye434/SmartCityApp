@@ -16,6 +16,7 @@ module.exports = {
     HEADER_EDIT:"Edit",
     HEADER_FILTER:"Filter",
     HEADER_CANCEL:"Cancel",
+    HEADER_ACTIONSHEET:"Filter",
 
     ALERT_TITLE:"Are you sure?",
     ALERT_MESSAGE:"If you leave now you will lose any unsaved data",

@@ -4,7 +4,7 @@ import {
   StyleSheet,
   View
 } from 'react-native';
-import { StyleProvider, Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text, Drawer } from 'native-base';
+import { Root, StyleProvider, Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text, Drawer } from 'native-base';
 
 import {Provider} from "react-redux";
 import thunk from 'redux-thunk';
@@ -24,6 +24,9 @@ let state = {
     mapRegion:null,
     storeRequests:null,
     storeServices:null,
+    actionSheetValue: 0,
+    services:[],
+
 }
 
 let store = createStore(stocksApp, state,  applyMiddleware(thunk));
@@ -57,9 +60,11 @@ export default class App extends Component {
         return (
             <StyleProvider style={getTheme(platform)}>
             <Provider store={store}>
+                <Root>
                 <Container>
                 <AppRouteAndroid/>
                 </Container>
+                </Root>
             </Provider>
             </StyleProvider>
         );
@@ -68,7 +73,9 @@ export default class App extends Component {
       return (
           <StyleProvider style={getTheme(platform)}>
           <Provider store={store}>
+              <Root>
             <LoginFlow/>
+              </Root>
           </Provider>
           </StyleProvider>
         );
