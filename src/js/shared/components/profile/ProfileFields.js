@@ -8,6 +8,7 @@ import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Rig
 
 
 var Strings = require('../../res/strings/StringsEN.js');
+var Styles = require('../../res/assets/styles/Styles');
 
 
 
@@ -15,22 +16,22 @@ export default class ProfileFields extends Component {
 
     render() {
         return(
-            <View>
+            <View style={Styles.profileFields.textFields}>
 
-                <Text>will hold user value: name</Text>
-                <Text>{Strings.PROFILE_PHONE}</Text>
-                <Text>phone#</Text>
+                <Text style={Styles.profileFields.nameTextField}>will hold user value: name</Text>
+                <Text style={Styles.profileFields.phoneNumberText}>{Strings.PROFILE_PHONE}</Text>
+                <Text style={Styles.profileFields.subContentField}>phone#</Text>
                 <Item/>
 
-                <Text>{Strings.PROFILE_EMAIL}</Text>
-                <Text>Email Field</Text>
+                <Text style={Styles.profileFields.subTitleField}>{Strings.PROFILE_EMAIL}</Text>
+                <Text style={Styles.profileFields.subContentField}>Email Field</Text>
                 <Item/>
 
-                <Text>{Strings.PROFILE_ADDRESS}</Text>
-                <Text>Address Field</Text>
-                <Text>Address Field</Text>
-                <Text>Address Field</Text>
-                <Item/>
+                <Text style={Styles.profileFields.subTitleField}>{Strings.PROFILE_ADDRESS}</Text>
+                <Text style={Styles.profileFields.addressSubField.topField}>Address Field</Text>
+                <Text style={Styles.profileFields.addressSubField.middleField}>Address Field</Text>
+                <Text style={Styles.profileFields.addressSubField.bottomField}>Address Field</Text>
+                <Item style={{marginBottom:40,}}/>
 
             </View>
         )

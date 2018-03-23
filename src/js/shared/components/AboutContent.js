@@ -9,39 +9,38 @@ import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Rig
 
 var MPLogo = require('../res/assets/img/MissingPixelLogo.png');
 var Strings = require('../res/strings/StringsEN.js');
+var Styles = require('../res/assets/styles/Styles');
 
 
 export default class AboutContent extends Component {
 
     render() {
         return(
-
-                <ImageBackground source={MPLogo} style={{flex:1, width: 400, height:400}}>
-                    <View style={{flex:0, width:600, height:700, backgroundColor:"rgba(255,255,255,0.9)"}}>
-                <Text>{Strings.ABOUT_TITLE}</Text>
-                <Text>{Strings.ABOUT_VERSION}</Text>
-                <Text>{Strings.ABOUT_DESCRIPTION}</Text>
-                <Text>{Strings.ABOUT_CONTACT}</Text>
-                <Text>{Strings.ABOUT_ALISON_NAME}</Text>
-                <Text>{Strings.ABOUT_ALISON_EMAIL}</Text>
+            <View style={Styles.aboutContent.aboutView}>
+                <Text style={Styles.aboutContent.aboutAppTitle}>{Strings.ABOUT_TITLE}</Text>
+                <Text style={Styles.aboutContent.versionAbout}>{Strings.ABOUT_VERSION}</Text>
+                <Text style={Styles.aboutContent.aboutDescription}>{Strings.ABOUT_DESCRIPTION}</Text>
+                <Text style={Styles.aboutContent.contactInfoTitle}>{Strings.ABOUT_CONTACT}</Text>
+                <Text style={Styles.aboutContent.nameTitle}>{Strings.ABOUT_ALISON_NAME}</Text>
+                <Text style={Styles.aboutContent.emailTitle}>{Strings.ABOUT_ALISON_EMAIL}</Text>
                 <Item/>
-                <Text>{Strings.ABOUT_JACOB_NAME}</Text>
-                <Text>{Strings.ABOUT_JACOB_EMAIL}</Text>
+                <Text style={Styles.aboutContent.nameTitle}>{Strings.ABOUT_JACOB_NAME}</Text>
+                <Text style={Styles.aboutContent.emailTitle}>{Strings.ABOUT_JACOB_EMAIL}</Text>
                 <Item/>
-                <Text>{Strings.ABOUT_MICHEL_NAME}</Text>
-                <Text>{Strings.ABOUT_MICHEL_EMAIL}</Text>
+                <Text style={Styles.aboutContent.nameTitle}>{Strings.ABOUT_MICHEL_NAME}</Text>
+                <Text style={Styles.aboutContent.emailTitle}>{Strings.ABOUT_MICHEL_EMAIL}</Text>
                 <Item/>
-                <Text>{Strings.ABOUT_RILEY_NAME}</Text>
-                <Text>{Strings.ABOUT_RILEY_EMAIL}</Text>
+                <Text style={Styles.aboutContent.nameTitle}>{Strings.ABOUT_RILEY_NAME}</Text>
+                <Text style={Styles.aboutContent.emailTitle}>{Strings.ABOUT_RILEY_EMAIL}</Text>
                 <Item/>
-                <Text>{Strings.ABOUT_ROBSON_NAME}</Text>
-                <Text>{Strings.ABOUT_ROBSON_EMAIL}</Text>
+                <Text style={Styles.aboutContent.nameTitle}>{Strings.ABOUT_ROBSON_NAME}</Text>
+                <Text style={Styles.aboutContent.emailTitle}>{Strings.ABOUT_ROBSON_EMAIL}</Text>
                 <Item/>
-                <Text>{Strings.ABOUT_YANMING_NAME}</Text>
-                <Text>{Strings.ABOUT_YANMING_EMAIL}</Text>
+                <Text style={Styles.aboutContent.nameTitle}>{Strings.ABOUT_YANMING_NAME}</Text>
+                <Text style={Styles.aboutContent.emailTitle}>{Strings.ABOUT_YANMING_EMAIL}</Text>
                 <Item/>
-                <Text>{Strings.ABOUT_ZAHEED_NAME}</Text>
-                <Text>{Strings.ABOUT_ZAHEED_EMAIL}</Text>
+                <Text style={Styles.aboutContent.nameTitle}>{Strings.ABOUT_ZAHEED_NAME}</Text>
+                <Text style={Styles.aboutContent.emailTitle}>{Strings.ABOUT_ZAHEED_EMAIL}</Text>
                 <Item/>
                     </View>
                 </ImageBackground>

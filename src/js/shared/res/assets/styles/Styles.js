@@ -6,6 +6,7 @@ import {Dimensions} from 'react-native';
 const deviceHeight = Dimensions.get("window").height;
 const deviceWidth = Dimensions.get("window").width;
 
+
 module.exports = {
 
     theme: {
@@ -166,6 +167,28 @@ module.exports = {
             flex: 1,
             width: deviceWidth,
             height: deviceHeight
+    loginBackgroundImage:{
+        flex:1,
+        width: deviceWidth,
+        height: deviceHeight
+    },
+    mapModal:{
+        buttons:{
+            moreInfo: {
+                backgroundColor: 'red',
+                height: 40,
+                flex: 1,
+                marginLeft: 8,
+                marginRight: 4,
+            },
+            plusOne: {
+                backgroundColor: 'blue',
+                height: 40,
+                flex: 1,
+                marginLeft: 8,
+                marginRight: 4,
+            }
+        },
 
         },
         icon: {
@@ -177,6 +200,127 @@ module.exports = {
             flex: 1,
             width: deviceWidth,
             height: deviceHeight
+    },
+    profileFields:{
+        textFields:{
+            marginLeft: 16,
+            marginTop: 30,
+        },
+        nameTextField:{
+            color: "#006a54",
+            fontWeight: "bold",
+            fontSize: 15,
+        },
+        phoneNumberText:{
+            marginTop: 45,
+            color:"#059980",
+            fontSize: 14,
+        },
+        subContentField:{
+            marginTop: 5,
+            marginBottom: 10,
+            fontSize: 16,
+        },
+        subTitleField:{
+            marginTop: 10,
+            color:"#059980",
+            fontSize: 14,
+        },
+        addressSubField:{
+            topField:{
+                marginTop: 5,
+                fontSize: 16,
+            },
+            middleField:{
+                marginTop: 2,
+                marginBottom: 2,
+                fontSize: 16,
+            },
+            bottomField:{
+                marginBottom: 10,
+                fontSize: 16,
+            },
+        },
+    },
+
+    cameraWarning:{
+        textFieldTitle:{
+            textAlign: 'center',
+            paddingLeft: 16,
+            paddingRight: 16,
+            paddingBottom: 5,
+            fontWeight: 'bold',
+            justifyContent:'center',
+            fontSize: 24,
+        },
+        textField:{
+            textAlign: 'center',
+            paddingLeft: 16,
+            paddingRight: 16,
+            paddingBottom: 15,
+            fontSize: 15,
+        },
+        buttonField:{
+            alignSelf: 'center',
+            backgroundColor: '#059980',
+            width: deviceWidth/1.25,
+        },
+        buttonText:{
+            textAlign: 'center',
+            justifyContent:'center',
+            flex: 1,
+        },
+        centerView:{
+            flex: 1,
+            width: deviceWidth,
+            height: deviceHeight/1.25,
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+        },
+    },
+
+    aboutContent:{
+        aboutView:{
+            marginLeft: 16,
+            marginRight: 16,
+            marginTop: 16,
+        },
+        aboutAppTitle:{
+            color:'#006a54',
+            fontSize: 18,
+            fontWeight: 'bold',
+        },
+        versionAbout:{
+            color:'#006a54',
+            marginTop: 2,
+            fontSize: 12,
+        },
+        aboutDescription:{
+            fontSize: 14,
+            justifyContent: 'center',
+            textAlign: 'center',
+            marginTop: 15,
+            marginBottom: 20,
+        },
+        contactInfoTitle:{
+            fontSize: 12,
+            color:'#006a54',
+            fontWeight: 'bold',
+        },
+        nameTitle:{
+            fontSize: 14,
+            marginBottom: 2,
+            marginTop: 5,
+            color: '#059980',
+        },
+        emailTitle:{
+            fontSize: 16,
+            marginBottom: 10,
+        },
+
+    },
+
         }
 
     }

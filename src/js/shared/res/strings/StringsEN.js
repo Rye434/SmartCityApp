@@ -70,8 +70,13 @@ module.exports = {
     MAP_MODAL_ACKNOWLEDGE:"Acknowledge",
 
     ABOUT_TITLE:"Smart City",
-    ABOUT_VERSION:"1.0.0.0",
-    ABOUT_DESCRIPTION:"Smart City is a simplified blah blah blah",
+    ABOUT_VERSION:"Version: 1.0.0.0",
+    ABOUT_DESCRIPTION:"Smart City is a simplified and user-friendly approach to " +
+    "reporting various issues and incidents noticed by the " +
+    "public around the city. Designed to easily allow anyone to " +
+    "quickly take a photo and describe their issue to the " +
+    "appropriate government, while also displaying other " +
+    "issues around the area.",
     ABOUT_CONTACT:"Contact Information:",
     ABOUT_RILEY_NAME:"Riley Griffith",
     ABOUT_RILEY_EMAIL:"grif0193@algonquinlive.com",

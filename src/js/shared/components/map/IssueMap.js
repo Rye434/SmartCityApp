@@ -15,6 +15,7 @@ import * as actions from "../../actions/Actions";
 
 
 var Strings = require('../../res/strings/StringsEN');
+var Styles = require('../../res/assets/styles/Styles');
 
 let height;
 let width = Dimensions.get('window').width;

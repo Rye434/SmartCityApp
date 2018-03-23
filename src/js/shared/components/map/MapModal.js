@@ -5,6 +5,7 @@ import {connect} from "react-redux";
 import {Title, Container, Header, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body, Right, Tab, Tabs, List, ListItem, Footer, Segment } from 'native-base';
 
 var Strings = require('../../res/strings/StringsEN');
+var Styles = require('../../res/assets/styles/Styles');
 
 let modalSpaceHeight;
 
@@ -54,12 +55,12 @@ class MapModal extends Component {
                     <View style={{flex:1,flexDirection:'row'}}>
                         <Button block info
                                 onPress={this.props.toggleModals}
-                                style={{height:40, flex:1, marginLeft:8,marginRight:4}}>
+                                style={Styles.mapModal.buttons.moreInfo}>
                             <Text>{Strings.MAP_MODAL_MORE_INFO_BUTTON}</Text>
                         </Button>
                         <Button block success //change to warning on press
                                 // onPress={this.props.showMapModal}
-                                style={{height:40, flex:1, marginLeft:4,marginRight:8}}>
+                                style={Styles.mapModal.buttons.plusOne}>
                             <Text>{Strings.MAP_MODAL_ACKNOWLEDGE}</Text>
                         </Button>
                     </View>

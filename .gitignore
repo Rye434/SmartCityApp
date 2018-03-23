@@ -6,3 +6,7 @@ node_modules/
 \.idea/workspace\.xml
 
 android/app/src/main/java/com/missingpixel/smartcity/generated/ExponentBuildConstants\.java
+
+ios/smartcity\.xcworkspace/xcuserdata/zaheedjaffer\.xcuserdatad/UserInterfaceState\.xcuserstate
+
+package-lock\.json
