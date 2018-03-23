@@ -166,12 +166,18 @@ module.exports = {
         loginBackgroundImage: {
             flex: 1,
             width: deviceWidth,
+            height: deviceHeight,
+        },
+
+        loginBackgroundImage: {
+            flex: 1,
+            width: deviceWidth,
             height: deviceHeight
-    loginBackgroundImage:{
-        flex:1,
-        width: deviceWidth,
-        height: deviceHeight
+        }
+
     },
+
+    
     mapModal:{
         buttons:{
             moreInfo: {
@@ -200,7 +206,7 @@ module.exports = {
             flex: 1,
             width: deviceWidth,
             height: deviceHeight
-    },
+         },
     profileFields:{
         textFields:{
             marginLeft: 16,
@@ -321,7 +327,6 @@ module.exports = {
 
     },
 
-        }
 
-    }
 }
+

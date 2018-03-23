@@ -42,8 +42,7 @@ export default class AboutContent extends Component {
                 <Text style={Styles.aboutContent.nameTitle}>{Strings.ABOUT_ZAHEED_NAME}</Text>
                 <Text style={Styles.aboutContent.emailTitle}>{Strings.ABOUT_ZAHEED_EMAIL}</Text>
                 <Item/>
-                    </View>
-                </ImageBackground>
+            </View>
         )
 
     }
