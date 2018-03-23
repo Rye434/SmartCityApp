@@ -168,16 +168,19 @@ module.exports = {
             width: deviceWidth,
             height: deviceHeight,
         },
-
+        icon: {
+            width: deviceWidth * .5,
+            height: deviceHeight * .3,
+            paddingBottom: 6
+        },
         loginBackgroundImage: {
             flex: 1,
             width: deviceWidth,
             height: deviceHeight
-        }
-
+        },
     },
 
-    
+
     mapModal:{
         buttons:{
             moreInfo: {
@@ -197,16 +200,7 @@ module.exports = {
         },
 
         },
-        icon: {
-            width: deviceWidth * .5,
-            height: deviceHeight * .3,
-            paddingBottom: 6
-        },
-        loginBackgroundImage: {
-            flex: 1,
-            width: deviceWidth,
-            height: deviceHeight
-         },
+
     profileFields:{
         textFields:{
             marginLeft: 16,
