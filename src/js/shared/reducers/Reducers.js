@@ -68,7 +68,6 @@ export default function stocksApp(state, action) {
             let actionSheetValue = action.actionSheetValue
             newState = Object.assign({}, state, {actionSheetValue});
             //  console.log(newState)
-            alert(actionSheetValue)
             break;
         default:
             return state;

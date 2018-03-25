@@ -33,7 +33,7 @@ export default class PhoneOrFacebook extends Component {
         return(
             <Image style={Style.image.loginBackgroundImage} source={require('../../res/assets/img/smart-city-gradient.png')}>
             <View style={{flex:1, justifyContent:'center',alignItems:'center'}}>
-                <Image style={Style.image.icon} source={require('../../res/assets/img/smart-city-logo.png')}/>
+                {/*<Image style={Style.image.icon} source={require('../../res/assets/img/smart-city-logo.png')}/>*/}
                 <Text style={Style.text.h1}>{Strings.PHONE_FACEBOOK_HEADER}</Text>
                 <Text style={Style.text.h2}>{Strings.PHONE_FACEBOOK_MESSAGE}</Text>
                 <View style={{width: dimension*.9}}>

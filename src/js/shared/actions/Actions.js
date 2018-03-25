@@ -86,6 +86,7 @@ export function toggleModals() {
 }
 
 export function storeRequests(obj) {
+    console.log('STOREREQUESTS')
     return{
         type:STORE_REQUESTS,
         storeRequests: obj
@@ -103,8 +104,13 @@ export function services(obj) {
     let payload = []
     for(var service in obj.list ){
         payload.push(obj.list[service].description)
-        console.log(payload)
     }
+
+    //remove blank values and test entries
+    payload.splice(payload.indexOf(''),1)
+    payload.splice(payload.indexOf('Test'),1)
+
+    //sort and add all/cancel entries
     payload.sort();
     payload.unshift('All');
     payload.push('Cancel');
@@ -123,7 +129,59 @@ export function updateActionSheetValue(buttonIndex) {
     }
 }
 
+
+export function updateDistance(requestList,distanceObj) {
+    let payload = [];
+    let newObj = {}
+    for(let request in requestList.list) {
+        requestList.list[request]['distance'] = distanceObj.rows[0].elements[request].distance.text
+        payload.push(requestList.list[request])
+    }
+    payload.sort(function(a,b) {return (a.distance > b.distance) ? 1 : ((b.distance > a.distance) ? -1 : 0);} );
+
+    for (let i=0; i<payload.length; i++) {
+        newObj[i] = payload[i];
+    }
+
+    requestList.list = newObj
+
+    //console.log(requestList)
+
+
+    return(dispatch)=>{
+        dispatch(storeRequests(requestList))
+    }
+}
+
 // API calls
+export function calculateDistance(userLoc, requestList){
+    console.log("CALL GOOGLE: DISTANCE");
+
+    let url = 'https://maps.googleapis.com/maps/api/distancematrix/json?'
+    let origin = JSON.stringify(userLoc.latitude)+','+JSON.stringify(userLoc.longitude)
+    let destination = []
+    let key = Constants.MAPS_API_KEY_PLACES
+
+    //TODO: if lat long is empty push address into destination, if latlong, push them into destination in same format is ORIGIN
+    for(let request in requestList.list) {
+        destination.push(requestList.list[request].address.split(' ').slice(2).join('+')+'+ON')
+    }
+    destination = destination.join('|')
+        return (dispatch)=>{
+            axios.get(url+'origins='+origin+'&destinations='+destination+'&key='+key)
+                .then((response) => {
+                    //console.log(JSON.parse(response.request.response))
+                    dispatch(updateDistance(requestList,JSON.parse(response.request.response)))
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        }
+
+}
+
+
+
 export function fetchRequestList(){
     console.log("REQUEST_LIST: FETCH");
     return (dispatch)=>{
@@ -139,8 +197,9 @@ export function fetchRequestList(){
             },
         )
             .then((response) => {
-                //console.log(response.request.response)
+                //console.log(JSON.parse(response.request.response))
                 dispatch(storeRequests(JSON.parse(response.request.response)))
+
             })
             .catch(function (error) {
                 console.log(error);

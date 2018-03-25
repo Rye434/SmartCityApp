@@ -85,6 +85,9 @@ class IssueMap extends Component {
                     </MapView.Marker>
                 ))
             }
+
+
+
         return(
             <View>
 
@@ -137,7 +140,8 @@ const mapDistpatchToProps = (dispatch) => {
         },
         fetchServicesList: () => {
             return dispatch(actions.fetchServiceList())
-        }
+        },
+
     }
 }
 

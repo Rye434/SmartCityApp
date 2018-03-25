@@ -13,6 +13,11 @@ let placeholder;
 
 
 class RequestList extends Component {
+    componentWillMount() {
+        this.props.calculateDistance(this.props.userLocation,this.props.storeRequests)
+    }
+
+
     render() {
         filterValues = this.props.filter; //object that is [Bool,bool,bool]
 
@@ -27,20 +32,17 @@ class RequestList extends Component {
         }
 
 
-        //             <StockListItem {...this.props.companyList[item]} key={i}
-        //                            edit={this.props.editMode}
-        //                            name={this.props.companyList[item].companyName} left={left}
-        //                            right={right}/>
-        //
         return(
             <List>
         {
             Object.keys(this.props.storeRequests.list).map(function (item, i) {
+
                 return (
                     <RequestListItem key={i} {...this.props.storeRequests.list[item]}
                                      title={this.props.storeRequests.list[item].serviceGroup}
                                      navigation={this.props.navigation}
-                                     date={this.props.storeRequests.list[item].dateSubmitted}/>
+                                     date={this.props.storeRequests.list[item].dateSubmitted}
+                                     distance={this.props.storeRequests.list[item].distance}/>
                 )
 
             }.bind(this))}
@@ -53,13 +55,15 @@ class RequestList extends Component {
 function mapStateToProps(state) {
     return{
         storeRequests: state.storeRequests,
-
+        userLocation: state.mapRegion,
     }
 }
 
 const mapDistpatchToProps = (dispatch) => {
     return {
-
+        calculateDistance: (userLoc,requestList,) => {
+            return dispatch(actions.calculateDistance(userLoc, requestList))
+        },
     }
 }
 

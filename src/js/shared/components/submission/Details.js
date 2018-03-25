@@ -17,8 +17,6 @@ var Strings = require('../../res/strings/StringsEN');
 //TODO: add issue submission confirmation alert
 
 
-let iconTest = <Icon name='square'/>
-
 class Details extends Component {
 
     render() {
@@ -34,6 +32,7 @@ class Details extends Component {
                                 selectedValue={'id0'}
                                 >
                             <Item label="Top level placeholder" value="id0"/>
+                            <Item label="Top level placeholder" value="id1"/>
 
                         </Picker>
                         <Picker mode="dropdown" placeholder="Select A Subject" note={false}
@@ -41,6 +40,7 @@ class Details extends Component {
                                 selectedValue={'id0'}
                         >
                             <Item label="Placeholder" value="id0"/>
+                            <Item label="Placeholder" value="id1"/>
                         </Picker>
 
                     <TextInput placeholder='Enter a Description' onChange={()=>console.log("FeebackBox Inputted")} multiline={true} maxLength={255} width={300}  height={125} autogrow={true}/>

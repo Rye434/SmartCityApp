@@ -22,7 +22,7 @@ class RequestListItem extends Component {
                     </Left>
                     <Body>
                         <Text>{this.props.title}</Text>
-                        <Text note> Distance {this.props.date.slice(0,9)} </Text>
+                        <Text note>{this.props.distance} - {this.props.date.slice(0,10)} </Text>
                     </Body>
                     <Right>{arrow}</Right>
                 </ListItem>
