@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import com.missingpixel.smartcity.generated.ExponentBuildConstants;
 import host.exp.expoview.ExponentActivity;
 
 public class MainActivity extends ExponentActivity {
@@ -20,7 +19,7 @@ public class MainActivity extends ExponentActivity {
 
   @Override
   public String developmentUrl() {
-    return ExponentBuildConstants.DEVELOPMENT_URL;
+    return "exp://exp.host/@jakewagnr/smartcity";
   }
 
   @Override

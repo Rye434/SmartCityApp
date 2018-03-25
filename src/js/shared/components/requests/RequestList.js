@@ -65,7 +65,7 @@ const mapDistpatchToProps = (dispatch) => {
             return dispatch(actions.calculateDistance(userLoc, requestList))
         },
     }
-}
+};
 
 
 
