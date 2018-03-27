@@ -27,6 +27,8 @@ let searchedMarker;
 let customMarker;
 let customImage = require('../../res/assets/img/Button.png');
 
+let count = 0
+
 class IssueMap extends Component {
     componentWillMount() {
         navigator.geolocation.getCurrentPosition(
@@ -87,6 +89,14 @@ class IssueMap extends Component {
             }
 
 
+            if(this.props.storeRequests != null){
+
+                if(count <1) {
+                    this.props.calculateDistance(this.props.mapRegion, this.props.storeRequests)
+                    count++
+                }
+            }
+
 
         return(
             <View>
@@ -123,7 +133,8 @@ class IssueMap extends Component {
 function mapStateToProps(state) {
     return{
         mapRegion: state.mapRegion,
-        mapModal: state.mapModal
+        mapModal: state.mapModal,
+        storeRequests: state.storeRequests,
     }
 }
 
@@ -140,6 +151,9 @@ const mapDistpatchToProps = (dispatch) => {
         },
         fetchServicesList: () => {
             return dispatch(actions.fetchServiceList())
+        },
+        calculateDistance: (userLoc,requestList,) => {
+            return dispatch(actions.calculateDistance(userLoc, requestList))
         },
 
     }

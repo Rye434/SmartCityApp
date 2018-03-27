@@ -122,6 +122,8 @@ export function services(obj) {
 
 }
 
+
+
 export function updateActionSheetValue(buttonIndex) {
     return{
         type: UPDATE_ACTION_SHEET_VALUE,
@@ -132,21 +134,23 @@ export function updateActionSheetValue(buttonIndex) {
 
 export function updateDistance(requestList,distanceObj) {
     let payload = [];
-    let newObj = {}
+    let newObj = {};
+
     for(let request in requestList.list) {
         requestList.list[request]['distance'] = distanceObj.rows[0].elements[request].distance.text
-        payload.push(requestList.list[request])
+            payload.push(requestList.list[request])
+
+        //console.log(distanceObj.rows[0].elements[request].distance.text)
     }
     payload.sort(function(a,b) {return (a.distance > b.distance) ? 1 : ((b.distance > a.distance) ? -1 : 0);} );
+
+    //console.log(payload.length)
 
     for (let i=0; i<payload.length; i++) {
         newObj[i] = payload[i];
     }
 
     requestList.list = newObj
-
-    //console.log(requestList)
-
 
     return(dispatch)=>{
         dispatch(storeRequests(requestList))
@@ -163,15 +167,21 @@ export function calculateDistance(userLoc, requestList){
     let key = Constants.MAPS_API_KEY_PLACES
 
     //TODO: if lat long is empty push address into destination, if latlong, push them into destination in same format is ORIGIN
+    //once robson updates post man to send lat longs, refactor to deal with lat/longs instead of wards
     for(let request in requestList.list) {
-        destination.push(requestList.list[request].address.split(' ').slice(2).join('+')+'+ON')
+        destination.push(requestList.list[request].lat+","+requestList.list[request].long)
+        //destination.push(requestList.list[request].address.split(' ').slice(2).join('+')+'+ON')
     }
+
     destination = destination.join('|')
+
         return (dispatch)=>{
             axios.get(url+'origins='+origin+'&destinations='+destination+'&key='+key)
                 .then((response) => {
                     //console.log(JSON.parse(response.request.response))
+                    //console.log(requestList)
                     dispatch(updateDistance(requestList,JSON.parse(response.request.response)))
+
                 })
                 .catch(function (error) {
                     console.log(error);
@@ -179,6 +189,7 @@ export function calculateDistance(userLoc, requestList){
         }
 
 }
+
 
 
 
@@ -199,7 +210,6 @@ export function fetchRequestList(){
             .then((response) => {
                 //console.log(JSON.parse(response.request.response))
                 dispatch(storeRequests(JSON.parse(response.request.response)))
-
             })
             .catch(function (error) {
                 console.log(error);
@@ -231,4 +241,5 @@ export function fetchServiceList(){
             });
     }
 }
+
 
