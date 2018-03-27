@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {View, Modal, StyleSheet, Image, Platform, Dimensions, ScrollView, KeyboardAvoidingView} from 'react-native';
 import * as actions from "../../../shared/actions/Actions"
 import {connect} from "react-redux";
+
 import {
     Title,
     Container,
@@ -25,7 +26,7 @@ import {
     Form,
     Item,
     Label,
-    Input
+    Input,
 } from 'native-base';
 
 
@@ -41,6 +42,22 @@ class ProfileEditModal extends Component {
                     animationType={'slide'}
                     onRequestClose={this.props.toggleModal}>
 
+                    <Header>
+                        <Left>
+                            <Button transparent onPress={this.props.toggleModal}>
+                                <Text>{Strings.BUTTONS_CANCEL}</Text>
+                            </Button>
+                        </Left>
+                        <Body>
+                        <Title>{Strings.PAGE_HEADERS_EDIT}</Title>
+                        </Body>
+                        <Right>
+                            <Button transparent onPress={this.props.toggleModal}>
+                                <Text>{Strings.BUTTONS_DONE}</Text>
+                            </Button>
+                        </Right>
+                    </Header>
+
                     <KeyboardAvoidingView style={{flex: 1, flexDirection:'column', justifyContent:'center', alignItems:'center'}} behavior="padding">
                     <Form style={{
                         flex: 1,
@@ -52,23 +69,23 @@ class ProfileEditModal extends Component {
                         alignItems: 'center'
                     }}>
 
-                        <Item fixedLabel style={{width: 300, marginLeft: 0}}>
+                        <Item inlineLabel style={{width: 300, marginLeft: 0}}>
                             <Label>{Strings.FIELDS_FIRST_NAME}</Label>
                             <Input onChange={() => console.log("First-Name")}/>
                         </Item>
-                        <Item fixedLabel style={{width: 300, marginLeft: 0}}>
+                        <Item inlineLabel style={{width: 300, marginLeft: 0}}>
                             <Label>{Strings.FIELDS_LAST_NAME}</Label>
                             <Input onChange={() => console.log("LastName")}/>
                         </Item>
-                        <Item fixedLabel keyboardType='phone-pad' style={{width: 300, marginLeft: 0}}>
+                        <Item inlineLabel keyboardType='phone-pad' style={{width: 300, marginLeft: 0}}>
                             <Label>{Strings.FIELDS_PHONE}</Label>
                             <Input onChange={() => console.log("Phone")}/>
                         </Item>
-                        <Item fixedLabel keyboardType='email-address' style={{width: 300, marginLeft: 0}}>
+                        <Item inlineLabel keyboardType='email-address' style={{width: 300, marginLeft: 0}}>
                             <Label>{Strings.FIELDS_EMAIL}</Label>
                             <Input onChange={() => console.log("Email")}/>
                         </Item>
-                        <Item fixedLabel style={{width: 300, marginLeft: 0}}>
+                        <Item inlineLabel style={{width: 300, marginLeft: 0}}>
                             <Label>{Strings.FIELDS_ADDRESS}</Label>
                             <Input onChange={() => console.log("Address")}/>
                         </Item>
@@ -94,7 +111,6 @@ class ProfileEditModal extends Component {
                         </Item>
                     </Form>
                     </KeyboardAvoidingView>
-                    <Button full onPress={this.props.toggleModal} style={{height: 60}}></Button>
 
                 </Modal>
                 )}

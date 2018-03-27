@@ -11,6 +11,7 @@ module.exports = {
     PAGE_HEADERS_ABOUT:"About",
     PAGE_HEADERS_FEEDBACK:"Feedback",
     PAGE_HEADERS_DETAIL:'Detail',
+    PAGE_HEADERS_EDIT:'Edit Profile',
 
     HEADER_RETURN:"Back",
     HEADER_EDIT:"Edit",
@@ -41,9 +42,11 @@ module.exports = {
     BUTTONS_LOGIN:"Login",
     BUTTONS_CONFIRM:"Confirm",
     BUTTONS_SAVE:"Save",
-    BUTTONS_FACEBOOK:"Facebook",
-    BUTTONS_PHONE:"Phone",
+    BUTTONS_FACEBOOK:"Continue With Facebook",
+    BUTTONS_PHONE:"Phone Number",
     BUTTONS_SUBMIT:"Submit",
+    BUTTONS_DONE:"Done",
+    BUTTONS_CANCEL:"Cancel",
 
     CAMERA_WARNING:"Caution",
     CAMERA_WARNING_MESSAGE:"Always be aware of your surroundings before taking a picture",
