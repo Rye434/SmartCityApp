@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {View,Modal, StyleSheet, Image, Platform, Dimensions} from 'react-native';
 import * as actions from "../../../shared/actions/Actions"
 import {connect} from "react-redux";
-import {Title, Container, Header, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body, Right, Tab, Tabs, List, ListItem, Footer, Segment } from 'native-base';
+import {Title, Container, Header, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body, Right, Tab, Tabs, List, ListItem, Footer, Segment, Spinner } from 'native-base';
 import RequestListItem from "./RequestListItem";
 
 let filterValues;
@@ -27,7 +27,14 @@ class RequestList extends Component {
             placeholder = "Acknowledged"
         }
 
+        if(this.props.distanceLoaded == false){
+            return(
+                <Spinner color='blue' />
+            )
 
+        }
+
+        if(this.props.distanceLoaded == true){
         return(
             <List>
             {Object.keys(this.props.storeRequests.list).map(function (item, i) {
@@ -42,7 +49,7 @@ class RequestList extends Component {
 
             }.bind(this))}
             </List>
-    )
+    )}
 
     }
 }
@@ -51,13 +58,14 @@ function mapStateToProps(state) {
     return{
         storeRequests: state.storeRequests,
         userLocation: state.mapRegion,
+        distanceLoaded: state.distanceLoaded
     }
 }
 
 const mapDistpatchToProps = (dispatch) => {
     return {
         calculateDistance: (userLoc,requestList,) => {
-            return dispatch(actions.calculateDistance(userLoc, requestList))
+            dispatch(actions.calculateDistance(userLoc, requestList))
         },
     }
 };
