@@ -30,23 +30,7 @@ let customImage = require('../../res/assets/img/Button.png');
 
 
 class IssueMap extends Component {
-    componentWillMount() {
-        navigator.geolocation.getCurrentPosition(
-            (position) => {
-                console.log(position)
-                this.props.getUserLocation(position);
-            },
-            (error) => alert(error.message),
-            {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
-        );
-    }
 
-    componentDidMount(){
-        this.props.fetchRequestList();
-        this.props.fetchServicesList();
-
-
-    }
 
     render() {
 
@@ -91,8 +75,6 @@ class IssueMap extends Component {
 
 
             if(this.props.storeRequests != null){
-                this.props.calculateDistance(this.props.mapRegion, this.props.storeRequests)
-
                 markers = Object.keys(this.props.storeRequests.list).map((marker) => (
                     <MapView.Marker
                         key={marker}
@@ -151,20 +133,14 @@ function mapStateToProps(state) {
 
 const mapDistpatchToProps = (dispatch) => {
     return {
-        getUserLocation: (position) => {
-            dispatch(actions.getUserLocation(position))
-        },
         showMapModal: () => {
             dispatch(actions.mapModal(true))
         },
-        fetchRequestList: () => {
-            dispatch(actions.fetchRequestList())
-        },
-        fetchServicesList: () => {
-            dispatch(actions.fetchServiceList())
-        },
         calculateDistance: (userLoc,requestList,) => {
             dispatch(actions.calculateDistance(userLoc, requestList))
+        },
+        preload:(position) => {
+            dispatch(actions.preload(position))
         },
 
     }

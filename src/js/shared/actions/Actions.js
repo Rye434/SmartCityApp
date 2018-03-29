@@ -47,7 +47,14 @@ export function getUserLocation(position) {
             longitudeDelta: 0.0421,
         }
     }
+}
 
+export function preload(position) {
+    return(dispatch) => {
+        dispatch(getUserLocation(position))
+        dispatch(fetchRequestList(position))
+        dispatch(fetchServiceList())
+    }
 }
 
 export function updateLocation(position) {
@@ -147,12 +154,8 @@ export function updateDistance(requestList,distanceObj) {
     for(let request in requestList.list) {
         requestList.list[request]['distance'] = distanceObj.rows[0].elements[request].distance.text
             payload.push(requestList.list[request])
-            //console.log(requestList)
-        //console.log(distanceObj.rows[0].elements[request].distance.text)
     }
     payload.sort(function(a,b) {return (a.distance > b.distance) ? 1 : ((b.distance > a.distance) ? -1 : 0);} );
-
-    //console.log(payload)
 
     for (let i=0; i<payload.length; i++) {
         newObj[i] = payload[i];
@@ -170,26 +173,19 @@ export function updateDistance(requestList,distanceObj) {
 // API calls
 export function calculateDistance(userLoc, requestList){
     console.log("CALL GOOGLE: DISTANCE");
-
     let url = 'https://maps.googleapis.com/maps/api/distancematrix/json?'
-    let origin = JSON.stringify(userLoc.latitude)+','+JSON.stringify(userLoc.longitude)
+    let origin = JSON.stringify(userLoc.coords.latitude)+','+JSON.stringify(userLoc.coords.longitude)
     let destination = []
     let key = Constants.MAPS_API_KEY_PLACES
-
     for(let request in requestList.list) {
         destination.push(requestList.list[request].lat+","+requestList.list[request].long)
-        //destination.push(requestList.list[request].address.split(' ').slice(2).join('+')+'+ON')
     }
 
     destination = destination.join('|')
-
         return (dispatch)=>{
             axios.get(url+'origins='+origin+'&destinations='+destination+'&key='+key)
                 .then((response) => {
-                    //console.log(JSON.parse(response.request.response))
-                    //console.log(requestList)
                     dispatch(updateDistance(requestList,JSON.parse(response.request.response)))
-
                 })
                 .catch(function (error) {
                     console.log(error);
@@ -201,7 +197,7 @@ export function calculateDistance(userLoc, requestList){
 
 
 
-export function fetchRequestList(){
+export function fetchRequestList(position){
     console.log("REQUEST_LIST: FETCH");
     return (dispatch)=>{
         axios.post(Constants.BASE_URL + '/registerservice/api/requests/getPublicRequests',
@@ -216,8 +212,9 @@ export function fetchRequestList(){
             },
         )
             .then((response) => {
-                //console.log(JSON.parse(response.request.response))
+
                 dispatch(storeRequests(JSON.parse(response.request.response)))
+                dispatch(calculateDistance(position,JSON.parse(response.request.response)))
             })
             .catch(function (error) {
                 console.log(error);
@@ -240,7 +237,6 @@ export function fetchServiceList(){
             },
         )
             .then((response) => {
-                //console.log(response.request.response)
                 dispatch(storeServices(JSON.parse(response.request.response)))
                 dispatch(services(JSON.parse(response.request.response)))
             })
