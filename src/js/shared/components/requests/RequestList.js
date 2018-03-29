@@ -13,10 +13,6 @@ let placeholder;
 
 
 class RequestList extends Component {
-    componentWillMount() {
-        this.props.calculateDistance(this.props.userLocation,this.props.storeRequests)
-    }
-
 
     render() {
         filterValues = this.props.filter; //object that is [Bool,bool,bool]
@@ -34,8 +30,7 @@ class RequestList extends Component {
 
         return(
             <List>
-        {
-            Object.keys(this.props.storeRequests.list).map(function (item, i) {
+            {Object.keys(this.props.storeRequests.list).map(function (item, i) {
 
                 return (
                     <RequestListItem key={i} {...this.props.storeRequests.list[item]}

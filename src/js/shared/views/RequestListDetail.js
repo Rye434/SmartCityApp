@@ -30,8 +30,8 @@ class RequestListDetail extends Component {
         }
         if(Platform.OS == "android"){
             fab = <FabButton/>
-            header =<HeaderAndroid buttonClick={() => this.props.navigation.navigate("DrawerOpen")}
-                                   title={'adsasd'} headerIcon={'menu'}/>
+            header =<HeaderAndroid buttonClick={() => this.props.navigation.navigate("Requests")}
+                                   title={'adsasd'} headerIcon={'arrow-back'}/>
         }
         return(
             <Container>
