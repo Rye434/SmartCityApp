@@ -26,6 +26,7 @@ let state = {
     storeServices:null,
     actionSheetValue: 0,
     services:[],
+    distanceLoaded: false,
 
 }
 

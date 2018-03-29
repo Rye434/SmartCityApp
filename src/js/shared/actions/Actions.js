@@ -10,7 +10,7 @@ export const STORE_REQUESTS = "STORE_REQUESTS";
 export const STORE_SERVICES = "STORE_SERVICES";
 export const SERVICES = "SERVICES";
 export const UPDATE_ACTION_SHEET_VALUE = "UPDATE_ACTION_SHEET_VALUE";
-
+export const DISTANCE_LOADED = "DISTANCE_LOADED";
 
 var Constants = require('../res/constants/AppConstants');
 
@@ -47,7 +47,14 @@ export function getUserLocation(position) {
             longitudeDelta: 0.0421,
         }
     }
+}
 
+export function preload(position) {
+    return(dispatch) => {
+        dispatch(getUserLocation(position))
+        dispatch(fetchRequestList(position))
+        dispatch(fetchServiceList())
+    }
 }
 
 export function updateLocation(position) {
@@ -87,6 +94,7 @@ export function toggleModals() {
 
 export function storeRequests(obj) {
     console.log('STOREREQUESTS')
+    // console.log(obj)
     return{
         type:STORE_REQUESTS,
         storeRequests: obj
@@ -97,6 +105,13 @@ export function storeServices(obj) {
     return{
         type:STORE_SERVICES,
         storeServices: obj
+    }
+}
+
+export function distanceLoaded(bool) {
+    return{
+        type:DISTANCE_LOADED,
+        distanceLoaded: bool
     }
 }
 
@@ -139,49 +154,38 @@ export function updateDistance(requestList,distanceObj) {
     for(let request in requestList.list) {
         requestList.list[request]['distance'] = distanceObj.rows[0].elements[request].distance.text
             payload.push(requestList.list[request])
-
-        //console.log(distanceObj.rows[0].elements[request].distance.text)
     }
     payload.sort(function(a,b) {return (a.distance > b.distance) ? 1 : ((b.distance > a.distance) ? -1 : 0);} );
-
-    //console.log(payload.length)
 
     for (let i=0; i<payload.length; i++) {
         newObj[i] = payload[i];
     }
 
+
     requestList.list = newObj
 
     return(dispatch)=>{
         dispatch(storeRequests(requestList))
+        dispatch(distanceLoaded(true))
     }
 }
 
 // API calls
 export function calculateDistance(userLoc, requestList){
     console.log("CALL GOOGLE: DISTANCE");
-
     let url = 'https://maps.googleapis.com/maps/api/distancematrix/json?'
-    let origin = JSON.stringify(userLoc.latitude)+','+JSON.stringify(userLoc.longitude)
+    let origin = JSON.stringify(userLoc.coords.latitude)+','+JSON.stringify(userLoc.coords.longitude)
     let destination = []
     let key = Constants.MAPS_API_KEY_PLACES
-
-    //TODO: if lat long is empty push address into destination, if latlong, push them into destination in same format is ORIGIN
-    //once robson updates post man to send lat longs, refactor to deal with lat/longs instead of wards
     for(let request in requestList.list) {
         destination.push(requestList.list[request].lat+","+requestList.list[request].long)
-        //destination.push(requestList.list[request].address.split(' ').slice(2).join('+')+'+ON')
     }
 
     destination = destination.join('|')
-
         return (dispatch)=>{
             axios.get(url+'origins='+origin+'&destinations='+destination+'&key='+key)
                 .then((response) => {
-                    //console.log(JSON.parse(response.request.response))
-                    //console.log(requestList)
                     dispatch(updateDistance(requestList,JSON.parse(response.request.response)))
-
                 })
                 .catch(function (error) {
                     console.log(error);
@@ -193,7 +197,7 @@ export function calculateDistance(userLoc, requestList){
 
 
 
-export function fetchRequestList(){
+export function fetchRequestList(position){
     console.log("REQUEST_LIST: FETCH");
     return (dispatch)=>{
         axios.post(Constants.BASE_URL + '/registerservice/api/requests/getPublicRequests',
@@ -208,8 +212,9 @@ export function fetchRequestList(){
             },
         )
             .then((response) => {
-                //console.log(JSON.parse(response.request.response))
+
                 dispatch(storeRequests(JSON.parse(response.request.response)))
+                dispatch(calculateDistance(position,JSON.parse(response.request.response)))
             })
             .catch(function (error) {
                 console.log(error);
@@ -232,7 +237,6 @@ export function fetchServiceList(){
             },
         )
             .then((response) => {
-                //console.log(response.request.response)
                 dispatch(storeServices(JSON.parse(response.request.response)))
                 dispatch(services(JSON.parse(response.request.response)))
             })
