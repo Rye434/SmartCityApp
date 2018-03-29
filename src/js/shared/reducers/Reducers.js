@@ -9,7 +9,8 @@ import {
     STORE_SERVICES,
     SERVICES,
     UPDATE_ACTION_SHEET_VALUE,
-    DISTANCE_LOADED
+    DISTANCE_LOADED,
+    CURRENT_REQUEST
 } from "../actions/Actions";
 
 
@@ -84,6 +85,11 @@ export default function stocksApp(state, action) {
         case DISTANCE_LOADED:
             let distanceLoaded = action.distanceLoaded
             newState = Object.assign({}, state, {distanceLoaded});
+            //  console.log(newState)
+            break;
+        case CURRENT_REQUEST:
+            let currentRequest = action.currentRequest
+            newState = Object.assign({}, state, {currentRequest});
             //  console.log(newState)
             break;
         default:

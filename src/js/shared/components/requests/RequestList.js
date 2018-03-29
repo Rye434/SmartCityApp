@@ -41,7 +41,7 @@ class RequestList extends Component {
 
                 return (
                     <RequestListItem key={i} {...this.props.storeRequests.list[item]}
-                                     title={this.props.storeRequests.list[item].serviceGroup}
+                                     title={this.props.storeRequests.list[item].serviceName}
                                      navigation={this.props.navigation}
                                      date={this.props.storeRequests.list[item].dateSubmitted}
                                      distance={this.props.storeRequests.list[item].distance}/>

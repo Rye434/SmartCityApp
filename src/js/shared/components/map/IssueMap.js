@@ -84,9 +84,9 @@ class IssueMap extends Component {
                         longitude: parseFloat(this.props.storeRequests.list[marker].long)
                     }
                     }
+                        onPress={()=>this.props.requestDetail(this.props.storeRequests.list[marker].requestIdOpen311,this.props.storeRequests.list[marker].requestId)}
                 />))
             }
-
 
         return(
             <View>
@@ -142,7 +142,9 @@ const mapDistpatchToProps = (dispatch) => {
         preload:(position) => {
             dispatch(actions.preload(position))
         },
-
+        requestDetail:(ID, mgisID) =>{
+            dispatch(actions.requestDetail(ID, mgisID))
+        }
     }
 }
 
