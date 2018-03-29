@@ -6,7 +6,8 @@ import {
     ScrollView,
     KeyboardAvoidingView,
     Dimensions,
-    Image
+    Image,
+    ImageBackground
 
 } from 'react-native';
 // import {StyleProvider, Container, Header, Body, Title, Content} from 'native-base';
@@ -29,7 +30,7 @@ export default class CreateProfile extends Component {
             target = "AndroidSideBar"
         }
         return(
-            <Image style={Style.image.loginBackgroundImage} source={require('../../res/assets/img/smart-city-gradient.png')}>
+            <ImageBackground style={Style.image.loginBackgroundImage} source={require('../../res/assets/img/smart-city-gradient.png')}>
                 <Header style={{backgroundColor: 'rgba(0,0,0,0)', borderBottomWidth:0}}>
                     <Left>
                         <Button transparent onPress={() => this.props.navigation.navigate('Phone')}>
@@ -59,6 +60,9 @@ export default class CreateProfile extends Component {
                         <Input onChange={()=>console.log("LastName")} placeholder={Strings.FIELDS_LAST_NAME}/>
                         </View>
 
+                        <View floatingLabel keyboardType="numeric" style={Style.view.input}>
+                            <Input onChange={()=>console.log("Number")} placeholder="+1"/>
+                        </View>
                         <View floatingLabel keyboardType='email-address' style={[Style.view.input, Style.view.input2]}>
                         <Input onChange={()=>console.log("Email")} placeholder={Strings.FIELDS_EMAIL}/>
                         </View>
@@ -89,7 +93,7 @@ export default class CreateProfile extends Component {
                 </Form>
             </KeyboardAvoidingView>
         </ScrollView>
-            </Image>
+            </ImageBackground>
 
         )
 

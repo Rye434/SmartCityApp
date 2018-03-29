@@ -5,6 +5,8 @@ import {StackNavigator} from 'react-navigation';
 import * as actions from "../shared/actions/Actions";
 import {connect} from "react-redux";
 
+var Styles = require('../shared/res/assets/styles/Styles');
+
 class FooterIos extends Component {
 
     render() {
@@ -26,8 +28,8 @@ class FooterIos extends Component {
                             this.props.navigation.navigate('Camera')
                         }}
                                 active={'Camera' == this.props.activePage ? true: false}>
-                            <Icon name={'ios-camera'}/>
-                            <Text style={{fontSize:12}}>Camera</Text>
+                            <Icon name={'ios-camera'} style={{fontSize:48}}/>
+                            <Text style={{fontSize:12 , marginTop:-13,paddingBottom:0}}>Camera</Text>
                         </Button>
                     </FooterTab>
                     <FooterTab>
@@ -35,7 +37,7 @@ class FooterIos extends Component {
                             this.props.navigation.navigate('Requests')
                         }}
                                 active={'Requests' == this.props.activePage ? true: false}>
-                            <Icon name={'ios-paper'}/>
+                            <Icon name={'ios-paper'} style={{fontSize:26}}/>
                             <Text style={{fontSize:12}}>Requests</Text>
                         </Button>
                     </FooterTab>
@@ -52,14 +54,14 @@ function mapStateToProps(state) {
     }
 }
 
-const mapDistpatchToProps = (dispatch, name) => {
+const mapDispatchToProps = (dispatch, name) => {
     return {
         activeBtn: () => {
-            console.log(name.navigation.state.routeName)
+            console.log(name.navigation.state.routeName);
             return dispatch(actions.activeButton(name.navigation.state.routeName))
         }
     }
-}
+};
 
 
-export default connect(mapStateToProps,mapDistpatchToProps)(FooterIos)
+export default connect(mapStateToProps,mapDispatchToProps)(FooterIos)

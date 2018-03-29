@@ -42,25 +42,25 @@ class MapModal extends Component {
 
                     <TouchableWithoutFeedback>
                 <View style={{height:144, width:Dimensions.get('window').width,
-                    marginTop:modalSpaceHeight,alignItems: 'center', backgroundColor:'white'}}>
+                    marginTop:modalSpaceHeight, backgroundColor:'white'}}>
 
                     <View style={{flexDirection:'row', marginTop:8, marginBottom:8}}>
-                    <Thumbnail square large source={{uri: 'http://via.placeholder.com/80x80'}} />
+                    <Thumbnail square large source={{uri: 'http://via.placeholder.com/80x80'}} style={Styles.map.mapModal.thumbnail} />
 
-                        <View style={{flexDirection:'column'}}>
-                        <Text>Place Holder</Text>
-                        <Text note>Will be server response</Text>
+                        <View style={Styles.map.mapModal.textView}>
+                        <Text style={Styles.map.mapModal.text.title}>Graffiti</Text>
+                        <Text note style={Styles.map.mapModal.text.note}>Will be server response</Text>
                         </View>
                     </View>
                     <View style={{flex:1,flexDirection:'row'}}>
-                        <Button block info
+                        <Button block
                                 onPress={this.props.toggleModals}
-                                style={Styles.mapModal.buttons.moreInfo}>
+                                style={Styles.map.mapModal.buttons.moreInfo}>
                             <Text>{Strings.MAP_MODAL_MORE_INFO_BUTTON}</Text>
                         </Button>
                         <Button block success //change to warning on press
                                 // onPress={this.props.showMapModal}
-                                style={Styles.mapModal.buttons.plusOne}>
+                                style={Styles.map.mapModal.buttons.plusOne}>
                             <Text>{Strings.MAP_MODAL_ACKNOWLEDGE}</Text>
                         </Button>
                     </View>

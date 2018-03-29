@@ -4,6 +4,7 @@ import {
     StyleSheet,
     View,
     Image,
+    ImageBackground,
     KeyboardAvoidingView,
     Keyboard
 } from 'react-native';
@@ -28,7 +29,7 @@ export default class Phone extends Component {
             target = "Verification"
         }
         return(
-            <Image style={Style.image.loginBackgroundImage} source={require('../../res/assets/img/smart-city-gradient.png')}>
+            <ImageBackground style={Style.image.loginBackgroundImage} source={require('../../res/assets/img/smart-city-gradient.png')}>
                 <Header style={{backgroundColor: 'rgba(0,0,0,0)', borderBottomWidth:0}}>
                     <Left>
                         <Button transparent onPress={()=>this.props.navigation.navigate('PhoneOrFacebook')}>
@@ -61,7 +62,7 @@ export default class Phone extends Component {
                     {/*<Button style={{marginLeft:0}} onPress={() => this.props.navigation.navigate(target)}><Text>{Strings.BUTTONS_CONFIRM}</Text></Button>*/}
                 </Form>
             </KeyboardAvoidingView>
-            </Image>
+            </ImageBackground>
         )
 
     }

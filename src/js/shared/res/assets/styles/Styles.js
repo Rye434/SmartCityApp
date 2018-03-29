@@ -19,7 +19,13 @@ module.exports = {
         brandLight: "#f4f4f4",
     },
 
-
+    footer:{
+        icon:{
+            fontSize:35 ,
+            marginTop:0,
+            paddingBottom:0
+        }
+    },
     keyboardView: {
         flex: 1,
         flexDirection: 'column',
@@ -56,35 +62,52 @@ module.exports = {
                 marginBottom: 6,
                 marginTop: 6,
             },
+            phoneButton:{
+                flex: 0,
+                padding: 0,
+                margin: 0,
+                width: deviceWidth * .9,
+                height: 56,
+                borderRadius: 12,
+                marginBottom: 6,
+                marginTop: 6,
+                justifyContent:'center'
+            },
             textFacebook: {
                 flexWrap: 'wrap',
                 paddingLeft: 6,
-                width: deviceWidth * .5,
+                marginRight: deviceWidth * .13,
+                width: deviceWidth * .6,
                 fontSize: 20,
+                textAlign:'center',
                 color: '#eee'
             },
             textPhone: {
                 flexWrap: 'wrap',
                 paddingLeft: 6,
-                width: deviceWidth * .5,
+                //marginRight: deviceWidth * .15,
+                width: deviceWidth * .6,
                 fontSize: 20,
+                textAlign:'center',
                 color: '#5473b8'
 
             },
             iconPhone: {
-                right: -deviceWidth * .33,
+                //right: -deviceWidth * .33,
                 // width:dimension*.4,
                 marginRight: 0,
                 marginLeft: 0,
+                paddingLeft:deviceWidth*.05,
                 fontSize: 35,
                 textAlign: 'right',
                 color: '#5473b8'
             },
             iconFacebook: {
-                right: -deviceWidth * .33,
+                //right: -deviceWidth * .33,
                 // width:dimension*.4,
                 marginRight: 0,
                 marginLeft: 0,
+                paddingLeft:deviceWidth*.05,
                 fontSize: 35,
                 textAlign: 'right',
                 color: '#eee'
@@ -123,6 +146,13 @@ module.exports = {
         backgroundColor: '#eee'
     },
     text: {
+        loginH1:{
+            fontSize: 32,
+            fontWeight: 'bold',
+            paddingBottom: deviceHeight * .06,
+            color: '#eee',
+            backgroundColor: 'rgba(0,0,0,0)',
+        },
         h1: {
             fontSize: 24,
             fontWeight: 'bold',
@@ -132,11 +162,18 @@ module.exports = {
         },
         h2: {
             fontSize: 16,
-            paddingBottom: deviceHeight * .05,
+            paddingBottom: 5,
+            fontWeight: 'bold',
             textAlign: 'center',
             color: '#eee',
             backgroundColor: 'rgba(0,0,0,0)',
             width: deviceWidth * 0.8
+        },
+        textWhite:{
+            color:'#f4f4f4'
+        },
+        content:{
+            fontSize:16
         },
         loginText: {
             already: {
@@ -178,25 +215,97 @@ module.exports = {
     },
 
 
-    mapModal:{
-        buttons:{
-            moreInfo: {
-                backgroundColor: 'red',
-                height: 40,
-                flex: 1,
-                marginLeft: 8,
-                marginRight: 4,
+    map: {
+        mapModal: {
+            thumbnail: {
+                marginLeft: deviceWidth * .04
             },
-            plusOne: {
-                backgroundColor: 'blue',
-                height: 40,
-                flex: 1,
-                marginLeft: 8,
-                marginRight: 4,
+            textView: {
+                marginLeft: 10,
+                marginTop: 20,
+                flexDirection: 'column'
+            },
+            buttons: {
+                moreInfo: {
+                    backgroundColor: '#5473b8',
+                    height: 40,
+                    flex: 1,
+                    marginLeft: 8,
+                    marginRight: 4,
+                },
+                plusOne: {
+                    backgroundColor: '#059980',
+                    height: 40,
+                    flex: 1,
+                    marginLeft: 4,
+                    marginRight: 4,
+                }
+            },
+            text:{
+                title:{
+                    fontSize:22,
+                    fontWeight:'500'
+                },
+                note:{
+                    fontWeight:'500',
+                    color:'#222'
+                }
             }
-        },
 
         },
+        detailModal:{
+            backButton:{
+                marginTop:deviceHeight*.03
+            },
+            infoView:{
+                backgroundColor:'#1c4888',
+                height:80,
+                marginBottom:10,
+                justifyContent:'center',
+                paddingLeft:deviceWidth * 0.05,
+
+            },
+            plusOne:{
+                backgroundColor: '#059980',
+                width: deviceWidth * .95,
+                marginTop:6,
+                marginBottom: 10,
+                alignSelf:'center'
+            },
+            detailView:{
+                justifyContent:'center',
+                paddingLeft:deviceWidth * 0.05
+            },
+            text:{
+
+                header:{
+                    color:'#f4f4f4',
+                    fontSize: 22,
+                    marginBottom:4
+
+                },
+                note:{
+                    color:'#f4f4f4'
+                },
+                infoNote:{
+                    color:'#059980',
+                    marginBottom:8,
+                    fontWeight:'600'
+                },
+                info:{
+                    color:'#222',
+                    marginBottom:16,
+                    fontWeight:'600'
+                }
+
+            },
+            line:{
+                width:deviceWidth *.9,
+                marginBottom:8
+            }
+
+        }
+    },
 
     profileFields:{
         textFields:{
@@ -320,5 +429,5 @@ module.exports = {
     },
 
 
-}
+};
 

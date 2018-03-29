@@ -5,6 +5,7 @@ import {
     View,
     KeyboardAvoidingView,
     Image,
+    ImageBackground,
     Dimensions
 } from 'react-native';
 import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text, Drawer, Input, Label, Form, Item } from 'native-base';
@@ -19,7 +20,7 @@ export default class Verification extends Component {
 
     render() {
         return(
-            <Image style={Style.image.loginBackgroundImage} source={require('../../res/assets/img/smart-city-gradient.png')}>
+            <ImageBackground style={Style.image.loginBackgroundImage} source={require('../../res/assets/img/smart-city-gradient.png')}>
                 <Header style={{backgroundColor: 'rgba(0,0,0,0)', borderBottomWidth:0}}>
                     <Left>
                         <Button transparent onPress={() => this.props.navigation.navigate('Phone')}>
@@ -51,7 +52,7 @@ export default class Verification extends Component {
                 </Form>
                 <Button transparent style={{alignSelf:'center',paddingTop: deviceHeight * .15, }}><Text>Didn't get a verification code?</Text></Button>
             </KeyboardAvoidingView>
-            </Image>
+            </ImageBackground>
         )
 
     }

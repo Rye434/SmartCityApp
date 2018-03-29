@@ -62,7 +62,7 @@ function mapStateToProps(state) {
     }
 }
 
-const mapDistpatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch) => {
     return {
         calculateDistance: (userLoc,requestList,) => {
             dispatch(actions.calculateDistance(userLoc, requestList))
@@ -72,4 +72,4 @@ const mapDistpatchToProps = (dispatch) => {
 
 
 
-export default connect(mapStateToProps,mapDistpatchToProps)(RequestList)
+export default connect(mapStateToProps,mapDispatchToProps)(RequestList)
