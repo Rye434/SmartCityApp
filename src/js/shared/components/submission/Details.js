@@ -27,23 +27,23 @@ class Details extends Component {
                 <Image source={{uri: 'http://via.placeholder.com/250x375'}}  style={{height: 250, width: 500}}/>
                 <KeyboardAvoidingView style={{flex: 1, flexDirection:'column', justifyContent:'center', alignItems:'center'}} behavior="padding">
                     <Form>
-                        <Picker mode="dropdown" placeholder="Select A Department" note={false}
-                                onValueChange={console.log('dicks')}
-                                selectedValue={'id0'}
+                        <Picker mode="dropdown" placeholder={Strings.SUBMISSION_DETAILS_DEPARTMENT} note={false}
+                                onValueChange={console.log('DEPARTMENT')}
+                                selectedValue={''}
                                 >
                             <Item label="Top level placeholder" value="id0"/>
                             <Item label="Top level placeholder" value="id1"/>
 
                         </Picker>
-                        <Picker mode="dropdown" placeholder="Select A Subject" note={false}
-                                onValueChange={console.log('dicks2')}
-                                selectedValue={'id0'}
+                        <Picker mode="dropdown" placeholder={Strings.SUBMISSION_DETAILS_SUBJECT} note={false}
+                                onValueChange={console.log('SUBJECT')}
+                                selectedValue={''}
                         >
                             <Item label="Placeholder" value="id0"/>
                             <Item label="Placeholder" value="id1"/>
                         </Picker>
 
-                    <TextInput placeholder='Enter a Description' onChange={()=>console.log("FeebackBox Inputted")} multiline={true} maxLength={255} width={300}  height={125} autogrow={true}/>
+                    <TextInput placeholder='Enter a Description' onChange={()=>console.log("FeedbackBox Inputted")} multiline={true} maxLength={255} width={300}  height={125} autogrow={true}/>
                     </Form>
                 </KeyboardAvoidingView>
                 <Button><Text>{Strings.BUTTONS_SUBMIT}</Text></Button>

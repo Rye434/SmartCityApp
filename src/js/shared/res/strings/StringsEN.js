@@ -10,7 +10,7 @@ module.exports = {
     PAGE_HEADERS_PROFILE:"Profile",
     PAGE_HEADERS_ABOUT:"About",
     PAGE_HEADERS_FEEDBACK:"Feedback",
-    PAGE_HEADERS_DETAIL:'Detail',
+    PAGE_HEADERS_DETAIL:'Request Detail',
     PAGE_HEADERS_EDIT:'Edit Profile',
 
     HEADER_RETURN:"Back",
@@ -47,14 +47,14 @@ module.exports = {
     BUTTONS_SUBMIT:"Submit",
     BUTTONS_DONE:"Done",
     BUTTONS_CANCEL:"Cancel",
+    BUTTONS_OK:"Ok",
 
     CAMERA_WARNING:"Caution",
     CAMERA_WARNING_MESSAGE:"Always be aware of your surroundings before taking a picture",
-    CAMERA_WARMING_BUTTON:"Proceed",
 
-    REQUEST_SEGMENT_PUBLIC:"All",
-    REQUEST_SEGMENT_PERSONAL:"Mine",
-    REQUEST_SEGMENT_ACKNOWLEDGED:"Acknowledged",
+    REQUEST_SEGMENT_PUBLIC:"Public",
+    REQUEST_SEGMENT_PERSONAL:"Personal",
+    REQUEST_SEGMENT_ACKNOWLEDGED:"Acknowledge",
 
     PROFILE_PHONE:"Phone Number",
     PROFILE_EMAIL:"Email",
@@ -105,5 +105,7 @@ module.exports = {
     DETAIL_MODAL_STATUS:"Request Status",
     DETAIL_MODAL_DESCRIPTION:"Description",
 
+    SUBMISSION_DETAILS_DEPARTMENT:"Select A Department",
+    SUBMISSION_DETAILS_SUBJECT:"Select A Subject",
 
 }

@@ -18,7 +18,7 @@ export default class FeedbackContent extends Component {
         return(
             <View>
                 <TextInput placeholder='Type Feedback Here' onChange={()=>console.log("FeebackBox Inputted")} multiline={true} maxLength={1024} width={300}  height={400} autogrow={true}/>
-                <Button><Text>{Strings.BUTTONS_SUBMIT}</Text></Button>
+                <Button onPress={console.log("Feedback Submitted")}><Text>{Strings.BUTTONS_SUBMIT}</Text></Button>
             </View>
         )
 
