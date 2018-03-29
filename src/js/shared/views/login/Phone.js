@@ -37,9 +37,6 @@ export default class Phone extends Component {
 
                         </Button>
                     </Left>
-                    <Body>
-
-                    </Body>
                     <Right>
                         <Button transparent onPress={()=>this.props.navigation.navigate(target)}>
                             <Text>Next</Text>

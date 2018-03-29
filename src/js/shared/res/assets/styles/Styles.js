@@ -167,16 +167,13 @@ module.exports = {
             flex: 1,
             width: deviceWidth,
             height: deviceHeight,
+            justifyContent:'center',
+            alignItems:'center'
         },
         icon: {
             width: deviceWidth * .5,
             height: deviceHeight * .3,
             paddingBottom: 6
-        },
-        loginBackgroundImage: {
-            flex: 1,
-            width: deviceWidth,
-            height: deviceHeight
         },
     },
 
@@ -285,6 +282,7 @@ module.exports = {
             marginLeft: 16,
             marginRight: 16,
             marginTop: 16,
+            opacity: 1
         },
         aboutAppTitle:{
             color:'#006a54',

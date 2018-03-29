@@ -16,7 +16,8 @@ export default class AboutContent extends Component {
 
     render() {
         return(
-            <View style={Styles.aboutContent.aboutView}>
+            <ImageBackground source={MPLogo} style={Styles.aboutContent.aboutView}>
+            <View>
                 <Text style={Styles.aboutContent.aboutAppTitle}>{Strings.ABOUT_TITLE}</Text>
                 <Text style={Styles.aboutContent.versionAbout}>{Strings.ABOUT_VERSION}</Text>
                 <Text style={Styles.aboutContent.aboutDescription}>{Strings.ABOUT_DESCRIPTION}</Text>
@@ -43,6 +44,7 @@ export default class AboutContent extends Component {
                 <Text style={Styles.aboutContent.emailTitle}>{Strings.ABOUT_ZAHEED_EMAIL}</Text>
                 <Item/>
             </View>
+            </ImageBackground>
         )
 
     }
