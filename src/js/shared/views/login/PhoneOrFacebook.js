@@ -7,7 +7,8 @@ import {
     Image,
     ImageBackground,
     Dimensions,
-    Text
+    Text,
+    Alert
 } from 'react-native';
 import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Drawer, Input, Label, Form, Item } from 'native-base';
 
@@ -20,6 +21,19 @@ let target;
 
 export default class PhoneOrFacebook extends Component {
 
+
+    exitAlert = () => {
+        Alert.alert(
+            Strings.ALERT_TITLE,
+            Strings.ALERT_MESSAGE,
+            [
+                {text: Strings.ALERT_NEGATIVE, onPress: ()=> console.log('alert closed'), style:'cancel'},
+                {text: Strings.ALERT_POSITIVE, onPress: () => this.props.navigation.navigate('Camera') }
+            ],
+            { cancelable: false }
+        )
+    }
+
     render() {
         if(Platform.OS == 'ios'){
             target = "Map"
@@ -30,6 +44,7 @@ export default class PhoneOrFacebook extends Component {
 
         return(
            <ImageBackground style={Style.image.loginBackgroundImage} source={require('../../res/assets/img/smart-city-gradient.png')}>
+               <Button transparent onPress={this.exitAlert}><Icon name="close"></Icon></Button>
             <View style={{flex:1, justifyContent:'center',alignItems:'center'}}>
                 <Image style={Style.image.icon} source={require('../../res/assets/img/app-icon-sign-up.png')}/>
                 <Text style={Style.text.loginH1}>{Strings.PHONE_FACEBOOK_HEADER}</Text>

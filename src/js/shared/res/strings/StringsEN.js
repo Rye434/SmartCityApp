@@ -21,8 +21,10 @@ module.exports = {
 
     ALERT_TITLE:"Are you sure?",
     ALERT_MESSAGE:"If you leave now you will lose any unsaved data",
+    ALERT_MESSAGE_PHONE_FACEBOOK:"If you don't log in you can't submit a problem.",
     ALERT_NEGATIVE:"Cancel",
     ALERT_POSITIVE:"Ok",
+
 
     FIELDS_PHONE:"Phone",
     FIELDS_NUMBER:"Number",
@@ -97,7 +99,7 @@ module.exports = {
     ABOUT_ZAHEED_EMAIL:"jaff0021@algonquinlive.com",
 
     PHONE_FACEBOOK_HEADER:"Smart City",
-    PHONE_FACEBOOK_MESSAGE:"To continue please sign up with:",
+    PHONE_FACEBOOK_MESSAGE:"To continue please sign up with your:",
 
     DETAIL_MODAL_ACKNOWLEDGE:"Acknowledge - ",
     DETAIL_MODAL_DATE:"Date Submitted",
@@ -108,4 +110,4 @@ module.exports = {
     SUBMISSION_DETAILS_DEPARTMENT:"Select A Department",
     SUBMISSION_DETAILS_SUBJECT:"Select A Subject",
 
-}
+};
