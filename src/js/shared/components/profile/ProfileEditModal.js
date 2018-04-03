@@ -31,6 +31,7 @@ import {
 
 
 var Strings = require('../../res/strings/StringsEN.js');
+var Styles = require('../../res/assets/styles/Styles');
 
 class ProfileEditModal extends Component {
 
@@ -58,59 +59,61 @@ class ProfileEditModal extends Component {
                         </Right>
                     </Header>
 
-                    <KeyboardAvoidingView style={{flex: 1, flexDirection:'column', justifyContent:'center', alignItems:'center'}} behavior="padding">
-                    <Form style={{
-                        flex: 1,
-                        width: 350,
-                        paddingTop: 88,
-                        paddingBottom: 48,
-                        flexDirection: 'column',
-                        justifyContent: 'center',
-                        alignItems: 'center'
-                    }}>
+                    <Content>
+                        <KeyboardAvoidingView style={{flex: 1, flexDirection:'column', justifyContent:'center', alignItems:'center'}} behavior="padding">
+                        <Form style={{
+                            flex: 1,
+                            width: 350,
+                            paddingTop: 88,
+                            paddingBottom: 48,
+                            flexDirection: 'column',
+                            justifyContent: 'center',
+                            alignItems: 'center'
+                        }}>
 
-                        <Item inlineLabel style={{width: 300, marginLeft: 0}}>
-                            <Label>{Strings.FIELDS_FIRST_NAME}</Label>
-                            <Input onChange={() => console.log("First-Name")}/>
-                        </Item>
-                        <Item inlineLabel style={{width: 300, marginLeft: 0}}>
-                            <Label>{Strings.FIELDS_LAST_NAME}</Label>
-                            <Input onChange={() => console.log("LastName")}/>
-                        </Item>
-                        <Item inlineLabel keyboardType='phone-pad' style={{width: 300, marginLeft: 0}}>
-                            <Label>{Strings.FIELDS_PHONE}</Label>
-                            <Input onChange={() => console.log("Phone")}/>
-                        </Item>
-                        <Item inlineLabel keyboardType='email-address' style={{width: 300, marginLeft: 0}}>
-                            <Label>{Strings.FIELDS_EMAIL}</Label>
-                            <Input onChange={() => console.log("Email")}/>
-                        </Item>
-                        <Item inlineLabel style={{width: 300, marginLeft: 0}}>
-                            <Label>{Strings.FIELDS_ADDRESS}</Label>
-                            <Input onChange={() => console.log("Address")}/>
-                        </Item>
-                        <Item inlineLabel style={{width: 300, marginLeft: 0}}>
-                            <Label>{Strings.FIELDS_ADDRESS_LINE2}</Label>
-                            <Input onChange={() => console.log("AddressLine")}/>
-                        </Item>
-                        <Item fixedLabel style={{width: 300, marginLeft: 0}}>
-                            <Label>{Strings.FIELDS_POSTAL}</Label>
-                            <Input onChange={() => console.log("Postal")}/>
-                        </Item>
-                        <Item fixedLabel style={{width: 300, marginLeft: 0}}>
-                            <Label>{Strings.FIELDS_CITY}</Label>
-                            <Input onChange={() => console.log("City")}/>
-                        </Item>
-                        <Item fixedLabel style={{width: 300, marginLeft: 0}}>
-                            <Label>{Strings.FIELDS_PROVINCE}</Label>
-                            <Input onChange={() => console.log("Province")}/>
-                        </Item>
-                        <Item fixedLabel style={{width: 300, marginLeft: 0}}>
-                            <Label>{Strings.FIELDS_COUNTRY}</Label>
-                            <Input onChange={() => console.log("Country")}/>
-                        </Item>
-                    </Form>
-                    </KeyboardAvoidingView>
+                            <Item inlineLabel style={Styles.profileEditModal.firstNameField}>
+                                <Label>{Strings.FIELDS_FIRST_NAME}</Label>
+                                <Input onChange={() => console.log("First-Name")}/>
+                            </Item>
+                            <Item inlineLabel style={Styles.profileEditModal.lastNameField}>
+                                <Label>{Strings.FIELDS_LAST_NAME}</Label>
+                                <Input onChange={() => console.log("LastName")}/>
+                            </Item>
+                            <Item inlineLabel keyboardType='phone-pad' style={Styles.profileEditModal.phoneField}>
+                                <Label>{Strings.FIELDS_PHONE}</Label>
+                                <Input onChange={() => console.log("Phone")}/>
+                            </Item>
+                            <Item inlineLabel keyboardType='email-address' style={Styles.profileEditModal.emailField}>
+                                <Label>{Strings.FIELDS_EMAIL}</Label>
+                                <Input onChange={() => console.log("Email")}/>
+                            </Item>
+                            <Item inlineLabel style={Styles.profileEditModal.addressLineField}>
+                                <Label>{Strings.FIELDS_ADDRESS}</Label>
+                                <Input onChange={() => console.log("Address")}/>
+                            </Item>
+                            <Item inlineLabel style={Styles.profileEditModal.addressLineSubField}>
+                                <Label>{Strings.FIELDS_ADDRESS_LINE2}</Label>
+                                <Input onChange={() => console.log("AddressLine")}/>
+                            </Item>
+                            <Item inlineLabel Label style={Styles.profileEditModal.addressLineSubField}>
+                                <Label>{Strings.FIELDS_POSTAL}</Label>
+                                <Input onChange={() => console.log("Postal")}/>
+                            </Item>
+                            <Item inlineLabel style={Styles.profileEditModal.addressLineSubField}>
+                                <Label>{Strings.FIELDS_CITY}</Label>
+                                <Input onChange={() => console.log("City")}/>
+                            </Item>
+                            <Item inlineLabel style={Styles.profileEditModal.addressLineSubField}>
+                                <Label>{Strings.FIELDS_PROVINCE}</Label>
+                                <Input onChange={() => console.log("Province")}/>
+                            </Item>
+                            <Item inlineLabel style={Styles.profileEditModal.addressLineSubField}>
+                                <Label>{Strings.FIELDS_COUNTRY}</Label>
+                                <Input onChange={() => console.log("Country")}/>
+                            </Item>
+                        </Form>
+                        </KeyboardAvoidingView>
+                    </Content>
 
                 </Modal>
                 )}
