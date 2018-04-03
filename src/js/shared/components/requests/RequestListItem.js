@@ -7,6 +7,12 @@ import {Title, Container, Header, Content, Card, CardItem, Thumbnail, Text, Butt
 let arrow;
 
 class RequestListItem extends Component {
+    clicked = () => {
+        this.props.detailRequest(this.props.wholeObj)
+        this.props.navigation.navigate('RequestListDetail')
+    }
+
+
     render() {
         if(Platform.OS == "ios"){
            arrow = <Icon name="ios-arrow-forward" />
@@ -16,7 +22,7 @@ class RequestListItem extends Component {
         }
         return (
             <List>
-                <ListItem thumbnail onPress={()=>this.props.navigation.navigate('RequestListDetail')} >
+                <ListItem thumbnail onPress={()=>this.clicked()} >
                     <Left>
                     <Thumbnail square size={80} source={{ uri: 'http://via.placeholder.com/80x80' }} />
                     </Left>
@@ -39,7 +45,9 @@ function mapStateToProps(state) {
 
 const mapDistpatchToProps = (dispatch) => {
     return {
-
+        detailRequest: (obj) => {
+            dispatch(actions.detailRequest(obj))
+        }
     }
 }
 

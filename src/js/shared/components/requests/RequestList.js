@@ -44,7 +44,9 @@ class RequestList extends Component {
                                      title={this.props.storeRequests.list[item].serviceName}
                                      navigation={this.props.navigation}
                                      date={this.props.storeRequests.list[item].dateSubmitted}
-                                     distance={this.props.storeRequests.list[item].distance}/>
+                                     distance={this.props.storeRequests.list[item].distance}
+                                     wholeObj={this.props.storeRequests.list[item]}
+                    />
                 )
 
             }.bind(this))}
@@ -67,6 +69,7 @@ const mapDispatchToProps = (dispatch) => {
         calculateDistance: (userLoc,requestList,) => {
             dispatch(actions.calculateDistance(userLoc, requestList))
         },
+
     }
 };
 

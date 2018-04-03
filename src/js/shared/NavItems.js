@@ -83,7 +83,7 @@ export const routesAndroid = [
     {
         name: Strings.PAGE_HEADERS_REQUESTS,
         route: "Requests",
-        icon: "time"
+        icon: "file"
     },
     {
         name: Strings.PAGE_HEADERS_ABOUT,

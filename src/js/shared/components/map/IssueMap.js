@@ -12,6 +12,7 @@ import MapModal from './MapModal';
 import DetailModal from './DetailModal';
 import {connect} from "react-redux";
 import * as actions from "../../actions/Actions";
+import {currentRequest} from "../../actions/Actions";
 
 
 var Strings = require('../../res/strings/StringsEN');
@@ -27,7 +28,6 @@ let markers;
 
 let customMarker;
 let customImage = require('../../res/assets/img/Button.png');
-
 
 class IssueMap extends Component {
 
@@ -66,7 +66,7 @@ class IssueMap extends Component {
                     <MapView.Marker
                         key={i}
                         coordinate={marker.coordinates}
-                        onPress={()=>this.props.showMapModal()}
+                        //onPress={()=>this.props.showMapModal()}
                     >
                         {customMarker}
                     </MapView.Marker>
@@ -84,15 +84,21 @@ class IssueMap extends Component {
                         longitude: parseFloat(this.props.storeRequests.list[marker].long)
                     }
                     }
-                        onPress={()=>this.props.requestDetail(this.props.storeRequests.list[marker].requestIdOpen311,this.props.storeRequests.list[marker].requestId)}
+                        onPress={()=>this.props.requestDetail(this.props.storeRequests.list[marker].requestIdOpen311,this.props.storeRequests.list[marker].requestId, true)}
                 />))
             }
 
-        return(
-            <View>
 
-            <DetailModal/>
-            <MapModal/>
+            if(this.props.currentRequest != {}){
+                detailModal = <DetailModal/>
+                mapModal = <MapModal/>
+            }
+
+        return(
+            <View style={{flex:1}}>
+
+                <DetailModal/>
+                <MapModal/>
 
             <MapView.Animated
                 provider='google'
@@ -100,7 +106,7 @@ class IssueMap extends Component {
                             paddingTop:topSpace,
                             flex:1,
                             width: width,
-                            height: height*1.1,
+                            height: height
 
                             }}
                     showsUserLocation={true}
@@ -142,8 +148,8 @@ const mapDistpatchToProps = (dispatch) => {
         preload:(position) => {
             dispatch(actions.preload(position))
         },
-        requestDetail:(ID, mgisID) =>{
-            dispatch(actions.requestDetail(ID, mgisID))
+        requestDetail:(ID, mgisID, bool) =>{
+            dispatch(actions.requestDetail(ID, mgisID, bool))
         }
     }
 }

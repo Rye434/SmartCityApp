@@ -27,7 +27,8 @@ let state = {
     actionSheetValue: 0,
     services:[],
     distanceLoaded: false,
-    currentRequest:{},
+    currentRequest:null,
+    detailRequest:null,
 
 }
 

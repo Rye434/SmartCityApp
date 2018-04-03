@@ -8,11 +8,19 @@ var Strings = require('../../res/strings/StringsEN');
 var Styles = require('../../res/assets/styles/Styles');
 
 let modalSpaceHeight;
-
+let serviceName;
+let serviceGroup;
 
 class MapModal extends Component {
 
     render() {
+
+        if(this.props.currentRequest != null) {
+            //console.log(this.props.currentRequest.info.serviceName)
+            serviceName = this.props.currentRequest.info.serviceName
+            serviceGroup = this.props.currentRequest.info.serviceGroup
+        }
+
 
         if(Platform.OS == 'android'){
             if(Dimensions.get('window').height<=700) {
@@ -48,8 +56,8 @@ class MapModal extends Component {
                     <Thumbnail square large source={{uri: 'http://via.placeholder.com/80x80'}} style={Styles.map.mapModal.thumbnail} />
 
                         <View style={Styles.map.mapModal.textView}>
-                        <Text style={Styles.map.mapModal.text.title}>Graffiti</Text>
-                        <Text note style={Styles.map.mapModal.text.note}>Will be server response</Text>
+                        <Text style={Styles.map.mapModal.text.title}>{serviceGroup}</Text>
+                        <Text note style={Styles.map.mapModal.text.note}>{serviceName}</Text>
                         </View>
                     </View>
                     <View style={{flex:1,flexDirection:'row'}}>
@@ -78,6 +86,7 @@ class MapModal extends Component {
 function mapStateToProps(state) {
     return{
         mapModal: state.mapModal,
+        currentRequest: state.currentRequest
     }
 }
 

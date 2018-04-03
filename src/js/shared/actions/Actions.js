@@ -12,6 +12,7 @@ export const SERVICES = "SERVICES";
 export const UPDATE_ACTION_SHEET_VALUE = "UPDATE_ACTION_SHEET_VALUE";
 export const DISTANCE_LOADED = "DISTANCE_LOADED";
 export const CURRENT_REQUEST = "CURRENT_REQUEST";
+export const DETAIL_REQUEST = "DETAIL_REQUEST";
 
 var Constants = require('../res/constants/AppConstants');
 
@@ -178,6 +179,13 @@ export function currentRequest(obj) {
     }
 }
 
+export function detailRequest(obj) {
+    return{
+        type: DETAIL_REQUEST,
+        detailRequest: obj
+    }
+}
+
 // API calls
 export function calculateDistance(userLoc, requestList){
     console.log("CALL GOOGLE: DISTANCE");
@@ -251,7 +259,7 @@ export function fetchServiceList(){
     }
 }
 
-export function requestDetail(ID, mgisID) {
+export function requestDetail(ID, mgisID, bool) {
     console.log("REQUEST_DETAIL: FETCH")
     return (dispatch)=>{
         axios.post(Constants.BASE_URL + '/registerservice/api/requests/getRequestInfo',
@@ -269,9 +277,9 @@ export function requestDetail(ID, mgisID) {
             },
         )
             .then((response) => {
-                console.log(JSON.parse(response.request.response))
-                // dispatch(storeServices(JSON.parse(response.request.response)))
+                //console.log(JSON.parse(response.request.response))
                 dispatch(currentRequest(JSON.parse(response.request.response)))
+                dispatch(mapModal(bool))
             })
             .catch(function (error) {
                 console.log(error);
