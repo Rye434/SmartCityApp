@@ -501,7 +501,51 @@ module.exports = {
 
     },
 
-    requests:{
+    profileEditModal:{
+        firstNameField:{
+            marginLeft: 16,
+        },
+   
+        lastNameField:{
+            marginLeft: 16,
+            marginBottom: 20,
+        },
+
+        phoneField:{
+            marginLeft: 16,
+        },
+
+        emailField:{
+            marginLeft: 16,
+            marginBottom: 20,
+        },
+
+        addressLineField:{
+            marginLeft: 16,
+        },
+
+        addressLineSubField:{
+            marginLeft: 16,
+        },
+    },
+
+    feedbackContent:{
+        userInputField:{
+            fontSize: 18,
+            margin: 16,
+        },
+        submitButton:{
+            alignSelf: 'center',
+            backgroundColor: '#059980',
+            width: deviceWidth/1.25,
+        },
+        submitButtonText:{
+            textAlign: 'center',
+            justifyContent:'center',
+            flex: 1,
+        },
+    },
+     requests:{
         note:{
             color:'#059980',
             fontWeight: contentFontWeight
@@ -521,7 +565,6 @@ module.exports = {
             justifyContent:'center'
         }
     }
-
-
-};
+      
+    };
 
