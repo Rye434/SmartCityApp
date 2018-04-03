@@ -11,6 +11,7 @@ export const STORE_SERVICES = "STORE_SERVICES";
 export const SERVICES = "SERVICES";
 export const UPDATE_ACTION_SHEET_VALUE = "UPDATE_ACTION_SHEET_VALUE";
 export const DISTANCE_LOADED = "DISTANCE_LOADED";
+export const CURRENT_REQUEST = "CURRENT_REQUEST";
 
 var Constants = require('../res/constants/AppConstants');
 
@@ -170,6 +171,13 @@ export function updateDistance(requestList,distanceObj) {
     }
 }
 
+export function currentRequest(obj) {
+    return{
+        type: CURRENT_REQUEST,
+        currentRequest: obj
+    }
+}
+
 // API calls
 export function calculateDistance(userLoc, requestList){
     console.log("CALL GOOGLE: DISTANCE");
@@ -193,9 +201,6 @@ export function calculateDistance(userLoc, requestList){
         }
 
 }
-
-
-
 
 export function fetchRequestList(position){
     console.log("REQUEST_LIST: FETCH");
@@ -246,4 +251,31 @@ export function fetchServiceList(){
     }
 }
 
+export function requestDetail(ID, mgisID) {
+    console.log("REQUEST_DETAIL: FETCH")
+    return (dispatch)=>{
+        axios.post(Constants.BASE_URL + '/registerservice/api/requests/getRequestInfo',
+            {
+                "requestIdOpen311"	: ID,
+                "requestId"			: mgisID
+            },
+            {
+                headers: {
+                    'PTM_HEADER_ORG_ID': Constants.ORGANIZATION_ID,
+                    'PTM_HEADER_APP_ID': Constants.MGIS_APP_ID,
+                    'PTM_LANGUAGE': 'eng',
+                    'Content-Type': 'application/json',
+                }
+            },
+        )
+            .then((response) => {
+                console.log(JSON.parse(response.request.response))
+                // dispatch(storeServices(JSON.parse(response.request.response)))
+                dispatch(currentRequest(JSON.parse(response.request.response)))
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
 
+}
