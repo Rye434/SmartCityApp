@@ -32,7 +32,7 @@ export default class PhoneOrFacebook extends Component {
             ],
             { cancelable: false }
         )
-    }
+    };
 
     render() {
         if(Platform.OS == 'ios'){
@@ -46,14 +46,12 @@ export default class PhoneOrFacebook extends Component {
            <ImageBackground style={Style.image.loginBackgroundImage} source={require('../../res/assets/img/smart-city-gradient.png')}>
                <Header style={Style.header}>
                    <Left>
-                       <Button transparent onPress={() => this.props.navigation.navigate('Phone')}>
+                       <Button transparent onPress={this.exitAlert}>
                            <Icon name='close' style={{fontSize:45}}/>
                        </Button>
 
                    </Left>
-                   <Body>
-
-                   </Body>
+                   <Body></Body>
                    <Right></Right>
                </Header>
             <View style={{flex:1, justifyContent:'center',alignItems:'center'}}>
@@ -66,11 +64,6 @@ export default class PhoneOrFacebook extends Component {
                         <Text style={[Style.button.loginButton.textPhone, Style.theme.textPhone]}>{Strings.BUTTONS_PHONE}</Text>
                     </Button>
                     <View style={Style.lineBox}>
-                        {/*<View style={Style.line}/>*/}
-                        {/*<Text style={{fontSize:18, backgroundColor: 'rgba(0,0,0,0)', color:'#eee'}}>*/}
-                            {/*or*/}
-                        {/*</Text>*/}
-                        {/*<View style={Style.line}/>*/}
 
                         <Item style={Style.line}></Item>
                         <Text style={Style.lineText}>
