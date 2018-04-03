@@ -21,11 +21,11 @@ export default class Verification extends Component {
     render() {
         return(
             <ImageBackground style={Style.image.loginBackgroundImage} source={require('../../res/assets/img/smart-city-gradient.png')}>
-                <Header style={{backgroundColor: 'rgba(0,0,0,0)', borderBottomWidth:0}}>
+                <Header style={Style.header}>
                     <Left>
                         <Button transparent onPress={() => this.props.navigation.navigate('Phone')}>
                             <Icon name='arrow-back'/>
-                            <Text>Back</Text>
+                            <Text style={{paddingLeft:16, paddingRight:0, width:100}}>Back</Text>
                         </Button>
                     </Left>
                     <Body>

@@ -1,12 +1,21 @@
 //add this just after imports: var Strings = require('path-to/StringsEN');
 //then can reference as Strings.CONSTANT_NAME_IN_ALL_CAPS
 
-import {Dimensions} from 'react-native';
+import {Dimensions, Platform} from 'react-native';
 
 const deviceHeight = Dimensions.get("window").height;
 const deviceWidth = Dimensions.get("window").width;
+const resizeMode = 'center';
+const platform = Platform.OS;
+if(Platform.OS == 'ios'){
+    taskbarPadding = 0 ;
+    contentFontWeight = '600';
 
-
+}
+if(Platform.OS == 'android'){
+    taskbarPadding = deviceHeight * 0.1;
+    contentFontWeight = '400';
+}
 module.exports = {
 
     theme: {
@@ -17,6 +26,12 @@ module.exports = {
         secondaryLight: "#53cbaf", //secondary light
         brandDark: "#222",
         brandLight: "#f4f4f4",
+    },
+    header:{
+        width:deviceWidth,
+        backgroundColor: 'rgba(0,0,0,0)',
+        borderBottomWidth:0,
+        elevation:0
     },
 
     footer:{
@@ -76,11 +91,12 @@ module.exports = {
             textFacebook: {
                 flexWrap: 'wrap',
                 paddingLeft: 6,
-                marginRight: deviceWidth * .13,
-                width: deviceWidth * .6,
+                marginRight: platform === "ios" ? deviceWidth * .13 : deviceWidth * .1,
+                width: platform === "ios" ? deviceWidth * .6 : deviceWidth * .7,
                 fontSize: 20,
-                textAlign:'center',
-                color: '#eee'
+                textAlign:platform === "ios" ? 'center' : 'center',
+                color: '#eee',
+                fontWeight: platform === "ios" ? '600' : '400'
             },
             textPhone: {
                 flexWrap: 'wrap',
@@ -89,7 +105,8 @@ module.exports = {
                 width: deviceWidth * .6,
                 fontSize: 20,
                 textAlign:'center',
-                color: '#5473b8'
+                color: '#5473b8',
+                fontWeight: platform === "ios" ? '600' : '400'
 
             },
             iconPhone: {
@@ -127,7 +144,10 @@ module.exports = {
         },
 
         loginButton2: {
+
             paddingTop: deviceHeight * .15,
+            paddingBottom: platform === "ios" ? 0 : taskbarPadding,
+
             width: deviceWidth * .9,
             justifyContent: 'center'
         },
@@ -139,11 +159,28 @@ module.exports = {
 
     },
     line: {
-        width: deviceWidth * .4,
-        borderWidth: 1,
+        //width: deviceWidth * .4,
+        flex:3,
+        borderBottomWidth: 1.2,
         borderColor: '#eee',
-        margin: 10,
-        backgroundColor: '#eee'
+        //backgroundColor: '#eee'
+    },
+    lineBox:{
+        flex:1,
+        flexDirection:'row',
+        //justifyContent:'center',
+        marginTop: 10,
+        marginBottom:10,
+        height:25
+    },
+    lineText:{
+        height:25,
+        flex:1,
+        fontSize:18,
+        backgroundColor: 'rgba(0,0,0,0)',
+        color:'#eee',
+        textAlign:'center',
+        alignSelf:'center'
     },
     text: {
         loginH1:{
@@ -270,7 +307,8 @@ module.exports = {
                 width: deviceWidth * .95,
                 marginTop:6,
                 marginBottom: 10,
-                alignSelf:'center'
+                alignSelf:'center',
+                justifyContent:'center'
             },
             detailView:{
                 justifyContent:'center',
@@ -280,22 +318,23 @@ module.exports = {
 
                 header:{
                     color:'#f4f4f4',
-                    fontSize: 22,
+                    fontSize: platform === "ios" ? 22 : 22,
                     marginBottom:4
 
                 },
                 note:{
-                    color:'#f4f4f4'
+                    color: '#f4f4f4'
                 },
                 infoNote:{
-                    color:'#059980',
-                    marginBottom:8,
-                    fontWeight:'600'
+                    color: platform === "ios" ? '#059980': "#059980",
+                    marginBottom: platform === "ios" ? 8 : 8,
+                    fontWeight: platform === "ios" ? '600' : '400'
                 },
                 info:{
-                    color:'#222',
+                    color: platform === "ios" ? '#222' : '#222',
                     marginBottom:16,
-                    fontWeight:'600'
+                    // fontWeight: contentFontWeight
+                    fontWeight: platform === "ios" ? '600' : '400'
                 }
 
             },
@@ -323,9 +362,11 @@ module.exports = {
             fontSize: 14,
         },
         subContentField:{
+            color:'#222',
             marginTop: 5,
             marginBottom: 10,
             fontSize: 16,
+            fontWeight:'600'
         },
         subTitleField:{
             marginTop: 10,
@@ -334,17 +375,23 @@ module.exports = {
         },
         addressSubField:{
             topField:{
+                color:"#222",
                 marginTop: 5,
                 fontSize: 16,
+                fontWeight:'600'
             },
             middleField:{
+                color:"#222",
                 marginTop: 2,
                 marginBottom: 2,
                 fontSize: 16,
+                fontWeight:'600'
             },
             bottomField:{
-                marginBottom: 10,
+                color:"#222",
+                marginBottom: 20,
                 fontSize: 16,
+                fontWeight:'600'
             },
         },
     },
@@ -387,11 +434,27 @@ module.exports = {
     },
 
     aboutContent:{
+        backgroundImage:{
+            flex: 1,
+            //position:'absolute',
+            //top:0,
+            //left:0,
+            width: deviceWidth *1.1,
+            height: deviceHeight *1.3,
+            resizeMode: 'contain',
+            marginTop:- deviceHeight*.175,
+            alignSelf:'center',
+            //backgroundColor: 'rgba(0,0,0,0.1)'
+            opacity: 0.09
+
+        },
         aboutView:{
-            marginLeft: 16,
-            marginRight: 16,
-            marginTop: 16,
-            opacity: 1
+            backgroundColor:'transparent',
+            position:'absolute',
+            top:20,
+            marginLeft: deviceWidth * 0.04
+
+
         },
         aboutAppTitle:{
             color:'#006a54',
@@ -401,32 +464,63 @@ module.exports = {
         versionAbout:{
             color:'#006a54',
             marginTop: 2,
-            fontSize: 12,
+            //fontSize: 12,
+            fontWeight:'600'
         },
         aboutDescription:{
             fontSize: 14,
-            justifyContent: 'center',
+            width: deviceWidth * 0.9,
             textAlign: 'center',
             marginTop: 15,
             marginBottom: 20,
+            fontWeight: '600'
         },
         contactInfoTitle:{
-            fontSize: 12,
+            //fontSize: 12,
             color:'#006a54',
             fontWeight: 'bold',
         },
         nameTitle:{
-            fontSize: 14,
+            fontSize: 16,
             marginBottom: 2,
-            marginTop: 5,
+            marginTop: 6,
             color: '#059980',
         },
         emailTitle:{
-            fontSize: 16,
+            fontSize: 18,
             marginBottom: 10,
+            fontWeight:'600'
         },
+        line:{
+            marginBottom:3,
+            borderBottomWidth:1.2
+        },
+        lastLine:{
+            paddingBottom: taskbarPadding
+        }
 
     },
+
+    requests:{
+        note:{
+            color:'#059980',
+            fontWeight: contentFontWeight
+        },
+        text:{
+            color:'#222',
+            fontWeight: contentFontWeight,
+            marginBottom:5
+        },
+        icon:{
+            color:'#53cbaf'
+        },
+        submitButton:{
+            width: deviceWidth * 0.5,
+            alignSelf:'center',
+            backgroundColor: '#53cbaf',
+            justifyContent:'center'
+        }
+    }
 
 
 };

@@ -5,6 +5,7 @@ import {connect} from "react-redux";
 import {Title, Container, Header, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body, Right, Tab, Tabs, List, ListItem, Footer, Segment } from 'native-base';
 
 let arrow;
+var Style = require('../../res/assets/styles/Styles');
 
 class RequestListItem extends Component {
     clicked = () => {
@@ -15,10 +16,10 @@ class RequestListItem extends Component {
 
     render() {
         if(Platform.OS == "ios"){
-           arrow = <Icon name="ios-arrow-forward" />
+           arrow = <Icon name="ios-arrow-forward" style={Style.requests.icon} />
         }
         if(Platform.OS == "android"){
-           arrow = <Icon name="md-arrow-forward" />
+           arrow = <Icon name="md-arrow-forward" style={Style.requests.icon}/>
         }
         return (
             <List>
@@ -27,8 +28,8 @@ class RequestListItem extends Component {
                     <Thumbnail square size={80} source={{ uri: 'http://via.placeholder.com/80x80' }} />
                     </Left>
                     <Body>
-                        <Text>{this.props.title}</Text>
-                        <Text note>{this.props.distance} - {this.props.date.slice(0,10)} </Text>
+                        <Text style={Style.requests.text}>{this.props.title}</Text>
+                        <Text note style={Style.requests.note}>{this.props.distance} - {this.props.date.slice(0,10)} </Text>
                     </Body>
                     <Right>{arrow}</Right>
                 </ListItem>

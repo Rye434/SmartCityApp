@@ -15,9 +15,9 @@ import {  StyleProvider, Container, Header, Title, Content, Footer, FooterTab, B
 
 
 //width: Dimensions.get('window').width*.8
-var Strings = require('../../res/strings/StringsEN.js');
-var Style = require('../../res/assets/styles/Styles');
-var dimens = Dimensions.get('window').width;
+const Strings = require('../../res/strings/StringsEN.js');
+const Style = require('../../res/assets/styles/Styles');
+const dimens = Dimensions.get('window').width;
 let target;
 
 export default class CreateProfile extends Component {
@@ -25,17 +25,18 @@ export default class CreateProfile extends Component {
     render() {
         if(Platform.OS == 'ios'){
             target = "Map"
+
         }
         if(Platform.OS == 'android'){
             target = "AndroidSideBar"
         }
         return(
             <ImageBackground style={Style.image.loginBackgroundImage} source={require('../../res/assets/img/smart-city-gradient.png')}>
-                <Header style={{backgroundColor: 'rgba(0,0,0,0)', borderBottomWidth:0}}>
+                <Header style={Style.header}>
                     <Left>
                         <Button transparent onPress={() => this.props.navigation.navigate('Phone')}>
                             <Icon name='arrow-back' />
-                            <Text>Back</Text>
+                            <Text style={{paddingLeft:16, paddingRight:0, width:100}}>Back</Text>
                         </Button>
                     </Left>
                     <Body>

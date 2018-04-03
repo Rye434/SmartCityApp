@@ -28,8 +28,8 @@ class FooterIos extends Component {
                             this.props.navigation.navigate('Camera')
                         }}
                                 active={'Camera' == this.props.activePage ? true: false}>
-                            <Icon name={'ios-camera'} style={{fontSize:48}}/>
-                            <Text style={{fontSize:12 , marginTop:-13,paddingBottom:0}}>Camera</Text>
+                            <Icon name={'ios-camera'} style={{fontSize:30}}/>
+                            <Text >Camera</Text>
                         </Button>
                     </FooterTab>
                     <FooterTab>

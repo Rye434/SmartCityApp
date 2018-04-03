@@ -12,7 +12,8 @@ import {connect} from "react-redux";
 import {distanceLoaded} from "../../actions/Actions";
 
 
-var Strings = require('../../res/strings/StringsEN.js');
+const Strings = require('../../res/strings/StringsEN.js');
+const Styles = require('../../res/assets/styles/Styles');
 
 let serviceName;
 let serviceGroup;
@@ -20,7 +21,6 @@ let dateSubmitted;
 let description;
 let status;
 let distance;
-
 
 class RequestDetail extends Component {
 
@@ -39,24 +39,22 @@ class RequestDetail extends Component {
             <View>
                 <Image source={{uri: 'http://via.placeholder.com/250x500'}}  style={{height: 250, width: 500}}></Image>
 
-                <View>
-                    <Text>{serviceName}</Text>
-                    <Text note>219 Laurier Ave W, Ottawa ON K1P</Text>
-                </View>
-                <Button><Text>{Strings.DETAIL_MODAL_ACKNOWLEDGE}109</Text></Button>
+                <Button style={Styles.map.detailModal.plusOne}><Text>{Strings.DETAIL_MODAL_ACKNOWLEDGE}109</Text></Button>
 
-                <Text>{Strings.DETAIL_MODAL_DATE}</Text>
-                <Text>{dateSubmitted}</Text>
-                <Item/>
-                <Text>{Strings.DETAIL_MODAL_DISTANCE}</Text>
-                <Text>{distance}</Text>
-                <Item/>
-                <Text>{Strings.DETAIL_MODAL_STATUS}</Text>
-                <Text>{status}</Text>
-                <Item/>
-                <Text>{Strings.DETAIL_MODAL_DESCRIPTION}</Text>
-                <Text>{description}</Text>
-                <Item/>
+                <View style={Styles.map.detailModal.detailView}>
+                <Text note style={Styles.map.detailModal.text.infoNote}>{Strings.DETAIL_MODAL_DATE}</Text>
+                <Text style={Styles.map.detailModal.text.info}>{dateSubmitted}</Text>
+                <Item style={Styles.map.detailModal.line}/>
+                <Text note style={Styles.map.detailModal.text.infoNote}>{Strings.DETAIL_MODAL_DISTANCE}</Text>
+                <Text style={Styles.map.detailModal.text.info}>{distance}</Text>
+                <Item style={Styles.map.detailModal.line}/>
+                <Text note style={Styles.map.detailModal.text.infoNote}>{Strings.DETAIL_MODAL_STATUS}</Text>
+                <Text style={Styles.map.detailModal.text.info}>{status}</Text>
+                <Item style={Styles.map.detailModal.line}/>
+                <Text note style={Styles.map.detailModal.text.infoNote}>{Strings.DETAIL_MODAL_DESCRIPTION}</Text>
+                <Text style={Styles.map.detailModal.text.info}>{description}</Text>
+                <Item style={Styles.map.detailModal.line}/>
+                </View>
             </View>
         )
 

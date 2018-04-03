@@ -14,6 +14,7 @@ import stocksApp from "./src/js/shared/reducers/Reducers";
 import {AppRouteAndroid, AppRouteIos, AppRoute, AppNavigator, LoginFlow} from "./src/js/shared/NavItems";
 import getTheme from './native-base-theme/components'
 import platform from './native-base-theme/variables/platform';
+import About from './src/js/shared/views/About';
 
 let state = {
     photoCached: {},
@@ -62,24 +63,24 @@ export default class App extends Component {
     if(Platform.OS === 'android') {
         return (
             <StyleProvider style={getTheme(platform)}>
-            <Provider store={store}>
-                <Root>
-                <Container>
-                <AppRouteAndroid/>
-                </Container>
-                </Root>
-            </Provider>
+                <Provider store={store}>
+                    <Root>
+                        <Container>
+                            <AppRouteAndroid/>
+                        </Container>
+                    </Root>
+                </Provider>
             </StyleProvider>
         );
     }
     if(Platform.OS === 'ios'){
       return (
           <StyleProvider style={getTheme(platform)}>
-          <Provider store={store}>
-              <Root>
-            <LoginFlow/>
-              </Root>
-          </Provider>
+              <Provider store={store}>
+                  <Root>
+                      <LoginFlow/>
+                  </Root>
+              </Provider>
           </StyleProvider>
         );
     }

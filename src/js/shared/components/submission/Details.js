@@ -10,8 +10,8 @@ import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Rig
 import * as actions from "../../actions/Actions";
 import {connect} from "react-redux";
 
-var Strings = require('../../res/strings/StringsEN');
-
+const Strings = require('../../res/strings/StringsEN');
+const Styles = require('../../res/assets/styles/Styles');
 
 
 //TODO: add issue submission confirmation alert
@@ -46,7 +46,7 @@ class Details extends Component {
                     <TextInput placeholder='Enter a Description' onChange={()=>console.log("FeedbackBox Inputted")} multiline={true} maxLength={255} width={300}  height={125} autogrow={true}/>
                     </Form>
                 </KeyboardAvoidingView>
-                <Button><Text>{Strings.BUTTONS_SUBMIT}</Text></Button>
+                <Button style={Styles.requests.submitButton}><Text>{Strings.BUTTONS_SUBMIT}</Text></Button>
 
             </View>
         )
