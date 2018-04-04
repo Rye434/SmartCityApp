@@ -144,8 +144,8 @@ export function services(obj) {
 
     //sort and add all/cancel entries
     payload.sort();
-    payload.unshift('All');
-    payload.push('Cancel');
+    //payload.unshift('All');
+    payload.push('Clear filter');
 
     return{
         type: SERVICES,

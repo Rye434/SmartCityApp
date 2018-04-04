@@ -58,6 +58,7 @@ class IssueMap extends Component {
 
 
             if(this.props.mapRegion.latitudeDelta != 0.0922){
+                //if we want to show marker for searched location, make sure not to update state
                 searchedMarker = searchedLocation.map((marker, i) => (
                     <MapView.Marker
                         key={i}
@@ -74,12 +75,11 @@ class IssueMap extends Component {
             //build list based on action sheet
 
             if(this.props.storeRequests != null) {
-               // console.log(this.props.services[this.props.actionSheetValue])
-                //console.log(Object.keys(this.props.storeRequests.list))
-
 
                 markers =  Object.keys(this.props.storeRequests.list).map((marker) => (
-                    this.props.storeRequests.list[marker].serviceGroup == this.props.services[this.props.actionSheetValue] || this.props.services[this.props.actionSheetValue] == "All"?
+                    this.props.storeRequests.list[marker].serviceGroup == this.props.services[this.props.actionSheetValue]
+                    ||
+                    this.props.services[this.props.actionSheetValue] == "Clear filter"?
                         <MapView.Marker
                         key={marker}
                         coordinate={
