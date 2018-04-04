@@ -74,18 +74,28 @@ class IssueMap extends Component {
             }
 
 
-            if(this.props.storeRequests != null){
-                markers = Object.keys(this.props.storeRequests.list).map((marker) => (
-                    <MapView.Marker
+
+
+            //build list based on action sheet
+
+            if(this.props.storeRequests != null) {
+               // console.log(this.props.services[this.props.actionSheetValue])
+                //console.log(Object.keys(this.props.storeRequests.list))
+
+
+                markers =  Object.keys(this.props.storeRequests.list).map((marker) => (
+                    this.props.storeRequests.list[marker].serviceGroup == this.props.services[this.props.actionSheetValue] || this.props.services[this.props.actionSheetValue] == "All"?
+                        <MapView.Marker
                         key={marker}
                         coordinate={
-                    {
-                        latitude: parseFloat(this.props.storeRequests.list[marker].lat),
-                        longitude: parseFloat(this.props.storeRequests.list[marker].long)
-                    }
-                    }
-                        onPress={()=>this.props.requestDetail(this.props.storeRequests.list[marker].requestIdOpen311,this.props.storeRequests.list[marker].requestId, true)}
-                />))
+                            {
+                                latitude: parseFloat(this.props.storeRequests.list[marker].lat),
+                                longitude: parseFloat(this.props.storeRequests.list[marker].long)
+                            }
+                        }
+                        onPress={() => this.props.requestDetail(this.props.storeRequests.list[marker].requestIdOpen311, this.props.storeRequests.list[marker].requestId, true)}
+                    >
+                    </MapView.Marker> : console.log(this.props.storeRequests.list[marker].serviceGroup + ' nope')))
             }
 
 
@@ -133,7 +143,9 @@ function mapStateToProps(state) {
         mapRegion: state.mapRegion,
         mapModal: state.mapModal,
         storeRequests: state.storeRequests,
-        distanceLoaded: state.distanceLoaded
+        distanceLoaded: state.distanceLoaded,
+        actionSheetValue: state.actionSheetValue,
+        services: state.services
     }
 }
 

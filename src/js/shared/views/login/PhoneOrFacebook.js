@@ -51,10 +51,8 @@ export default class PhoneOrFacebook extends Component {
                        </Button>
 
                    </Left>
-                   <Body>
-
-                   </Body>
-                   <Right></Right>
+                   <Body/>
+                   <Right/>
                </Header>
             <View style={{flex:1, justifyContent:'center',alignItems:'center'}}>
                 <Image style={Style.image.icon} source={require('../../res/assets/img/app-icon-sign-up.png')}/>
@@ -62,15 +60,9 @@ export default class PhoneOrFacebook extends Component {
                 <Text style={Style.text.h2}>{Strings.PHONE_FACEBOOK_MESSAGE}</Text>
                 <View style={{width: dimension*.9}}>
                     <Button light onPress={() => this.props.navigation.navigate('Phone')} title="phoneLogin" style={Style.button.loginButton.phoneButton}>
-                        {/*<Icon iconLeft name="keypad" style={Style.button.loginButton.iconPhone}/>*/}
                         <Text style={[Style.button.loginButton.textPhone, Style.theme.textPhone]}>{Strings.BUTTONS_PHONE}</Text>
                     </Button>
                     <View style={Style.lineBox}>
-                        {/*<View style={Style.line}/>*/}
-                        {/*<Text style={{fontSize:18, backgroundColor: 'rgba(0,0,0,0)', color:'#eee'}}>*/}
-                            {/*or*/}
-                        {/*</Text>*/}
-                        {/*<View style={Style.line}/>*/}
 
                         <Item style={Style.line}></Item>
                         <Text style={Style.lineText}>

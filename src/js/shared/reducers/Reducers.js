@@ -11,7 +11,8 @@ import {
     UPDATE_ACTION_SHEET_VALUE,
     DISTANCE_LOADED,
     CURRENT_REQUEST,
-    DETAIL_REQUEST
+    DETAIL_REQUEST, PHONE_NUM,
+    VERIFICATION_CODE
 } from "../actions/Actions";
 
 
@@ -99,6 +100,16 @@ export default function stocksApp(state, action) {
             let detailRequest = action.detailRequest
             newState = Object.assign({}, state, {detailRequest});
             //  console.log(newState)
+            break;
+        case PHONE_NUM:
+            let phone = action.phone
+            newState = Object.assign({}, state, {phone});
+            //console.log(newState)
+            break;
+        case VERIFICATION_CODE:
+            let code = action.code
+            newState = Object.assign({}, state, {code});
+            //console.log(newState)
             break;
         default:
             return state;

@@ -13,6 +13,8 @@ export const UPDATE_ACTION_SHEET_VALUE = "UPDATE_ACTION_SHEET_VALUE";
 export const DISTANCE_LOADED = "DISTANCE_LOADED";
 export const CURRENT_REQUEST = "CURRENT_REQUEST";
 export const DETAIL_REQUEST = "DETAIL_REQUEST";
+export const PHONE_NUM = "PHONE_NUM";
+export const VERIFICATION_CODE = "VERIFICATION_CODE";
 
 var Constants = require('../res/constants/AppConstants');
 
@@ -287,3 +289,112 @@ export function requestDetail(ID, mgisID, bool) {
     }
 
 }
+
+//login checks
+export function phoneNum(phone) {
+    console.log(phone)
+    return{
+        type: PHONE_NUM,
+        phone: phone
+    }
+}
+
+
+
+export function checkByPhone(phone) {
+    console.log("USERCHECK: PHONE")
+    return (dispatch)=>{
+        axios.post(Constants.BASE_URL + '/registerservice/api/auth/checkPhoneRegister',
+            {
+                "phone"	: phone
+            },
+            {
+                headers: {
+                    'PTM_HEADER_ORG_ID': Constants.ORGANIZATION_ID,
+                    'PTM_HEADER_APP_ID': Constants.MGIS_APP_ID,
+                    'PTM_LANGUAGE': 'eng',
+                    'Content-Type': 'application/json',
+                }
+            },
+        )
+            .then((response) => {
+                console.log(JSON.parse(response.request.response).errorCode)
+                if(JSON.parse(response.request.response).errorCode == 83){
+                    //generate phone verification code (no countrycode in phone yet)
+                    dispatch(verificationCode(phone))
+                }
+                if(JSON.parse(response.request.response).errorCode == 82){
+                    //store response object
+                }
+
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+
+}
+
+export function verificationCode(phone) {
+    console.log("GENERATE: CODE")
+    return (dispatch)=>{
+        axios.post(Constants.BASE_URL + '/registerservice/api/info/generateAuthCode',
+            {
+                "countryId": 38,
+                "userPhone": phone
+            },
+            {
+                headers: {
+                    'PTM_HEADER_ORG_ID': Constants.ORGANIZATION_ID,
+                    'PTM_HEADER_APP_ID': Constants.MGIS_APP_ID,
+                    'PTM_LANGUAGE': 'eng',
+                    'Content-Type': 'application/json',
+                }
+            },
+        )
+            .then((response) => {
+                console.log(JSON.parse(response.request.response))
+
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+}
+
+export function setCode(code) {
+    return{
+        type: VERIFICATION_CODE,
+        code: code
+    }
+}
+
+export function verificationEntry(code, phone) {
+    console.log("VERIFY: CODE")
+    return (dispatch)=>{
+        dispatch(setCode(code))
+        axios.post(Constants.BASE_URL + '/registerservice/api/info/validateAuthCode',
+            {
+                "countryId": 38,
+                "userPhone": phone,
+                "userAuthCode": code
+            },
+            {
+                headers: {
+                    'PTM_HEADER_ORG_ID': Constants.ORGANIZATION_ID,
+                    'PTM_HEADER_APP_ID': Constants.MGIS_APP_ID,
+                    'PTM_LANGUAGE': 'eng',
+                    'Content-Type': 'application/json',
+                }
+            },
+        )
+            .then((response) => {
+                //handle response, then update a state that allows flow to move to next page
+                console.log(JSON.parse(response.request.response))
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+}
+

@@ -21,11 +21,11 @@ let dateSubmitted;
 let description;
 let status;
 let distance;
+let address;
 
 class RequestDetail extends Component {
 
     render() {
-        console.log(this.props.detailRequest)
         if(this.props.detailRequest != null) {
             serviceName = this.props.detailRequest.serviceName
             serviceGroup = this.props.detailRequest.serviceGroup
@@ -33,7 +33,10 @@ class RequestDetail extends Component {
             description = this.props.detailRequest.description
             status = this.props.detailRequest.status
             distance = this.props.detailRequest.distance
+            address = this.props.detailRequest.address.split(" ").slice(2).join(" ")
         }
+
+
 
         return(
             <View>
