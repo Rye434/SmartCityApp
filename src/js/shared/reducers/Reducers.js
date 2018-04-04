@@ -12,7 +12,7 @@ import {
     DISTANCE_LOADED,
     CURRENT_REQUEST,
     DETAIL_REQUEST, PHONE_NUM,
-    VERIFICATION_CODE
+    VERIFICATION_CODE, UPDATE_REGION
 } from "../actions/Actions";
 
 
@@ -109,6 +109,11 @@ export default function stocksApp(state, action) {
         case VERIFICATION_CODE:
             let code = action.code
             newState = Object.assign({}, state, {code});
+            //console.log(newState)
+            break;
+        case UPDATE_REGION:
+            mapRegion = action.mapRegion
+            newState = Object.assign({}, state, {mapRegion});
             //console.log(newState)
             break;
         default:

@@ -26,9 +26,6 @@ let searchedLocation;
 let searchedMarker;
 let markers;
 
-let customMarker;
-let customImage = require('../../res/assets/img/Button.png');
-
 class IssueMap extends Component {
 
 
@@ -36,7 +33,6 @@ class IssueMap extends Component {
 
         if(Platform.OS == 'ios'){
             height = Dimensions.get('window').height*.8;
-            customMarker =  <Image source={customImage} resizeMode="contain" style={{width: 24, height: 24}}/>;
 
         }
         if(Platform.OS == 'android'){
@@ -68,7 +64,6 @@ class IssueMap extends Component {
                         coordinate={marker.coordinates}
                         //onPress={()=>this.props.showMapModal()}
                     >
-                        {customMarker}
                     </MapView.Marker>
                 ))
             }
@@ -122,8 +117,9 @@ class IssueMap extends Component {
                     showsUserLocation={true}
                     followUserLocation={true}
                     onUserLocationChange={this.props.mapRegion}
+                    onRegionChange={(position)=>this.props.updateRegion(position)}
                     region={this.props.mapRegion}>
-                {searchedMarker}
+                {/*{searchedMarker}*/}
                 {markers}
 
 
@@ -162,6 +158,9 @@ const mapDistpatchToProps = (dispatch) => {
         },
         requestDetail:(ID, mgisID, bool) =>{
             dispatch(actions.requestDetail(ID, mgisID, bool))
+        },
+        updateRegion: (position) => {
+            dispatch(actions.updateRegion(position))
         }
     }
 }

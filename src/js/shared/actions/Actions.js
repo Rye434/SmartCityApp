@@ -15,6 +15,7 @@ export const CURRENT_REQUEST = "CURRENT_REQUEST";
 export const DETAIL_REQUEST = "DETAIL_REQUEST";
 export const PHONE_NUM = "PHONE_NUM";
 export const VERIFICATION_CODE = "VERIFICATION_CODE";
+export const UPDATE_REGION = "UPDATE_REGION";
 
 var Constants = require('../res/constants/AppConstants');
 
@@ -69,6 +70,18 @@ export function updateLocation(position) {
             longitude: position.geometry.location.lng,
             latitudeDelta: 0.0122,
             longitudeDelta: 0.0071,
+        }
+    }
+}
+
+export function updateRegion(position) {
+    return{
+        type:UPDATE_REGION,
+        mapRegion:{
+            latitude: position.latitude,
+            longitude: position.longitude,
+            latitudeDelta: position.latitudeDelta,
+            longitudeDelta: position.longitudeDelta,
         }
     }
 }
@@ -371,6 +384,7 @@ export function setCode(code) {
 
 export function verificationEntry(code, phone) {
     console.log("VERIFY: CODE")
+    //encode phone into base64 and store in local storage
     return (dispatch)=>{
         dispatch(setCode(code))
         axios.post(Constants.BASE_URL + '/registerservice/api/info/validateAuthCode',
