@@ -7,6 +7,6 @@
 	<key>STANDALONE_CONTEXT_TYPE</key>
 	<string>user</string>
 	<key>developmentUrl</key>
-	<string>exp85bcecf637f0416ab7df1d5f01d5204d://localhost:80</string>
+	<string>exp85bcecf637f0416ab7df1d5f01d5204d://10.70.203.20:19000</string>
 </dict>
 </plist>
