@@ -13,8 +13,8 @@ import {connect} from "react-redux";
 import * as actions from "../../actions/Actions";
 
 
-let Strings = require('../../res/strings/StringsEN.js');
-let Style = require('../../res/assets/styles/Styles');
+const Strings = require('../../res/strings/StringsEN.js');
+const Style = require('../../res/assets/styles/Styles');
 const deviceHeight = Dimensions.get("window").height;
 const deviceWidth = Dimensions.get("window").width;
 
@@ -37,11 +37,11 @@ class Verification extends Component {
 
         return(
             <ImageBackground style={Style.image.loginBackgroundImage} source={require('../../res/assets/img/smart-city-gradient.png')}>
-                <Header style={Style.header}>
+                <Header style={[Style.header.header,{backgroundColor: 'rgba(0,0,0,0)'}]}>
                     <Left>
                         <Button transparent onPress={() => this.props.navigation.navigate('Phone')}>
                             <Icon name='arrow-back'/>
-                            <Text style={{paddingLeft:16, paddingRight:0, width:100}}>Back</Text>
+                            <Text style={{paddingLeft:16, paddingRight:0, width:100}}>{Strings.HEADER_RETURN}</Text>
                         </Button>
                     </Left>
                     <Body>

@@ -11,13 +11,16 @@ module.exports = {
     PAGE_HEADERS_ABOUT:"About",
     PAGE_HEADERS_FEEDBACK:"Feedback",
     PAGE_HEADERS_DETAIL:'Request Detail',
-    PAGE_HEADERS_EDIT:'Edit Profile',
+    PAGE_HEADERS_EDIT:'Edit',
+    PAGE_HEADERS_CREATE:'Create Profile',
 
     HEADER_RETURN:"Back",
     HEADER_EDIT:"Edit",
     HEADER_FILTER:"Filter",
     HEADER_CANCEL:"Cancel",
     HEADER_ACTIONSHEET:"Filter",
+    HEADER_NEXT:"Next",
+    HEADER_DONE:"Done",
 
     ALERT_TITLE:"Are you sure?",
     ALERT_MESSAGE:"If you leave now you will lose any unsaved data",

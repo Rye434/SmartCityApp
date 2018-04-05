@@ -35,7 +35,7 @@ export const RoutesNavIos = [
     {
         name: Strings.PAGE_HEADERS_REQUESTS,
         route: "Requests",
-        icon: "time"
+        icon: "ios-paper"
     }
 ];
 

@@ -14,7 +14,7 @@ import * as actions from "../actions/Actions";
 import {connect} from "react-redux";
 import ProfileFields from "../components/profile/ProfileFields";
 
-var Strings = require('../res/strings/StringsEN.js');
+const Strings = require('../res/strings/StringsEN.js');
 
 let footer;
 let fab;

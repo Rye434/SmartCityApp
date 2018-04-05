@@ -44,7 +44,7 @@ export default class PhoneOrFacebook extends Component {
 
         return(
            <ImageBackground style={Style.image.loginBackgroundImage} source={require('../../res/assets/img/smart-city-gradient.png')}>
-               <Header style={Style.header}>
+               <Header style={[Style.header.header,{backgroundColor: 'rgba(0,0,0,0)'}]}>
                    <Left>
                        <Button transparent onPress={() => this.props.navigation.navigate('Phone')}>
                            <Icon name='close' style={{fontSize:45}}/>

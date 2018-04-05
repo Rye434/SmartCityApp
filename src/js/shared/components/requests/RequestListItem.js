@@ -5,7 +5,7 @@ import {connect} from "react-redux";
 import {Title, Container, Header, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body, Right, Tab, Tabs, List, ListItem, Footer, Segment } from 'native-base';
 
 let arrow;
-var Style = require('../../res/assets/styles/Styles');
+const Style = require('../../res/assets/styles/Styles');
 
 class RequestListItem extends Component {
     clicked = () => {

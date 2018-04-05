@@ -16,6 +16,7 @@ if(Platform.OS == 'android'){
     taskbarPadding = deviceHeight * 0.1;
     contentFontWeight = '400';
 }
+
 module.exports = {
 
     theme: {
@@ -37,10 +38,11 @@ module.exports = {
             flex:.9
         },
         title:platform === "ios" ? 0 : {
-                alignSelf:'center',
-                flex:3,
-                paddingTop:15
-            },
+            alignSelf:'center',
+            flex:3,
+            paddingTop:15,
+            marginLeft:deviceWidth*0.03,
+        },
         right:{
             flex:.9
         },
@@ -49,6 +51,7 @@ module.exports = {
             fontWeight: platform === "ios" ? '600' : '400',
         }
     },
+
 
     footer:{
         icon:{
@@ -108,7 +111,7 @@ module.exports = {
                 flexWrap: 'wrap',
                 paddingLeft: 6,
                 marginRight: platform === "ios" ? deviceWidth * .13 : deviceWidth * .1,
-                width: platform === "ios" ? deviceWidth * .6 : deviceWidth * .7,
+                width: platform === "ios" ? deviceWidth * .7 : deviceWidth * .7,
                 fontSize: 20,
                 textAlign:platform === "ios" ? 'center' : 'center',
                 color: '#eee',
@@ -268,12 +271,13 @@ module.exports = {
     },
     map: {
         mapModal: {
+
             thumbnail: {
                 marginLeft: deviceWidth * .04
             },
             textView: {
                 marginLeft: 10,
-                marginTop: 20,
+                marginTop: platform === "ios" ? 20 : 10,
                 flexDirection: 'column'
             },
             buttons: {
@@ -295,11 +299,12 @@ module.exports = {
             text:{
                 title:{
                     fontSize:22,
-                    fontWeight:'500'
+                    fontWeight: platform === "ios" ? '600' : '400'
                 },
                 note:{
-                    fontWeight:'500',
-                    color:'#222'
+                    fontWeight: platform === "ios" ? '600' : '400',
+                    color:'#222',
+                    //paddingBottom:platform === "ios" ? 0 : 20
                 }
             }
 
@@ -326,18 +331,22 @@ module.exports = {
             },
             detailView:{
                 justifyContent:'center',
-                paddingLeft:deviceWidth * 0.05
+                paddingLeft:deviceWidth * 0.05,
+                paddingRight:deviceHeight *0.03
             },
             text:{
 
                 header:{
                     color:'#f4f4f4',
-                    fontSize: platform === "ios" ? 22 : 22,
-                    marginBottom:4
+                    fontSize: platform === "ios" ? 22 : 18,
+                    marginBottom:4,
+                    fontWeight: platform === "ios" ? '600' : '400'
 
                 },
                 note:{
-                    color: '#f4f4f4'
+                    color: '#f4f4f4',
+                    fontSize: platform === "ios" ? 16 : 12,
+                    fontWeight: platform === "ios" ? '600' : '400'
                 },
                 infoNote:{
                     color: platform === "ios" ? '#059980': "#059980",
@@ -544,14 +553,25 @@ module.exports = {
     },
 
     feedbackContent:{
-        userInputField:{
+        view:{
+            width: deviceWidth * 0.8,
+            alignSelf:'center',
+            marginTop: deviceHeight * 0.05
+
+        },
+        input:{
             fontSize: 18,
             margin: 16,
+            height: 300,
+            width:deviceWidth*0.7
+
+           // borderBottomWidth:3
         },
         submitButton:{
             alignSelf: 'center',
             backgroundColor: '#059980',
-            width: deviceWidth/1.25,
+            width: deviceWidth *0.8,
+            marginTop: deviceHeight * 0.05
         },
         submitButtonText:{
             textAlign: 'center',
@@ -589,7 +609,8 @@ module.exports = {
             alignItems:'center'
         },
         text:{
-            fontSize: platform === "ios" ? 12 : 10,
+            fontSize: platform === "ios" ? 13 : 10,
+            fontWeight: platform === "ios" ? 'bold' : 'normal',
             width: deviceWidth*.3,
             //alignSelf:'center',
             textAlign:'center',

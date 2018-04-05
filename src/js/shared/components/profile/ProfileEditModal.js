@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {View, Modal, StyleSheet, Image, Platform, Dimensions, ScrollView, KeyboardAvoidingView} from 'react-native';
 import * as actions from "../../../shared/actions/Actions"
 import {connect} from "react-redux";
-
+import {headerTheme} from "../../../../../native-base-theme/components/Header"
 import {
     Title,
     Container,
@@ -27,12 +27,12 @@ import {
     Item,
     Label,
     Input,
+    StyleProvider
 } from 'native-base';
 
 
-var Strings = require('../../res/strings/StringsEN.js');
-var Styles = require('../../res/assets/styles/Styles');
-
+const Strings = require('../../res/strings/StringsEN.js');
+const Styles = require('../../res/assets/styles/Styles');
 class ProfileEditModal extends Component {
 
     render() {
@@ -42,20 +42,24 @@ class ProfileEditModal extends Component {
                     visible={this.props.editModal}
                     animationType={'slide'}
                     onRequestClose={this.props.toggleModal}>
-
-                    <Header>
-                        <Left>
-                            <Button transparent onPress={this.props.toggleModal}>
-                                <Text>{Strings.BUTTONS_CANCEL}</Text>
-                            </Button>
+                    {/*<View style={{flexDirection:'row', backgroundColor:'#1c4888', height: 56}}>*/}
+                        {/*<Button style={{flex:1.5}} transparent onPress={this.props.toggleModal}>*/}
+                            {/*<Text style={{color:'#f4f4f4', fontSize:16}}>{Strings.BUTTONS_CANCEL}</Text>*/}
+                        {/*</Button>*/}
+                        {/*<Title style={{flex:3, alignSelf:'center'}}>{Strings.PAGE_HEADERS_EDIT}</Title>*/}
+                        {/*<Button style={{flex:1.5}} transparent onPress={this.props.toggleModal}>*/}
+                            {/*<Text style={{color:'#f4f4f4'}}>{Strings.BUTTONS_DONE}</Text>*/}
+                        {/*</Button>*/}
+                    {/*</View>*/}
+                    <Header style={Styles.header.header}>
+                        <Left style={Styles.header.left}>
+                                <Text style={Styles.header.text} onPress={this.props.toggleModal}>{Strings.BUTTONS_CANCEL}</Text>
                         </Left>
                         <Body>
-                        <Title>{Strings.PAGE_HEADERS_EDIT}</Title>
+                        <Title style={Styles.header.title}>{Strings.PAGE_HEADERS_EDIT}</Title>
                         </Body>
-                        <Right>
-                            <Button transparent onPress={this.props.toggleModal}>
-                                <Text>{Strings.BUTTONS_DONE}</Text>
-                            </Button>
+                        <Right style={Styles.header.right}>
+                                <Text style={Styles.header.text} onPress={this.props.toggleModal}>{Strings.BUTTONS_DONE}</Text>
                         </Right>
                     </Header>
 

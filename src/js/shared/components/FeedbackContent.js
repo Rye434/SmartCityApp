@@ -9,16 +9,19 @@ import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Rig
 
 
 
-var Strings = require('../res/strings/StringsEN.js');
-var Styles = require('../res/assets/styles/Styles');
+const Strings = require('../res/strings/StringsEN.js');
+const Styles = require('../res/assets/styles/Styles');
 
 
 export default class FeedbackContent extends Component {
 
     render() {
         return(
-            <View>
-                <TextInput style={Styles.feedbackContent.userInputField} placeholder='Type Feedback Here' onChange={()=>console.log("FeebackBox Inputted")} multiline={true} maxLength={1024} width={300}  height={400} autogrow={true}/>
+            <View style={Styles.feedbackContent.view}>
+                <Item regular>
+                <TextInput style={Styles.feedbackContent.input} placeholder='Type Feedback Here' onChange={()=>console.log("FeebackBox Inputted")} multiline={true} maxLength={1024}  autogrow={true}/>
+
+                </Item>
                 <Button style={Styles.feedbackContent.submitButton}><Text style={Styles.feedbackContent.submitButtonText}>{Strings.BUTTONS_SUBMIT}</Text></Button>
             </View>
         )

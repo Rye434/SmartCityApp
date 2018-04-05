@@ -61,12 +61,12 @@ class MapModal extends Component {
                         </View>
                     </View>
                     <View style={{flex:1,flexDirection:'row'}}>
-                        <Button block
+                        <Button block title={"moreInfo"}
                                 onPress={this.props.toggleModals}
                                 style={Styles.map.mapModal.buttons.moreInfo}>
                             <Text>{Strings.MAP_MODAL_MORE_INFO_BUTTON}</Text>
                         </Button>
-                        <Button block success //change to warning on press
+                        <Button block success title={"acknowledge"}//change to warning on press
                                 // onPress={this.props.showMapModal}
                                 style={Styles.map.mapModal.buttons.plusOne}>
                             <Text>{Strings.MAP_MODAL_ACKNOWLEDGE}</Text>

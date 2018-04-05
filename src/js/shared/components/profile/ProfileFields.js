@@ -7,8 +7,8 @@ import {
 import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text, Drawer, Item, Input } from 'native-base';
 
 
-var Strings = require('../../res/strings/StringsEN.js');
-var Styles = require('../../res/assets/styles/Styles');
+const Strings = require('../../res/strings/StringsEN.js');
+const Styles = require('../../res/assets/styles/Styles.js');
 
 
 

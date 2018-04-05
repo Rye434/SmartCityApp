@@ -40,7 +40,7 @@ class Phone extends Component {
 
         if(this.props.phone.length == 10){
             button = <Button transparent onPress={()=>this.proceed()}>
-                <Text>Next</Text>
+                <Text>{Strings.HEADER_NEXT}</Text>
                 <Icon name='arrow-forward' />
             </Button>
         }
@@ -48,19 +48,17 @@ class Phone extends Component {
         return(
             <ImageBackground style={Style.image.loginBackgroundImage} source={require('../../res/assets/img/smart-city-gradient.png')}>
 
-                <Header style={Style.header}>
-                    <Left>
-                        <Button transparent onPress={()=>this.props.navigation.navigate('PhoneOrFacebook')}>
-                            <Icon name='arrow-back' />
-                            <Text style={{paddingLeft:16, paddingRight:0, width:100}}>Back</Text>
-
-                        </Button>
+                <Header style={[Style.header.header,{backgroundColor: 'rgba(0,0,0,0)'}]}>
+                    <Left style={{flexDirection:'row', alignItems:'center'}}>
+                        <Icon style={{marginRight:10, color:'#f4f4f4'}} name='arrow-back' onPress={()=>this.props.navigation.navigate('PhoneOrFacebook')} />
+                        <Text style={{fontSize:18, paddingBottom:5, color:'#f4f4f4'}}onPress={()=>this.props.navigation.navigate('PhoneOrFacebook')}>{Strings.HEADER_RETURN}</Text>
                     </Left>
                     <Body>
 
                     </Body>
-                    <Right>
-                        {button}
+                    <Right style={{flexDirection:'row', alignItems:'center'}}>
+                        <Text style={{fontSize:18, paddingBottom:5, color:'#f4f4f4'}} onPress={()=>this.props.navigation.navigate(target)}>{Strings.HEADER_NEXT}</Text>
+                        <Icon style={{marginLeft:10, color:'#f4f4f4'}} name='arrow-forward'onPress={()=>this.props.navigation.navigate(target)} />
                     </Right>
                 </Header>
 
