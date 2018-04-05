@@ -48,21 +48,14 @@ class Phone extends Component {
         return(
             <ImageBackground style={Style.image.loginBackgroundImage} source={require('../../res/assets/img/smart-city-gradient.png')}>
 
-                <Header style={Style.header}>
-                    <Left>
                         <Button transparent onPress={()=>this.props.navigation.navigate('PhoneOrFacebook')}>
                             <Icon name='arrow-back' />
                             <Text style={{paddingLeft:16, paddingRight:0, width:100}}>Back</Text>
-
                         </Button>
-                    </Left>
-                    <Body>
 
-                    </Body>
                     <Right>
                         {button}
                     </Right>
-                </Header>
 
 
 
