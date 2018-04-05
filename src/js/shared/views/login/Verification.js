@@ -37,7 +37,7 @@ class Verification extends Component {
 
         return(
             <ImageBackground style={Style.image.loginBackgroundImage} source={require('../../res/assets/img/smart-city-gradient.png')}>
-
+                <Header style={[Style.header.header,{backgroundColor:'rgba(0,0,0,0)'}]}>
                         <Button transparent onPress={() => this.props.navigation.navigate('Phone')}>
                             <Icon name='arrow-back'/>
                             <Text style={{paddingLeft:16, paddingRight:0, width:100}}>{Strings.HEADER_RETURN}</Text>
@@ -46,7 +46,7 @@ class Verification extends Component {
                     <Right>
                         {button}
                     </Right>
-
+                </Header>
             <KeyboardAvoidingView style={{flex: 1, flexDirection:'column', justifyContent:'center', alignItems:'center'}} behavior="padding">
 
                 <Text style={Style.text.h1}>{Strings.VERIFICATION_HEADER}</Text>

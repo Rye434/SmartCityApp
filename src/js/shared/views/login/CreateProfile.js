@@ -32,6 +32,7 @@ export default class CreateProfile extends Component {
         }
         return(
             <ImageBackground style={Style.image.loginBackgroundImage} source={require('../../res/assets/img/smart-city-gradient.png')}>
+                <Header style={[Style.header.header,{backgroundColor:'rgba(0,0,0,0)'}]}>
                     <Left>
                         <Button transparent onPress={() => this.props.navigation.navigate('Phone')}>
                             <Icon name='arrow-back' />
@@ -47,6 +48,7 @@ export default class CreateProfile extends Component {
                             <Icon name='arrow-forward'/>
                         </Button>
                     </Right>
+                </Header>
         <ScrollView style={{flex:1,height:Dimensions.get('window').height, marginTop:16, }}>
 
             <KeyboardAvoidingView style={{flex: 1, flexDirection:'column', alignItems:'center'}} behavior="padding">
