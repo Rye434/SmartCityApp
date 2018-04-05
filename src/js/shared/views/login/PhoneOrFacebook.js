@@ -32,7 +32,7 @@ export default class PhoneOrFacebook extends Component {
             ],
             { cancelable: false }
         )
-    }
+    };
 
     render() {
         if(Platform.OS == 'ios'){
@@ -44,21 +44,14 @@ export default class PhoneOrFacebook extends Component {
 
         return(
            <ImageBackground style={Style.image.loginBackgroundImage} source={require('../../res/assets/img/smart-city-gradient.png')}>
-               <Header style={[Style.header.header,{backgroundColor: 'rgba(0,0,0,0)'}]}>
-                   <Left>
-                       <Button transparent onPress={() => this.props.navigation.navigate('Phone')}>
+                       <Button transparent onPress={this.exitAlert}>
                            <Icon name='close' style={{fontSize:45}}/>
                        </Button>
-
-                   </Left>
-                   <Body/>
-                   <Right/>
-               </Header>
             <View style={{flex:1, justifyContent:'center',alignItems:'center'}}>
                 <Image style={Style.image.icon} source={require('../../res/assets/img/app-icon-sign-up.png')}/>
                 <Text style={Style.text.loginH1}>{Strings.PHONE_FACEBOOK_HEADER}</Text>
                 <Text style={Style.text.h2}>{Strings.PHONE_FACEBOOK_MESSAGE}</Text>
-                <View style={{width: dimension*.9}}>
+                <View style={{width: (dimension*.9)}}>
                     <Button light onPress={() => this.props.navigation.navigate('Phone')} title="phoneLogin" style={Style.button.loginButton.phoneButton}>
                         <Text style={[Style.button.loginButton.textPhone, Style.theme.textPhone]}>{Strings.BUTTONS_PHONE}</Text>
                     </Button>
