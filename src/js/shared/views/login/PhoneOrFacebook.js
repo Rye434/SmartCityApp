@@ -60,7 +60,6 @@ export default class PhoneOrFacebook extends Component {
                 <Text style={Style.text.h2}>{Strings.PHONE_FACEBOOK_MESSAGE}</Text>
                 <View style={{width: dimension*.9}}>
                     <Button light onPress={() => this.props.navigation.navigate('Phone')} title="phoneLogin" style={Style.button.loginButton.phoneButton}>
-                        {/*<Icon iconLeft name="keypad" style={Style.button.loginButton.iconPhone}/>*/}
                         <Text style={[Style.button.loginButton.textPhone, Style.theme.textPhone]}>{Strings.BUTTONS_PHONE}</Text>
                     </Button>
                     <View style={Style.lineBox}>

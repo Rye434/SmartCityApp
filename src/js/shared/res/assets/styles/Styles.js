@@ -28,10 +28,26 @@ module.exports = {
         brandLight: "#f4f4f4",
     },
     header:{
-        width:deviceWidth,
-        backgroundColor: 'rgba(0,0,0,0)',
-        borderBottomWidth:0,
-        elevation:0
+        header:{
+            width: deviceWidth,
+            borderBottomWidth: 0,
+            elevation: 0
+        },
+        left:{
+            flex:.9
+        },
+        title:platform === "ios" ? 0 : {
+                alignSelf:'center',
+                flex:3,
+                paddingTop:15
+            },
+        right:{
+            flex:.9
+        },
+        text:{
+            color:"#f4f4f4",
+            fontWeight: platform === "ios" ? '600' : '400',
+        }
     },
 
     footer:{
@@ -250,8 +266,6 @@ module.exports = {
             paddingBottom: 6
         },
     },
-
-
     map: {
         mapModal: {
             thumbnail: {
@@ -545,7 +559,7 @@ module.exports = {
             flex: 1,
         },
     },
-     requests:{
+    requests:{
         note:{
             color:'#059980',
             fontWeight: contentFontWeight
@@ -563,6 +577,23 @@ module.exports = {
             alignSelf:'center',
             backgroundColor: '#53cbaf',
             justifyContent:'center'
+        }
+    },
+    segment:{
+        box:{
+            lineHeight:2
+        },
+        button:{
+            width:deviceWidth*.3,
+            justifyContent: 'center',
+            alignItems:'center'
+        },
+        text:{
+            fontSize: platform === "ios" ? 12 : 10,
+            width: deviceWidth*.3,
+            //alignSelf:'center',
+            textAlign:'center',
+            paddingBottom: platform === "ios" ? 0 : 6
         }
     }
       

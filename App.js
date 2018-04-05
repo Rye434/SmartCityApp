@@ -30,6 +30,8 @@ let state = {
     distanceLoaded: false,
     currentRequest:null,
     detailRequest:null,
+    phone:0,
+    code:0,
 
 }
 

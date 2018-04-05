@@ -26,9 +26,6 @@ let searchedLocation;
 let searchedMarker;
 let markers;
 
-let customMarker;
-let customImage = require('../../res/assets/img/Button.png');
-
 class IssueMap extends Component {
 
 
@@ -36,7 +33,6 @@ class IssueMap extends Component {
 
         if(Platform.OS == 'ios'){
             height = Dimensions.get('window').height*.8;
-            customMarker =  <Image source={customImage} resizeMode="contain" style={{width: 24, height: 24}}/>;
 
         }
         if(Platform.OS == 'android'){
@@ -62,30 +58,39 @@ class IssueMap extends Component {
 
 
             if(this.props.mapRegion.latitudeDelta != 0.0922){
+                //if we want to show marker for searched location, make sure not to update state
                 searchedMarker = searchedLocation.map((marker, i) => (
                     <MapView.Marker
                         key={i}
                         coordinate={marker.coordinates}
                         //onPress={()=>this.props.showMapModal()}
                     >
-                        {customMarker}
                     </MapView.Marker>
                 ))
             }
 
 
-            if(this.props.storeRequests != null){
-                markers = Object.keys(this.props.storeRequests.list).map((marker) => (
-                    <MapView.Marker
+
+
+            //build list based on action sheet
+
+            if(this.props.storeRequests != null) {
+
+                markers =  Object.keys(this.props.storeRequests.list).map((marker) => (
+                    this.props.storeRequests.list[marker].serviceGroup == this.props.services[this.props.actionSheetValue]
+                    ||
+                    this.props.services[this.props.actionSheetValue] == "Clear filter"?
+                        <MapView.Marker
                         key={marker}
                         coordinate={
-                    {
-                        latitude: parseFloat(this.props.storeRequests.list[marker].lat),
-                        longitude: parseFloat(this.props.storeRequests.list[marker].long)
-                    }
-                    }
-                        onPress={()=>this.props.requestDetail(this.props.storeRequests.list[marker].requestIdOpen311,this.props.storeRequests.list[marker].requestId, true)}
-                />))
+                            {
+                                latitude: parseFloat(this.props.storeRequests.list[marker].lat),
+                                longitude: parseFloat(this.props.storeRequests.list[marker].long)
+                            }
+                        }
+                        onPress={() => this.props.requestDetail(this.props.storeRequests.list[marker].requestIdOpen311, this.props.storeRequests.list[marker].requestId, true)}
+                    >
+                    </MapView.Marker> : console.log(this.props.storeRequests.list[marker].serviceGroup + ' nope')))
             }
 
 
@@ -112,8 +117,9 @@ class IssueMap extends Component {
                     showsUserLocation={true}
                     followUserLocation={true}
                     onUserLocationChange={this.props.mapRegion}
+                    onRegionChange={(position)=>this.props.updateRegion(position)}
                     region={this.props.mapRegion}>
-                {searchedMarker}
+                {/*{searchedMarker}*/}
                 {markers}
 
 
@@ -133,7 +139,9 @@ function mapStateToProps(state) {
         mapRegion: state.mapRegion,
         mapModal: state.mapModal,
         storeRequests: state.storeRequests,
-        distanceLoaded: state.distanceLoaded
+        distanceLoaded: state.distanceLoaded,
+        actionSheetValue: state.actionSheetValue,
+        services: state.services
     }
 }
 
@@ -150,6 +158,9 @@ const mapDistpatchToProps = (dispatch) => {
         },
         requestDetail:(ID, mgisID, bool) =>{
             dispatch(actions.requestDetail(ID, mgisID, bool))
+        },
+        updateRegion: (position) => {
+            dispatch(actions.updateRegion(position))
         }
     }
 }

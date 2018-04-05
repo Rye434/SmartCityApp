@@ -14,6 +14,8 @@ let serviceGroup;
 let dateSubmitted;
 let description;
 let status;
+let distance;
+let address;
 
 
 class DetailModal extends Component {
@@ -33,7 +35,16 @@ class DetailModal extends Component {
             dateSubmitted = this.props.currentRequest.info.dateSubmitted.substr(0,11)
             description = this.props.currentRequest.info.description
             status = this.props.currentRequest.info.status
+            address = this.props.currentRequest.info.address.split(" ").slice(2).join(" ")
+
+            for(var request in this.props.storeRequests.list){
+                if(this.props.storeRequests.list[request].requestIdOpen311 == this.props.currentRequest.info.requestIdOpen311){
+                    distance = this.props.storeRequests.list[request].distance
+                }
+            }
+
         }
+
 
         return (
             <Modal
@@ -50,7 +61,7 @@ class DetailModal extends Component {
 
                 <View style={Styles.map.detailModal.infoView}>
                     <Text style ={Styles.map.detailModal.text.header}>{serviceName}</Text>
-                    <Text note style ={Styles.map.detailModal.text.note}>219 Laurier Ave W, Ottawa ON K1P</Text>
+                    <Text note style ={Styles.map.detailModal.text.note}>{address}</Text>
 
 
                 </View>
@@ -66,7 +77,7 @@ class DetailModal extends Component {
                 <Item style={Styles.map.detailModal.line}/>
 
                 <Text note style={Styles.map.detailModal.text.infoNote}>{Strings.DETAIL_MODAL_DISTANCE}</Text>
-                <Text style={Styles.map.detailModal.text.info}>340M</Text>
+                <Text style={Styles.map.detailModal.text.info}>{distance}</Text>
                 <Item style={Styles.map.detailModal.line}/>
 
                 <Text note style={Styles.map.detailModal.text.infoNote}>{Strings.DETAIL_MODAL_STATUS}</Text>
@@ -87,7 +98,8 @@ class DetailModal extends Component {
 function mapStateToProps(state) {
     return{
         detailModal: state.detailModal,
-        currentRequest: state.currentRequest
+        currentRequest: state.currentRequest,
+        storeRequests: state.storeRequests
     }
 }
 

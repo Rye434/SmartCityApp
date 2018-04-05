@@ -9,25 +9,42 @@ import {
     Keyboard
 } from 'react-native';
 import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text, Drawer, Input, Label, Form, Item } from 'native-base';
+import {connect} from "react-redux";
+import * as actions from "../../actions/Actions";
 
 
-var Strings = require('../../res/strings/StringsEN.js');
-var Style = require('../../res/assets/styles/Styles');
+const Strings = require('../../res/strings/StringsEN.js');
+const Style = require('../../res/assets/styles/Styles');
 
+let button;
 let target;
 let userExists = false; //for testing login flow, use True/False values
 
-//TODO
 
-export default class Phone extends Component {
+class Phone extends Component {
 
-    render() {
+    proceed = () => {
+        this.props.checkByPhone(this.props.phone)
+
         if(userExists == true){
             target = "Map"
         }
         if(userExists == false){
             target = "Verification"
         }
+
+        this.props.navigation.navigate(target)
+    }
+
+    render() {
+
+        if(this.props.phone.length == 10){
+            button = <Button transparent onPress={()=>this.proceed()}>
+                <Text>Next</Text>
+                <Icon name='arrow-forward' />
+            </Button>
+        }
+
         return(
             <ImageBackground style={Style.image.loginBackgroundImage} source={require('../../res/assets/img/smart-city-gradient.png')}>
 
@@ -43,10 +60,7 @@ export default class Phone extends Component {
 
                     </Body>
                     <Right>
-                        <Button transparent onPress={()=>this.props.navigation.navigate(target)}>
-                            <Text>Next</Text>
-                            <Icon name='arrow-forward' />
-                        </Button>
+                        {button}
                     </Right>
                 </Header>
 
@@ -58,13 +72,12 @@ export default class Phone extends Component {
                 <Form style={{flex:0,width: 350, paddingTop:24, paddingBottom:48, alignItems:'center',flexDirection:'column',marginLeft:0}}>
                     <View  style={Style.view.input}>
                         <Label style={Style.view.profileLabelText}>{Strings.FIELDS_COUNTRY}</Label>
-                        <Input keyboardType='phone-pad' onChange={()=>console.log("Phone")} placeholder="+1" placeholderTextColor='#888' />
+                        <Input keyboardType='phone-pad' onChange={()=>console.log("Phone")} placeholder="+1" editable={false} placeholderTextColor='#888' />
                     </View>
                     <View  style={Style.view.input}>
                         <Text style={Style.view.profileLabelText}>{Strings.FIELDS_NUMBER}</Text>
-                        <Input keyboardType='phone-pad' onChange={()=>console.log("Phone")} placeholder="Required" placeholderTextColor='#888'/>
+                        <Input keyboardType='phone-pad' onChangeText={(phone)=>this.props.phoneNum(phone)} maxLength={10} placeholder="Required" placeholderTextColor='#888'/>
                     </View >
-                    {/*<Button style={{marginLeft:0}} onPress={() => this.props.navigation.navigate(target)}><Text>{Strings.BUTTONS_CONFIRM}</Text></Button>*/}
                 </Form>
             </KeyboardAvoidingView>
             </ImageBackground>
@@ -72,3 +85,25 @@ export default class Phone extends Component {
 
     }
 }
+
+function mapStateToProps(state) {
+    return{
+        phone: state.phone,
+
+    }
+}
+
+const mapDistpatchToProps = (dispatch) => {
+    return {
+        phoneNum: (phone) => {
+            dispatch(actions.phoneNum(phone))
+        },
+        checkByPhone: (phone) => {
+            dispatch(actions.checkByPhone(phone))
+        }
+    }
+}
+
+
+
+export default connect(mapStateToProps,mapDistpatchToProps)(Phone)
