@@ -14,8 +14,8 @@ import RequestList from "../../shared/components/requests/RequestList";
 import * as actions from "../actions/Actions";
 import {connect} from "react-redux";
 
-var Strings = require('../res/strings/StringsEN.js');
-
+const Strings = require('../res/strings/StringsEN.js');
+const Style = require('../res/assets/styles/Styles');
 let footer;
 let fab;
 let header;
@@ -36,14 +36,14 @@ class Requests extends Component {
                 <View>
                 {header}
                     <Segment>
-                        <Button first active={this.props.filterSegment[0]} onPress={()=>this.props.filterSegmentToggle(1)} style={{width:Dimensions.get('window').width*.3,justifyContent: 'center'}}>
-                            <Text>{Strings.REQUEST_SEGMENT_PUBLIC}</Text>
+                        <Button first active={this.props.filterSegment[0]} onPress={()=>this.props.filterSegmentToggle(1)} style={Style.segment.button}>
+                            <Text style={Style.segment.text} >{Strings.REQUEST_SEGMENT_PUBLIC}</Text>
                         </Button>
-                        <Button active={this.props.filterSegment[1]} onPress={()=>this.props.filterSegmentToggle(2)} style={{width:Dimensions.get('window').width*.3,justifyContent: 'center'}}>
-                            <Text>{Strings.REQUEST_SEGMENT_PERSONAL}</Text>
+                        <Button active={this.props.filterSegment[1]} onPress={()=>this.props.filterSegmentToggle(2)} style={Style.segment.button}>
+                            <Text style={Style.segment.text}>{Strings.REQUEST_SEGMENT_PERSONAL}</Text>
                         </Button>
-                        <Button last active={this.props.filterSegment[2]} onPress={()=>this.props.filterSegmentToggle(3)} style={{width:Dimensions.get('window').width*.3,justifyContent: 'center'}}>
-                            <Text>{Strings.REQUEST_SEGMENT_ACKNOWLEDGED}</Text>
+                        <Button last active={this.props.filterSegment[2]} onPress={()=>this.props.filterSegmentToggle(3)} style={Style.segment.button}>
+                            <Text style={Style.segment.text}>{Strings.REQUEST_SEGMENT_ACKNOWLEDGED}</Text>
                         </Button>
                     </Segment>
                 </View>

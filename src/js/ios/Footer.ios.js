@@ -37,7 +37,7 @@ class FooterIos extends Component {
                             this.props.navigation.navigate('Requests')
                         }}
                                 active={'Requests' == this.props.activePage ? true: false}>
-                            <Icon name={'ios-paper'} style={{fontSize:26}}/>
+                            <Icon name={'ios-list-box'} style={{fontSize:26}}/>
                             <Text style={{fontSize:12}}>Requests</Text>
                         </Button>
                     </FooterTab>

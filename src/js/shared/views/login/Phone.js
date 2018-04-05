@@ -13,8 +13,8 @@ import {connect} from "react-redux";
 import * as actions from "../../actions/Actions";
 
 
-var Strings = require('../../res/strings/StringsEN.js');
-var Style = require('../../res/assets/styles/Styles');
+const Strings = require('../../res/strings/StringsEN.js');
+const Style = require('../../res/assets/styles/Styles');
 
 let button;
 let target;
