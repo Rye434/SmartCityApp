@@ -5,6 +5,8 @@ import {
     View
 } from 'react-native';
 import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text, Drawer, Item, Input } from 'native-base';
+import {connect} from "react-redux";
+import * as actions from "../../actions/Actions";
 
 
 const Strings = require('../../res/strings/StringsEN.js');
@@ -12,25 +14,26 @@ const Styles = require('../../res/assets/styles/Styles.js');
 
 
 
-export default class ProfileFields extends Component {
+class ProfileFields extends Component {
 
     render() {
+        let user = this.props.responseCodeProfile
         return(
             <View style={Styles.profileFields.textFields}>
 
-                <Text style={Styles.profileFields.nameTextField}>will hold user value: name</Text>
+                <Text style={Styles.profileFields.nameTextField}>{user.firstName} {user.lastName}</Text>
                 <Text style={Styles.profileFields.phoneNumberText}>{Strings.PROFILE_PHONE}</Text>
-                <Text style={Styles.profileFields.subContentField}>phone#</Text>
+                <Text style={Styles.profileFields.subContentField}>{this.props.phone}</Text>
                 <Item/>
 
                 <Text style={Styles.profileFields.subTitleField}>{Strings.PROFILE_EMAIL}</Text>
-                <Text style={Styles.profileFields.subContentField}>Email Field</Text>
+                <Text style={Styles.profileFields.subContentField}>{user.username}</Text>
                 <Item/>
 
                 <Text style={Styles.profileFields.subTitleField}>{Strings.PROFILE_ADDRESS}</Text>
-                <Text style={Styles.profileFields.addressSubField.topField}>Address Field</Text>
-                <Text style={Styles.profileFields.addressSubField.middleField}>Address Field</Text>
-                <Text style={Styles.profileFields.addressSubField.bottomField}>Address Field</Text>
+                <Text style={Styles.profileFields.addressSubField.topField}>{user.addressLine2} {user.addressLine1}</Text>
+                <Text style={Styles.profileFields.addressSubField.middleField}>{user.city}, {user.stateId}</Text>
+                <Text style={Styles.profileFields.addressSubField.bottomField}>{user.postalCode}</Text>
                 <Item style={{marginBottom:40,}}/>
 
             </View>
@@ -38,3 +41,20 @@ export default class ProfileFields extends Component {
 
     }
 }
+
+function mapStateToProps(state) {
+    return{
+        responseCodeProfile: state.responseCodeProfile,
+        phone: state.phone
+    }
+}
+
+const mapDistpatchToProps = (dispatch) => {
+    return {
+
+    }
+}
+
+
+
+export default connect(mapStateToProps,mapDistpatchToProps)(ProfileFields)

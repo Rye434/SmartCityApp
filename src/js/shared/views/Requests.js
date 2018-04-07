@@ -19,13 +19,18 @@ const Style = require('../res/assets/styles/Styles');
 let footer;
 let fab;
 let header;
+let target;
 
 class Requests extends Component {
 
+
     render() {
+        console.log(this.props.responseCodeProfile);
+        (this.props.responseCodeProfile == null)? target = 'PhoneOrFacebook' : target = 'Profile'
+
         if(Platform.OS === "ios"){
             footer = <FooterIos navigation={this.props.navigation} activePage={'Requests'}/>
-            header = <HeaderIos title={Strings.PAGE_HEADERS_REQUESTS}  iconRight={<Icon name='ios-contact'/>} buttonClickRight={() => this.props.navigation.navigate("Profile")} tabs={true}/>
+            header = <HeaderIos title={Strings.PAGE_HEADERS_REQUESTS}  iconRight={<Icon name='ios-contact'/>} buttonClickRight={()=>this.props.navigation.navigate(target)} tabs={true}/>
         }
         if(Platform.OS == "android"){
             fab = <FabButton navigation={this.props.navigation}/>
@@ -62,6 +67,8 @@ class Requests extends Component {
 function mapStateToProps(state) {
     return{
         filterSegment: state.filterSegment,
+        responseCodeProfile: state.responseCodeProfile
+
     }
 }
 

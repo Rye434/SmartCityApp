@@ -50,7 +50,11 @@ export const AppRouteIos = StackNavigator({
         About: {screen: About},
         Feedback: {screen: Feedback},
         SubmissionDetails: {screen: SubmissionDetails},
-        RequestListDetail: {screen: RequestListDetail}
+        RequestListDetail: {screen: RequestListDetail},
+        PhoneOrFacebook:{screen: PhoneOrFacebook},
+        Phone: {screen: Phone},
+        Verification: {screen:Verification},
+        CreateProfile: {screen: CreateProfile},
     },
     {
         headerMode:'none'
@@ -109,10 +113,6 @@ export const AndroidSideBar = DrawerNavigator({
     });
 
 export const AppRouteAndroid = StackNavigator({
-    PhoneOrFacebook: {screen: PhoneOrFacebook},
-    Phone: {screen: Phone},
-    Verification: {screen:Verification},
-    CreateProfile: {screen: CreateProfile},
     AndroidSideBar: {screen: AndroidSideBar},
     Map: { screen: Map },
     Camera: { screen: Camera },
@@ -123,7 +123,11 @@ export const AppRouteAndroid = StackNavigator({
     About: {screen: About},
     Feedback: {screen: Feedback},
     SubmissionDetails: {screen: SubmissionDetails},
-    RequestListDetail: {screen: RequestListDetail}
+    RequestListDetail: {screen: RequestListDetail},
+    PhoneOrFacebook: {screen: PhoneOrFacebook},
+    Phone: {screen: Phone},
+    Verification: {screen:Verification},
+    CreateProfile: {screen: CreateProfile},
 }, {
     headerMode: 'none',
 });

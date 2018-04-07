@@ -6,7 +6,8 @@ import {
     Image,
     ImageBackground,
     KeyboardAvoidingView,
-    Keyboard
+    Keyboard,
+    AsyncStorage
 } from 'react-native';
 import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text, Drawer, Input, Label, Form, Item } from 'native-base';
 import {connect} from "react-redux";
@@ -18,22 +19,30 @@ const Style = require('../../res/assets/styles/Styles');
 
 let button;
 let target;
-let userExists = false; //for testing login flow, use True/False values
 
 
 class Phone extends Component {
 
     proceed = () => {
         this.props.checkByPhone(this.props.phone)
+    }
 
-        if(userExists == true){
-            target = "Map"
-        }
-        if(userExists == false){
-            target = "Verification"
-        }
+    componentDidUpdate(){
+        if(this.props.responseCodeProfile != null) {
+            if (this.props.responseCodeProfile.errorCode == 82) {
+                if(Platform.OS == 'ios'){
+                    target = "Map"
 
-        this.props.navigation.navigate(target)
+                }
+                if(Platform.OS == 'android'){
+                    target = "AndroidSideBar"
+                }
+            }
+            if (this.props.responseCodeProfile.errorCode == 83) {
+                target = "Verification"
+            }
+            this.props.navigation.navigate(target)
+        }
     }
 
     render() {
@@ -82,7 +91,7 @@ class Phone extends Component {
 function mapStateToProps(state) {
     return{
         phone: state.phone,
-
+        responseCodeProfile: state.responseCodeProfile
     }
 }
 

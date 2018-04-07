@@ -4,7 +4,8 @@ import {
     StyleSheet,
     View,
     Dimensions,
-    Image
+    Image,
+    AsyncStorage
 } from 'react-native';
 import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text, Drawer, Spinner } from 'native-base';
 import { MapView, Animated, Marker} from 'expo';
@@ -28,6 +29,25 @@ let markers;
 
 class IssueMap extends Component {
 
+    async tryLogin() {
+        try {
+            //if this is the case if this code matches the return from the phone number entry set status to logged in
+            const code = await AsyncStorage.getItem('encCode')
+            const phone = await AsyncStorage.getItem('phone')
+            if(code != null){
+                console.log(code + " : " + phone)
+                this.props.saveUserCode(code)
+                this.props.phoneNum(phone)
+                this.props.loginByPhone(phone,code)
+            }
+        } catch (error) {
+            console.log("Error fetching data " + error);
+        }
+    }
+
+    componentDidMount(){
+        this.tryLogin()
+    }
 
     render() {
 
@@ -69,9 +89,6 @@ class IssueMap extends Component {
                 ))
             }
 
-
-
-
             //build list based on action sheet
 
             if(this.props.storeRequests != null) {
@@ -90,7 +107,7 @@ class IssueMap extends Component {
                         }
                         onPress={() => this.props.requestDetail(this.props.storeRequests.list[marker].requestIdOpen311, this.props.storeRequests.list[marker].requestId, true)}
                     >
-                    </MapView.Marker> : console.log(this.props.storeRequests.list[marker].serviceGroup + ' nope')))
+                    </MapView.Marker> : something = null))
             }
 
 
@@ -141,7 +158,8 @@ function mapStateToProps(state) {
         storeRequests: state.storeRequests,
         distanceLoaded: state.distanceLoaded,
         actionSheetValue: state.actionSheetValue,
-        services: state.services
+        services: state.services,
+        responseCodeProfile: state.responseCodeProfile,
     }
 }
 
@@ -161,6 +179,15 @@ const mapDistpatchToProps = (dispatch) => {
         },
         updateRegion: (position) => {
             dispatch(actions.updateRegion(position))
+        },
+        saveUserCode: (code) => {
+            dispatch(actions.saveUserCode(code))
+        },
+        phoneNum: (phone) => {
+            dispatch(actions.phoneNum(phone))
+        },
+        loginByPhone: (phone, encCode) => {
+            dispatch(actions.loginByPhone(phone, encCode))
         }
     }
 }

@@ -28,7 +28,7 @@ export default class PhoneOrFacebook extends Component {
             Strings.ALERT_MESSAGE,
             [
                 {text: Strings.ALERT_NEGATIVE, onPress: ()=> console.log('alert closed'), style:'cancel'},
-                {text: Strings.ALERT_POSITIVE, onPress: () => this.props.navigation.navigate('Camera') }
+                {text: Strings.ALERT_POSITIVE, onPress: () => this.props.navigation.navigate('Map') }
             ],
             { cancelable: false }
         )
@@ -44,7 +44,7 @@ export default class PhoneOrFacebook extends Component {
 
         return(
            <ImageBackground style={Style.image.loginBackgroundImage} source={require('../../res/assets/img/smart-city-gradient.png')}>
-                       <Button transparent onPress={this.exitAlert}>
+                       <Button transparent onPress={() => this.exitAlert()}>
                            <Icon name='close' style={{fontSize:45}}/>
                        </Button>
             <View style={{flex:1, justifyContent:'center',alignItems:'center'}}>

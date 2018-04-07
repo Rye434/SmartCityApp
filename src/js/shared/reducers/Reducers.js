@@ -12,7 +12,19 @@ import {
     DISTANCE_LOADED,
     CURRENT_REQUEST,
     DETAIL_REQUEST, PHONE_NUM,
-    VERIFICATION_CODE, UPDATE_REGION
+    VERIFICATION_CODE, UPDATE_REGION,
+    ENC_CODE,
+    FIRST_NAME,
+    LAST_NAME,
+    EMAIL,
+    ADDRESS_LINE_1,
+    ADDRESS_LINE_2,
+    CITY,
+    PROVINCE,
+    POST_CODE,
+    COUNTRY,
+    VALIDATE_RESPONSE_CODE,
+    RESPONSE_CODE_PROFILE
 } from "../actions/Actions";
 
 
@@ -116,11 +128,79 @@ export default function stocksApp(state, action) {
             newState = Object.assign({}, state, {mapRegion});
             //console.log(newState)
             break;
+        case ENC_CODE:
+            encCode = action.encCode
+            newState = Object.assign({}, state, {encCode});
+            //console.log(newState)
+            break;
+        case FIRST_NAME:
+            firstName = action.firstName
+            newState = Object.assign({}, state, {firstName});
+            //console.log(newState)
+            break;
+        case LAST_NAME:
+            lastName = action.lastName
+            newState = Object.assign({}, state, {lastName});
+            //console.log(newState)
+            break;
+        case EMAIL:
+            email = action.email
+            newState = Object.assign({}, state, {email});
+            //console.log(newState)
+            break;
+        case ADDRESS_LINE_1:
+            address1 = action.address1
+            newState = Object.assign({}, state, {address1});
+            //console.log(newState)
+            break;
+        case ADDRESS_LINE_2:
+            address2 = action.address2
+            newState = Object.assign({}, state, {address2});
+            //console.log(newState)
+            break;
+        case CITY:
+            city = action.city
+            newState = Object.assign({}, state, {city});
+            //console.log(newState)
+            break;
+        case PROVINCE:
+            province = action.province
+            newState = Object.assign({}, state, {province});
+            //console.log(newState)
+            break;
+        case POST_CODE:
+            postCode = action.postCode
+            newState = Object.assign({}, state, {postCode});
+            //console.log(newState)
+            break;
+        case COUNTRY:
+            country = action.country
+            newState = Object.assign({}, state, {country});
+            //console.log(newState)
+            break;
+        case VALIDATE_RESPONSE_CODE:
+            responseCode = action.responseCode
+            newState = Object.assign({}, state, {responseCode});
+            //console.log(newState)
+            break;
+        case RESPONSE_CODE_PROFILE:
+            responseCodeProfile = action.responseCodeProfile
+            newState = Object.assign({}, state, {responseCodeProfile});
+            //console.log(newState)
+            break;
         default:
             return state;
 
     }
     return newState;
-
-
 }
+
+
+
+
+
+
+
+
+
+

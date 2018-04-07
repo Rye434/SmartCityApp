@@ -1,5 +1,7 @@
 import axios from "axios/index";
+import AsyncStorage from "react-native";
 
+//region constants
 export const CACHE_PHOTO = "CACHE_PHOTO";
 export const EDIT_MODAL = "EDIT_MODAL";
 export const FILTER_SEGMENT_TOGGLE = "FILTER_SEGMENT_TOGGLE";
@@ -16,6 +18,19 @@ export const DETAIL_REQUEST = "DETAIL_REQUEST";
 export const PHONE_NUM = "PHONE_NUM";
 export const VERIFICATION_CODE = "VERIFICATION_CODE";
 export const UPDATE_REGION = "UPDATE_REGION";
+export const ENC_CODE = "ENC_CODE";
+export const FIRST_NAME = "FIRST_NAME";
+export const LAST_NAME = "LAST_NAME";
+export const EMAIL = "EMAIL";
+export const ADDRESS_LINE_1 = "ADDRESS_LINE_1";
+export const ADDRESS_LINE_2 = "ADDRESS_LINE_2";
+export const CITY = "CITY";
+export const PROVINCE = "PROVINCE";
+export const POST_CODE = "POST_CODE";
+export const COUNTRY = "COUNTRY";
+export const VALIDATE_RESPONSE_CODE = "VALIDATE_RESPONSE_CODE";
+export const RESPONSE_CODE_PROFILE = "RESPONSE_CODE_PROFILE";
+//endregion
 
 var Constants = require('../res/constants/AppConstants');
 
@@ -305,7 +320,6 @@ export function requestDetail(ID, mgisID, bool) {
 
 //login checks
 export function phoneNum(phone) {
-    console.log(phone)
     return{
         type: PHONE_NUM,
         phone: phone
@@ -316,6 +330,7 @@ export function phoneNum(phone) {
 
 export function checkByPhone(phone) {
     console.log("USERCHECK: PHONE")
+    console.log(phone)
     return (dispatch)=>{
         axios.post(Constants.BASE_URL + '/registerservice/api/auth/checkPhoneRegister',
             {
@@ -331,13 +346,15 @@ export function checkByPhone(phone) {
             },
         )
             .then((response) => {
-                console.log(JSON.parse(response.request.response).errorCode)
+                console.log(JSON.parse(response.request.response))
                 if(JSON.parse(response.request.response).errorCode == 83){
                     //generate phone verification code (no countrycode in phone yet)
                     dispatch(verificationCode(phone))
+                    dispatch((validateResponseCodeProfile(JSON.parse(response.request.response))))
                 }
                 if(JSON.parse(response.request.response).errorCode == 82){
                     //store response object
+                    dispatch((validateResponseCodeProfile(JSON.parse(response.request.response))))
                 }
 
             })
@@ -350,6 +367,7 @@ export function checkByPhone(phone) {
 
 export function verificationCode(phone) {
     console.log("GENERATE: CODE")
+    console.log(phone)
     return (dispatch)=>{
         axios.post(Constants.BASE_URL + '/registerservice/api/info/generateAuthCode',
             {
@@ -382,16 +400,32 @@ export function setCode(code) {
     }
 }
 
+export function saveUserCode(encCode) {
+    return{
+        type: ENC_CODE,
+        encCode: encCode
+    }
+}
+export function validateResponseCode(code) {
+    return{
+        type: VALIDATE_RESPONSE_CODE,
+        responseCode: code
+    }
+}
+
+
 export function verificationEntry(code, phone) {
     console.log("VERIFY: CODE")
-    //encode phone into base64 and store in local storage
+    console.log(phone)
     return (dispatch)=>{
         dispatch(setCode(code))
+        let Base64={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",encode:function(e){var t="";var n,r,i,s,o,u,a;var f=0;e=Base64._utf8_encode(e);while(f<e.length){n=e.charCodeAt(f++);r=e.charCodeAt(f++);i=e.charCodeAt(f++);s=n>>2;o=(n&3)<<4|r>>4;u=(r&15)<<2|i>>6;a=i&63;if(isNaN(r)){u=a=64}else if(isNaN(i)){a=64}t=t+this._keyStr.charAt(s)+this._keyStr.charAt(o)+this._keyStr.charAt(u)+this._keyStr.charAt(a)}return t},decode:function(e){var t="";var n,r,i;var s,o,u,a;var f=0;e=e.replace(/[^A-Za-z0-9\+\/\=]/g,"");while(f<e.length){s=this._keyStr.indexOf(e.charAt(f++));o=this._keyStr.indexOf(e.charAt(f++));u=this._keyStr.indexOf(e.charAt(f++));a=this._keyStr.indexOf(e.charAt(f++));n=s<<2|o>>4;r=(o&15)<<4|u>>2;i=(u&3)<<6|a;t=t+String.fromCharCode(n);if(u!=64){t=t+String.fromCharCode(r)}if(a!=64){t=t+String.fromCharCode(i)}}t=Base64._utf8_decode(t);return t},_utf8_encode:function(e){e=e.replace(/\r\n/g,"\n");var t="";for(var n=0;n<e.length;n++){var r=e.charCodeAt(n);if(r<128){t+=String.fromCharCode(r)}else if(r>127&&r<2048){t+=String.fromCharCode(r>>6|192);t+=String.fromCharCode(r&63|128)}else{t+=String.fromCharCode(r>>12|224);t+=String.fromCharCode(r>>6&63|128);t+=String.fromCharCode(r&63|128)}}return t},_utf8_decode:function(e){var t="";var n=0;var r=c1=c2=0;while(n<e.length){r=e.charCodeAt(n);if(r<128){t+=String.fromCharCode(r);n++}else if(r>191&&r<224){c2=e.charCodeAt(n+1);t+=String.fromCharCode((r&31)<<6|c2&63);n+=2}else{c2=e.charCodeAt(n+1);c3=e.charCodeAt(n+2);t+=String.fromCharCode((r&15)<<12|(c2&63)<<6|c3&63);n+=3}}return t}}
+        let encCode = Base64.encode(code)
         axios.post(Constants.BASE_URL + '/registerservice/api/info/validateAuthCode',
             {
                 "countryId": 38,
                 "userPhone": phone,
-                "userAuthCode": code
+                "userAuthCode": encCode
             },
             {
                 headers: {
@@ -403,8 +437,14 @@ export function verificationEntry(code, phone) {
             },
         )
             .then((response) => {
-                //handle response, then update a state that allows flow to move to next page
-                console.log(JSON.parse(response.request.response))
+                dispatch(validateResponseCode(JSON.parse(response.request.response).errorCode))
+                if (JSON.parse(response.request.response).errorCode == 0){
+                    //console.log(encCode)
+                    dispatch(saveUserCode(encCode))
+                }
+                if(JSON.parse(response.request.response).errorCode != 0){
+                    alert("Code invalid")
+                }
             })
             .catch(function (error) {
                 console.log(error);
@@ -412,3 +452,205 @@ export function verificationEntry(code, phone) {
     }
 }
 
+export function setFirstName(text){
+    return{
+        type: FIRST_NAME,
+        firstName: text
+    }
+}
+
+export function setLastName(text){
+    return{
+        type: LAST_NAME,
+        lastName: text
+    }
+}
+
+export function setEmail(text){
+    return{
+        type: EMAIL,
+        email: text
+    }
+}
+
+export function setAddress1(text){
+    return{
+        type: ADDRESS_LINE_1,
+        address1: text
+    }
+}
+
+export function setAddress2(text){
+    return{
+        type: ADDRESS_LINE_2,
+        address2: text
+    }
+}
+
+export function setCity(text){
+    return{
+        type: CITY,
+        city: text
+    }
+}
+
+export function setProvince(text){
+    return{
+        type: PROVINCE,
+        province: text
+    }
+}
+
+export function setPostCode(text){
+    return{
+        type: POST_CODE,
+        postCode: text
+    }
+}
+
+export function setCountry(text){
+    return{
+        type: COUNTRY,
+        country: text
+    }
+}
+
+export function validateResponseCodeProfile(obj){
+    return{
+        type: RESPONSE_CODE_PROFILE,
+        responseCodeProfile: obj
+    }
+}
+
+
+//Create User
+export function createUserByPhone(obj) {
+    console.log("CREATE_USER: BY_PHONE")
+    console.log(obj.phone)
+    return (dispatch)=>{
+        axios.post(Constants.BASE_URL + '/registerservice/api/auth/createUserByPhone',
+            {
+                "firstname"			: obj.firstName,
+                "lastname"			: obj.lastName,
+                "phone"				: obj.phone,
+                "password"			: obj.encCode,
+                "confirmPassword"	: obj.encCode,
+                "isOauth"			: false,
+                "isTUAccepted"		: true,
+                "isPSAccepted"		: true,
+                "emailAddress"		: obj.email,
+                "addressLine1"		: obj.address1,
+                "addressLine2"		: obj.address2,
+                "city"				: obj.city,
+                "countryId"			: 38,
+                "postalCode"		: obj.postCode,
+                "stateId"			: obj.province,
+                "latLongString"		: ""
+            },
+            {
+                headers: {
+                    'PTM_HEADER_ORG_ID': Constants.ORGANIZATION_ID,
+                    'PTM_HEADER_APP_ID': Constants.MGIS_APP_ID,
+                    'PTM_LANGUAGE': 'eng',
+                    'Content-Type': 'application/json',
+                }
+            },
+        )
+            .then((response) => {
+                console.log(JSON.parse(response.request.response))
+                dispatch(loginByPhone((obj.phone), obj.encCode))
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+}
+
+export function updateUser(obj) {
+    console.log("UPDATE_USER")
+    console.log(obj)
+    return (dispatch)=>{
+        axios.post(Constants.BASE_URL + '/registerservice/api/auth/updateProfile',
+            {
+                "userId"			: obj.userId,
+                "firstname"			: obj.firstName,
+                "lastname"			: obj.lastName,
+                "phone"				: obj.phone,
+                "emailAddress"		: obj.email,
+                "addressLine1"		: obj.address1,
+                "addressLine2"		: obj.address2,
+                "city"				: obj.city,
+                "countryId"			: 38,
+                "postalCode"		: obj.postCode,
+                "stateId"			: obj.province,
+                "latLongString"		: ""
+            },
+            {
+                headers: {
+                    'PTM_HEADER_ORG_ID': Constants.ORGANIZATION_ID,
+                    'PTM_HEADER_APP_ID': Constants.MGIS_APP_ID,
+                    'PTM_LANGUAGE': 'eng',
+                    'Content-Type': 'application/json',
+                    "PTM_HEADER_TOKEN": obj.token,
+                    "PTM_HEADER_TOKEN_ENCRYPTION": obj.tokenEncryption,
+                }
+            },
+        )
+            .then((response) => {
+                console.log(JSON.parse(response.request.response))
+                dispatch(validateResponseCodeProfile(JSON.parse(response.request.response)))
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+}
+
+//Login with Phone
+export function loginByPhone(phone, encCode) {
+    console.log("LOGIN: ATTEMPT")
+    console.log(phone)
+    return (dispatch)=>{
+        axios.post(Constants.BASE_URL + '/registerservice/api/auth/loginByPhone',
+            {
+                "phone": phone,
+                "password": encCode,
+                "version": "",
+                "isOauth": false
+            },
+            {
+                headers: {
+                    'PTM_HEADER_ORG_ID': Constants.ORGANIZATION_ID,
+                    'PTM_HEADER_APP_ID': Constants.MGIS_APP_ID,
+                    'PTM_LANGUAGE': 'eng',
+                    'Content-Type': 'application/json',
+                }
+            },
+        )
+            .then((response) => {
+                console.log(JSON.parse(response.request.response))
+                if(JSON.parse(response.request.response).errorCode == 0) {
+                    dispatch(validateResponseCodeProfile(JSON.parse(response.request.response)))
+
+                    dispatch(setFirstName(JSON.parse(response.request.response).firstName))
+                    dispatch(setLastName(JSON.parse(response.request.response).lastName))
+                    dispatch(setEmail(JSON.parse(response.request.response).username))
+                    dispatch(setAddress1(JSON.parse(response.request.response).addressLine1))
+                    dispatch(setAddress2(JSON.parse(response.request.response).addressLine2))
+                    dispatch(setCity(JSON.parse(response.request.response).city))
+                    dispatch(setProvince(JSON.parse(response.request.response).stateId))
+                    dispatch(setPostCode(JSON.parse(response.request.response).postalCode))
+                    dispatch(setCountry("Canada"))
+                }
+                if(JSON.parse(response.request.response).errorCode != 0) {
+                    console.log("no login")
+                }
+
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+}
+
+//Creating posts

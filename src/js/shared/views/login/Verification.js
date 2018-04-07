@@ -6,7 +6,8 @@ import {
     KeyboardAvoidingView,
     Image,
     ImageBackground,
-    Dimensions
+    Dimensions,
+    AsyncStorage
 } from 'react-native';
 import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text, Drawer, Input, Label, Form, Item } from 'native-base';
 import {connect} from "react-redux";
@@ -19,19 +20,27 @@ const deviceHeight = Dimensions.get("window").height;
 const deviceWidth = Dimensions.get("window").width;
 
 let button;
+let count = 0;
 
 class Verification extends Component {
 
-    proceed = () => {
+    proceed(){
         this.props.verificationEntry(this.props.code, this.props.phone)
-        this.props.navigation.navigate('CreateProfile')
+    }
+
+    componentDidUpdate(){
+        console.log("update")
+        if(this.props.responseCode == 0 && count <1){
+            count += 1
+            this.props.navigation.navigate("CreateProfile")
+        }
     }
 
     render() {
-        if(this.props.code.length == 6){
-            button = <Button transparent onPress={()=>this.proceed()}>
+        if (this.props.code.length == 6) {
+            button = <Button transparent onPress={() => this.proceed()}>
                 <Text>Next</Text>
-                <Icon name='arrow-forward' />
+                <Icon name='arrow-forward'/>
             </Button>
         }
 
@@ -49,19 +58,28 @@ class Verification extends Component {
                 </Header>
             <KeyboardAvoidingView style={{flex: 1, flexDirection:'column', justifyContent:'center', alignItems:'center'}} behavior="padding">
 
-                <Text style={Style.text.h1}>{Strings.VERIFICATION_HEADER}</Text>
-                <Text style={Style.text.h2}>{Strings.VERIFICATION_MESSAGE}</Text>
+                        <Text style={Style.text.h1}>{Strings.VERIFICATION_HEADER}</Text>
+                        <Text style={Style.text.h2}>{Strings.VERIFICATION_MESSAGE}</Text>
 
-                <Form style={{flex:0,width: 350, paddingTop:15, paddingBottom:15, flexDirection:'row', alignItems:'center'}}>
-                    <Item inlineLabel style={{width:deviceWidth*0.8, alignSelf:'center'}}>
-                        <Label style={{color:'#eee'}}>{Strings.FIELDS_CODE}</Label>
-                        <Input keyboardType='numeric' style={{color:'#eee'}} onChangeText={(code)=>this.props.setCode(code)} maxLength={6}/>
-                    </Item>
-                </Form>
-                <Button transparent style={{alignSelf:'center',paddingTop: deviceHeight * .15, }}><Text>Didn't get a verification code?</Text></Button>
-            </KeyboardAvoidingView>
-            </ImageBackground>
-        )
+                        <Form style={{
+                            flex: 0,
+                            width: 350,
+                            paddingTop: 15,
+                            paddingBottom: 15,
+                            flexDirection: 'row',
+                            alignItems: 'center'
+                        }}>
+                            <Item inlineLabel style={{width: deviceWidth * 0.8, alignSelf: 'center'}}>
+                                <Label style={{color: '#eee'}}>{Strings.FIELDS_CODE}</Label>
+                                <Input keyboardType='numeric' style={{color: '#eee'}}
+                                       onChangeText={(code) => this.props.setCode(code)} maxLength={6}/>
+                            </Item>
+                        </Form>
+                        <Button transparent style={{alignSelf: 'center', paddingTop: deviceHeight * .15,}}><Text>Didn't
+                            get a verification code?</Text></Button>
+                    </KeyboardAvoidingView>
+                </ImageBackground>
+            )
 
     }
 }
@@ -70,6 +88,8 @@ function mapStateToProps(state) {
     return{
         phone: state.phone,
         code: state.code,
+        encCode: state.encCode,
+        responseCode: state.responseCode
 
     }
 }

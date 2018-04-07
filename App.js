@@ -14,7 +14,7 @@ import stocksApp from "./src/js/shared/reducers/Reducers";
 import {AppRouteAndroid, AppRouteIos, AppRoute, AppNavigator, LoginFlow} from "./src/js/shared/NavItems";
 import getTheme from './native-base-theme/components'
 import platform from './native-base-theme/variables/platform';
-import About from './src/js/shared/views/About';
+
 
 let state = {
     photoCached: {},
@@ -30,8 +30,21 @@ let state = {
     distanceLoaded: false,
     currentRequest:null,
     detailRequest:null,
-    phone:0,
+    phone:"",
     code:0,
+    responseCode:null,
+    responseCodeProfile:null,
+    encCode:"",
+    //user
+    firstName:"",
+    lastName:"",
+    email:"",
+    address1:"",
+    address2:"",
+    city:"",
+    province:"ON",
+    postCode:"",
+    country:"",
 
 }
 
@@ -80,7 +93,7 @@ export default class App extends Component {
           <StyleProvider style={getTheme(platform)}>
               <Provider store={store}>
                   <Root>
-                      <LoginFlow/>
+                      <AppRouteIos/>
                   </Root>
               </Provider>
           </StyleProvider>
