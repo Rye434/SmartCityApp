@@ -14,6 +14,7 @@ import {distanceLoaded} from "../../actions/Actions";
 
 const Strings = require('../../res/strings/StringsEN.js');
 const Styles = require('../../res/assets/styles/Styles');
+const NoImage = require('../../res/assets/img/no-image-available.png');
 
 let serviceName;
 let serviceGroup;
@@ -100,7 +101,7 @@ class RequestDetail extends Component {
             return (
                 <View>
                     <Image source={{uri: image}}
-                           style={{height: 250, width: 500}}/>
+                           style={{height: 250, width: 250}}/>
 
                     <Button style={Styles.map.detailModal.plusOne} disabled={this.props.currentRequest.requestId === null? true : false} onPress={this.updateAck}>
                         {buttonText}

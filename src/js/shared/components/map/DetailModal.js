@@ -6,6 +6,7 @@ import {Title, Container, Header, Content, Card, CardItem, Thumbnail, Text, Butt
 
 var Strings = require('../../res/strings/StringsEN');
 var Styles = require('../../res/assets/styles/Styles');
+var NoImage = require('../../res/assets/img/no-image-available.png');
 
 let arrow;
 

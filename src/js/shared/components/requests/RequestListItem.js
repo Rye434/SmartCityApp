@@ -6,6 +6,7 @@ import {Title, Container, Header, Content, Card, CardItem, Thumbnail, Text, Butt
 
 let arrow;
 const Style = require('../../res/assets/styles/Styles');
+var NoImage = require('../../res/assets/img/no-image-available.png');
 
 class RequestListItem extends Component {
     clicked = () => {
