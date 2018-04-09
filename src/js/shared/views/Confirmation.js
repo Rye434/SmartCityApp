@@ -16,29 +16,28 @@ import Details from "../components/submission/Details";
 
 var Strings = require('../res/strings/StringsEN.js');
 
+let body;
 
-class SubmissionDetails extends Component {
-
-    exitAlert = () => {
-        Alert.alert(
-            Strings.ALERT_TITLE,
-            Strings.ALERT_MESSAGE,
-            [
-                {text: Strings.ALERT_NEGATIVE, onPress: ()=> console.log('alert closed'), style:'cancel'},
-                {text: Strings.ALERT_POSITIVE, onPress: () => this.props.navigation.navigate('Camera') }
-            ],
-            { cancelable: false }
-        )
-    }
-
+class Confirmation extends Component {
 
     render() {
         if(Platform.OS == "ios"){
-            header = <HeaderIos title={Strings.PAGE_HEADERS_DETAIL} buttonClickLeft={this.exitAlert} targetTextLeft={Strings.HEADER_CANCEL}/>
+            header = <HeaderIos title={Strings.APP_TITLE} />
         }
         if(Platform.OS == "android"){
-            header =<HeaderAndroid buttonClick={this.exitAlert} title={Strings.PAGE_HEADERS_DETAIL} headerIcon={'close'}/>
+            header =<HeaderAndroid title={Strings.APP_TITLE}/>
         }
+
+        if(this.props.submissionConfirmationLoading === true){
+            body =  <Spinner />
+        }
+        if(this.props.submissionConfirmationLoading === false){
+            body = <View>
+                <Text>{Strings.SUBMISSION_THANK_YOU}</Text>
+                <Button onPress={()=>this.props.navigation.navigate('Map')}><Text>{Strings.SUBMISSION_RETURN}</Text></Button>
+                    </View>
+        }
+
         return(
             <View
                 style={{
@@ -49,7 +48,7 @@ class SubmissionDetails extends Component {
                 {header}
                 <Content>
 
-                    <Details navigation={this.props.navigation}/>
+                    {body}
 
                 </Content>
             </View>
@@ -59,7 +58,7 @@ class SubmissionDetails extends Component {
 
 function mapStateToProps(state) {
     return{
-        imageSource: state.photoCached,
+        submissionConfirmationLoading:state.submissionConfirmationLoading
     }
 }
 
@@ -73,4 +72,4 @@ const mapDistpatchToProps = (dispatch) => {
 
 
 
-export default connect(mapStateToProps,mapDistpatchToProps)(SubmissionDetails)
+export default connect(mapStateToProps,mapDistpatchToProps)(Confirmation)

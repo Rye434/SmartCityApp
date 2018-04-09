@@ -32,6 +32,7 @@ import {
     SET_ACTIVE_SUBJECT,
     STORE_CATEGORY,
     SET_ACTIVE_CATEGORY,
+    SUBMISSION_CONFIRMATION_LOADING,
     SET_SUBMITTION_ISSUE_DESCRIPTION
 } from "../actions/Actions";
 
@@ -234,6 +235,11 @@ export default function stocksApp(state, action) {
         case SET_SUBMITTION_ISSUE_DESCRIPTION:
             submissionIssueDescription = action.submissionIssueDescription
             newState = Object.assign({}, state, {submissionIssueDescription});
+            //console.log(newState)
+            break;
+        case SUBMISSION_CONFIRMATION_LOADING:
+            submissionConfirmationLoading = action.submissionConfirmationLoading
+            newState = Object.assign({}, state, {submissionConfirmationLoading});
             //console.log(newState)
             break;
         default:

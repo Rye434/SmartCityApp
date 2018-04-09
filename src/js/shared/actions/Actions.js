@@ -38,6 +38,7 @@ export const SET_ACTIVE_SUBJECT = "SET_ACTIVE_SUBJECT";
 export const STORE_CATEGORY = "STORE_CATEGORY";
 export const SET_ACTIVE_CATEGORY = "SET_ACTIVE_CATEGORY";
 export const SET_SUBMITTION_ISSUE_DESCRIPTION = "SET_SUBMITTION_ISSUE_DESCRIPTION";
+export const SUBMISSION_CONFIRMATION_LOADING ="SUBMISSION_CONFIRMATION_LOADING";
 //endregion
 
 var Constants = require('../res/constants/AppConstants');
@@ -195,7 +196,7 @@ export function updateDistance(requestList,distanceObj) {
         requestList.list[request]['distance'] = distanceObj.rows[0].elements[request].distance.text
             payload.push(requestList.list[request])
     }
-    payload.sort(function(a,b) {return (a.distance > b.distance) ? 1 : ((b.distance > a.distance) ? -1 : 0);} );
+    payload.sort(function(a,b) {return (parseFloat(a.distance.split(' ')[0]) > parseFloat(b.distance.split(' ')[0])) ? 1 : ((parseFloat(b.distance.split(' ')[0]) > parseFloat(a.distance.split(' ')[0])) ? -1 : 0);} );
 
     for (let i=0; i<payload.length; i++) {
         newObj[i] = payload[i];
@@ -209,6 +210,29 @@ export function updateDistance(requestList,distanceObj) {
         dispatch(distanceLoaded(true))
     }
 }
+
+export function updateMyDistance(requestList,distanceObj) {
+    let payload = [];
+    let newObj = {};
+
+    for(let request in requestList.list) {
+        requestList.list[request]['distance'] = distanceObj.rows[0].elements[request].distance.text
+        payload.push(requestList.list[request])
+    }
+    payload.sort(function(a,b) {return (a.distance > b.distance) ? 1 : ((b.distance > a.distance) ? -1 : 0);} );
+
+    for (let i=0; i<payload.length; i++) {
+        newObj[i] = payload[i];
+    }
+
+
+    requestList.list = newObj
+
+    return(dispatch)=>{
+        dispatch(storeUserRequests(requestList))
+    }
+}
+
 
 export function currentRequest(obj) {
     return{
@@ -245,6 +269,28 @@ export function calculateDistance(userLoc, requestList){
                     console.log(error);
                 });
         }
+
+}
+
+export function calculatePersonalDistance(userLoc, requestList){
+    let url = 'https://maps.googleapis.com/maps/api/distancematrix/json?'
+    let origin = JSON.stringify(userLoc.coords.latitude)+','+JSON.stringify(userLoc.coords.longitude)
+    let destination = []
+    let key = Constants.MAPS_API_KEY_PLACES
+    for(let request in requestList.list) {
+        destination.push(requestList.list[request].lat+","+requestList.list[request].long)
+    }
+
+    destination = destination.join('|')
+    return (dispatch)=>{
+        axios.get(url+'origins='+origin+'&destinations='+destination+'&key='+key)
+            .then((response) => {
+                dispatch(updateMyDistance(requestList,JSON.parse(response.request.response)))
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
 
 }
 
@@ -687,6 +733,15 @@ export function getPersonalReqs(userId) {
             .then((response) => {
                // console.log(JSON.parse(response.request.response))
                 dispatch(storeUserRequests(JSON.parse(response.request.response)))
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        dispatch(calculatePersonalDistance(position,JSON.parse(response.request.response)))
+                    },
+                    (error) => alert(error.message),
+                    {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
+                );
+
+
             })
             .catch(function (error) {
                 console.log(error);
@@ -703,8 +758,6 @@ export function storeUserRequests(obj){
 
 export function toggleAck(userId, bool, id311, id) {
     console.log("TOGGLE: ACK " + bool )
-    console.log(id311)
-    console.log(id)
     return (dispatch)=>{
         axios.post(Constants.BASE_URL + '/registerservice/api/requests/acknowledgeRequest',
             {
@@ -727,7 +780,7 @@ export function toggleAck(userId, bool, id311, id) {
                 if(JSON.parse(response.request.response).errorCode === 0){
                     navigator.geolocation.getCurrentPosition(
                         (position) => {
-                            dispatch(fetchServiceList(position))
+                            dispatch(fetchRequestList(position))
                         },
                         (error) => alert(error.message),
                         {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
@@ -833,4 +886,94 @@ export function setSubmitIssueDescription(text) {
         submissionIssueDescription: text
     }
 
+}
+
+export function buildRequest(requestObj, userObj) {
+    return (dispatch) => {
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                dispatch(convertCoords(position, requestObj, userObj))
+                dispatch(submissionConfirmationLoading(true))
+            },
+            (error) => alert(error.message),
+            {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
+        );
+    }
+}
+
+export function submissionConfirmationLoading(bool) {
+    return{
+        type: SUBMISSION_CONFIRMATION_LOADING,
+        submissionConfirmationLoading: bool
+    }
+}
+
+export function convertCoords(position, requestObj, userObj) {
+    return (dispatch)=>{
+        axios.post('https://maps.googleapis.com/maps/api/geocode/json?latlng='+position.coords.latitude+','+position.coords.longitude+'&result_type=street_address|route|locality|postal_code|administrative_area_level_1&key='+Constants.MAPS_API_KEY_PLACES,
+            {},
+            {},).then((response) => {
+                let loc = JSON.parse(response.request.response).results[0].formatted_address
+                dispatch(compileRequest(position, requestObj, userObj, loc))
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+}
+
+
+
+export function compileRequest(position, requestObj, userObj, loc) {
+    return (dispatch)=>{
+        axios.post(Constants.BASE_URL + '/registerservice/api/requests/createNewRequest',
+            {
+                "userId"			: userObj.userId,
+                "serviceId"			: requestObj.serviceId,
+                "serviceCode"		: requestObj.serviceCode,
+                "serviceIssue"		: requestObj.serviceIssue,
+                "longTimestamp"		: requestObj.longTimestamp,
+                "requestDescription": requestObj.description,
+                "coordLat"			: position.coords.latitude,
+                "coordLong"			: position.coords.longitude,
+                "addressLine1"		: loc.split(',')[0],
+                "addressLine2"		: "",
+                "postalCode"		: loc.split(',')[2].split(' ')[2]+loc.split(',')[2].split(' ')[3],
+                "city"				: loc.split(',')[1],
+                "provinceId"		: loc.split(',')[2].split(' ')[1],
+                "countryId"			: 38,
+                "deviceId"			: "",
+                "stringImage"		: requestObj.stringImage
+            },
+            {
+                headers: {
+                    'PTM_HEADER_ORG_ID': Constants.ORGANIZATION_ID,
+                    'PTM_HEADER_APP_ID': Constants.MGIS_APP_ID,
+                    'PTM_LANGUAGE': 'eng',
+                    'Content-Type': 'application/json',
+                }
+            },
+        )
+            .then((response) => {
+                console.log(JSON.parse(response.request.response))
+                dispatch(submissionConfirmationLoading(false))
+                dispatch(resetState())
+
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+}
+
+export function resetState(){
+    return (dispatch) =>{
+        dispatch(storeDepartment(null))
+        dispatch(storeSubject(null))
+        dispatch(storeCategory([]))
+        dispatch(setActiveDepartment(null))
+        dispatch(setActiveSubject(null))
+        dispatch(setActiveCategory(null))
+        dispatch(setSubmitIssueDescription(null))
+    }
 }

@@ -25,7 +25,7 @@ class RequestListItem extends Component {
             <List>
                 <ListItem thumbnail onPress={()=>this.clicked()} >
                     <Left>
-                    <Thumbnail square size={80} source={{ uri: 'http://via.placeholder.com/80x80' }} />
+                    <Thumbnail square size={80} source={{ uri: this.props.image }} />
                     </Left>
                     <Body>
                         <Text style={Style.requests.text}>{this.props.title}</Text>

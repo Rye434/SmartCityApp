@@ -26,6 +26,7 @@ let topSpace;
 let searchedLocation;
 let searchedMarker;
 let markers;
+let myMarkers;
 
 class IssueMap extends Component {
 
@@ -39,6 +40,7 @@ class IssueMap extends Component {
                 this.props.saveUserCode(code)
                 this.props.phoneNum(phone)
                 this.props.loginByPhone(phone,code)
+                this.props.getPersonalReqs(this.props.responseCodeProfile.userId)
             }
         } catch (error) {
             console.log("Error fetching data " + error);
@@ -110,6 +112,27 @@ class IssueMap extends Component {
                     </MapView.Marker> : something = null))
             }
 
+            if(this.props.storeUserRequests != null) {
+
+                myMarkers =  Object.keys(this.props.storeUserRequests.list).map((marker) => (
+                    this.props.storeUserRequests.list[marker].serviceGroup == this.props.services[this.props.actionSheetValue]
+                    ||
+                    this.props.services[this.props.actionSheetValue] == "Clear filter"?
+                        <MapView.Marker
+                            key={marker}
+                            coordinate={
+                                {
+                                    latitude: parseFloat(this.props.storeUserRequests.list[marker].lat),
+                                    longitude: parseFloat(this.props.storeUserRequests.list[marker].long)
+                                }
+                            }
+                            onPress={() => this.props.requestDetail(this.props.storeUserRequests.list[marker].requestIdOpen311, this.props.storeUserRequests.list[marker].requestId, true)}
+                        >
+                        </MapView.Marker> : something = null))
+            }
+
+
+
 
             if(this.props.currentRequest != {}){
                 detailModal = <DetailModal/>
@@ -138,6 +161,7 @@ class IssueMap extends Component {
                     region={this.props.mapRegion}>
                 {/*{searchedMarker}*/}
                 {markers}
+                {myMarkers}
 
 
 
@@ -160,6 +184,7 @@ function mapStateToProps(state) {
         actionSheetValue: state.actionSheetValue,
         services: state.services,
         responseCodeProfile: state.responseCodeProfile,
+        storeUserRequests:state.storeUserRequests,
     }
 }
 
@@ -188,6 +213,9 @@ const mapDistpatchToProps = (dispatch) => {
         },
         loginByPhone: (phone, encCode) => {
             dispatch(actions.loginByPhone(phone, encCode))
+        },
+        getPersonalReqs: (userId) => {
+            dispatch(actions.getPersonalReqs(userId))
         }
     }
 }

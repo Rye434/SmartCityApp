@@ -39,6 +39,11 @@ class Details extends Component {
         this.props.buildCategory(value, this.props.subject)
     }
 
+    proceed = (requestObj) => {
+        this.props.buildRequest(requestObj, this.props.responseCodeProfile)
+        this.props.navigation.navigate('Confirmation')
+    }
+
     render() {
         if(this.props.department != null){
             departments =
@@ -84,8 +89,18 @@ class Details extends Component {
 
                 </Picker>
         }
+        if(this.props.activeDepartment != null && this.props.activeSubject !=null && this.props.submissionIssueDescription != null && this.props.imageSource != {}){
+            let requestObj = {
+                serviceId			: this.props.activeDepartment,
+                serviceCode	    	: this.props.activeSubject,
+                serviceIssue		: (this.props.activeCategory != null)? this.props.activeCategory : "",
+                longTimestamp		: Date.now(),
+                stringImage		    : 'data:image/png;base64,'+ this.props.imageSource.base64,
+                description         : this.props.submissionIssueDescription
+            }
 
-
+            button = <Button style={Styles.requests.submitButton} onPress={()=>this.proceed(requestObj)}><Text>{Strings.BUTTONS_SUBMIT}</Text></Button>
+        }
 
         return(
             <View
@@ -102,8 +117,7 @@ class Details extends Component {
                     </Form>
                 </KeyboardAvoidingView>
 
-
-                <Button style={Styles.requests.submitButton}><Text>{Strings.BUTTONS_SUBMIT}</Text></Button>
+                {button}
 
             </View>
         )
@@ -153,6 +167,9 @@ const mapDistpatchToProps = (dispatch) => {
         },
         setSubmitIssueDescription: (text) => {
             dispatch(actions.setSubmitIssueDescription(text))
+        },
+        buildRequest: (requestObj, userObj) => {
+            dispatch(actions.buildRequest(requestObj, userObj))
         }
     }
 }

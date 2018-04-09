@@ -113,5 +113,7 @@ module.exports = {
     SUBMISSION_DETAILS_DEPARTMENT:"Select A Department",
     SUBMISSION_DETAILS_SUBJECT:"Select A Subject",
     SUBMISSION_DETAILS_CATEGORY:"Select A Category",
+    SUBMISSION_THANK_YOU:"Thank you for your submission, it may take a few minutes to be visible in the system",
+    SUBMISSION_RETURN: "Go Home",
 
 };

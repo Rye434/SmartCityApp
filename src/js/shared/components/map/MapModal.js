@@ -21,19 +21,20 @@ class MapModal extends Component {
             let inList = false;
             for (let item in this.props.storeUserRequests.acknowledge) {
                 //if item is in ack list for user toggle to false on press
-                if (this.props.currentRequest.requestId === item.requestId || this.props.currentRequest.requestIdOpen311 === item.requestIdOpen311) {
-                    conosole.log(this.props.currentRequest.requestIdOpen311 + "  :  " + item.requestIdOpen311)
+                if (this.props.currentRequest.info.requestId === this.props.storeUserRequests.acknowledge[item].requestId) {
+                    console.log(this.props.currentRequest.requestId + "  :  " + item.requestId)
                     inList = true
-                    this.props.toggleAck(this.props.responseCodeProfile.userId, false, item.requestIdOpen311, item.requestId)
+                    this.props.toggleAck(this.props.responseCodeProfile.userId, false, this.props.storeUserRequests.acknowledge[item].requestIdOpen311, this.props.storeUserRequests.acknowledge[item].requestId)
                 }
             }
             //if if loops through user ack list and request is not present, ack it
             if (inList == false) {
-                this.props.toggleAck(this.props.responseCodeProfile.userId, true, item.requestIdOpen311, item.requestId)
+                this.props.toggleAck(this.props.responseCodeProfile.userId, true,this.props.currentRequest.info.requestIdOpen311, this.props.currentRequest.info.requestId)
             }
         }
         if (this.props.storeUserRequests.acknowledge.length === 0) {
-            this.props.toggleAck(this.props.responseCodeProfile.userId, false, this.props.currentRequest.requestIdOpen311, this.props.currentRequest.requestId)
+            console.log(this.props.currentRequest.info.requestId)
+            this.props.toggleAck(this.props.responseCodeProfile.userId, true, this.props.currentRequest.info.requestIdOpen311, this.props.currentRequest.info.requestId)
         }
 
     }
@@ -51,17 +52,15 @@ class MapModal extends Component {
             ackIcon = Platform.OS == 'ios' ? "ios-square-outline" : "md-square-outline"
         }
 
-        if(this.props.currentRequest.requestId != null){
+        if(this.props.currentRequest.info.requestId != null){
             buttonText = <Text>
-                <Icon name={ackIcon}/>{Strings.DETAIL_MODAL_ACKNOWLEDGE} {this.props.detailRequest.acknowledgeCount}
+                <Icon name={ackIcon}/>{Strings.DETAIL_MODAL_ACKNOWLEDGE} {this.props.currentRequest.info.acknowledgeCount}
             </Text>
         }
-        if(this.props.currentRequest.requestId === null){
+        if(this.props.currentRequest.info.requestId === null){
             buttonText = <Text>Cannot Acknowledge this Request</Text>
         }
 
-
-            //console.log(this.props.currentRequest.info.serviceName)
             serviceName = this.props.currentRequest.info.serviceName
             serviceGroup = this.props.currentRequest.info.serviceGroup
         }
@@ -133,7 +132,8 @@ function mapStateToProps(state) {
         mapModal: state.mapModal,
         currentRequest: state.currentRequest,
         responseCodeProfile: state.responseCodeProfile,
-        storeUserRequests: state.storeUserRequests
+        storeUserRequests: state.storeUserRequests,
+
     }
 }
 
@@ -147,6 +147,9 @@ const mapDistpatchToProps = (dispatch) => {
         },
         toggleModals: () => {
             return dispatch(actions.toggleModals())
+        },
+        toggleAck: (userId, bool, id311, id ) => {
+            dispatch(actions.toggleAck(userId, bool, id311, id ))
         }
     }
 }

@@ -32,19 +32,20 @@ class RequestDetail extends Component {
             let inList = false;
             for (let item in this.props.storeUserRequests.acknowledge) {
                 //if item is in ack list for user toggle to false on press
-                if (this.props.detailRequest.requestId === item.requestId || this.props.detailRequest.requestIdOpen311 === item.requestIdOpen311) {
-                    conosole.log(this.props.detailRequest.requestIdOpen311 + "  :  " + item.requestIdOpen311)
+                if (this.props.detailRequest.requestId === this.props.storeUserRequests.acknowledge[item].requestId) {
+                    console.log(this.props.detailRequest.requestId + "  :  " + item.requestId)
                     inList = true
-                    this.props.toggleAck(this.props.responseCodeProfile.userId, false, item.requestIdOpen311, item.requestId)
+                    this.props.toggleAck(this.props.responseCodeProfile.userId, false, this.props.storeUserRequests.acknowledge[item].requestIdOpen311, this.props.storeUserRequests.acknowledge[item].requestId)
                 }
             }
             //if if loops through user ack list and request is not present, ack it
             if (inList == false) {
-                this.props.toggleAck(this.props.responseCodeProfile.userId, true, item.requestIdOpen311, item.requestId)
+                this.props.toggleAck(this.props.responseCodeProfile.userId, true,this.props.detailRequest.requestIdOpen311, this.props.detailRequest.requestId)
             }
         }
         if (this.props.storeUserRequests.acknowledge.length === 0) {
-            this.props.toggleAck(this.props.responseCodeProfile.userId, false, this.props.detailRequest.requestIdOpen311, this.props.detailRequest.requestId)
+            console.log(this.props.detailRequest.requestId)
+            this.props.toggleAck(this.props.responseCodeProfile.userId, true, this.props.detailRequest.requestIdOpen311, this.props.detailRequest.requestId)
         }
 
     }
@@ -53,14 +54,17 @@ class RequestDetail extends Component {
 
 
     render() {
+
         if (this.props.detailRequest != null) {
+
             serviceName = this.props.detailRequest.serviceName
             serviceGroup = this.props.detailRequest.serviceGroup
             dateSubmitted = this.props.detailRequest.dateSubmitted.substr(0, 11)
             description = this.props.detailRequest.description
             status = this.props.detailRequest.status
             distance = this.props.detailRequest.distance
-            address = this.props.detailRequest.address.split(" ").slice(2).join(" ")
+            address = this.props.detailRequest.address
+            image = this.props.detailRequest.image
 
 
             //check if item in ack list for user then set checkbox button accordingly
@@ -85,7 +89,7 @@ class RequestDetail extends Component {
 
             return (
                 <View>
-                    <Image source={{uri: 'http://via.placeholder.com/250x500'}}
+                    <Image source={{uri: image}}
                            style={{height: 250, width: 500}}/>
 
                     <Button style={Styles.map.detailModal.plusOne} disabled={this.props.detailRequest.requestId === null? true : false} onPress={this.updateAck}>
@@ -98,6 +102,7 @@ class RequestDetail extends Component {
                         <Item style={Styles.map.detailModal.line}/>
                         <Text note style={Styles.map.detailModal.text.infoNote}>{Strings.DETAIL_MODAL_DISTANCE}</Text>
                         <Text style={Styles.map.detailModal.text.info}>{distance}</Text>
+                        <Text style={Styles.map.detailModal.text.info}>{address}</Text>
                         <Item style={Styles.map.detailModal.line}/>
                         <Text note style={Styles.map.detailModal.text.infoNote}>{Strings.DETAIL_MODAL_STATUS}</Text>
                         <Text style={Styles.map.detailModal.text.info}>{status}</Text>

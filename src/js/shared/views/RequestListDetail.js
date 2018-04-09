@@ -24,9 +24,8 @@ let header;
 class RequestListDetail extends Component {
 
     render() {
-
         if(Platform.OS == "ios"){
-            header = <HeaderIos title={this.props.detailRequest.serviceGroup} targetTextLeft={Strings.HEADER_RETURN}
+            header = <HeaderIos title={this.props.detailRequest.serviceName} targetTextLeft={Strings.HEADER_RETURN}
                                 buttonClickLeft={() => this.props.navigation.navigate("Requests")}/>
         }
         if(Platform.OS == "android"){

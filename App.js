@@ -55,6 +55,7 @@ let state = {
     activeSubject:null,
     activeCategory:null,
     submissionIssueDescription:null,
+    submissionConfirmationLoading:false,
 
 }
 

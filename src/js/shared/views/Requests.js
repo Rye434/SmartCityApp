@@ -25,7 +25,7 @@ class Requests extends Component {
 
 
     render() {
-        console.log(this.props.responseCodeProfile);
+       // console.log(this.props.responseCodeProfile);
         (this.props.responseCodeProfile == null)? target = 'PhoneOrFacebook' : target = 'Profile'
 
         if(Platform.OS === "ios"){

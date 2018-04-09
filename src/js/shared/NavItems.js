@@ -18,6 +18,7 @@ import Feedback from "./views/Feedback";
 import PhoneOrFacebook from "./views/login/PhoneOrFacebook";
 import SubmissionDetails from "./views/SubmissionDetails";
 import RequestListDetail from "./views/RequestListDetail";
+import Confirmation from "./views/Confirmation";
 
 var Strings = require('./res/strings/StringsEN.js');
 
@@ -55,6 +56,7 @@ export const AppRouteIos = StackNavigator({
         Phone: {screen: Phone},
         Verification: {screen:Verification},
         CreateProfile: {screen: CreateProfile},
+        Confirmation: {screen: Confirmation},
     },
     {
         headerMode:'none'
@@ -128,6 +130,7 @@ export const AppRouteAndroid = StackNavigator({
     Phone: {screen: Phone},
     Verification: {screen:Verification},
     CreateProfile: {screen: CreateProfile},
+    Confirmation: {screen: Confirmation},
 }, {
     headerMode: 'none',
 });

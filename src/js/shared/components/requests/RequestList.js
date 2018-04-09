@@ -24,8 +24,6 @@ class RequestList extends Component {
             placeholder = this.props.storeUserRequests.acknowledge
         }
 
-        //console.log(Object.keys(placeholder).length)
-
         if(this.props.distanceLoaded == false){
             return(
                 <Spinner color='blue' />
@@ -39,14 +37,14 @@ class RequestList extends Component {
                 return (
                     <List>
                         {Object.keys(placeholder).map(function (item, i) {
-
                             return (
-                                <RequestListItem key={i} {...this.props.storeRequests.list[item]}
-                                                 title={this.props.storeRequests.list[item].serviceName}
+                                <RequestListItem key={i} {...placeholder[item]}
+                                                 title={placeholder[item].serviceName}
                                                  navigation={this.props.navigation}
-                                                 date={this.props.storeRequests.list[item].dateSubmitted}
-                                                 distance={this.props.storeRequests.list[item].distance}
+                                                 date={placeholder[item].dateSubmitted}
+                                                 distance={placeholder[item].distance}
                                                  wholeObj={placeholder[item]}
+                                                 image={placeholder[item].image}
                                 />
                             )
 
