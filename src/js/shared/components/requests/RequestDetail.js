@@ -57,15 +57,6 @@ class RequestDetail extends Component {
 
         if (this.props.currentRequest != null) {
 
-            // serviceName = this.props.detailRequest.serviceName
-            // serviceGroup = this.props.detailRequest.serviceGroup
-            // dateSubmitted = this.props.detailRequest.dateSubmitted.substr(0, 11)
-            // description = this.props.detailRequest.description
-            // status = this.props.detailRequest.status
-            // distance = this.props.detailRequest.distance
-            // address = this.props.detailRequest.address
-            // image = this.props.detailRequest.image
-
 
             serviceName = this.props.currentRequest.serviceName
             serviceGroup = this.props.currentRequest.serviceGroup

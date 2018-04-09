@@ -19,6 +19,7 @@ let address;
 
 let ackIcon;
 let buttonText;
+let image;
 
 
 class DetailModal extends Component {
@@ -62,6 +63,7 @@ class DetailModal extends Component {
             buttonText = <Text>
                 <Icon name={ackIcon}/>{Strings.DETAIL_MODAL_ACKNOWLEDGE} {this.props.currentRequest.acknowledgeCount}
             </Text>
+            image = this.props.currentRequest.image
         }
         if (this.props.currentRequest.requestId === null) {
             buttonText = <Text>Cannot Acknowledge this Request</Text>
@@ -104,7 +106,7 @@ class DetailModal extends Component {
                 onRequestClose={this.props.showDetailModal}>
 
                 <ScrollView style={{flexDirection:'column'}}>
-                <Image source={{uri: 'http://via.placeholder.com/250x500'}}  style={{height: 250, width: 500}}>
+                <Image source={{uri: image}}  style={{height: 250, width: 500}}>
                     <Button transparent onPress={this.props.showDetailModal} style={Styles.map.detailModal.backButton}>
                         {arrow}
                     </Button>

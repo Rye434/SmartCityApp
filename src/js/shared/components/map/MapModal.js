@@ -13,6 +13,7 @@ let serviceGroup;
 
 let ackIcon;
 let buttonText;
+let image;
 
 class MapModal extends Component {
 
@@ -62,6 +63,8 @@ class MapModal extends Component {
 
             serviceName = this.props.currentRequest.serviceName
             serviceGroup = this.props.currentRequest.serviceGroup
+
+            image = this.props.currentRequest.image
         }
 
 
@@ -96,7 +99,7 @@ class MapModal extends Component {
                     marginTop:modalSpaceHeight, backgroundColor:'white'}}>
 
                     <View style={{flexDirection:'row', marginTop:8, marginBottom:8}}>
-                    <Thumbnail square large source={{uri: 'http://via.placeholder.com/80x80'}} style={Styles.map.mapModal.thumbnail} />
+                    <Thumbnail square large source={{uri: image}} style={Styles.map.mapModal.thumbnail} />
 
                         <View style={Styles.map.mapModal.textView}>
                         <Text style={Styles.map.mapModal.text.title}>{serviceGroup}</Text>
