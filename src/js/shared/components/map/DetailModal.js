@@ -114,7 +114,7 @@ class DetailModal extends Component {
                 onRequestClose={this.props.showDetailModal}>
 
                 <ScrollView style={{flexDirection:'column'}}>
-                <Image source={image}  style={{height: 250, width: 250}}>
+                <Image source={image}  style={Styles.map.detailModal.image}>
                     <Button transparent onPress={this.props.showDetailModal} style={Styles.map.detailModal.backButton}>
                         {arrow}
                     </Button>
