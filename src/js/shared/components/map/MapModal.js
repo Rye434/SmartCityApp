@@ -52,6 +52,7 @@ class MapModal extends Component {
             }
         }
 
+        console.log(this.props.currentRequest)
         if(this.props.currentRequest.requestId != null){
             buttonText = <Text>
                 <Icon name={ackIcon}/>{Strings.DETAIL_MODAL_ACKNOWLEDGE} {this.props.currentRequest.acknowledgeCount}

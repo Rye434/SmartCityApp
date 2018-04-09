@@ -63,7 +63,7 @@ class RequestDetail extends Component {
             dateSubmitted = this.props.currentRequest.dateSubmitted.substr(0,11)
             description = this.props.currentRequest.description
             status = this.props.currentRequest.status
-            address = this.props.currentRequest.address.split(" ").slice(2).join(" ")
+            address = this.props.currentRequest.address
             image = this.props.currentRequest.image
 
             for(var request in this.props.storeRequests.list){
