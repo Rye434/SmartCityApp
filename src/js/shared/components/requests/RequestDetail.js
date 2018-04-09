@@ -32,20 +32,20 @@ class RequestDetail extends Component {
             let inList = false;
             for (let item in this.props.storeUserRequests.acknowledge) {
                 //if item is in ack list for user toggle to false on press
-                if (this.props.detailRequest.requestId === this.props.storeUserRequests.acknowledge[item].requestId) {
-                    console.log(this.props.detailRequest.requestId + "  :  " + item.requestId)
+                if (this.props.currentRequest.requestId === this.props.storeUserRequests.acknowledge[item].requestId) {
+                    console.log(this.props.currentRequest.requestId + "  :  " + item.requestId)
                     inList = true
                     this.props.toggleAck(this.props.responseCodeProfile.userId, false, this.props.storeUserRequests.acknowledge[item].requestIdOpen311, this.props.storeUserRequests.acknowledge[item].requestId)
                 }
             }
             //if if loops through user ack list and request is not present, ack it
             if (inList == false) {
-                this.props.toggleAck(this.props.responseCodeProfile.userId, true,this.props.detailRequest.requestIdOpen311, this.props.detailRequest.requestId)
+                this.props.toggleAck(this.props.responseCodeProfile.userId, true,this.props.currentRequest.requestIdOpen311, this.props.currentRequest.requestId)
             }
         }
         if (this.props.storeUserRequests.acknowledge.length === 0) {
-            console.log(this.props.detailRequest.requestId)
-            this.props.toggleAck(this.props.responseCodeProfile.userId, true, this.props.detailRequest.requestIdOpen311, this.props.detailRequest.requestId)
+            console.log(this.props.currentRequest.requestId)
+            this.props.toggleAck(this.props.responseCodeProfile.userId, true, this.props.currentRequest.requestIdOpen311, this.props.currentRequest.requestId)
         }
 
     }
@@ -55,35 +55,54 @@ class RequestDetail extends Component {
 
     render() {
 
-        if (this.props.detailRequest != null) {
+        if (this.props.currentRequest != null) {
 
-            serviceName = this.props.detailRequest.serviceName
-            serviceGroup = this.props.detailRequest.serviceGroup
-            dateSubmitted = this.props.detailRequest.dateSubmitted.substr(0, 11)
-            description = this.props.detailRequest.description
-            status = this.props.detailRequest.status
-            distance = this.props.detailRequest.distance
-            address = this.props.detailRequest.address
-            image = this.props.detailRequest.image
+            // serviceName = this.props.detailRequest.serviceName
+            // serviceGroup = this.props.detailRequest.serviceGroup
+            // dateSubmitted = this.props.detailRequest.dateSubmitted.substr(0, 11)
+            // description = this.props.detailRequest.description
+            // status = this.props.detailRequest.status
+            // distance = this.props.detailRequest.distance
+            // address = this.props.detailRequest.address
+            // image = this.props.detailRequest.image
+
+
+            serviceName = this.props.currentRequest.serviceName
+            serviceGroup = this.props.currentRequest.serviceGroup
+            dateSubmitted = this.props.currentRequest.dateSubmitted.substr(0,11)
+            description = this.props.currentRequest.description
+            status = this.props.currentRequest.status
+            address = this.props.currentRequest.address.split(" ").slice(2).join(" ")
+            image = this.props.currentRequest.image
+
+            for(var request in this.props.storeRequests.list){
+                if(this.props.storeRequests.list[request].requestIdOpen311 == this.props.currentRequest.requestIdOpen311){
+                    distance = this.props.storeRequests.list[request].distance
+                }
+            }
+            for(var request in this.props.storeUserRequests.list){
+                if(this.props.storeUserRequests.list[request].requestId == this.props.currentRequest.requestId){
+                    distance = this.props.storeUserRequests.list[request].distance
+                }
+            }
 
 
             //check if item in ack list for user then set checkbox button accordingly
             if (this.props.storeUserRequests.acknowledge.length > 0) {
+                ackIcon = Platform.OS == 'ios' ? "ios-square-outline" : "md-square-outline"
                 for (let item in this.props.storeUserRequests.acknowledge) {
-                    if (this.props.detailRequest.requestId === item.requestId || this.props.detailRequest.requestIdOpen311 === item.requestIdOpen311) {
+                    if (this.props.currentRequest.requestId === this.props.storeUserRequests.acknowledge[item].requestId) {
                         ackIcon = Platform.OS == 'ios' ? "ios-checkbox-outline" : "md-checkbox-outline"
                     }
                 }
-            }else {
-                ackIcon = Platform.OS == 'ios' ? "ios-square-outline" : "md-square-outline"
             }
 
-            if(this.props.detailRequest.requestId != null){
+            if(this.props.currentRequest.requestId != null){
                 buttonText = <Text>
-                                <Icon name={ackIcon}/>{Strings.DETAIL_MODAL_ACKNOWLEDGE} {this.props.detailRequest.acknowledgeCount}
+                                <Icon name={ackIcon}/>{Strings.DETAIL_MODAL_ACKNOWLEDGE} {this.props.currentRequest.acknowledgeCount}
                              </Text>
             }
-            if(this.props.detailRequest.requestId === null){
+            if(this.props.currentRequest.requestId === null){
                 buttonText = <Text>Cannot Acknowledge this Request</Text>
             }
 
@@ -92,7 +111,7 @@ class RequestDetail extends Component {
                     <Image source={{uri: image}}
                            style={{height: 250, width: 500}}/>
 
-                    <Button style={Styles.map.detailModal.plusOne} disabled={this.props.detailRequest.requestId === null? true : false} onPress={this.updateAck}>
+                    <Button style={Styles.map.detailModal.plusOne} disabled={this.props.currentRequest.requestId === null? true : false} onPress={this.updateAck}>
                         {buttonText}
                     </Button>
 
@@ -124,7 +143,8 @@ function mapStateToProps(state) {
         storeRequests: state.storeRequests,
         detailRequest: state.detailRequest,
         responseCodeProfile: state.responseCodeProfile,
-        storeUserRequests: state.storeUserRequests
+        storeUserRequests: state.storeUserRequests,
+        currentRequest: state.currentRequest
     }
 }
 
@@ -135,7 +155,9 @@ const mapDistpatchToProps = (dispatch) => {
         },
         toggleAck: (userId, bool, id311, id ) => {
             dispatch(actions.toggleAck(userId, bool, id311, id ))
-        }
+        },
+
+
     }
 }
 

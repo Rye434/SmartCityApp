@@ -362,8 +362,10 @@ export function requestDetail(ID, mgisID, bool) {
         )
             .then((response) => {
                 //console.log(JSON.parse(response.request.response))
-                dispatch(currentRequest(JSON.parse(response.request.response)))
-                dispatch(mapModal(bool))
+                dispatch(currentRequest(JSON.parse(response.request.response).info))
+                if(bool) {
+                    dispatch(mapModal(bool))
+                }
             })
             .catch(function (error) {
                 console.log(error);
@@ -781,6 +783,8 @@ export function toggleAck(userId, bool, id311, id) {
                     navigator.geolocation.getCurrentPosition(
                         (position) => {
                             dispatch(fetchRequestList(position))
+                            dispatch(getPersonalReqs(userId))
+                            dispatch(requestDetail(id311,id))
                         },
                         (error) => alert(error.message),
                         {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}

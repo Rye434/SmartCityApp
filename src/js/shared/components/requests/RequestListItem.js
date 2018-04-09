@@ -9,9 +9,10 @@ const Style = require('../../res/assets/styles/Styles');
 
 class RequestListItem extends Component {
     clicked = () => {
-        this.props.detailRequest(this.props.wholeObj)
+        this.props.currentRequest(this.props.wholeObj)
         this.props.navigation.navigate('RequestListDetail')
     }
+
 
 
     render() {
@@ -46,8 +47,8 @@ function mapStateToProps(state) {
 
 const mapDistpatchToProps = (dispatch) => {
     return {
-        detailRequest: (obj) => {
-            dispatch(actions.detailRequest(obj))
+        currentRequest: (obj) => {
+            dispatch(actions.currentRequest(obj))
         }
     }
 }

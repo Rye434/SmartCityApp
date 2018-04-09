@@ -21,7 +21,7 @@ class MapModal extends Component {
             let inList = false;
             for (let item in this.props.storeUserRequests.acknowledge) {
                 //if item is in ack list for user toggle to false on press
-                if (this.props.currentRequest.info.requestId === this.props.storeUserRequests.acknowledge[item].requestId) {
+                if (this.props.currentRequest.requestId === this.props.storeUserRequests.acknowledge[item].requestId) {
                     console.log(this.props.currentRequest.requestId + "  :  " + item.requestId)
                     inList = true
                     this.props.toggleAck(this.props.responseCodeProfile.userId, false, this.props.storeUserRequests.acknowledge[item].requestIdOpen311, this.props.storeUserRequests.acknowledge[item].requestId)
@@ -29,12 +29,12 @@ class MapModal extends Component {
             }
             //if if loops through user ack list and request is not present, ack it
             if (inList == false) {
-                this.props.toggleAck(this.props.responseCodeProfile.userId, true,this.props.currentRequest.info.requestIdOpen311, this.props.currentRequest.info.requestId)
+                this.props.toggleAck(this.props.responseCodeProfile.userId, true,this.props.currentRequest.requestIdOpen311, this.props.currentRequest.requestId)
             }
         }
         if (this.props.storeUserRequests.acknowledge.length === 0) {
-            console.log(this.props.currentRequest.info.requestId)
-            this.props.toggleAck(this.props.responseCodeProfile.userId, true, this.props.currentRequest.info.requestIdOpen311, this.props.currentRequest.info.requestId)
+            console.log(this.props.currentRequest.requestId)
+            this.props.toggleAck(this.props.responseCodeProfile.userId, true, this.props.currentRequest.requestIdOpen311, this.props.currentRequest.requestId)
         }
 
     }
@@ -43,26 +43,25 @@ class MapModal extends Component {
         if(this.props.currentRequest != null) {
         //check if item in ack list for user then set checkbox button accordingly
         if (this.props.storeUserRequests.acknowledge.length > 0) {
+            ackIcon = Platform.OS == 'ios' ? "ios-square-outline" : "md-square-outline"
             for (let item in this.props.storeUserRequests.acknowledge) {
-                if (this.props.currentRequest.requestId === item.requestId || this.props.currentRequest.requestIdOpen311 === item.requestIdOpen311) {
+                if (this.props.currentRequest.requestId === this.props.storeUserRequests.acknowledge[item].requestId) {
                     ackIcon = Platform.OS == 'ios' ? "ios-checkbox-outline" : "md-checkbox-outline"
                 }
             }
-        }else {
-            ackIcon = Platform.OS == 'ios' ? "ios-square-outline" : "md-square-outline"
         }
 
-        if(this.props.currentRequest.info.requestId != null){
+        if(this.props.currentRequest.requestId != null){
             buttonText = <Text>
-                <Icon name={ackIcon}/>{Strings.DETAIL_MODAL_ACKNOWLEDGE} {this.props.currentRequest.info.acknowledgeCount}
+                <Icon name={ackIcon}/>{Strings.DETAIL_MODAL_ACKNOWLEDGE} {this.props.currentRequest.acknowledgeCount}
             </Text>
         }
-        if(this.props.currentRequest.info.requestId === null){
+        if(this.props.currentRequest.requestId === null){
             buttonText = <Text>Cannot Acknowledge this Request</Text>
         }
 
-            serviceName = this.props.currentRequest.info.serviceName
-            serviceGroup = this.props.currentRequest.info.serviceGroup
+            serviceName = this.props.currentRequest.serviceName
+            serviceGroup = this.props.currentRequest.serviceGroup
         }
 
 
