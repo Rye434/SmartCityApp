@@ -321,6 +321,10 @@ module.exports = {
                 paddingLeft:deviceWidth * 0.05,
 
             },
+            image:{
+                height: 250,
+                width: deviceWidth,
+            },
             plusOne:{
                 backgroundColor: '#059980',
                 width: deviceWidth * .95,

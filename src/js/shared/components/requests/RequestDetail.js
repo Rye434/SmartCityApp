@@ -107,7 +107,7 @@ class RequestDetail extends Component {
             return (
                 <View>
                     <Image source={image}
-                           style={{height: 250, width: 250}}/>
+                           style={Styles.map.detailModal.image}/>
 
                     <Button style={Styles.map.detailModal.plusOne} disabled={this.props.currentRequest.requestId === null? true : false} onPress={this.updateAck}>
                         {buttonText}
