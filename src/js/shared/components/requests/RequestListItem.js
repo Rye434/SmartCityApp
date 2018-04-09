@@ -8,6 +8,7 @@ let arrow;
 const Style = require('../../res/assets/styles/Styles');
 var NoImage = require('../../res/assets/img/no-image-available.png');
 
+let image;
 class RequestListItem extends Component {
     clicked = () => {
         this.props.currentRequest(this.props.wholeObj)
@@ -23,11 +24,19 @@ class RequestListItem extends Component {
         if(Platform.OS == "android"){
            arrow = <Icon name="md-arrow-forward" style={Style.requests.icon}/>
         }
+
+        if(this.props.image == ""){
+            image = NoImage
+        }
+        if(this.props.image != "") {
+            image = {uri: this.props.image}
+        }
+
         return (
             <List>
                 <ListItem thumbnail onPress={()=>this.clicked()} >
                     <Left>
-                    <Thumbnail square size={80} source={{ uri: this.props.image }} />
+                    <Thumbnail square size={80} source={image} />
                     </Left>
                     <Body>
                         <Text style={Style.requests.text}>{this.props.title}</Text>

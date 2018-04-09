@@ -66,7 +66,12 @@ class MapModal extends Component {
             serviceName = this.props.currentRequest.serviceName
             serviceGroup = this.props.currentRequest.serviceGroup
 
-            image = this.props.currentRequest.image
+            if(this.props.currentRequest.image == ""){
+                image = NoImage
+            }
+            if(this.props.currentRequest.image != "") {
+                image = {uri: this.props.currentRequest.image}
+            }
         }
 
 
@@ -101,7 +106,7 @@ class MapModal extends Component {
                     marginTop:modalSpaceHeight, backgroundColor:'white'}}>
 
                     <View style={{flexDirection:'row', marginTop:8, marginBottom:8}}>
-                    <Thumbnail square large source={{uri: image}} style={Styles.map.mapModal.thumbnail} />
+                    <Thumbnail square large source={image} style={Styles.map.mapModal.thumbnail} />
 
                         <View style={Styles.map.mapModal.textView}>
                         <Text style={Styles.map.mapModal.text.title}>{serviceGroup}</Text>

@@ -65,7 +65,13 @@ class RequestDetail extends Component {
             description = this.props.currentRequest.description
             status = this.props.currentRequest.status
             address = this.props.currentRequest.address
-            image = this.props.currentRequest.image
+
+            if(this.props.currentRequest.image == ""){
+                image = NoImage
+            }
+            if(this.props.currentRequest.image != "") {
+                image = {uri: this.props.currentRequest.image}
+            }
 
             for(var request in this.props.storeRequests.list){
                 if(this.props.storeRequests.list[request].requestIdOpen311 == this.props.currentRequest.requestIdOpen311){
@@ -100,7 +106,7 @@ class RequestDetail extends Component {
 
             return (
                 <View>
-                    <Image source={{uri: image}}
+                    <Image source={image}
                            style={{height: 250, width: 250}}/>
 
                     <Button style={Styles.map.detailModal.plusOne} disabled={this.props.currentRequest.requestId === null? true : false} onPress={this.updateAck}>
