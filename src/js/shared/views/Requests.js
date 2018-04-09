@@ -67,7 +67,8 @@ class Requests extends Component {
 function mapStateToProps(state) {
     return{
         filterSegment: state.filterSegment,
-        responseCodeProfile: state.responseCodeProfile
+        responseCodeProfile: state.responseCodeProfile,
+        storeUserRequests: state.storeUserRequests
 
     }
 }

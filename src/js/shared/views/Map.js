@@ -40,7 +40,7 @@ class Map extends Component {
         ActionSheet.show(
             {
                 options: this.props.services,
-                cancelButtonIndex: this.props.services.length - 1,
+                cancelButtonIndex: 0,
                 destructiveButtonIndex: DESTRUCTIVE_INDEX,
                 title: Strings.HEADER_FILTER
             },
@@ -49,6 +49,8 @@ class Map extends Component {
             }
         )
     }
+
+
 
 
     render() {

@@ -17,10 +17,56 @@ let status;
 let distance;
 let address;
 
+let ackIcon;
+let buttonText;
+
 
 class DetailModal extends Component {
 
+    updateAck = () => {
+        if (this.props.storeUserRequests.acknowledge.length > 0) {
+            let inList = false;
+            for (let item in this.props.storeUserRequests.acknowledge) {
+                //if item is in ack list for user toggle to false on press
+                if (this.props.currentRequest.requestId === item.requestId || this.props.currentRequest.requestIdOpen311 === item.requestIdOpen311) {
+                    conosole.log(this.props.currentRequest.requestIdOpen311 + "  :  " + item.requestIdOpen311)
+                    inList = true
+                    this.props.toggleAck(this.props.responseCodeProfile.userId, false, item.requestIdOpen311, item.requestId)
+                }
+            }
+            //if if loops through user ack list and request is not present, ack it
+            if (inList == false) {
+                this.props.toggleAck(this.props.responseCodeProfile.userId, true, item.requestIdOpen311, item.requestId)
+            }
+        }
+        if (this.props.storeUserRequests.acknowledge.length === 0) {
+            this.props.toggleAck(this.props.responseCodeProfile.userId, false, this.props.currentRequest.requestIdOpen311, this.props.currentRequest.requestId)
+        }
+
+    }
+
     render() {
+        if (this.props.storeUserRequests != null && this.props.currentRequest != null){
+        //check if item in ack list for user then set checkbox button accordingly
+            if (this.props.storeUserRequests.acknowledge.length > 0) {
+                for (let item in this.props.storeUserRequests.acknowledge) {
+                    if (this.props.currentRequest.requestId === item.requestId || this.props.currentRequest.requestIdOpen311 === item.requestIdOpen311) {
+                        ackIcon = Platform.OS == 'ios' ? "ios-checkbox-outline" : "md-checkbox-outline"
+                    }
+                }
+            } else {
+                ackIcon = Platform.OS == 'ios' ? "ios-square-outline" : "md-square-outline"
+            }
+
+        if (this.props.currentRequest.requestId != null) {
+            buttonText = <Text>
+                <Icon name={ackIcon}/>{Strings.DETAIL_MODAL_ACKNOWLEDGE} {this.props.currentRequest.acknowledgeCount}
+            </Text>
+        }
+        if (this.props.currentRequest.requestId === null) {
+            buttonText = <Text>Cannot Acknowledge this Request</Text>
+        }
+        }
 
         if(Platform.OS == 'android'){
            arrow = <Icon name='arrow-back'/>
@@ -66,8 +112,8 @@ class DetailModal extends Component {
 
                 </View>
 
-                    <Button block title="acknowledge" style={Styles.map.detailModal.plusOne}>
-                        <Text>{Strings.DETAIL_MODAL_ACKNOWLEDGE}109</Text>
+                    <Button block title="acknowledge" style={Styles.map.detailModal.plusOne} onPress={this.updateAck}>
+                        {buttonText}
                     </Button>
 
 
@@ -99,7 +145,9 @@ function mapStateToProps(state) {
     return{
         detailModal: state.detailModal,
         currentRequest: state.currentRequest,
-        storeRequests: state.storeRequests
+        storeRequests: state.storeRequests,
+        responseCodeProfile: state.responseCodeProfile,
+        storeUserRequests: state.storeUserRequests
     }
 }
 

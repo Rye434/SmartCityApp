@@ -9,23 +9,22 @@ let filterValues;
 let placeholder;
 
 
-//TODO: use request list item to define the items this component builds the list with
-
-
 class RequestList extends Component {
 
     render() {
         filterValues = this.props.filter; //object that is [Bool,bool,bool]
 
         if (filterValues[0] == true) {
-            placeholder = "Public"
+            placeholder = this.props.storeRequests.list
         }
         if (filterValues[1] == true) {
-            placeholder = "Personal"
+            placeholder = this.props.storeUserRequests.list
         }
         if (filterValues[2] == true) {
-            placeholder = "Acknowledged"
+            placeholder = this.props.storeUserRequests.acknowledge
         }
+
+        //console.log(Object.keys(placeholder).length)
 
         if(this.props.distanceLoaded == false){
             return(
@@ -34,24 +33,34 @@ class RequestList extends Component {
 
         }
 
-        if(this.props.distanceLoaded == true){
-        return(
-            <List>
-            {Object.keys(this.props.storeRequests.list).map(function (item, i) {
+        if(this.props.distanceLoaded == true) {
 
+            if (Object.keys(placeholder).length > 0) {
                 return (
-                    <RequestListItem key={i} {...this.props.storeRequests.list[item]}
-                                     title={this.props.storeRequests.list[item].serviceName}
-                                     navigation={this.props.navigation}
-                                     date={this.props.storeRequests.list[item].dateSubmitted}
-                                     distance={this.props.storeRequests.list[item].distance}
-                                     wholeObj={this.props.storeRequests.list[item]}
-                    />
-                )
+                    <List>
+                        {Object.keys(placeholder).map(function (item, i) {
 
-            }.bind(this))}
-            </List>
-    )}
+                            return (
+                                <RequestListItem key={i} {...this.props.storeRequests.list[item]}
+                                                 title={this.props.storeRequests.list[item].serviceName}
+                                                 navigation={this.props.navigation}
+                                                 date={this.props.storeRequests.list[item].dateSubmitted}
+                                                 distance={this.props.storeRequests.list[item].distance}
+                                                 wholeObj={placeholder[item]}
+                                />
+                            )
+
+                        }.bind(this))}
+                    </List>
+                )
+            }
+            if(Object.keys(placeholder).length == 0){
+                return(
+                    <Text>Nothing to show</Text>
+                )
+            }
+        }
+
 
     }
 }
@@ -60,7 +69,8 @@ function mapStateToProps(state) {
     return{
         storeRequests: state.storeRequests,
         userLocation: state.mapRegion,
-        distanceLoaded: state.distanceLoaded
+        distanceLoaded: state.distanceLoaded,
+        storeUserRequests: state.storeUserRequests
     }
 }
 

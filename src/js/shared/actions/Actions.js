@@ -30,6 +30,14 @@ export const POST_CODE = "POST_CODE";
 export const COUNTRY = "COUNTRY";
 export const VALIDATE_RESPONSE_CODE = "VALIDATE_RESPONSE_CODE";
 export const RESPONSE_CODE_PROFILE = "RESPONSE_CODE_PROFILE";
+export const STORE_USER_REQUESTS = "STORE_USER_REQUESTS";
+export const STORE_DEPARTMENT = "STORE_DEPARTMENT";
+export const SET_ACTIVE_DEPARTMENT = "SET_ACTIVE_DEPARTMENT";
+export const STORE_SUBJECT = "STORE_SUBJECT";
+export const SET_ACTIVE_SUBJECT = "SET_ACTIVE_SUBJECT";
+export const STORE_CATEGORY = "STORE_CATEGORY";
+export const SET_ACTIVE_CATEGORY = "SET_ACTIVE_CATEGORY";
+export const SET_SUBMITTION_ISSUE_DESCRIPTION = "SET_SUBMITTION_ISSUE_DESCRIPTION";
 //endregion
 
 var Constants = require('../res/constants/AppConstants');
@@ -160,7 +168,7 @@ export function services(obj) {
     //sort and add all/cancel entries
     payload.sort();
     //payload.unshift('All');
-    payload.push('Clear filter');
+    payload.unshift('Clear filter');
 
     return{
         type: SERVICES,
@@ -632,6 +640,7 @@ export function loginByPhone(phone, encCode) {
                 if(JSON.parse(response.request.response).errorCode == 0) {
                     dispatch(validateResponseCodeProfile(JSON.parse(response.request.response)))
 
+                    //set up user fields
                     dispatch(setFirstName(JSON.parse(response.request.response).firstName))
                     dispatch(setLastName(JSON.parse(response.request.response).lastName))
                     dispatch(setEmail(JSON.parse(response.request.response).username))
@@ -641,6 +650,11 @@ export function loginByPhone(phone, encCode) {
                     dispatch(setProvince(JSON.parse(response.request.response).stateId))
                     dispatch(setPostCode(JSON.parse(response.request.response).postalCode))
                     dispatch(setCountry("Canada"))
+
+                    //get user request and acknowledges
+                    dispatch(getPersonalReqs(JSON.parse(response.request.response).userId))
+
+
                 }
                 if(JSON.parse(response.request.response).errorCode != 0) {
                     console.log("no login")
@@ -653,4 +667,170 @@ export function loginByPhone(phone, encCode) {
     }
 }
 
+//get personal requests and acknowledges
+export function getPersonalReqs(userId) {
+    console.log("FETCH: USER_REQS")
+    return (dispatch)=>{
+        axios.post(Constants.BASE_URL + '/registerservice/api/requests/getMyRequests',
+            {
+                "userId": userId
+            },
+            {
+                headers: {
+                    'PTM_HEADER_ORG_ID': Constants.ORGANIZATION_ID,
+                    'PTM_HEADER_APP_ID': Constants.MGIS_APP_ID,
+                    'PTM_LANGUAGE': 'eng',
+                    'Content-Type': 'application/json',
+                }
+            },
+        )
+            .then((response) => {
+               // console.log(JSON.parse(response.request.response))
+                dispatch(storeUserRequests(JSON.parse(response.request.response)))
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+}
+
+export function storeUserRequests(obj){
+    return{
+        type: STORE_USER_REQUESTS,
+        storeUserRequests: obj
+    }
+}
+
+export function toggleAck(userId, bool, id311, id) {
+    console.log("TOGGLE: ACK " + bool )
+    console.log(id311)
+    console.log(id)
+    return (dispatch)=>{
+        axios.post(Constants.BASE_URL + '/registerservice/api/requests/acknowledgeRequest',
+            {
+                "userId": userId,
+                "requestIdOpen311": id311,
+                "requestId": id,
+                "acknowledge": bool
+            },
+            {
+                headers: {
+                    'PTM_HEADER_ORG_ID': Constants.ORGANIZATION_ID,
+                    'PTM_HEADER_APP_ID': Constants.MGIS_APP_ID,
+                    'PTM_LANGUAGE': 'eng',
+                    'Content-Type': 'application/json',
+                }
+            },
+        )
+            .then((response) => {
+                console.log(JSON.parse(response.request.response))
+                if(JSON.parse(response.request.response).errorCode === 0){
+                    navigator.geolocation.getCurrentPosition(
+                        (position) => {
+                            dispatch(fetchServiceList(position))
+                        },
+                        (error) => alert(error.message),
+                        {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
+                    );
+                }
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+}
+
 //Creating posts
+export function buildDepartment(obj) {
+
+    obj.sort(function(a,b) {return (a.description > b.description) ? 1 : ((b.description > a.description) ? -1 : 0);} );
+    return (dispatch) =>{
+        dispatch(storeDepartment(obj))
+        dispatch(setActiveSubject(null))
+        dispatch(setActiveCategory(null))
+    }
+}
+
+export function storeDepartment(obj) {
+    return{
+        type: STORE_DEPARTMENT,
+        department: obj
+    }
+}
+
+export function reset() {
+    return(dispatch)=>{
+        dispatch(setActiveSubject(null))
+        dispatch(setActiveCategory(null))
+        dispatch(storeSubject(null))
+        dispatch(storeCategory(null))
+        dispatch(buildSubject(null,null))
+        dispatch(buildCategory(null,null))
+    }
+}
+
+export function setActiveDepartment(value) {
+    return{
+        type: SET_ACTIVE_DEPARTMENT,
+        activeDepartment: value
+    }
+}
+
+export function buildSubject(departmentId, departmentList) {
+    return (dispatch) =>{
+        for(let item in departmentList){
+            if(departmentList[item].id == departmentId){
+                departmentList[item].subTypes.sort(function(a,b) {return (a.description > b.description) ? 1 : ((b.description > a.description) ? -1 : 0);} );
+                dispatch(storeSubject(departmentList[item].subTypes))
+            }
+        }
+        dispatch(setActiveCategory(null))
+    }
+}
+
+export function storeSubject(subjects) {
+    return{
+        type: STORE_SUBJECT,
+        subject: subjects
+    }
+}
+
+export function setActiveSubject(value) {
+    return{
+        type: SET_ACTIVE_SUBJECT,
+        activeSubject: value
+    }
+}
+
+export function buildCategory(subjectCode, subTypes) {
+    return (dispatch) =>{
+        for(let item in subTypes){
+            if(subTypes[item].code == subjectCode){
+                subTypes[item].issues.sort(function(a,b) {return (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0);} );
+                dispatch(storeCategory(subTypes[item].issues))
+            }
+        }
+    }
+}
+
+export function storeCategory(categories) {
+    return{
+        type: STORE_CATEGORY,
+        category: categories
+    }
+}
+
+export function setActiveCategory(value) {
+    return{
+        type: SET_ACTIVE_CATEGORY,
+        activeCategory: value
+    }
+}
+
+export function setSubmitIssueDescription(text) {
+    return{
+        type: SET_SUBMITTION_ISSUE_DESCRIPTION,
+        submissionIssueDescription: text
+    }
+
+}

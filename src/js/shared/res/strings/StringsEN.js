@@ -104,7 +104,7 @@ module.exports = {
     PHONE_FACEBOOK_HEADER:"Smart City",
     PHONE_FACEBOOK_MESSAGE:"To continue please sign up with your:",
 
-    DETAIL_MODAL_ACKNOWLEDGE:"Acknowledge - ",
+    DETAIL_MODAL_ACKNOWLEDGE:"Acknowledge ",
     DETAIL_MODAL_DATE:"Date Submitted",
     DETAIL_MODAL_DISTANCE:"Distance",
     DETAIL_MODAL_STATUS:"Request Status",
@@ -112,5 +112,6 @@ module.exports = {
 
     SUBMISSION_DETAILS_DEPARTMENT:"Select A Department",
     SUBMISSION_DETAILS_SUBJECT:"Select A Subject",
+    SUBMISSION_DETAILS_CATEGORY:"Select A Category",
 
 };

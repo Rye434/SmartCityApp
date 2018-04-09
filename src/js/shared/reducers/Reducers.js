@@ -24,7 +24,15 @@ import {
     POST_CODE,
     COUNTRY,
     VALIDATE_RESPONSE_CODE,
-    RESPONSE_CODE_PROFILE
+    RESPONSE_CODE_PROFILE,
+    STORE_USER_REQUESTS,
+    STORE_DEPARTMENT,
+    SET_ACTIVE_DEPARTMENT,
+    STORE_SUBJECT,
+    SET_ACTIVE_SUBJECT,
+    STORE_CATEGORY,
+    SET_ACTIVE_CATEGORY,
+    SET_SUBMITTION_ISSUE_DESCRIPTION
 } from "../actions/Actions";
 
 
@@ -186,6 +194,46 @@ export default function stocksApp(state, action) {
         case RESPONSE_CODE_PROFILE:
             responseCodeProfile = action.responseCodeProfile
             newState = Object.assign({}, state, {responseCodeProfile});
+            //console.log(newState)
+            break;
+        case STORE_USER_REQUESTS:
+            storeUserRequests = action.storeUserRequests
+            newState = Object.assign({}, state, {storeUserRequests});
+            //console.log(newState)
+            break;
+        case STORE_DEPARTMENT:
+            department = action.department
+            newState = Object.assign({}, state, {department});
+            //console.log(newState)
+            break;
+        case SET_ACTIVE_DEPARTMENT:
+            activeDepartment = action.activeDepartment
+            newState = Object.assign({}, state, {activeDepartment});
+            //console.log(newState)
+            break;
+        case STORE_SUBJECT:
+            subject = action.subject
+            newState = Object.assign({}, state, {subject});
+            //console.log(newState)
+            break;
+        case SET_ACTIVE_SUBJECT:
+            activeSubject = action.activeSubject
+            newState = Object.assign({}, state, {activeSubject});
+            //console.log(newState)
+            break;
+        case STORE_CATEGORY:
+            category = action.category
+            newState = Object.assign({}, state, {category});
+            //console.log(newState)
+            break;
+        case SET_ACTIVE_CATEGORY:
+            activeCategory = action.activeCategory
+            newState = Object.assign({}, state, {activeCategory});
+            //console.log(newState)
+            break;
+        case SET_SUBMITTION_ISSUE_DESCRIPTION:
+            submissionIssueDescription = action.submissionIssueDescription
+            newState = Object.assign({}, state, {submissionIssueDescription});
             //console.log(newState)
             break;
         default:

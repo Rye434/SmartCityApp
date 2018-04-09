@@ -24,6 +24,7 @@ let state = {
     filterSegment:[true,false,false],
     mapRegion:null,
     storeRequests:null,
+    storeUserRequests:null,
     storeServices:null,
     actionSheetValue: 0,
     services:[],
@@ -45,6 +46,15 @@ let state = {
     province:"ON",
     postCode:"",
     country:"",
+
+    //IssueTracking
+    department:null,
+    subject:null,
+    category:[],
+    activeDepartment:null,
+    activeSubject:null,
+    activeCategory:null,
+    submissionIssueDescription:null,
 
 }
 

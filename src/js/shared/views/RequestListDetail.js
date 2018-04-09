@@ -53,7 +53,8 @@ class RequestListDetail extends Component {
 function mapStateToProps(state) {
     return{
         storeRequests: state.storeRequests,
-        detailRequest:state.detailRequest
+        detailRequest:state.detailRequest,
+
     }
 }
 
