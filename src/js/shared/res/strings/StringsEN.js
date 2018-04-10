@@ -76,6 +76,7 @@ module.exports = {
     USER_CURRENT_LOCATION:"Current location",
     MAP_MODAL_MORE_INFO_BUTTON:"More Information",
     MAP_MODAL_ACKNOWLEDGE:"Acknowledge",
+    MAP_MODAL_CANNOT_ACKNOWLEDGE:"Cannot Acknowledge This Request",
 
     ABOUT_TITLE:"Smart City",
     ABOUT_VERSION:"Version: 1.0.0.0",

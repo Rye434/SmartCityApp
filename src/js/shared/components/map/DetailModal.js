@@ -67,7 +67,7 @@ class DetailModal extends Component {
 
         }
         if (this.props.currentRequest.requestId === null) {
-            buttonText = <Text>Cannot Acknowledge this Request</Text>
+            buttonText = <Text>{Strings.MAP_MODAL_CANNOT_ACKNOWLEDGE}</Text>
         }
         }
 

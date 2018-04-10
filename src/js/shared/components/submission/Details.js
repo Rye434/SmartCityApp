@@ -49,7 +49,7 @@ class Details extends Component {
             departments =
                 <Picker mode="dropdown" placeholder={Strings.SUBMISSION_DETAILS_DEPARTMENT} note={false}
                         onValueChange={(value)=>this.setActiveAndBuildSubject(value)}
-                        selectedValue={this.props.activeDepartment}
+                        selectedValue={this.props.activeDepartment}style={Styles.details.pickerField}
                 >
                     {Object.keys(this.props.department).map(function (item) {
                         return(
@@ -62,7 +62,7 @@ class Details extends Component {
             subjects =
                 <Picker mode="dropdown" placeholder={Strings.SUBMISSION_DETAILS_SUBJECT} note={false}
                         onValueChange={(value)=>this.setActiveAndBuildCategory(value)}
-                        selectedValue={this.props.activeSubject}
+                        selectedValue={this.props.activeSubject} style={Styles.details.pickerField}
                 >
                     {Object.keys(this.props.subject).map(function (item) {
                         return(
@@ -113,7 +113,7 @@ class Details extends Component {
                         {subjects}
                         {categories}
 
-                    <TextInput placeholder='Enter a Description' onChangeText={(text)=>this.props.setSubmitIssueDescription(text)} multiline={true} maxLength={255} width={300}  height={125} autogrow={true}/>
+                    <TextInput style={Styles.details.textInput}placeholder='Enter a Description' onChangeText={(text)=>this.props.setSubmitIssueDescription(text)} multiline={true} maxLength={255} autogrow={true}/>
                     </Form>
                 </KeyboardAvoidingView>
 

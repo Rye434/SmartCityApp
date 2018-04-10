@@ -51,8 +51,6 @@ module.exports = {
             fontWeight: platform === "ios" ? '600' : '400',
         }
     },
-
-
     footer:{
         icon:{
             fontSize:35 ,
@@ -372,7 +370,6 @@ module.exports = {
 
         }
     },
-
     profileFields:{
         textFields:{
             marginLeft: 16,
@@ -422,7 +419,6 @@ module.exports = {
             },
         },
     },
-
     cameraWarning:{
         textFieldTitle:{
             textAlign: 'center',
@@ -459,7 +455,6 @@ module.exports = {
             alignItems: 'center',
         },
     },
-
     aboutContent:{
         backgroundImage:{
             flex: 1,
@@ -527,7 +522,6 @@ module.exports = {
         }
 
     },
-
     profileEditModal:{
         firstNameField:{
             marginLeft: 16,
@@ -555,19 +549,21 @@ module.exports = {
             marginLeft: 16,
         },
     },
-
     feedbackContent:{
         view:{
             width: deviceWidth * 0.8,
             alignSelf:'center',
-            marginTop: deviceHeight * 0.05
+            marginTop: deviceHeight * 0.05,
+
 
         },
         input:{
             fontSize: 18,
             margin: 16,
             height: 300,
-            width:deviceWidth*0.7
+            width:deviceWidth*0.7,
+            textAlignVertical: platform === "ios" ? 0 : "top"
+
 
            // borderBottomWidth:3
         },
@@ -613,12 +609,29 @@ module.exports = {
             alignItems:'center'
         },
         text:{
-            fontSize: platform === "ios" ? 13 : 10,
+            fontSize: platform === "ios" ? 14 : 12,
             fontWeight: platform === "ios" ? 'bold' : 'normal',
             width: deviceWidth*.3,
             //alignSelf:'center',
             textAlign:'center',
+            paddingLeft:0,
+            paddingRight:0,
             paddingBottom: platform === "ios" ? 0 : 6
+        }
+    },
+    details:{
+        pickerField:{
+            width:deviceWidth,
+            borderRadius:0,
+            //backgroundColor:'#eee'
+        },
+        textInput:{
+            width:deviceWidth,
+            height:125,
+            fontSize: platform === "ios" ? 16 : 14,
+            paddingLeft:deviceWidth*0.04,
+            paddingRight:deviceWidth*0.04,
+            textAlignVertical: platform === "ios" ? 0 : "top"
         }
     }
       

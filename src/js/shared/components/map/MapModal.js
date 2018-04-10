@@ -4,8 +4,8 @@ import * as actions from "../../../shared/actions/Actions"
 import {connect} from "react-redux";
 import {Title, Container, Header, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body, Right, Tab, Tabs, List, ListItem, Footer, Segment } from 'native-base';
 
-var Strings = require('../../res/strings/StringsEN');
-var Styles = require('../../res/assets/styles/Styles');
+const Strings = require('../../res/strings/StringsEN');
+const Styles = require('../../res/assets/styles/Styles');
 var NoImage = require('../../res/assets/img/no-image-available.png');
 
 let modalSpaceHeight;
@@ -60,7 +60,7 @@ class MapModal extends Component {
             </Text>
         }
         if(this.props.currentRequest.requestId === null){
-            buttonText = <Text>Cannot Acknowledge this Request</Text>
+            buttonText = <Text>{Strings.MAP_MODAL_CANNOT_ACKNOWLEDGE}</Text>
         }
 
             serviceName = this.props.currentRequest.serviceName
