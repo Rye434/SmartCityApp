@@ -42,6 +42,7 @@ export const RoutesNavIos = [
 
 
 export const AppRouteIos = StackNavigator({
+        //PhoneOrFacebook:{screen: PhoneOrFacebook},
         Map: {screen: Map},
         Camera: {screen: Camera},
         CameraView: { screen: CameraView },

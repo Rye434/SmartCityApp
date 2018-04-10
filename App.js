@@ -57,6 +57,9 @@ let state = {
     submissionIssueDescription:null,
     submissionConfirmationLoading:false,
 
+    loginStatus: false,
+    requestObj:null,
+
 }
 
 let store = createStore(stocksApp, state,  applyMiddleware(thunk));

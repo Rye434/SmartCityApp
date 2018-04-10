@@ -20,7 +20,7 @@ let categories;
 
 let button;
 
-
+let properId;
 
 class Details extends Component {
 
@@ -37,11 +37,21 @@ class Details extends Component {
     setActiveAndBuildCategory =(value)=> {
         this.props.setActiveSubject(value)
         this.props.buildCategory(value, this.props.subject)
+        for(let item in this.props.subject){
+            if(this.props.subject[item].code == value) {
+                properId = this.props.subject[item].id
+                }
+            }
     }
 
     proceed = (requestObj) => {
         this.props.buildRequest(requestObj, this.props.responseCodeProfile)
         this.props.navigation.navigate('Confirmation')
+    }
+
+    loginRedirect = (requestObj) =>{
+        this.props.navigation.navigate('PhoneOrFacebook')
+        this.props.saveRequestObj(requestObj)
     }
 
     render() {
@@ -58,19 +68,21 @@ class Details extends Component {
                     }.bind(this))}
                 </Picker>
         }
-        if(this.props.subject != null)
+        if(this.props.subject != null) {
             subjects =
                 <Picker mode="dropdown" placeholder={Strings.SUBMISSION_DETAILS_SUBJECT} note={false}
-                        onValueChange={(value)=>this.setActiveAndBuildCategory(value)}
-                        selectedValue={this.props.activeSubject} style={Styles.details.pickerField}
+                        onValueChange={(value) => this.setActiveAndBuildCategory(value)}
+                        selectedValue={this.props.activeSubject}
                 >
                     {Object.keys(this.props.subject).map(function (item) {
-                        return(
-                            <Item key={item} label={this.props.subject[item].description} value={this.props.subject[item].code}/>
+                        return (
+                            <Item key={this.props.subject[item].id} label={this.props.subject[item].description}
+                                  value={this.props.subject[item].code}/>
                         )
                     }.bind(this))}
 
                 </Picker>
+        }
         if(this.props.activeCategory == null){
             categories = <Text/>;
         }
@@ -89,24 +101,32 @@ class Details extends Component {
 
                 </Picker>
         }
-        if(this.props.activeDepartment != null && this.props.activeSubject !=null && this.props.submissionIssueDescription != null && this.props.imageSource != {}){
+        if(this.props.activeDepartment != null && this.props.activeSubject !=null && this.props.submissionIssueDescription != null && this.props.imageSource != {}) {
             let requestObj = {
-                serviceId			: this.props.activeDepartment,
-                serviceCode	    	: this.props.activeSubject,
-                serviceIssue		: (this.props.activeCategory != null)? this.props.activeCategory : "",
-                longTimestamp		: Date.now(),
-                stringImage		    : 'data:image/png;base64,'+ this.props.imageSource.base64,
-                description         : this.props.submissionIssueDescription
+                serviceId: properId,
+                serviceCode: this.props.activeSubject,
+                serviceIssue: (this.props.activeCategory != null) ? this.props.activeCategory : "",
+                longTimestamp: Date.now(),
+                stringImage: 'data:image/png;base64,' + this.props.imageSource.base64,
+                description: this.props.submissionIssueDescription
             }
 
-            button = <Button style={Styles.requests.submitButton} onPress={()=>this.proceed(requestObj)}><Text>{Strings.BUTTONS_SUBMIT}</Text></Button>
-        }
+            if (this.props.loginStatus === true) {
+                button = <Button style={Styles.requests.submitButton}
+                                 onPress={() => this.proceed(requestObj)}><Text>{Strings.BUTTONS_SUBMIT}</Text></Button>
 
+            }
+            if (this.props.loginStatus != true) {
+                button = <Button style={Styles.requests.submitButton}
+                                 onPress={() => this.loginRedirect(requestObj)}><Text>{Strings.BUTTONS_SUBMIT}</Text></Button>
+
+            }
+        }
         return(
             <View
                 style={{flex: 1, backgroundColor: 'transparent', flexDirection: 'column',}}>
 
-                <Image source={{uri: 'http://via.placeholder.com/250x375'}}  style={{height: 250, width: 500}}/>
+                <Image source={{uri: 'data:image/png;base64,'+ this.props.imageSource.base64}}  style={{height: 250, width: 500}}/>
                 <KeyboardAvoidingView style={{flex: 1, flexDirection:'column', justifyContent:'center', alignItems:'center'}} behavior="padding">
                     <Form>
                         {departments}
@@ -135,7 +155,8 @@ function mapStateToProps(state) {
         activeSubject: state.activeSubject,
         category: state.category,
         activeCategory: state.activeCategory,
-        submissionIssueDescription: state.submissionIssueDescription
+        submissionIssueDescription: state.submissionIssueDescription,
+        loginStatus: state.loginStatus
     }
 }
 
@@ -170,7 +191,12 @@ const mapDistpatchToProps = (dispatch) => {
         },
         buildRequest: (requestObj, userObj) => {
             dispatch(actions.buildRequest(requestObj, userObj))
+        },
+        saveRequestObj: (requestObj) => {
+            dispatch(actions.saveRequestObj(requestObj))
         }
+
+
     }
 }
 

@@ -26,7 +26,7 @@ class Requests extends Component {
 
     render() {
        // console.log(this.props.responseCodeProfile);
-        (this.props.responseCodeProfile == null)? target = 'PhoneOrFacebook' : target = 'Profile'
+        (this.props.responseCodeProfile == null || this.props.loginStatus == false)? target = 'PhoneOrFacebook' : target = 'Profile'
 
         if(Platform.OS === "ios"){
             footer = <FooterIos navigation={this.props.navigation} activePage={'Requests'}/>
@@ -68,7 +68,8 @@ function mapStateToProps(state) {
     return{
         filterSegment: state.filterSegment,
         responseCodeProfile: state.responseCodeProfile,
-        storeUserRequests: state.storeUserRequests
+        storeUserRequests: state.storeUserRequests,
+        loginStatus: state.loginStatus
 
     }
 }

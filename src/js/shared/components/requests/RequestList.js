@@ -7,21 +7,43 @@ import RequestListItem from "./RequestListItem";
 
 let filterValues;
 let placeholder;
+let pleaseLogIn;
+let messageView;
+let list;
 
 
 class RequestList extends Component {
 
     render() {
+        messageView =
+            <View>
+                <Text>Please log in to display info here</Text>
+                <Button onPress={()=>this.props.navigation.navigate("PhoneOrFacebook")}><Text>Login</Text></Button>
+            </View>
+
         filterValues = this.props.filter; //object that is [Bool,bool,bool]
 
         if (filterValues[0] == true) {
             placeholder = this.props.storeRequests.list
+            pleaseLogIn = null
         }
         if (filterValues[1] == true) {
-            placeholder = this.props.storeUserRequests.list
+            if(this.props.loginStatus === true) {
+                placeholder = this.props.storeUserRequests.list
+                pleaseLogIn = null
+            }else{
+                placeholder = null
+                pleaseLogIn = messageView
+            }
         }
         if (filterValues[2] == true) {
-            placeholder = this.props.storeUserRequests.acknowledge
+            if(this.props.loginStatus === true) {
+                placeholder = this.props.storeUserRequests.acknowledge
+                pleaseLogIn = null
+            }else{
+                placeholder = null
+                pleaseLogIn = messageView
+            }
         }
 
         if(this.props.distanceLoaded == false){
@@ -31,31 +53,37 @@ class RequestList extends Component {
 
         }
 
-        if(this.props.distanceLoaded == true) {
+        if(placeholder != null){
+            list = Object.keys(placeholder).map(function (item, i) {
+                return (
+                    <RequestListItem key={i} {...placeholder[item]}
+                                     title={placeholder[item].serviceName}
+                                     navigation={this.props.navigation}
+                                     date={placeholder[item].dateSubmitted}
+                                     distance={placeholder[item].distance}
+                                     wholeObj={placeholder[item]}
+                                     image={placeholder[item].image}
+                    />
+                )
 
-            if (Object.keys(placeholder).length > 0) {
+            }.bind(this))
+        }
+
+        if(this.props.distanceLoaded == true) {
+            if (placeholder != null && Object.keys(placeholder).length > 0) {
                 return (
                     <List>
-                        {Object.keys(placeholder).map(function (item, i) {
-                            return (
-                                <RequestListItem key={i} {...placeholder[item]}
-                                                 title={placeholder[item].serviceName}
-                                                 navigation={this.props.navigation}
-                                                 date={placeholder[item].dateSubmitted}
-                                                 distance={placeholder[item].distance}
-                                                 wholeObj={placeholder[item]}
-                                                 image={placeholder[item].image}
-                                />
-                            )
-
-                        }.bind(this))}
+                        {list}
                     </List>
                 )
             }
-            if(Object.keys(placeholder).length == 0){
+            if(placeholder != null && Object.keys(placeholder).length == 0){
                 return(
                     <Text>Nothing to show</Text>
                 )
+            }
+            if(placeholder == null) {
+                return pleaseLogIn
             }
         }
 
@@ -68,7 +96,8 @@ function mapStateToProps(state) {
         storeRequests: state.storeRequests,
         userLocation: state.mapRegion,
         distanceLoaded: state.distanceLoaded,
-        storeUserRequests: state.storeUserRequests
+        storeUserRequests: state.storeUserRequests,
+        loginStatus:state.loginStatus
     }
 }
 

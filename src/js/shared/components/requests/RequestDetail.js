@@ -78,19 +78,23 @@ class RequestDetail extends Component {
                     distance = this.props.storeRequests.list[request].distance
                 }
             }
-            for(var request in this.props.storeUserRequests.list){
-                if(this.props.storeUserRequests.list[request].requestId == this.props.currentRequest.requestId){
-                    distance = this.props.storeUserRequests.list[request].distance
+            if(this.props.loginStatus === true) {
+                for (var request in this.props.storeUserRequests.list) {
+                    if (this.props.storeUserRequests.list[request].requestId == this.props.currentRequest.requestId) {
+                        distance = this.props.storeUserRequests.list[request].distance
+                    }
                 }
             }
 
 
             //check if item in ack list for user then set checkbox button accordingly
-            if (this.props.storeUserRequests.acknowledge.length > 0) {
-                ackIcon = Platform.OS == 'ios' ? "ios-square-outline" : "md-square-outline"
-                for (let item in this.props.storeUserRequests.acknowledge) {
-                    if (this.props.currentRequest.requestId === this.props.storeUserRequests.acknowledge[item].requestId) {
-                        ackIcon = Platform.OS == 'ios' ? "ios-checkbox-outline" : "md-checkbox-outline"
+            if(this.props.loginStatus === true) {
+                if (this.props.storeUserRequests.acknowledge.length > 0) {
+                    ackIcon = Platform.OS == 'ios' ? "ios-square-outline" : "md-square-outline"
+                    for (let item in this.props.storeUserRequests.acknowledge) {
+                        if (this.props.currentRequest.requestId === this.props.storeUserRequests.acknowledge[item].requestId) {
+                            ackIcon = Platform.OS == 'ios' ? "ios-checkbox-outline" : "md-checkbox-outline"
+                        }
                     }
                 }
             }
@@ -127,6 +131,7 @@ class RequestDetail extends Component {
                         <Text note
                               style={Styles.map.detailModal.text.infoNote}>{Strings.DETAIL_MODAL_DESCRIPTION}</Text>
                         <Text style={Styles.map.detailModal.text.info}>{description}</Text>
+                        <Text style={Styles.map.detailModal.text.info}>{this.props.currentRequest.requestId != null? serviceGroup + " / " + serviceName : null}</Text>
                         <Item style={Styles.map.detailModal.line}/>
                     </View>
                 </View>
@@ -142,7 +147,8 @@ function mapStateToProps(state) {
         detailRequest: state.detailRequest,
         responseCodeProfile: state.responseCodeProfile,
         storeUserRequests: state.storeUserRequests,
-        currentRequest: state.currentRequest
+        currentRequest: state.currentRequest,
+        loginStatus: state.loginStatus
     }
 }
 

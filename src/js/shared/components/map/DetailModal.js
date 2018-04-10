@@ -19,38 +19,42 @@ let distance;
 let address;
 
 let ackIcon;
-let buttonText;
+let buttonText = <Text>Cannot Acknowledge this Request</Text>;
 let image;
+
+let joinedDesc;
 
 
 class DetailModal extends Component {
 
     updateAck = () => {
-        if (this.props.storeUserRequests.acknowledge.length > 0) {
-            let inList = false;
-            for (let item in this.props.storeUserRequests.acknowledge) {
-                //if item is in ack list for user toggle to false on press
-                if (this.props.currentRequest.requestId === this.props.storeUserRequests.acknowledge[item].requestId) {
-                    console.log(this.props.currentRequest.requestId + "  :  " + item.requestId)
-                    inList = true
-                    this.props.toggleAck(this.props.responseCodeProfile.userId, false, this.props.storeUserRequests.acknowledge[item].requestIdOpen311, this.props.storeUserRequests.acknowledge[item].requestId)
+        if(this.props.loginStatus === true) {
+            if (this.props.storeUserRequests.acknowledge.length > 0) {
+                let inList = false;
+                for (let item in this.props.storeUserRequests.acknowledge) {
+                    //if item is in ack list for user toggle to false on press
+                    if (this.props.currentRequest.requestId === this.props.storeUserRequests.acknowledge[item].requestId) {
+                        console.log(this.props.currentRequest.requestId + "  :  " + item.requestId)
+                        inList = true
+                        this.props.toggleAck(this.props.responseCodeProfile.userId, false, this.props.storeUserRequests.acknowledge[item].requestIdOpen311, this.props.storeUserRequests.acknowledge[item].requestId)
+                    }
+                }
+                //if if loops through user ack list and request is not present, ack it
+                if (inList == false) {
+                    this.props.toggleAck(this.props.responseCodeProfile.userId, true, this.props.currentRequest.requestIdOpen311, this.props.currentRequest.requestId)
                 }
             }
-            //if if loops through user ack list and request is not present, ack it
-            if (inList == false) {
-                this.props.toggleAck(this.props.responseCodeProfile.userId, true,this.props.currentRequest.requestIdOpen311, this.props.currentRequest.requestId)
+            if (this.props.storeUserRequests.acknowledge.length === 0) {
+                console.log(this.props.currentRequest.requestId)
+                this.props.toggleAck(this.props.responseCodeProfile.userId, true, this.props.currentRequest.requestIdOpen311, this.props.currentRequest.requestId)
             }
-        }
-        if (this.props.storeUserRequests.acknowledge.length === 0) {
-            console.log(this.props.currentRequest.requestId)
-            this.props.toggleAck(this.props.responseCodeProfile.userId, true, this.props.currentRequest.requestIdOpen311, this.props.currentRequest.requestId)
         }
 
     }
 
     render() {
-        if (this.props.storeUserRequests != null && this.props.currentRequest != null){
-        //check if item in ack list for user then set checkbox button accordingly
+        if (this.props.storeUserRequests != null && this.props.currentRequest != null) {
+            //check if item in ack list for user then set checkbox button accordingly
             if (this.props.storeUserRequests.acknowledge.length > 0) {
                 ackIcon = Platform.OS == 'ios' ? "ios-square-outline" : "md-square-outline"
                 for (let item in this.props.storeUserRequests.acknowledge) {
@@ -60,15 +64,17 @@ class DetailModal extends Component {
                 }
             }
 
-        if (this.props.currentRequest.requestId != null) {
-            buttonText = <Text>
-                <Icon name={ackIcon}/>{Strings.DETAIL_MODAL_ACKNOWLEDGE} {this.props.currentRequest.acknowledgeCount}
-            </Text>
 
-        }
-        if (this.props.currentRequest.requestId === null) {
-            buttonText = <Text>{Strings.MAP_MODAL_CANNOT_ACKNOWLEDGE}</Text>
-        }
+            if (this.props.currentRequest.requestId != null) {
+                buttonText = <Text>
+                    <Icon
+                        name={ackIcon}/>{Strings.DETAIL_MODAL_ACKNOWLEDGE} {this.props.currentRequest.acknowledgeCount}
+                </Text>
+
+            }
+            if (this.props.currentRequest.requestId === null) {
+                buttonText = <Text>Cannot Acknowledge this Request</Text>
+            }
         }
 
         if(Platform.OS == 'android'){
@@ -91,9 +97,11 @@ class DetailModal extends Component {
                     distance = this.props.storeRequests.list[request].distance
                 }
             }
-            for(var request in this.props.storeUserRequests.list){
-                if(this.props.storeUserRequests.list[request].requestId == this.props.currentRequest.requestId){
-                    distance = this.props.storeUserRequests.list[request].distance
+            if(this.props.loginStatus === true) {
+                for (var request in this.props.storeUserRequests.list) {
+                    if (this.props.storeUserRequests.list[request].requestId == this.props.currentRequest.requestId) {
+                        distance = this.props.storeUserRequests.list[request].distance
+                    }
                 }
             }
 
@@ -103,6 +111,11 @@ class DetailModal extends Component {
             if(this.props.currentRequest.image != "") {
                 image = {uri: this.props.currentRequest.image}
             }
+
+            joinedDesc = <View>
+                <Text style={Styles.map.detailModal.text.info}>{description}</Text>
+                <Text style={Styles.map.detailModal.text.info}>{this.props.currentRequest.requestId != null? serviceGroup + " / " + serviceName : null}</Text>
+            </View>
 
         }
 
@@ -146,7 +159,7 @@ class DetailModal extends Component {
                 <Item style={Styles.map.detailModal.line}/>
 
                 <Text note style={Styles.map.detailModal.text.infoNote}>{Strings.DETAIL_MODAL_DESCRIPTION}</Text>
-                <Text style={Styles.map.detailModal.text.info}>{description}</Text>
+                    {joinedDesc}
                 <Item style={Styles.map.detailModal.line}/>
 
                 </View>
@@ -162,7 +175,8 @@ function mapStateToProps(state) {
         currentRequest: state.currentRequest,
         storeRequests: state.storeRequests,
         responseCodeProfile: state.responseCodeProfile,
-        storeUserRequests: state.storeUserRequests
+        storeUserRequests: state.storeUserRequests,
+        loginStatus: state.loginStatus,
     }
 }
 

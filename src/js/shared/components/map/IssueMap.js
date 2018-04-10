@@ -35,14 +35,20 @@ class IssueMap extends Component {
             //if this is the case if this code matches the return from the phone number entry set status to logged in
             const code = await AsyncStorage.getItem('encCode')
             const phone = await AsyncStorage.getItem('phone')
-            if(code != null){
+            console.log(code + " : " + phone)
+            if (code != null && phone != null) {
                 console.log(code + " : " + phone)
                 this.props.saveUserCode(code)
                 this.props.phoneNum(phone)
-                this.props.loginByPhone(phone,code)
+                this.props.loginByPhone(phone, code)
                 this.props.getPersonalReqs(this.props.responseCodeProfile.userId)
+                this.props.updateLoginStatus(true)
             }
-        } catch (error) {
+            if ( phone == null){
+                this.props.phoneNum("")
+            }
+        }
+         catch (error) {
             console.log("Error fetching data " + error);
         }
     }
@@ -111,8 +117,10 @@ class IssueMap extends Component {
                     >
                     </MapView.Marker> : something = null))
             }
-
-            if(this.props.storeUserRequests != null) {
+            if(this.props.loginStatus == false){
+                myMarkers = null
+            }
+            if(this.props.storeUserRequests != null && this.props.loginStatus == true) {
 
                 myMarkers =  Object.keys(this.props.storeUserRequests.list).map((marker) => (
                     this.props.storeUserRequests.list[marker].serviceGroup == this.props.services[this.props.actionSheetValue]
@@ -130,8 +138,6 @@ class IssueMap extends Component {
                         >
                         </MapView.Marker> : something = null))
             }
-
-
 
 
             if(this.props.currentRequest != {}){
@@ -185,6 +191,7 @@ function mapStateToProps(state) {
         services: state.services,
         responseCodeProfile: state.responseCodeProfile,
         storeUserRequests:state.storeUserRequests,
+        loginStatus: state.loginStatus,
     }
 }
 
@@ -216,7 +223,10 @@ const mapDistpatchToProps = (dispatch) => {
         },
         getPersonalReqs: (userId) => {
             dispatch(actions.getPersonalReqs(userId))
-        }
+        },
+        updateLoginStatus: (bool) => {
+            dispatch(actions.updateLoginStatus(bool))
+        },
     }
 }
 

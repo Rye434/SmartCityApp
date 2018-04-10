@@ -47,17 +47,22 @@ class CreateProfile extends Component {
 
     componentDidUpdate(){
 
-        if(Platform.OS == 'ios'){
-            target = "Map"
+        if(this.props.requestObj == null) {
+            if (Platform.OS == 'ios') {
+                target = "Map"
 
+            }
+            if (Platform.OS == 'android') {
+                target = "AndroidSideBar"
+            }
         }
-        if(Platform.OS == 'android'){
-            target = "AndroidSideBar"
+
+        if(this.props.requestObj != null) {
+            target = "SubmissionDetails"
         }
 
         if(this.props.responseCodeProfile != null) {
-            if ((this.props.responseCodeProfile.errorCode ==24) ) {
-                count += 1
+            if ((this.props.responseCodeProfile.errorCode ==0) ) {
                 this.props.navigation.navigate(target)
             }
         }
@@ -199,7 +204,8 @@ function mapStateToProps(state) {
         province: state.province,
         postCode: state.postCode,
         country: state.country,
-        responseCodeProfile: state.responseCodeProfile
+        responseCodeProfile: state.responseCodeProfile,
+        requestObj: state.requestObj,
 
     }
 }

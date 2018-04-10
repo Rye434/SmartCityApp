@@ -39,6 +39,8 @@ export const STORE_CATEGORY = "STORE_CATEGORY";
 export const SET_ACTIVE_CATEGORY = "SET_ACTIVE_CATEGORY";
 export const SET_SUBMITTION_ISSUE_DESCRIPTION = "SET_SUBMITTION_ISSUE_DESCRIPTION";
 export const SUBMISSION_CONFIRMATION_LOADING ="SUBMISSION_CONFIRMATION_LOADING";
+export const UPDATE_LOGIN_STATUS = "UPDATE_LOGIN_STATUS";
+export const SAVE_REQUEST_OBJ = "SAVE_REQUEST_OBJ";
 //endregion
 
 var Constants = require('../res/constants/AppConstants');
@@ -384,7 +386,7 @@ export function phoneNum(phone) {
 
 
 
-export function checkByPhone(phone) {
+export function checkByPhone(phone, code) {
     console.log("USERCHECK: PHONE")
     console.log(phone)
     return (dispatch)=>{
@@ -402,7 +404,7 @@ export function checkByPhone(phone) {
             },
         )
             .then((response) => {
-                console.log(JSON.parse(response.request.response))
+               // console.log(JSON.parse(response.request.response))
                 if(JSON.parse(response.request.response).errorCode == 83){
                     //generate phone verification code (no countrycode in phone yet)
                     dispatch(verificationCode(phone))
@@ -410,7 +412,12 @@ export function checkByPhone(phone) {
                 }
                 if(JSON.parse(response.request.response).errorCode == 82){
                     //store response object
+                    console.log(code)
+                    if(code != null){
+                        dispatch(loginByPhone(phone,code))
+                    }
                     dispatch((validateResponseCodeProfile(JSON.parse(response.request.response))))
+
                 }
 
             })
@@ -701,7 +708,7 @@ export function loginByPhone(phone, encCode) {
 
                     //get user request and acknowledges
                     dispatch(getPersonalReqs(JSON.parse(response.request.response).userId))
-
+                    dispatch(updateLoginStatus(true))
 
                 }
                 if(JSON.parse(response.request.response).errorCode != 0) {
@@ -860,10 +867,12 @@ export function setActiveSubject(value) {
 }
 
 export function buildCategory(subjectCode, subTypes) {
-    return (dispatch) =>{
-        for(let item in subTypes){
-            if(subTypes[item].code == subjectCode){
-                subTypes[item].issues.sort(function(a,b) {return (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0);} );
+    return (dispatch) => {
+        for (let item in subTypes) {
+            if (subTypes[item].code == subjectCode) {
+                subTypes[item].issues.sort(function (a, b) {
+                    return (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0);
+                });
                 dispatch(storeCategory(subTypes[item].issues))
             }
         }
@@ -927,7 +936,6 @@ export function convertCoords(position, requestObj, userObj) {
 }
 
 
-
 export function compileRequest(position, requestObj, userObj, loc) {
     return (dispatch)=>{
         axios.post(Constants.BASE_URL + '/registerservice/api/requests/createNewRequest',
@@ -979,5 +987,55 @@ export function resetState(){
         dispatch(setActiveSubject(null))
         dispatch(setActiveCategory(null))
         dispatch(setSubmitIssueDescription(null))
+        dispatch(saveRequestObj(null))
     }
 }
+
+export function logOut(userId, token, tokenEncryption){
+    return (dispatch)=>{
+        axios.post(Constants.BASE_URL + '/registerservice/api/auth/logout',
+            {
+                "userId": userId,
+            },
+            {
+                headers: {
+                    'PTM_HEADER_ORG_ID': Constants.ORGANIZATION_ID,
+                    'PTM_HEADER_APP_ID': Constants.MGIS_APP_ID,
+                    'PTM_LANGUAGE': 'eng',
+                    'Content-Type': 'application/json; charset=utf-8',
+                    "PTM_HEADER_TOKEN": token,
+                    "PTM_HEADER_TOKEN_ENCRYPTION": tokenEncryption,
+                }
+            },
+        )
+            .then((response) => {
+               // console.log(JSON.parse(response.request.response))
+                dispatch(validateResponseCodeProfile(null))
+                //dispatch(storeUserRequests(null))
+                dispatch(updateLoginStatus(false))
+
+
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+}
+
+export function updateLoginStatus(bool) {
+    return{
+        type: UPDATE_LOGIN_STATUS,
+        loginStatus: bool
+    }
+
+}
+
+export function saveRequestObj(obj){
+    return{
+        type: SAVE_REQUEST_OBJ,
+        requestObj: obj
+    }
+}
+
+
+

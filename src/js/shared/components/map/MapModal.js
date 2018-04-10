@@ -19,24 +19,26 @@ let image;
 class MapModal extends Component {
 
     updateAck = () => {
-        if (this.props.storeUserRequests.acknowledge.length > 0) {
-            let inList = false;
-            for (let item in this.props.storeUserRequests.acknowledge) {
-                //if item is in ack list for user toggle to false on press
-                if (this.props.currentRequest.requestId === this.props.storeUserRequests.acknowledge[item].requestId) {
-                    console.log(this.props.currentRequest.requestId + "  :  " + item.requestId)
-                    inList = true
-                    this.props.toggleAck(this.props.responseCodeProfile.userId, false, this.props.storeUserRequests.acknowledge[item].requestIdOpen311, this.props.storeUserRequests.acknowledge[item].requestId)
+        if(this.props.loginStatus === true) {
+            if (this.props.storeUserRequests.acknowledge.length > 0) {
+                let inList = false;
+                for (let item in this.props.storeUserRequests.acknowledge) {
+                    //if item is in ack list for user toggle to false on press
+                    if (this.props.currentRequest.requestId === this.props.storeUserRequests.acknowledge[item].requestId) {
+                        console.log(this.props.currentRequest.requestId + "  :  " + item.requestId)
+                        inList = true
+                        this.props.toggleAck(this.props.responseCodeProfile.userId, false, this.props.storeUserRequests.acknowledge[item].requestIdOpen311, this.props.storeUserRequests.acknowledge[item].requestId)
+                    }
+                }
+                //if if loops through user ack list and request is not present, ack it
+                if (inList == false) {
+                    this.props.toggleAck(this.props.responseCodeProfile.userId, true, this.props.currentRequest.requestIdOpen311, this.props.currentRequest.requestId)
                 }
             }
-            //if if loops through user ack list and request is not present, ack it
-            if (inList == false) {
-                this.props.toggleAck(this.props.responseCodeProfile.userId, true,this.props.currentRequest.requestIdOpen311, this.props.currentRequest.requestId)
+            if (this.props.storeUserRequests.acknowledge.length === 0) {
+                console.log(this.props.currentRequest.requestId)
+                this.props.toggleAck(this.props.responseCodeProfile.userId, true, this.props.currentRequest.requestIdOpen311, this.props.currentRequest.requestId)
             }
-        }
-        if (this.props.storeUserRequests.acknowledge.length === 0) {
-            console.log(this.props.currentRequest.requestId)
-            this.props.toggleAck(this.props.responseCodeProfile.userId, true, this.props.currentRequest.requestIdOpen311, this.props.currentRequest.requestId)
         }
 
     }
@@ -44,16 +46,18 @@ class MapModal extends Component {
     render() {
         if(this.props.currentRequest != null) {
         //check if item in ack list for user then set checkbox button accordingly
-        if (this.props.storeUserRequests.acknowledge.length > 0) {
-            ackIcon = Platform.OS == 'ios' ? "ios-square-outline" : "md-square-outline"
-            for (let item in this.props.storeUserRequests.acknowledge) {
-                if (this.props.currentRequest.requestId === this.props.storeUserRequests.acknowledge[item].requestId) {
-                    ackIcon = Platform.OS == 'ios' ? "ios-checkbox-outline" : "md-checkbox-outline"
+            if(this.props.loginStatus === true) {
+                if (this.props.storeUserRequests.acknowledge.length > 0) {
+                    ackIcon = Platform.OS == 'ios' ? "ios-square-outline" : "md-square-outline"
+                    for (let item in this.props.storeUserRequests.acknowledge) {
+                        if (this.props.currentRequest.requestId === this.props.storeUserRequests.acknowledge[item].requestId) {
+                            ackIcon = Platform.OS == 'ios' ? "ios-checkbox-outline" : "md-checkbox-outline"
+                        }
+                    }
                 }
             }
-        }
 
-        console.log(this.props.currentRequest)
+        //console.log(this.props.currentRequest)
         if(this.props.currentRequest.requestId != null){
             buttonText = <Text>
                 <Icon name={ackIcon}/>{Strings.DETAIL_MODAL_ACKNOWLEDGE} {this.props.currentRequest.acknowledgeCount}
@@ -142,6 +146,7 @@ function mapStateToProps(state) {
         currentRequest: state.currentRequest,
         responseCodeProfile: state.responseCodeProfile,
         storeUserRequests: state.storeUserRequests,
+        loginStatus: state.loginStatus
 
     }
 }

@@ -19,34 +19,69 @@ const Style = require('../../res/assets/styles/Styles');
 
 let button;
 let target;
+let code = null;
 
 
 class Phone extends Component {
 
     proceed = () => {
-        this.props.checkByPhone(this.props.phone)
+        this.props.checkByPhone(this.props.phone, code)
+        if(code!=null) {
+            this.storeUserPhone(this.props.phone)
+        }
+    }
+
+    async storeUserPhone(phone) {
+        try {
+            await AsyncStorage.setItem('phone', phone);
+        } catch (error) {
+            console.log("Error saving data" + error);
+        }
+    }
+
+    async tryLogin() {
+        try {
+            code = await AsyncStorage.getItem('encCode')
+            console.log(code)
+        }
+        catch (e) {
+            console.log(e)
+        }
+    }
+
+    componentWillMount() {
+       this.tryLogin()
     }
 
     componentDidUpdate(){
         if(this.props.responseCodeProfile != null) {
             if (this.props.responseCodeProfile.errorCode == 82) {
-                if(Platform.OS == 'ios'){
-                    target = "Map"
+                if(code != null) {
+                    this.props.loginByPhone(this.props.phone, code)
 
-                }
-                if(Platform.OS == 'android'){
-                    target = "AndroidSideBar"
+                    if(this.props.requestObj == null) {
+                        if (Platform.OS == 'ios') {
+                            target = "Map"
+
+                        }
+                        if (Platform.OS == 'android') {
+                            target = "AndroidSideBar"
+                        }
+                    }
+                    if(this.props.requestObj != null){
+                        target = "SubmissionDetails"
+                    }
+                    this.props.navigation.navigate(target)
                 }
             }
-            if (this.props.responseCodeProfile.errorCode == 83) {
+            if (this.props.responseCodeProfile.errorCode == 83 || !AsyncStorage.getItem('encCode')) {
                 target = "Verification"
+                this.props.navigation.navigate(target)
             }
-            this.props.navigation.navigate(target)
         }
     }
 
     render() {
-
         if(this.props.phone.length == 10){
             button = <Button transparent onPress={()=>this.proceed()}>
                 <Text>{Strings.HEADER_NEXT}</Text>
@@ -91,7 +126,9 @@ class Phone extends Component {
 function mapStateToProps(state) {
     return{
         phone: state.phone,
-        responseCodeProfile: state.responseCodeProfile
+        responseCodeProfile: state.responseCodeProfile,
+        loginStatus: state.loginStatus,
+        requestObj:state.requestObj,
     }
 }
 
@@ -100,8 +137,14 @@ const mapDistpatchToProps = (dispatch) => {
         phoneNum: (phone) => {
             dispatch(actions.phoneNum(phone))
         },
-        checkByPhone: (phone) => {
-            dispatch(actions.checkByPhone(phone))
+        checkByPhone: (phone, code) => {
+            dispatch(actions.checkByPhone(phone, code))
+        },
+        updateLoginStatus: () => {
+            dispatch(actions.updateLoginStatus(true))
+        },
+        loginByPhone: (phone, encCode) =>{
+            dispatch(actions.loginByPhone(phone, encCode))
         }
     }
 }

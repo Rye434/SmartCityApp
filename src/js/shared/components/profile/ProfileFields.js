@@ -12,12 +12,14 @@ import * as actions from "../../actions/Actions";
 const Strings = require('../../res/strings/StringsEN.js');
 const Styles = require('../../res/assets/styles/Styles.js');
 
-
+let user
 
 class ProfileFields extends Component {
 
     render() {
-        let user = this.props.responseCodeProfile
+        if(this.props.responseCodeProfile != null) {
+            user = this.props.responseCodeProfile
+        }
         return(
             <View style={Styles.profileFields.textFields}>
 
