@@ -692,6 +692,7 @@ export function loginByPhone(phone, encCode) {
         )
             .then((response) => {
                 console.log(JSON.parse(response.request.response))
+                dispatch(updateLoginStatus(true))
                 if(JSON.parse(response.request.response).errorCode == 0) {
                     dispatch(validateResponseCodeProfile(JSON.parse(response.request.response)))
 
@@ -708,7 +709,7 @@ export function loginByPhone(phone, encCode) {
 
                     //get user request and acknowledges
                     dispatch(getPersonalReqs(JSON.parse(response.request.response).userId))
-                    dispatch(updateLoginStatus(true))
+
 
                 }
                 if(JSON.parse(response.request.response).errorCode != 0) {

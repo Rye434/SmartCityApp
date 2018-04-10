@@ -58,6 +58,7 @@ class IssueMap extends Component {
     }
 
     render() {
+        console.log(this.props.loginStatus)
 
         if(Platform.OS == 'ios'){
             height = Dimensions.get('window').height*.8;
