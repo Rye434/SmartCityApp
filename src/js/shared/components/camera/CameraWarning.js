@@ -19,7 +19,9 @@ export default class CameraWarning extends Component {
                 <View style={Styles.cameraWarning.centerView}>
                     <Text style={Styles.cameraWarning.textFieldTitle}>{Strings.CAMERA_WARNING}</Text>
                     <Text style={Styles.cameraWarning.textField}>{Strings.CAMERA_WARNING_MESSAGE}</Text>
-                    <Button style={Styles.cameraWarning.buttonField} onPress={()=>this.props.navigation.navigate("CameraView")}><Text style={Styles.cameraWarning.buttonText}>{Strings.BUTTONS_OK}</Text></Button>
+                    <Button style={Styles.cameraWarning.buttonField} onPress={()=>this.props.navigation.navigate("CameraView")}>
+                        <Text style={Styles.cameraWarning.buttonText}>{Strings.BUTTONS_OK}</Text>
+                    </Button>
                 </View>
             </Content>
         )

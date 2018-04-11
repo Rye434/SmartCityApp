@@ -145,7 +145,8 @@ module.exports = {
                 fontSize: 35,
                 textAlign: 'right',
                 color: '#eee'
-            }
+            },
+
         },
         loginBackButton: {
             icon: {
@@ -159,6 +160,22 @@ module.exports = {
             }
 
         },
+        logout:{
+            button:{
+                width:deviceWidth*0.8,
+                backgroundColor:"#ED0000",
+                alignSelf:'center',
+                marginTop:20,
+                justifyContent:'center'
+            },
+            text:{
+                //alignSelf:'center'
+                fontSize: platform === "ios" ? 20 : 16,
+                paddingBottom:platform === "ios" ? 0 : 3,
+            }
+
+        },
+
 
         loginButton2: {
 
@@ -185,7 +202,6 @@ module.exports = {
     lineBox:{
         flex:1,
         flexDirection:'row',
-        //justifyContent:'center',
         marginTop: 10,
         marginBottom:10,
         height:25
@@ -271,12 +287,19 @@ module.exports = {
         mapModal: {
 
             thumbnail: {
-                marginLeft: deviceWidth * .04
+                marginLeft: deviceWidth * .04,
+                paddingTop:100
             },
             textView: {
+                width:0,
+                flexGrow:1,
                 marginLeft: 10,
-                marginTop: platform === "ios" ? 20 : 10,
-                flexDirection: 'column'
+                paddingTop:8,
+                marginTop: platform === "ios" ? 0 : 0,
+                flexDirection: 'column',
+
+
+
             },
             buttons: {
                 moreInfo: {
@@ -292,17 +315,26 @@ module.exports = {
                     flex: 1,
                     marginLeft: 4,
                     marginRight: 4,
+                },
+                text:{
+                    fontWeight: platform === "ios" ? '600' : '400',
                 }
             },
             text:{
                 title:{
                     fontSize:22,
-                    fontWeight: platform === "ios" ? '600' : '400'
+                    fontWeight: platform === "ios" ? '600' : '400',
+
+
+
+
                 },
                 note:{
                     fontWeight: platform === "ios" ? '600' : '400',
                     color:'#222',
                     //paddingBottom:platform === "ios" ? 0 : 20
+                    flexWrap:'wrap',
+
                 }
             }
 
@@ -342,13 +374,13 @@ module.exports = {
                     color:'#f4f4f4',
                     fontSize: platform === "ios" ? 22 : 18,
                     marginBottom:4,
-                    fontWeight: platform === "ios" ? '600' : '400'
+                    fontWeight: platform === "ios" ? '600' : '400',
 
                 },
                 note:{
                     color: '#f4f4f4',
                     fontSize: platform === "ios" ? 16 : 12,
-                    fontWeight: platform === "ios" ? '600' : '400'
+                    fontWeight: platform === "ios" ? '600' : '400',
                 },
                 infoNote:{
                     color: platform === "ios" ? '#059980': "#059980",
@@ -371,14 +403,23 @@ module.exports = {
         }
     },
     profileFields:{
+
+        line:{
+            width:deviceWidth *0.9,
+            borderBottomWidth: .95,
+            borderColor: '#bbb'
+
+        },
         textFields:{
             marginLeft: 16,
+            marginRight:16,
             marginTop: 30,
+
         },
         nameTextField:{
             color: "#006a54",
             fontWeight: "bold",
-            fontSize: 15,
+            fontSize: 20,
         },
         phoneNumberText:{
             marginTop: 45,
@@ -398,25 +439,9 @@ module.exports = {
             fontSize: 14,
         },
         addressSubField:{
-            topField:{
-                color:"#222",
-                marginTop: 5,
-                fontSize: 16,
-                fontWeight:'600'
-            },
-            middleField:{
-                color:"#222",
-                marginTop: 2,
-                marginBottom: 2,
-                fontSize: 16,
-                fontWeight:'600'
-            },
-            bottomField:{
-                color:"#222",
-                marginBottom: 20,
-                fontSize: 16,
-                fontWeight:'600'
-            },
+            color:'#222',
+            fontSize: platform === 'ios' ? 16 : 16,
+            fontWeight: platform === 'ios' ? '600' : '400'
         },
     },
     cameraWarning:{
@@ -435,6 +460,7 @@ module.exports = {
             paddingRight: 16,
             paddingBottom: 15,
             fontSize: 15,
+            flexWrap:'wrap'
         },
         buttonField:{
             alignSelf: 'center',

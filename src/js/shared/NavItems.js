@@ -116,6 +116,7 @@ export const AndroidSideBar = DrawerNavigator({
     });
 
 export const AppRouteAndroid = StackNavigator({
+
     AndroidSideBar: {screen: AndroidSideBar},
     Map: { screen: Map },
     Camera: { screen: Camera },

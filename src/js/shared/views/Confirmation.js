@@ -14,7 +14,8 @@ import FooterIos from "../../ios/Footer.ios";
 import HeaderIos from "../../ios/Header.ios";
 import Details from "../components/submission/Details";
 
-var Strings = require('../res/strings/StringsEN.js');
+const Strings = require('../res/strings/StringsEN.js');
+const Styles = require('../res/assets/styles/Styles')
 
 let body;
 
@@ -32,9 +33,13 @@ class Confirmation extends Component {
             body =  <Spinner />
         }
         if(this.props.submissionConfirmationLoading === false){
-            body = <View>
-                <Text>{Strings.SUBMISSION_THANK_YOU}</Text>
-                <Button onPress={()=>this.props.navigation.navigate('Map')}><Text>{Strings.SUBMISSION_RETURN}</Text></Button>
+            body =
+                <View style={Styles.cameraWarning.centerView}>
+                <Text style={Styles.cameraWarning.textField}>{Strings.SUBMISSION_THANK_YOU}</Text>
+                <Button onPress={()=>this.props.navigation.navigate('Map')}
+                        style={Styles.cameraWarning.buttonField}>
+                    <Text style={Styles.cameraWarning.buttonText}>{Strings.SUBMISSION_RETURN}</Text>
+                </Button>
                     </View>
         }
 
@@ -44,6 +49,7 @@ class Confirmation extends Component {
                     flex: 1,
                     backgroundColor: 'transparent',
                     flexDirection: 'column',
+                    alignItems:'center',
                 }}>
                 {header}
                 <Content>

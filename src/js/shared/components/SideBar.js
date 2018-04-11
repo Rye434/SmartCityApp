@@ -44,7 +44,9 @@ class SideBar extends React.Component {
                     <TouchableOpacity onPress={() => this.props.navigation.navigate(target)}>
 
                     <View style={{backgroundColor:'#3F51B5' ,height:160,flexDirection:'row', justifyContent:'flex-start', alignItems:'flex-end'}}>
-                        <Text style={{color:'white', paddingBottom:16,paddingLeft:8, fontSize:24}}></Text>
+                        <Text style={{color:'white', paddingBottom:16,paddingLeft:8, fontSize:24}}>
+                            {name}
+                        </Text>
                         {/*<Text style={{color:'white', paddingBottom:16,paddingLeft:8, fontSize:12}}>John.Smith@Address.ca</Text>*/}
                     </View>
                     </TouchableOpacity>

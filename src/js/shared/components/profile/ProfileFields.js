@@ -26,17 +26,17 @@ class ProfileFields extends Component {
                 <Text style={Styles.profileFields.nameTextField}>{user.firstName} {user.lastName}</Text>
                 <Text style={Styles.profileFields.phoneNumberText}>{Strings.PROFILE_PHONE}</Text>
                 <Text style={Styles.profileFields.subContentField}>{this.props.phone}</Text>
-                <Item/>
+                <Item style={Styles.profileFields.line}/>
 
                 <Text style={Styles.profileFields.subTitleField}>{Strings.PROFILE_EMAIL}</Text>
                 <Text style={Styles.profileFields.subContentField}>{user.username}</Text>
-                <Item/>
+                <Item style={Styles.profileFields.line}/>
 
                 <Text style={Styles.profileFields.subTitleField}>{Strings.PROFILE_ADDRESS}</Text>
-                <Text style={Styles.profileFields.addressSubField.topField}>{user.addressLine2} {user.addressLine1}</Text>
-                <Text style={Styles.profileFields.addressSubField.middleField}>{user.city}, {user.stateId}</Text>
-                <Text style={Styles.profileFields.addressSubField.bottomField}>{user.postalCode}</Text>
-                <Item style={{marginBottom:40,}}/>
+                <Text style={[Styles.profileFields.addressSubField,{marginTop:5}]}>{user.addressLine1} {user.addressLine2}</Text>
+                <Text style={[Styles.profileFields.addressSubField,{marginTop:2, marginBottom:2}]}>{user.city}, {user.stateId}</Text>
+                <Text style={[Styles.profileFields.addressSubField,{marginBottom:20}]}>{user.postalCode}</Text>
+                <Item style={[Styles.profileFields.line, {marginBottom:40}]}/>
 
             </View>
         )

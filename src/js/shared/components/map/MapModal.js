@@ -59,12 +59,12 @@ class MapModal extends Component {
 
         //console.log(this.props.currentRequest)
         if(this.props.currentRequest.requestId != null){
-            buttonText = <Text>
+            buttonText = <Text style={Styles.map.mapModal.buttons.text}>
                 <Icon name={ackIcon}/>{Strings.DETAIL_MODAL_ACKNOWLEDGE} {this.props.currentRequest.acknowledgeCount}
             </Text>
         }
         if(this.props.currentRequest.requestId === null){
-            buttonText = <Text>{Strings.MAP_MODAL_CANNOT_ACKNOWLEDGE}</Text>
+            buttonText = <Text style={Styles.map.mapModal.buttons.text}>{Strings.DETAIL_MODAL_ACKNOWLEDGE}</Text>
         }
 
             serviceName = this.props.currentRequest.serviceName
@@ -109,7 +109,7 @@ class MapModal extends Component {
                 <View style={{height:144, width:Dimensions.get('window').width,
                     marginTop:modalSpaceHeight, backgroundColor:'white'}}>
 
-                    <View style={{flexDirection:'row', marginTop:8, marginBottom:8}}>
+                    <View style={{flexDirection:'row', height:100,backgroundColor:'white' }}>
                     <Thumbnail square large source={image} style={Styles.map.mapModal.thumbnail} />
 
                         <View style={Styles.map.mapModal.textView}>
@@ -117,13 +117,13 @@ class MapModal extends Component {
                         <Text note style={Styles.map.mapModal.text.note}>{serviceName}</Text>
                         </View>
                     </View>
-                    <View style={{flex:1,flexDirection:'row'}}>
+                    <View style={{flex:1,flexDirection:'row', height:44,backgroundColor:'white'}}>
                         <Button block title={"moreInfo"}
                                 onPress={this.props.toggleModals}
                                 style={Styles.map.mapModal.buttons.moreInfo}>
                             <Text>{Strings.MAP_MODAL_MORE_INFO_BUTTON}</Text>
                         </Button>
-                        <Button block success title={"acknowledge"}//change to warning on press
+                        <Button block success title={"follow"}//change to warning on press
                                 onPress={this.updateAck}
                                 style={Styles.map.mapModal.buttons.plusOne}>
                             {buttonText}

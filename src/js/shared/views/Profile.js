@@ -16,6 +16,7 @@ import ProfileFields from "../components/profile/ProfileFields";
 import {AsyncStorage} from "react-native";
 
 const Strings = require('../res/strings/StringsEN.js');
+const Styles = require('../res/assets/styles/Styles');
 
 let footer;
 let fab;
@@ -59,10 +60,10 @@ class Profile extends Component {
                                     targetTextRight={Strings.HEADER_EDIT}/>
                 nav =
                     <List>
-                        <ListItem onPress={() => this.props.navigation.navigate("About")}>
+                        <ListItem onPress={() => this.props.navigation.navigate("About")} style={Styles.profileFields.line}>
                             <Text>{Strings.PAGE_HEADERS_ABOUT}</Text>
                         </ListItem>
-                        <ListItem onPress={() => this.props.navigation.navigate("Feedback")}>
+                        <ListItem onPress={() => this.props.navigation.navigate("Feedback")} style={Styles.profileFields.line}>
                             <Text>{Strings.PAGE_HEADERS_FEEDBACK}</Text>
                         </ListItem>
                     </List>
@@ -87,8 +88,8 @@ class Profile extends Component {
 
                         {nav}
 
-                        <Button  onPress={this.exitAlert}>
-                            <Text>Logout</Text>
+                        <Button  onPress={this.exitAlert} style={Styles.button.logout.button}>
+                            <Text style={Styles.button.logout.text}>{Strings.BUTTONS_LOGOUT}</Text>
                         </Button>
 
                     </Content>

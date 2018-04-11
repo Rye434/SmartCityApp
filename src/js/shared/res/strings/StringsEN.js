@@ -53,13 +53,14 @@ module.exports = {
     BUTTONS_DONE:"Done",
     BUTTONS_CANCEL:"Cancel",
     BUTTONS_OK:"Ok",
+    BUTTONS_LOGOUT: "Sign Out",
 
     CAMERA_WARNING:"Caution",
     CAMERA_WARNING_MESSAGE:"Always be aware of your surroundings before taking a picture",
 
     REQUEST_SEGMENT_PUBLIC:"Public",
-    REQUEST_SEGMENT_PERSONAL:"Personal",
-    REQUEST_SEGMENT_ACKNOWLEDGED:"Acknowledge",
+    REQUEST_SEGMENT_PERSONAL:"Reported",
+    REQUEST_SEGMENT_ACKNOWLEDGED:"Followed",
 
     PROFILE_PHONE:"Phone Number",
     PROFILE_EMAIL:"Email",
@@ -76,7 +77,7 @@ module.exports = {
     USER_CURRENT_LOCATION:"Current location",
     MAP_MODAL_MORE_INFO_BUTTON:"More Information",
     MAP_MODAL_ACKNOWLEDGE:"Acknowledge",
-    MAP_MODAL_CANNOT_ACKNOWLEDGE:"Cannot Acknowledge This Request",
+    MAP_MODAL_CANNOT_ACKNOWLEDGE:"Cannot Follow This Request",
 
     ABOUT_TITLE:"Smart City",
     ABOUT_VERSION:"Version: 1.0.0.0",
@@ -105,7 +106,7 @@ module.exports = {
     PHONE_FACEBOOK_HEADER:"Smart City",
     PHONE_FACEBOOK_MESSAGE:"To continue please sign up with your:",
 
-    DETAIL_MODAL_ACKNOWLEDGE:"Acknowledge ",
+    DETAIL_MODAL_ACKNOWLEDGE:"Follow",
     DETAIL_MODAL_DATE:"Date Submitted",
     DETAIL_MODAL_DISTANCE:"Distance",
     DETAIL_MODAL_STATUS:"Request Status",
