@@ -54,6 +54,7 @@ class Phone extends Component {
     }
 
     componentDidUpdate(){
+        console.log(this.props.responseCodeProfile+"  :  ")
         if(this.props.responseCodeProfile != null) {
             if (this.props.responseCodeProfile.errorCode == 82) {
                 if(code != null) {
@@ -74,7 +75,7 @@ class Phone extends Component {
                     this.props.navigation.navigate(target)
                 }
             }
-            if (this.props.responseCodeProfile.errorCode == 83 || !AsyncStorage.getItem('encCode')) {
+            if (this.props.responseCodeProfile.errorCode == 83 || AsyncStorage.getItem('encCode')==null) {
                 target = "Verification"
                 this.props.navigation.navigate(target)
             }

@@ -47,7 +47,6 @@ var Constants = require('../res/constants/AppConstants');
 
 
 export function cachePhoto(obj) {
-
     return{
         type: CACHE_PHOTO,
         photo: obj
@@ -404,7 +403,7 @@ export function checkByPhone(phone, code) {
             },
         )
             .then((response) => {
-               // console.log(JSON.parse(response.request.response))
+                // console.log(JSON.parse(response.request.response))
                 if(JSON.parse(response.request.response).errorCode == 83){
                     //generate phone verification code (no countrycode in phone yet)
                     dispatch(verificationCode(phone))
