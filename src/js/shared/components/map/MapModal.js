@@ -27,17 +27,17 @@ class MapModal extends Component {
                     if (this.props.currentRequest.requestId === this.props.storeUserRequests.acknowledge[item].requestId) {
                         console.log(this.props.currentRequest.requestId + "  :  " + item.requestId)
                         inList = true
-                        this.props.toggleAck(this.props.responseCodeProfile.userId, false, this.props.storeUserRequests.acknowledge[item].requestIdOpen311, this.props.storeUserRequests.acknowledge[item].requestId, this.props.rawPosition)
+                        this.props.toggleAck(this.props.responseCodeProfile.userId, false, this.props.storeUserRequests.acknowledge[item].requestIdOpen311, this.props.storeUserRequests.acknowledge[item].requestId)
                     }
                 }
                 //if if loops through user ack list and request is not present, ack it
                 if (inList == false) {
-                    this.props.toggleAck(this.props.responseCodeProfile.userId, true, this.props.currentRequest.requestIdOpen311, this.props.currentRequest.requestId, this.props.rawPosition)
+                    this.props.toggleAck(this.props.responseCodeProfile.userId, true, this.props.currentRequest.requestIdOpen311, this.props.currentRequest.requestId)
                 }
             }
             if (this.props.storeUserRequests.acknowledge.length === 0) {
                 console.log(this.props.currentRequest.requestId)
-                this.props.toggleAck(this.props.responseCodeProfile.userId, true, this.props.currentRequest.requestIdOpen311, this.props.currentRequest.requestId, this.props.rawPosition)
+                this.props.toggleAck(this.props.responseCodeProfile.userId, true, this.props.currentRequest.requestIdOpen311, this.props.currentRequest.requestId)
             }
         }
 
@@ -146,8 +146,7 @@ function mapStateToProps(state) {
         currentRequest: state.currentRequest,
         responseCodeProfile: state.responseCodeProfile,
         storeUserRequests: state.storeUserRequests,
-        loginStatus: state.loginStatus,
-        rawPosition: state.rawPosition
+        loginStatus: state.loginStatus
 
     }
 }
@@ -163,8 +162,8 @@ const mapDistpatchToProps = (dispatch) => {
         toggleModals: () => {
             return dispatch(actions.toggleModals())
         },
-        toggleAck: (userId, bool, id311, id, position ) => {
-            dispatch(actions.toggleAck(userId, bool, id311, id, position ))
+        toggleAck: (userId, bool, id311, id ) => {
+            dispatch(actions.toggleAck(userId, bool, id311, id ))
         }
     }
 }

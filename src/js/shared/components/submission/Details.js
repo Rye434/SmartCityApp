@@ -45,7 +45,7 @@ class Details extends Component {
     }
 
     proceed = (requestObj) => {
-        this.props.buildRequest(requestObj, this.props.responseCodeProfile, this.props.rawPosition)
+        this.props.buildRequest(requestObj, this.props.responseCodeProfile)
         this.props.navigation.navigate('Confirmation')
     }
 
@@ -156,8 +156,7 @@ function mapStateToProps(state) {
         category: state.category,
         activeCategory: state.activeCategory,
         submissionIssueDescription: state.submissionIssueDescription,
-        loginStatus: state.loginStatus,
-        rawPosition: state.rawPosition
+        loginStatus: state.loginStatus
     }
 }
 
@@ -190,8 +189,8 @@ const mapDistpatchToProps = (dispatch) => {
         setSubmitIssueDescription: (text) => {
             dispatch(actions.setSubmitIssueDescription(text))
         },
-        buildRequest: (requestObj, userObj, position) => {
-            dispatch(actions.buildRequest(requestObj, userObj, position))
+        buildRequest: (requestObj, userObj) => {
+            dispatch(actions.buildRequest(requestObj, userObj))
         },
         saveRequestObj: (requestObj) => {
             dispatch(actions.saveRequestObj(requestObj))

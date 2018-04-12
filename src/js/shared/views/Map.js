@@ -27,18 +27,13 @@ var DESTRUCTIVE_INDEX = 100;
 class Map extends Component {
 
     componentWillMount() {
-        if(this.props.rawPosition === null) {
-            navigator.geolocation.getCurrentPosition(
-                (position) => {
-                    this.props.preload(position);
-                },
-                (error) => alert(error.message),
-                {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
-            );
-        }
-        if(this.props.rawPosition != null) {
-            this.props.preload(this.props.rawPosition)
-        }
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                this.props.preload(position);
+            },
+            (error) => alert(error.message),
+            {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
+        );
     }
 
     openActionSheet = () => {
@@ -95,8 +90,7 @@ class Map extends Component {
 function mapStateToProps(state) {
     return{
         mapModal: state.mapModal,
-        services: state.services,
-        rawPosition: state.rawPosition
+        services: state.services
     }
 }
 

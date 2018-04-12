@@ -25,7 +25,7 @@ let code = null;
 class Phone extends Component {
 
     proceed = () => {
-        this.props.checkByPhone(this.props.phone, code, this.props.rawPosition)
+        this.props.checkByPhone(this.props.phone, code)
         if(code!=null) {
             this.storeUserPhone(this.props.phone)
         }
@@ -54,11 +54,11 @@ class Phone extends Component {
     }
 
     componentDidUpdate(){
-        console.log(this.props.responseCodeProfile)
+        console.log(this.props.responseCodeProfile+"  :  ")
         if(this.props.responseCodeProfile != null) {
             if (this.props.responseCodeProfile.errorCode == 82) {
                 if(code != null) {
-                    this.props.loginByPhone(this.props.phone, code, this.props.rawPosition)
+                    this.props.loginByPhone(this.props.phone, code)
 
                     if(this.props.requestObj == null) {
                         if (Platform.OS == 'ios') {
@@ -130,7 +130,6 @@ function mapStateToProps(state) {
         responseCodeProfile: state.responseCodeProfile,
         loginStatus: state.loginStatus,
         requestObj:state.requestObj,
-        rawPosition: state.rawPosition
     }
 }
 
@@ -139,14 +138,14 @@ const mapDistpatchToProps = (dispatch) => {
         phoneNum: (phone) => {
             dispatch(actions.phoneNum(phone))
         },
-        checkByPhone: (phone, code, position) => {
-            dispatch(actions.checkByPhone(phone, code, position))
+        checkByPhone: (phone, code) => {
+            dispatch(actions.checkByPhone(phone, code))
         },
         updateLoginStatus: () => {
             dispatch(actions.updateLoginStatus(true))
         },
-        loginByPhone: (phone, encCode, position) =>{
-            dispatch(actions.loginByPhone(phone, encCode, position))
+        loginByPhone: (phone, encCode) =>{
+            dispatch(actions.loginByPhone(phone, encCode))
         }
     }
 }
