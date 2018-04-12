@@ -2,6 +2,10 @@
   "expo": {
     "name": "SmartCity",
     "icon": "src/js/shared/res/assets/img/Icon-120.png",
+    "splash": {
+      "image": "src/js/shared/res/assets/img/splashscreen-XXXHDPIa.png",
+      "resizeMode": "cover"
+    },
     "version": "1.0.0",
     "slug": "smartcity",
     "sdkVersion": "22.0.0",
