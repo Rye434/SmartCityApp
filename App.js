@@ -17,6 +17,7 @@ import platform from './native-base-theme/variables/platform';
 
 
 let state = {
+    rawPosition: null,
     photoCached: {},
     editModal: false,
     mapModal: false,

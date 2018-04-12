@@ -36,17 +36,17 @@ class RequestDetail extends Component {
                 if (this.props.currentRequest.requestId === this.props.storeUserRequests.acknowledge[item].requestId) {
                     console.log(this.props.currentRequest.requestId + "  :  " + item.requestId)
                     inList = true
-                    this.props.toggleAck(this.props.responseCodeProfile.userId, false, this.props.storeUserRequests.acknowledge[item].requestIdOpen311, this.props.storeUserRequests.acknowledge[item].requestId)
+                    this.props.toggleAck(this.props.responseCodeProfile.userId, false, this.props.storeUserRequests.acknowledge[item].requestIdOpen311, this.props.storeUserRequests.acknowledge[item].requestId, this.props.rawPosition)
                 }
             }
             //if if loops through user ack list and request is not present, ack it
             if (inList == false) {
-                this.props.toggleAck(this.props.responseCodeProfile.userId, true,this.props.currentRequest.requestIdOpen311, this.props.currentRequest.requestId)
+                this.props.toggleAck(this.props.responseCodeProfile.userId, true,this.props.currentRequest.requestIdOpen311, this.props.currentRequest.requestId, this.props.rawPosition)
             }
         }
         if (this.props.storeUserRequests.acknowledge.length === 0) {
             console.log(this.props.currentRequest.requestId)
-            this.props.toggleAck(this.props.responseCodeProfile.userId, true, this.props.currentRequest.requestIdOpen311, this.props.currentRequest.requestId)
+            this.props.toggleAck(this.props.responseCodeProfile.userId, true, this.props.currentRequest.requestIdOpen311, this.props.currentRequest.requestId, this.props.rawPosition)
         }
 
     }
@@ -113,7 +113,8 @@ class RequestDetail extends Component {
                     <Image source={image}
                            style={Styles.map.detailModal.image}/>
 
-                    <Button style={Styles.map.detailModal.plusOne} disabled={this.props.currentRequest.requestId === null? true : false} onPress={this.updateAck}>
+                    <Button style={Styles.map.detailModal.plusOne} disabled={this.props.currentRequest.requestId === null? true : false}
+                            onPress={this.props.currentRequest != null && this.props.currentRequest.requestId === null? ()=>alert("Cannot follow requests that are not submitted through Smartcity"):this.updateAck}>
                         {buttonText}
                     </Button>
 
@@ -148,7 +149,8 @@ function mapStateToProps(state) {
         responseCodeProfile: state.responseCodeProfile,
         storeUserRequests: state.storeUserRequests,
         currentRequest: state.currentRequest,
-        loginStatus: state.loginStatus
+        loginStatus: state.loginStatus,
+        rawPosition: state.rawPosition
     }
 }
 
@@ -157,8 +159,8 @@ const mapDistpatchToProps = (dispatch) => {
         modalVisible: () => {
             return dispatch(actions.editModal(true))
         },
-        toggleAck: (userId, bool, id311, id ) => {
-            dispatch(actions.toggleAck(userId, bool, id311, id ))
+        toggleAck: (userId, bool, id311, id, position ) => {
+            dispatch(actions.toggleAck(userId, bool, id311, id, position ))
         },
 
 

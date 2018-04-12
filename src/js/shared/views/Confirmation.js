@@ -47,10 +47,9 @@ class Confirmation extends Component {
             <View
                 style={{
                     flex: 1,
-                    backgroundColor: 'transparent',
-                    flexDirection: 'column',
-                    alignItems:'center',
-                }}>
+                    //backgroundColor: 'transparent', flexDirection: 'column', alignItems:'center',
+                }}
+                >
                 {header}
                 <Content>
 

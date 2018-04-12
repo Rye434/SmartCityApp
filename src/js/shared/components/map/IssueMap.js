@@ -41,7 +41,7 @@ class IssueMap extends Component {
                 this.props.saveUserCode(code)
                 this.props.phoneNum(phone)
                 this.props.loginByPhone(phone, code)
-                this.props.getPersonalReqs(this.props.responseCodeProfile.userId)
+                this.props.getPersonalReqs(this.props.responseCodeProfile.userId,this.props.rawPosition)
                 this.props.updateLoginStatus(true)
             }
             if ( phone == null){
@@ -193,6 +193,7 @@ function mapStateToProps(state) {
         responseCodeProfile: state.responseCodeProfile,
         storeUserRequests:state.storeUserRequests,
         loginStatus: state.loginStatus,
+        rawPosition: state.rawPosition
     }
 }
 
@@ -222,8 +223,8 @@ const mapDistpatchToProps = (dispatch) => {
         loginByPhone: (phone, encCode) => {
             dispatch(actions.loginByPhone(phone, encCode))
         },
-        getPersonalReqs: (userId) => {
-            dispatch(actions.getPersonalReqs(userId))
+        getPersonalReqs: (userId,position) => {
+            dispatch(actions.getPersonalReqs(userId,position))
         },
         updateLoginStatus: (bool) => {
             dispatch(actions.updateLoginStatus(bool))
