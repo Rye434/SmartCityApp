@@ -114,7 +114,7 @@ class MapModal extends Component {
                     marginTop:modalSpaceHeight, backgroundColor:'white'}}>
 
                     <View style={{flexDirection:'row', height:100,backgroundColor:'white' }}>
-                    <Thumbnail large square source={image}  />
+                    <Thumbnail large square source={image} style={Styles.map.mapModal.thumbnail} />
 
                         <View style={Styles.map.mapModal.textView}>
                         <Text style={Styles.map.mapModal.text.title}>{serviceGroup}</Text>

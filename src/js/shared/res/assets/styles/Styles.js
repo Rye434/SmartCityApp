@@ -299,7 +299,8 @@ module.exports = {
             },
 
             thumbnail: {
-                //marginLeft: deviceWidth * .04,
+                marginLeft: deviceWidth * .035,
+                marginTop:10
             },
             textView: {
                 width:0,
