@@ -66,10 +66,13 @@ class DetailModal extends Component {
 
 
             if (this.props.currentRequest.requestId != null) {
-                buttonText = <Text>
-                    <Icon
-                        name={ackIcon}/>{Strings.DETAIL_MODAL_ACKNOWLEDGE} {this.props.currentRequest.acknowledgeCount}
-                </Text>
+                buttonText =
+                    <View style={{flexDirection:'row', justifyContent:'center', alignItems:'center'}}>
+                        <Icon name={ackIcon} style={Styles.map.mapModal.icon}/>
+                        <Text style={Styles.map.mapModal.follow}>
+                            {Strings.DETAIL_MODAL_ACKNOWLEDGE}{this.props.currentRequest.acknowledgeCount}
+                        </Text>
+                    </View>
 
             }
             if (this.props.currentRequest.requestId === null) {
@@ -78,10 +81,10 @@ class DetailModal extends Component {
         }
 
         if(Platform.OS == 'android'){
-           arrow = <Icon name='arrow-back'/>
+           arrow = <Icon name='arrow-back' style={[Styles.map.mapModal.buttons.backButton, {fontSize:40}]}/>
         }
         if(Platform.OS == 'ios'){
-            arrow = <Icon name='arrow-down' style={{fontSize:40, color:'#f4f4f4'}}/>
+            arrow = <Icon name='arrow-down' style={[Styles.map.mapModal.buttons.backButton, {fontSize:40}]}/>
         }
 
         if(this.props.currentRequest != null) {
@@ -127,11 +130,14 @@ class DetailModal extends Component {
                 onRequestClose={this.props.showDetailModal}>
 
                 <ScrollView style={{flexDirection:'column'}}>
-                <Image source={image}  style={Styles.map.detailModal.image}>
-                    <Button transparent onPress={this.props.showDetailModal} style={Styles.map.detailModal.backButton}>
+                            <View style={{backgroundColor:'black', height:255, zIndex:10, opacity:0.1}} >
+                            </View>
+                <Image source={image}  style={[Styles.map.detailModal.image,{position:'absolute'}]}/>
+
+
+                    <Button transparent onPress={this.props.showDetailModal} style={[Styles.map.detailModal.backButton,{zIndex:100}]}>
                         {arrow}
                     </Button>
-                </Image>
 
                 <View style={Styles.map.detailModal.infoView}>
                     <Text style ={Styles.map.detailModal.text.header}>{serviceName}</Text>
@@ -140,7 +146,7 @@ class DetailModal extends Component {
 
                 </View>
 
-                    <Button block title="acknowledge" style={Styles.map.detailModal.plusOne} onPress={this.updateAck}>
+                    <Button block title="follow" style={Styles.map.detailModal.plusOne} onPress={this.updateAck}>
                         {buttonText}
                     </Button>
 
@@ -189,7 +195,20 @@ const mapDistpatchToProps = (dispatch) => {
             dispatch(actions.toggleAck(userId, bool, id311, id ))
         }
     }
-}
+};
+
+const shadow = StyleSheet.create({
+    icon: {
+        shadowColor: 'black',
+        shadowOpacity: 0.5,
+        shadowRadius: 5,
+        // iOS
+        shadowOffset: {
+            width: 0,
+            height: 1,
+        },
+    }
+});
 
 
 

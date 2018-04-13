@@ -9,6 +9,10 @@
     "version": "1.0.0",
     "slug": "smartcity",
     "sdkVersion": "22.0.0",
+    "androidStatusBar":{
+
+    "barStyle":"light-content"
+},
     "ios": {
       "bundleIdentifier": "com.missingpixel.smartcity",
       "publishBundlePath": "ios/smartcity/Supporting/shell-app.bundle",

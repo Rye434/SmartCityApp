@@ -76,7 +76,7 @@ module.exports = {
 
     USER_CURRENT_LOCATION:"Current location",
     MAP_MODAL_MORE_INFO_BUTTON:"More Information",
-    MAP_MODAL_ACKNOWLEDGE:"Acknowledge",
+    MAP_MODAL_ACKNOWLEDGE:"Follow",
     MAP_MODAL_CANNOT_ACKNOWLEDGE:"Cannot Follow This Request",
 
     ABOUT_TITLE:"Smart City",
@@ -106,7 +106,7 @@ module.exports = {
     PHONE_FACEBOOK_HEADER:"Smart City",
     PHONE_FACEBOOK_MESSAGE:"To continue please sign up with your:",
 
-    DETAIL_MODAL_ACKNOWLEDGE:"Follow",
+    DETAIL_MODAL_ACKNOWLEDGE:"Follow ",
     DETAIL_MODAL_DATE:"Date Submitted",
     DETAIL_MODAL_DISTANCE:"Distance",
     DETAIL_MODAL_STATUS:"Request Status",

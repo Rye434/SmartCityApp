@@ -20,8 +20,8 @@ export default class AboutContent extends Component {
         return(
 
             <View style={Styles.aboutContent.lastLine}>
-            <Image source={MPLogo} style={Styles.aboutContent.backgroundImage}>
-            </Image>
+            <Image source={MPLogo} style={Styles.aboutContent.backgroundImage}/>
+
                 <View style={Styles.aboutContent.aboutView}>
 
                 <Text style={Styles.aboutContent.aboutAppTitle}>{Strings.ABOUT_TITLE}</Text>

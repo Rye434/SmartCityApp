@@ -286,9 +286,20 @@ module.exports = {
     map: {
         mapModal: {
 
+            icon:{
+                fontSize:20,
+                flex:2,
+                marginRight:0,
+                paddingRight:5,
+                textAlign:'right'
+            },
+            follow:{
+                flex:3,
+                paddingLeft:5,
+            },
+
             thumbnail: {
-                marginLeft: deviceWidth * .04,
-                paddingTop:100
+                //marginLeft: deviceWidth * .04,
             },
             textView: {
                 width:0,
@@ -318,6 +329,13 @@ module.exports = {
                 },
                 text:{
                     fontWeight: platform === "ios" ? '600' : '400',
+                },
+                backButton:{
+                    color:'#f4f4f4',
+                    textShadowColor: '#444',
+                    shadowOpacity: 0.4,
+                    shadowRadius: 8,
+                    textShadowOffset:{width: 1,height: 1}
                 }
             },
             text:{
@@ -341,7 +359,9 @@ module.exports = {
         },
         detailModal:{
             backButton:{
-                marginTop:deviceHeight*.03
+                position:'absolute',
+                top:8,
+                left:0
             },
             infoView:{
                 backgroundColor:'#1c4888',
@@ -353,6 +373,9 @@ module.exports = {
             },
             image:{
                 height: 250,
+                resizeMode: 'contain',
+                top:0,
+                left:0,
                 width: deviceWidth,
             },
             plusOne:{
@@ -372,15 +395,15 @@ module.exports = {
 
                 header:{
                     color:'#f4f4f4',
-                    fontSize: platform === "ios" ? 22 : 18,
+                    fontSize: platform === "ios" ? 18 : 18,
                     marginBottom:4,
                     fontWeight: platform === "ios" ? '600' : '400',
 
                 },
                 note:{
                     color: '#f4f4f4',
-                    fontSize: platform === "ios" ? 16 : 12,
-                    fontWeight: platform === "ios" ? '600' : '400',
+                    fontSize: platform === "ios" ? 14 : 12,
+                    fontWeight: platform === "ios" ? '500' : '400',
                 },
                 infoNote:{
                     color: platform === "ios" ? '#059980': "#059980",
@@ -659,6 +682,21 @@ module.exports = {
             paddingRight:deviceWidth*0.04,
             textAlignVertical: platform === "ios" ? 0 : "top"
         }
+    },
+    shadow:{
+        shadowColor: 'black',
+        shadowOpacity: 0.5,
+        shadowRadius: 5,
+        // iOS
+        shadowOffset: {
+            width: 0,            // These can't both be 0
+            height: 1,           // i.e. the shadow has to be offset in some way
+        },
+        // Android
+        shadowOffset: {
+            width: 0,            // Same rules apply from above
+            height: 1,           // Can't both be 0
+        },
     }
       
     };

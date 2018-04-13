@@ -59,9 +59,13 @@ class MapModal extends Component {
 
         //console.log(this.props.currentRequest)
         if(this.props.currentRequest.requestId != null){
-            buttonText = <Text style={Styles.map.mapModal.buttons.text}>
-                <Icon name={ackIcon}/>{Strings.DETAIL_MODAL_ACKNOWLEDGE} {this.props.currentRequest.acknowledgeCount}
-            </Text>
+            buttonText =
+                <View style={{flexDirection:'row', justifyContent:'center', alignItems:'center'}}>
+                    <Icon name={ackIcon} style={Styles.map.mapModal.icon}/>
+                    <Text style={Styles.map.mapModal.follow}>
+                        {Strings.DETAIL_MODAL_ACKNOWLEDGE}{this.props.currentRequest.acknowledgeCount}
+                    </Text>
+                </View>
         }
         if(this.props.currentRequest.requestId === null){
             buttonText = <Text style={Styles.map.mapModal.buttons.text}>{Strings.DETAIL_MODAL_ACKNOWLEDGE}</Text>
@@ -110,7 +114,7 @@ class MapModal extends Component {
                     marginTop:modalSpaceHeight, backgroundColor:'white'}}>
 
                     <View style={{flexDirection:'row', height:100,backgroundColor:'white' }}>
-                    <Thumbnail square large source={image} style={Styles.map.mapModal.thumbnail} />
+                    <Thumbnail large square source={image}  />
 
                         <View style={Styles.map.mapModal.textView}>
                         <Text style={Styles.map.mapModal.text.title}>{serviceGroup}</Text>

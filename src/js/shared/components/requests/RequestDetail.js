@@ -100,9 +100,13 @@ class RequestDetail extends Component {
             }
 
             if(this.props.currentRequest.requestId != null){
-                buttonText = <Text>
-                                <Icon name={ackIcon}/>{Strings.DETAIL_MODAL_ACKNOWLEDGE} {this.props.currentRequest.acknowledgeCount}
-                             </Text>
+                buttonText =
+                    <View style={{flexDirection:'row', justifyContent:'center', alignItems:'center'}}>
+                        <Icon name={ackIcon} style={Styles.map.mapModal.icon}/>
+                        <Text style={Styles.map.mapModal.follow}>
+                            {Strings.DETAIL_MODAL_ACKNOWLEDGE}{this.props.currentRequest.acknowledgeCount}
+                        </Text>
+                    </View>
             }
             if(this.props.currentRequest.requestId === null){
                 buttonText = <Text>{Strings.MAP_MODAL_CANNOT_ACKNOWLEDGE}</Text>

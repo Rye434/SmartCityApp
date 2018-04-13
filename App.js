@@ -5,7 +5,7 @@ import {
   View
 } from 'react-native';
 import { Root, StyleProvider, Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text, Drawer } from 'native-base';
-
+import Expo from 'expo'
 import {Provider} from "react-redux";
 import thunk from 'redux-thunk';
 import {createStore, applyMiddleware} from "redux";

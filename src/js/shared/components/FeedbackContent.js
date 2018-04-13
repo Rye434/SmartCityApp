@@ -12,6 +12,7 @@ import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Rig
 const Strings = require('../res/strings/StringsEN.js');
 const Styles = require('../res/assets/styles/Styles');
 
+let ackIcon = Platform.OS == 'ios' ? "ios-square-outline" : "md-square-outline"
 
 export default class FeedbackContent extends Component {
 
@@ -23,6 +24,7 @@ export default class FeedbackContent extends Component {
 
                 </Item>
                 <Button style={Styles.feedbackContent.submitButton}><Text style={Styles.feedbackContent.submitButtonText}>{Strings.BUTTONS_SUBMIT}</Text></Button>
+
             </View>
         )
 
