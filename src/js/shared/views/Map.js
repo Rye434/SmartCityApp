@@ -26,11 +26,21 @@ var DESTRUCTIVE_INDEX = 100;
 
 class Map extends Component {
 
+    componentWillMount() {
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                this.props.preload(position);
+            },
+            (error) => alert(error.message),
+            {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
+        );
+    }
+
     openActionSheet = () => {
         ActionSheet.show(
             {
                 options: this.props.services,
-                cancelButtonIndex: this.props.services.length - 1,
+                cancelButtonIndex: 0,
                 destructiveButtonIndex: DESTRUCTIVE_INDEX,
                 title: Strings.HEADER_FILTER
             },
@@ -39,6 +49,8 @@ class Map extends Component {
             }
         )
     }
+
+
 
 
     render() {
@@ -86,7 +98,10 @@ const mapDistpatchToProps = (dispatch) => {
     return {
         updateActionSheetValue: (buttonIndex) => {
         return dispatch(actions.updateActionSheetValue(buttonIndex))
-    },
+        },
+        preload:(position) => {
+            dispatch(actions.preload(position))
+        },
     }
 }
 

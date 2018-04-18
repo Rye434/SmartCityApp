@@ -17,12 +17,6 @@ import Details from "../components/submission/Details";
 var Strings = require('../res/strings/StringsEN.js');
 
 
-
-//TODO: add issue submission confirmation alert
-
-
-
-
 class SubmissionDetails extends Component {
 
     exitAlert = () => {
@@ -55,7 +49,7 @@ class SubmissionDetails extends Component {
                 {header}
                 <Content>
 
-                    <Details/>
+                    <Details navigation={this.props.navigation}/>
 
                 </Content>
             </View>

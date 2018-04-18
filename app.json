@@ -1,10 +1,18 @@
 {
   "expo": {
     "name": "SmartCity",
-    "icon": "src/Icon-256.png",
+    "icon": "src/js/shared/res/assets/img/Icon-120.png",
+    "splash": {
+      "image": "src/js/shared/res/assets/img/splashscreen-XXXHDPIa.png",
+      "resizeMode": "cover"
+    },
     "version": "1.0.0",
     "slug": "smartcity",
     "sdkVersion": "22.0.0",
+    "androidStatusBar":{
+
+    "barStyle":"light-content"
+},
     "ios": {
       "bundleIdentifier": "com.missingpixel.smartcity",
       "publishBundlePath": "ios/smartcity/Supporting/shell-app.bundle",

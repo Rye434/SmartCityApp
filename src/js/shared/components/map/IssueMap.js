@@ -4,7 +4,8 @@ import {
     StyleSheet,
     View,
     Dimensions,
-    Image
+    Image,
+    AsyncStorage
 } from 'react-native';
 import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text, Drawer, Spinner } from 'native-base';
 import { MapView, Animated, Marker} from 'expo';
@@ -12,6 +13,7 @@ import MapModal from './MapModal';
 import DetailModal from './DetailModal';
 import {connect} from "react-redux";
 import * as actions from "../../actions/Actions";
+import {currentRequest} from "../../actions/Actions";
 
 
 var Strings = require('../../res/strings/StringsEN');
@@ -23,33 +25,43 @@ let topSpace;
 
 let searchedLocation;
 let searchedMarker;
-
-let customMarker;
-let customImage = require('../../res/assets/img/Button.png');
+let markers;
+let myMarkers;
 
 class IssueMap extends Component {
-    componentWillMount() {
-        navigator.geolocation.getCurrentPosition(
-            (position) => {
-                console.log(position)
-                this.props.getUserLocation(position);
-            },
-            (error) => alert(error.message),
-            {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
-        );
+
+    async tryLogin() {
+        try {
+            //if this is the case if this code matches the return from the phone number entry set status to logged in
+            const code = await AsyncStorage.getItem('encCode')
+            const phone = await AsyncStorage.getItem('phone')
+            console.log(code + " : " + phone)
+            if (code != null && phone != null) {
+                console.log(code + " : " + phone)
+                this.props.saveUserCode(code)
+                this.props.phoneNum(phone)
+                this.props.loginByPhone(phone, code)
+                this.props.getPersonalReqs(this.props.responseCodeProfile.userId)
+                this.props.updateLoginStatus(true)
+            }
+            if ( phone == null){
+                this.props.phoneNum("")
+            }
+        }
+         catch (error) {
+            console.log("Error fetching data " + error);
+        }
     }
 
     componentDidMount(){
-        this.props.fetchRequestList();
-        this.props.fetchServicesList();
-
+        this.tryLogin()
     }
 
     render() {
+        console.log(this.props.loginStatus)
 
         if(Platform.OS == 'ios'){
             height = Dimensions.get('window').height*.8;
-            customMarker =  <Image source={customImage} resizeMode="contain" style={{width: 24, height: 24}}/>;
 
         }
         if(Platform.OS == 'android'){
@@ -75,24 +87,70 @@ class IssueMap extends Component {
 
 
             if(this.props.mapRegion.latitudeDelta != 0.0922){
+                //if we want to show marker for searched location, make sure not to update state
                 searchedMarker = searchedLocation.map((marker, i) => (
                     <MapView.Marker
                         key={i}
                         coordinate={marker.coordinates}
-                        onPress={()=>this.props.showMapModal()}
+                        //onPress={()=>this.props.showMapModal()}
                     >
-                        {customMarker}
                     </MapView.Marker>
                 ))
             }
 
+            //build list based on action sheet
 
+            if(this.props.storeRequests != null) {
+
+                markers =  Object.keys(this.props.storeRequests.list).map((marker) => (
+                    this.props.storeRequests.list[marker].serviceGroup == this.props.services[this.props.actionSheetValue]
+                    ||
+                    this.props.services[this.props.actionSheetValue] == "Clear filter"?
+                        <MapView.Marker
+                        key={marker}
+                        coordinate={
+                            {
+                                latitude: parseFloat(this.props.storeRequests.list[marker].lat),
+                                longitude: parseFloat(this.props.storeRequests.list[marker].long)
+                            }
+                        }
+                        onPress={() => this.props.requestDetail(this.props.storeRequests.list[marker].requestIdOpen311, this.props.storeRequests.list[marker].requestId, true)}
+                    >
+                    </MapView.Marker> : something = null))
+            }
+            if(this.props.loginStatus == false){
+                myMarkers = null
+            }
+            if(this.props.storeUserRequests != null && this.props.loginStatus == true) {
+
+                myMarkers =  Object.keys(this.props.storeUserRequests.list).map((marker) => (
+                    this.props.storeUserRequests.list[marker].serviceGroup == this.props.services[this.props.actionSheetValue]
+                    ||
+                    this.props.services[this.props.actionSheetValue] == "Clear filter"?
+                        <MapView.Marker
+                            key={marker}
+                            coordinate={
+                                {
+                                    latitude: parseFloat(this.props.storeUserRequests.list[marker].lat),
+                                    longitude: parseFloat(this.props.storeUserRequests.list[marker].long)
+                                }
+                            }
+                            onPress={() => this.props.requestDetail(this.props.storeUserRequests.list[marker].requestIdOpen311, this.props.storeUserRequests.list[marker].requestId, true)}
+                        >
+                        </MapView.Marker> : something = null))
+            }
+
+
+            if(this.props.currentRequest != {}){
+                detailModal = <DetailModal/>
+                mapModal = <MapModal/>
+            }
 
         return(
-            <View>
+            <View style={{flex:1}}>
 
-            <DetailModal/>
-            <MapModal/>
+                <DetailModal/>
+                <MapModal/>
 
             <MapView.Animated
                 provider='google'
@@ -100,14 +158,18 @@ class IssueMap extends Component {
                             paddingTop:topSpace,
                             flex:1,
                             width: width,
-                            height: height*1.1,
+                            height: height
 
                             }}
                     showsUserLocation={true}
                     followUserLocation={true}
                     onUserLocationChange={this.props.mapRegion}
+                    onRegionChange={(position)=>this.props.updateRegion(position)}
                     region={this.props.mapRegion}>
-                {searchedMarker}
+                {/*{searchedMarker}*/}
+                {markers}
+                {myMarkers}
+
 
 
 
@@ -123,25 +185,49 @@ class IssueMap extends Component {
 function mapStateToProps(state) {
     return{
         mapRegion: state.mapRegion,
-        mapModal: state.mapModal
+        mapModal: state.mapModal,
+        storeRequests: state.storeRequests,
+        distanceLoaded: state.distanceLoaded,
+        actionSheetValue: state.actionSheetValue,
+        services: state.services,
+        responseCodeProfile: state.responseCodeProfile,
+        storeUserRequests:state.storeUserRequests,
+        loginStatus: state.loginStatus,
     }
 }
 
 const mapDistpatchToProps = (dispatch) => {
     return {
-        getUserLocation: (position) => {
-            return dispatch(actions.getUserLocation(position))
-        },
         showMapModal: () => {
-            return dispatch(actions.mapModal(true))
+            dispatch(actions.mapModal(true))
         },
-        fetchRequestList: () => {
-            return dispatch(actions.fetchRequestList())
+        calculateDistance: (userLoc,requestList,) => {
+            dispatch(actions.calculateDistance(userLoc, requestList))
         },
-        fetchServicesList: () => {
-            return dispatch(actions.fetchServiceList())
+        preload:(position) => {
+            dispatch(actions.preload(position))
         },
-
+        requestDetail:(ID, mgisID, bool) =>{
+            dispatch(actions.requestDetail(ID, mgisID, bool))
+        },
+        updateRegion: (position) => {
+            dispatch(actions.updateRegion(position))
+        },
+        saveUserCode: (code) => {
+            dispatch(actions.saveUserCode(code))
+        },
+        phoneNum: (phone) => {
+            dispatch(actions.phoneNum(phone))
+        },
+        loginByPhone: (phone, encCode) => {
+            dispatch(actions.loginByPhone(phone, encCode))
+        },
+        getPersonalReqs: (userId) => {
+            dispatch(actions.getPersonalReqs(userId))
+        },
+        updateLoginStatus: (bool) => {
+            dispatch(actions.updateLoginStatus(bool))
+        },
     }
 }
 

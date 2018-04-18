@@ -3,23 +3,27 @@ import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Rig
 import * as actions from "../shared/actions/Actions";
 import {connect} from 'react-redux';
 
+const Style = require('../shared/res/assets/styles/Styles');
+
 export default class HeaderAndroid extends Component {
     render() {
         return (
 
-                <Header hasTabs={this.props.tabs}>
-                    <Left>
-                        <Button transparent onPress={this.props.buttonClick}>
-                            <Icon name={this.props.headerIcon}/>
-                        </Button>
+                <Header style={Style.header.header} hasTabs={this.props.tabs}>
+                    <Left style={Style.header.left}>
+
+                            <Icon style={{color:'#f4f4f4'}} name={this.props.headerIcon} onPress={this.props.buttonClick}/>
+
                     </Left>
                     <Body>
-                    <Title>{this.props.title}</Title>
+                    <Title style={Style.header.title}>{this.props.title}</Title>
                     </Body>
                     <Right>
-                        <Right>
+                        <Right style={Style.header.right}>
                             <Button transparent onPress={this.props.buttonClickRight}>
-                                <Text>{this.props.targetTextRight}</Text>
+                                <Text style={{color:'#f4f4f4', textAlign:'center'}} onPress={this.props.buttonClickRight}>
+                                    {this.props.targetTextRight}
+                                    </Text>
                             </Button>
                         </Right>
                     </Right>

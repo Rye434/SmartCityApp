@@ -5,7 +5,7 @@ import {
   View
 } from 'react-native';
 import { Root, StyleProvider, Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text, Drawer } from 'native-base';
-
+import Expo from 'expo'
 import {Provider} from "react-redux";
 import thunk from 'redux-thunk';
 import {createStore, applyMiddleware} from "redux";
@@ -15,6 +15,7 @@ import {AppRouteAndroid, AppRouteIos, AppRoute, AppNavigator, LoginFlow} from ".
 import getTheme from './native-base-theme/components'
 import platform from './native-base-theme/variables/platform';
 
+
 let state = {
     photoCached: {},
     editModal: false,
@@ -23,9 +24,41 @@ let state = {
     filterSegment:[true,false,false],
     mapRegion:null,
     storeRequests:null,
+    storeUserRequests:null,
     storeServices:null,
     actionSheetValue: 0,
     services:[],
+    distanceLoaded: false,
+    currentRequest:null,
+    detailRequest:null,
+    phone:"",
+    code:0,
+    responseCode:null,
+    responseCodeProfile:null,
+    encCode:"",
+    //user
+    firstName:"",
+    lastName:"",
+    email:"",
+    address1:"",
+    address2:"",
+    city:"",
+    province:"ON",
+    postCode:"",
+    country:"",
+
+    //IssueTracking
+    department:null,
+    subject:null,
+    category:[],
+    activeDepartment:null,
+    activeSubject:null,
+    activeCategory:null,
+    submissionIssueDescription:null,
+    submissionConfirmationLoading:false,
+
+    loginStatus: false,
+    requestObj:null,
 
 }
 
@@ -59,24 +92,24 @@ export default class App extends Component {
     if(Platform.OS === 'android') {
         return (
             <StyleProvider style={getTheme(platform)}>
-            <Provider store={store}>
-                <Root>
-                <Container>
-                <AppRouteAndroid/>
-                </Container>
-                </Root>
-            </Provider>
+                <Provider store={store}>
+                    <Root>
+                        <Container>
+                            <AppRouteAndroid/>
+                        </Container>
+                    </Root>
+                </Provider>
             </StyleProvider>
         );
     }
     if(Platform.OS === 'ios'){
       return (
           <StyleProvider style={getTheme(platform)}>
-          <Provider store={store}>
-              <Root>
-            <LoginFlow/>
-              </Root>
-          </Provider>
+              <Provider store={store}>
+                  <Root>
+                      <AppRouteIos/>
+                  </Root>
+              </Provider>
           </StyleProvider>
         );
     }

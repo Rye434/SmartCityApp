@@ -2,52 +2,91 @@ import React, { Component } from 'react';
 import {View,Modal, StyleSheet, Image, Platform, Dimensions} from 'react-native';
 import * as actions from "../../../shared/actions/Actions"
 import {connect} from "react-redux";
-import {Title, Container, Header, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body, Right, Tab, Tabs, List, ListItem, Footer, Segment } from 'native-base';
+import {Title, Container, Header, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body, Right, Tab, Tabs, List, ListItem, Footer, Segment, Spinner } from 'native-base';
 import RequestListItem from "./RequestListItem";
 
 let filterValues;
 let placeholder;
-
-
-//TODO: use request list item to define the items this component builds the list with
+let pleaseLogIn;
+let messageView;
+let list;
 
 
 class RequestList extends Component {
-    componentWillMount() {
-        this.props.calculateDistance(this.props.userLocation,this.props.storeRequests)
-    }
-
 
     render() {
+        messageView =
+            <View>
+                <Text>Please log in to display info here</Text>
+                <Button onPress={()=>this.props.navigation.navigate("PhoneOrFacebook")}><Text>Login</Text></Button>
+            </View>
+
         filterValues = this.props.filter; //object that is [Bool,bool,bool]
 
         if (filterValues[0] == true) {
-            placeholder = "Public"
+            placeholder = this.props.storeRequests.list
+            pleaseLogIn = null
         }
         if (filterValues[1] == true) {
-            placeholder = "Personal"
+            if(this.props.loginStatus === true) {
+                placeholder = this.props.storeUserRequests.list
+                pleaseLogIn = null
+            }else{
+                placeholder = null
+                pleaseLogIn = messageView
+            }
         }
         if (filterValues[2] == true) {
-            placeholder = "Acknowledged"
+            if(this.props.loginStatus === true) {
+                placeholder = this.props.storeUserRequests.acknowledge
+                pleaseLogIn = null
+            }else{
+                placeholder = null
+                pleaseLogIn = messageView
+            }
         }
 
+        if(this.props.distanceLoaded == false){
+            return(
+                <Spinner color='blue' />
+            )
 
-        return(
-            <List>
-        {
-            Object.keys(this.props.storeRequests.list).map(function (item, i) {
+        }
 
+        if(placeholder != null){
+            list = Object.keys(placeholder).map(function (item, i) {
                 return (
-                    <RequestListItem key={i} {...this.props.storeRequests.list[item]}
-                                     title={this.props.storeRequests.list[item].serviceGroup}
+                    <RequestListItem key={i} {...placeholder[item]}
+                                     title={placeholder[item].serviceName}
                                      navigation={this.props.navigation}
-                                     date={this.props.storeRequests.list[item].dateSubmitted}
-                                     distance={this.props.storeRequests.list[item].distance}/>
+                                     date={placeholder[item].dateSubmitted}
+                                     distance={placeholder[item].distance}
+                                     wholeObj={placeholder[item]}
+                                     image={placeholder[item].image}
+                    />
                 )
 
-            }.bind(this))}
-            </List>
-    )
+            }.bind(this))
+        }
+
+        if(this.props.distanceLoaded == true) {
+            if (placeholder != null && Object.keys(placeholder).length > 0) {
+                return (
+                    <List>
+                        {list}
+                    </List>
+                )
+            }
+            if(placeholder != null && Object.keys(placeholder).length == 0){
+                return(
+                    <Text>Nothing to show</Text>
+                )
+            }
+            if(placeholder == null) {
+                return pleaseLogIn
+            }
+        }
+
 
     }
 }
@@ -56,17 +95,21 @@ function mapStateToProps(state) {
     return{
         storeRequests: state.storeRequests,
         userLocation: state.mapRegion,
+        distanceLoaded: state.distanceLoaded,
+        storeUserRequests: state.storeUserRequests,
+        loginStatus:state.loginStatus
     }
 }
 
-const mapDistpatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch) => {
     return {
         calculateDistance: (userLoc,requestList,) => {
-            return dispatch(actions.calculateDistance(userLoc, requestList))
+            dispatch(actions.calculateDistance(userLoc, requestList))
         },
+
     }
 };
 
 
 
-export default connect(mapStateToProps,mapDistpatchToProps)(RequestList)
+export default connect(mapStateToProps,mapDispatchToProps)(RequestList)

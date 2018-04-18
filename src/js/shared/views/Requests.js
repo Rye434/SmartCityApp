@@ -14,18 +14,23 @@ import RequestList from "../../shared/components/requests/RequestList";
 import * as actions from "../actions/Actions";
 import {connect} from "react-redux";
 
-var Strings = require('../res/strings/StringsEN.js');
-
+const Strings = require('../res/strings/StringsEN.js');
+const Style = require('../res/assets/styles/Styles');
 let footer;
 let fab;
 let header;
+let target;
 
 class Requests extends Component {
 
+
     render() {
+       // console.log(this.props.responseCodeProfile);
+        (this.props.responseCodeProfile == null || this.props.loginStatus == false)? target = 'PhoneOrFacebook' : target = 'Profile'
+
         if(Platform.OS === "ios"){
             footer = <FooterIos navigation={this.props.navigation} activePage={'Requests'}/>
-            header = <HeaderIos title={Strings.PAGE_HEADERS_REQUESTS}  iconRight={<Icon name='ios-contact'/>} buttonClickRight={() => this.props.navigation.navigate("Profile")} tabs={true}/>
+            header = <HeaderIos title={Strings.PAGE_HEADERS_REQUESTS}  iconRight={<Icon name='ios-contact'/>} buttonClickRight={()=>this.props.navigation.navigate(target)} tabs={true}/>
         }
         if(Platform.OS == "android"){
             fab = <FabButton navigation={this.props.navigation}/>
@@ -36,14 +41,14 @@ class Requests extends Component {
                 <View>
                 {header}
                     <Segment>
-                        <Button first active={this.props.filterSegment[0]} onPress={()=>this.props.filterSegmentToggle(1)} style={{width:Dimensions.get('window').width*.3,justifyContent: 'center'}}>
-                            <Text>{Strings.REQUEST_SEGMENT_PUBLIC}</Text>
+                        <Button first active={this.props.filterSegment[0]} onPress={()=>this.props.filterSegmentToggle(1)} style={Style.segment.button}>
+                            <Text style={Style.segment.text} >{Strings.REQUEST_SEGMENT_PUBLIC}</Text>
                         </Button>
-                        <Button active={this.props.filterSegment[1]} onPress={()=>this.props.filterSegmentToggle(2)} style={{width:Dimensions.get('window').width*.3,justifyContent: 'center'}}>
-                            <Text>{Strings.REQUEST_SEGMENT_PERSONAL}</Text>
+                        <Button active={this.props.filterSegment[1]} onPress={()=>this.props.filterSegmentToggle(2)} style={Style.segment.button}>
+                            <Text style={Style.segment.text}>{Strings.REQUEST_SEGMENT_PERSONAL}</Text>
                         </Button>
-                        <Button last active={this.props.filterSegment[2]} onPress={()=>this.props.filterSegmentToggle(3)} style={{width:Dimensions.get('window').width*.3,justifyContent: 'center'}}>
-                            <Text>{Strings.REQUEST_SEGMENT_ACKNOWLEDGED}</Text>
+                        <Button last active={this.props.filterSegment[2]} onPress={()=>this.props.filterSegmentToggle(3)} style={Style.segment.button}>
+                            <Text style={Style.segment.text}>{Strings.REQUEST_SEGMENT_ACKNOWLEDGED}</Text>
                         </Button>
                     </Segment>
                 </View>
@@ -62,6 +67,10 @@ class Requests extends Component {
 function mapStateToProps(state) {
     return{
         filterSegment: state.filterSegment,
+        responseCodeProfile: state.responseCodeProfile,
+        storeUserRequests: state.storeUserRequests,
+        loginStatus: state.loginStatus
+
     }
 }
 

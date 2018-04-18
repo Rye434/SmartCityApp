@@ -16,7 +16,7 @@ export default (variables = variable) => {
         alignSelf: "flex-end",
         alignItems: "flex-start",
         justifyContent: "center",
-        paddingBottom: 26,
+        paddingBottom: 26
       },
       "NativeBase.Right": {
         alignSelf: "flex-start",

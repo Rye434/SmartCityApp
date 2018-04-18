@@ -4,47 +4,102 @@ import {
     StyleSheet,
     View,
     Image,
+    ImageBackground,
     KeyboardAvoidingView,
-    Keyboard
+    Keyboard,
+    AsyncStorage
 } from 'react-native';
 import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text, Drawer, Input, Label, Form, Item } from 'native-base';
+import {connect} from "react-redux";
+import * as actions from "../../actions/Actions";
 
 
-var Strings = require('../../res/strings/StringsEN.js');
-var Style = require('../../res/assets/styles/Styles');
+const Strings = require('../../res/strings/StringsEN.js');
+const Style = require('../../res/assets/styles/Styles');
 
+let button;
 let target;
-let userExists = false; //for testing login flow, use True/False values
+let code = null;
 
-//TODO
 
-export default class Phone extends Component {
+class Phone extends Component {
+
+    proceed = () => {
+        this.props.checkByPhone(this.props.phone, code)
+        if(code!=null) {
+            this.storeUserPhone(this.props.phone)
+        }
+    }
+
+    async storeUserPhone(phone) {
+        try {
+            await AsyncStorage.setItem('phone', phone);
+        } catch (error) {
+            console.log("Error saving data" + error);
+        }
+    }
+
+    async tryLogin() {
+        try {
+            code = await AsyncStorage.getItem('encCode')
+            console.log(code)
+        }
+        catch (e) {
+            console.log(e)
+        }
+    }
+
+    componentWillMount() {
+       this.tryLogin()
+    }
+
+    componentDidUpdate(){
+        console.log(this.props.responseCodeProfile+"  :  ")
+        if(this.props.responseCodeProfile != null) {
+            if (this.props.responseCodeProfile.errorCode == 82) {
+                if(code != null) {
+                    this.props.loginByPhone(this.props.phone, code)
+
+                    if(this.props.requestObj == null) {
+                        if (Platform.OS == 'ios') {
+                            target = "Map"
+
+                        }
+                        if (Platform.OS == 'android') {
+                            target = "AndroidSideBar"
+                        }
+                    }
+                    if(this.props.requestObj != null){
+                        target = "SubmissionDetails"
+                    }
+                    this.props.navigation.navigate(target)
+                }
+            }
+            if (this.props.responseCodeProfile.errorCode == 83 || AsyncStorage.getItem('encCode')==null) {
+                target = "Verification"
+                this.props.navigation.navigate(target)
+            }
+        }
+    }
 
     render() {
-        if(userExists == true){
-            target = "Map"
+        if(this.props.phone.length == 10){
+            button = <Button transparent onPress={()=>this.proceed()}>
+                <Text>{Strings.HEADER_NEXT}</Text>
+                <Icon name='arrow-forward' />
+            </Button>
         }
-        if(userExists == false){
-            target = "Verification"
-        }
+
         return(
-            <Image style={Style.image.loginBackgroundImage} source={require('../../res/assets/img/smart-city-gradient.png')}>
-                <Header style={{backgroundColor: 'rgba(0,0,0,0)', borderBottomWidth:0}}>
-                    <Left>
+            <ImageBackground style={Style.image.loginBackgroundImage} source={require('../../res/assets/img/smart-city-gradient.png')}>
+                <Header style={[Style.header.header,{backgroundColor:'rgba(0,0,0,0)'}]}>
                         <Button transparent onPress={()=>this.props.navigation.navigate('PhoneOrFacebook')}>
                             <Icon name='arrow-back' />
-                            <Text>Back</Text>
-
+                            <Text style={{paddingLeft:16, paddingRight:0, width:100}}>Back</Text>
                         </Button>
-                    </Left>
-                    <Body>
 
-                    </Body>
                     <Right>
-                        <Button transparent onPress={()=>this.props.navigation.navigate(target)}>
-                            <Text>Next</Text>
-                            <Icon name='arrow-forward' />
-                        </Button>
+                        {button}
                     </Right>
                 </Header>
 
@@ -55,17 +110,46 @@ export default class Phone extends Component {
                 <Form style={{flex:0,width: 350, paddingTop:24, paddingBottom:48, alignItems:'center',flexDirection:'column',marginLeft:0}}>
                     <View  style={Style.view.input}>
                         <Label style={Style.view.profileLabelText}>{Strings.FIELDS_COUNTRY}</Label>
-                        <Input keyboardType='phone-pad' onChange={()=>console.log("Phone")} placeholder="+1" placeholderTextColor='#888' />
+                        <Input keyboardType='phone-pad' onChange={()=>console.log("Phone")} placeholder="+1" editable={false} placeholderTextColor='#888' />
                     </View>
                     <View  style={Style.view.input}>
                         <Text style={Style.view.profileLabelText}>{Strings.FIELDS_NUMBER}</Text>
-                        <Input keyboardType='phone-pad' onChange={()=>console.log("Phone")} placeholder="Required" placeholderTextColor='#888'/>
+                        <Input keyboardType='phone-pad' onChangeText={(phone)=>this.props.phoneNum(phone)} maxLength={10} placeholder="Required" placeholderTextColor='#888'/>
                     </View >
-                    {/*<Button style={{marginLeft:0}} onPress={() => this.props.navigation.navigate(target)}><Text>{Strings.BUTTONS_CONFIRM}</Text></Button>*/}
                 </Form>
             </KeyboardAvoidingView>
-            </Image>
+            </ImageBackground>
         )
 
     }
 }
+
+function mapStateToProps(state) {
+    return{
+        phone: state.phone,
+        responseCodeProfile: state.responseCodeProfile,
+        loginStatus: state.loginStatus,
+        requestObj:state.requestObj,
+    }
+}
+
+const mapDistpatchToProps = (dispatch) => {
+    return {
+        phoneNum: (phone) => {
+            dispatch(actions.phoneNum(phone))
+        },
+        checkByPhone: (phone, code) => {
+            dispatch(actions.checkByPhone(phone, code))
+        },
+        updateLoginStatus: () => {
+            dispatch(actions.updateLoginStatus(true))
+        },
+        loginByPhone: (phone, encCode) =>{
+            dispatch(actions.loginByPhone(phone, encCode))
+        }
+    }
+}
+
+
+
+export default connect(mapStateToProps,mapDistpatchToProps)(Phone)

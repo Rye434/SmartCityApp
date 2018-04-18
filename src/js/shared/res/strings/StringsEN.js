@@ -10,18 +10,24 @@ module.exports = {
     PAGE_HEADERS_PROFILE:"Profile",
     PAGE_HEADERS_ABOUT:"About",
     PAGE_HEADERS_FEEDBACK:"Feedback",
-    PAGE_HEADERS_DETAIL:'Detail',
+    PAGE_HEADERS_DETAIL:'Request Detail',
+    PAGE_HEADERS_EDIT:'Edit',
+    PAGE_HEADERS_CREATE:'Create Profile',
 
     HEADER_RETURN:"Back",
     HEADER_EDIT:"Edit",
     HEADER_FILTER:"Filter",
     HEADER_CANCEL:"Cancel",
     HEADER_ACTIONSHEET:"Filter",
+    HEADER_NEXT:"Next",
+    HEADER_DONE:"Done",
 
     ALERT_TITLE:"Are you sure?",
     ALERT_MESSAGE:"If you leave now you will lose any unsaved data",
+    ALERT_MESSAGE_PHONE_FACEBOOK:"If you don't log in you can't submit a problem.",
     ALERT_NEGATIVE:"Cancel",
     ALERT_POSITIVE:"Ok",
+
 
     FIELDS_PHONE:"Phone",
     FIELDS_NUMBER:"Number",
@@ -41,17 +47,20 @@ module.exports = {
     BUTTONS_LOGIN:"Login",
     BUTTONS_CONFIRM:"Confirm",
     BUTTONS_SAVE:"Save",
-    BUTTONS_FACEBOOK:"Facebook",
-    BUTTONS_PHONE:"Phone",
+    BUTTONS_FACEBOOK:"Continue With Facebook",
+    BUTTONS_PHONE:"Phone Number",
     BUTTONS_SUBMIT:"Submit",
+    BUTTONS_DONE:"Done",
+    BUTTONS_CANCEL:"Cancel",
+    BUTTONS_OK:"Ok",
+    BUTTONS_LOGOUT: "Sign Out",
 
     CAMERA_WARNING:"Caution",
     CAMERA_WARNING_MESSAGE:"Always be aware of your surroundings before taking a picture",
-    CAMERA_WARMING_BUTTON:"Proceed",
 
-    REQUEST_SEGMENT_PUBLIC:"All",
-    REQUEST_SEGMENT_PERSONAL:"Mine",
-    REQUEST_SEGMENT_ACKNOWLEDGED:"Acknowledged",
+    REQUEST_SEGMENT_PUBLIC:"Public",
+    REQUEST_SEGMENT_PERSONAL:"Reported",
+    REQUEST_SEGMENT_ACKNOWLEDGED:"Followed",
 
     PROFILE_PHONE:"Phone Number",
     PROFILE_EMAIL:"Email",
@@ -67,7 +76,8 @@ module.exports = {
 
     USER_CURRENT_LOCATION:"Current location",
     MAP_MODAL_MORE_INFO_BUTTON:"More Information",
-    MAP_MODAL_ACKNOWLEDGE:"Acknowledge",
+    MAP_MODAL_ACKNOWLEDGE:"Follow",
+    MAP_MODAL_CANNOT_ACKNOWLEDGE:"Cannot Follow This Request",
 
     ABOUT_TITLE:"Smart City",
     ABOUT_VERSION:"Version: 1.0.0.0",
@@ -93,14 +103,19 @@ module.exports = {
     ABOUT_ZAHEED_NAME:"Zaheed Jaffer",
     ABOUT_ZAHEED_EMAIL:"jaff0021@algonquinlive.com",
 
-    PHONE_FACEBOOK_HEADER:"Welcome to Smart City",
-    PHONE_FACEBOOK_MESSAGE:"To continue with your request \n please Sign Up with:",
+    PHONE_FACEBOOK_HEADER:"Smart City",
+    PHONE_FACEBOOK_MESSAGE:"To continue please sign up with your:",
 
-    DETAIL_MODAL_ACKNOWLEDGE:"Acknowledge - ",
+    DETAIL_MODAL_ACKNOWLEDGE:"Follow ",
     DETAIL_MODAL_DATE:"Date Submitted",
     DETAIL_MODAL_DISTANCE:"Distance",
     DETAIL_MODAL_STATUS:"Request Status",
     DETAIL_MODAL_DESCRIPTION:"Description",
 
+    SUBMISSION_DETAILS_DEPARTMENT:"Select A Department",
+    SUBMISSION_DETAILS_SUBJECT:"Select A Subject",
+    SUBMISSION_DETAILS_CATEGORY:"Select A Category",
+    SUBMISSION_THANK_YOU:"Thank you for your submission, it may take a few minutes to be visible in the system",
+    SUBMISSION_RETURN: "Go Home",
 
-}
+};

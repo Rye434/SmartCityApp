@@ -25,13 +25,13 @@ class RequestListDetail extends Component {
 
     render() {
         if(Platform.OS == "ios"){
-            header = <HeaderIos title={'adsasd'} targetTextLeft={Strings.HEADER_RETURN}
+            header = <HeaderIos title={"Detail"} targetTextLeft={Strings.HEADER_RETURN}
                                 buttonClickLeft={() => this.props.navigation.navigate("Requests")}/>
         }
         if(Platform.OS == "android"){
             fab = <FabButton/>
-            header =<HeaderAndroid buttonClick={() => this.props.navigation.navigate("DrawerOpen")}
-                                   title={'adsasd'} headerIcon={'menu'}/>
+            header =<HeaderAndroid buttonClick={() => this.props.navigation.navigate("Requests")}
+                                   title={"Detail"} headerIcon={'arrow-back'}/>
         }
         return(
             <Container>
@@ -52,6 +52,9 @@ class RequestListDetail extends Component {
 function mapStateToProps(state) {
     return{
         storeRequests: state.storeRequests,
+        detailRequest:state.detailRequest,
+        currentRequest:state.currentRequest
+
     }
 }
 

@@ -18,6 +18,7 @@ import Feedback from "./views/Feedback";
 import PhoneOrFacebook from "./views/login/PhoneOrFacebook";
 import SubmissionDetails from "./views/SubmissionDetails";
 import RequestListDetail from "./views/RequestListDetail";
+import Confirmation from "./views/Confirmation";
 
 var Strings = require('./res/strings/StringsEN.js');
 
@@ -35,12 +36,13 @@ export const RoutesNavIos = [
     {
         name: Strings.PAGE_HEADERS_REQUESTS,
         route: "Requests",
-        icon: "time"
+        icon: "ios-paper"
     }
 ];
 
 
 export const AppRouteIos = StackNavigator({
+        //PhoneOrFacebook:{screen: PhoneOrFacebook},
         Map: {screen: Map},
         Camera: {screen: Camera},
         CameraView: { screen: CameraView },
@@ -50,7 +52,12 @@ export const AppRouteIos = StackNavigator({
         About: {screen: About},
         Feedback: {screen: Feedback},
         SubmissionDetails: {screen: SubmissionDetails},
-        RequestListDetail: {screen: RequestListDetail}
+        RequestListDetail: {screen: RequestListDetail},
+        PhoneOrFacebook:{screen: PhoneOrFacebook},
+        Phone: {screen: Phone},
+        Verification: {screen:Verification},
+        CreateProfile: {screen: CreateProfile},
+        Confirmation: {screen: Confirmation},
     },
     {
         headerMode:'none'
@@ -83,7 +90,7 @@ export const routesAndroid = [
     {
         name: Strings.PAGE_HEADERS_REQUESTS,
         route: "Requests",
-        icon: "time"
+        icon: "md-list-box"
     },
     {
         name: Strings.PAGE_HEADERS_ABOUT,
@@ -109,10 +116,7 @@ export const AndroidSideBar = DrawerNavigator({
     });
 
 export const AppRouteAndroid = StackNavigator({
-    PhoneOrFacebook: {screen: PhoneOrFacebook},
-    Phone: {screen: Phone},
-    Verification: {screen:Verification},
-    CreateProfile: {screen: CreateProfile},
+
     AndroidSideBar: {screen: AndroidSideBar},
     Map: { screen: Map },
     Camera: { screen: Camera },
@@ -123,7 +127,12 @@ export const AppRouteAndroid = StackNavigator({
     About: {screen: About},
     Feedback: {screen: Feedback},
     SubmissionDetails: {screen: SubmissionDetails},
-    RequestListDetail: {screen: RequestListDetail}
+    RequestListDetail: {screen: RequestListDetail},
+    PhoneOrFacebook: {screen: PhoneOrFacebook},
+    Phone: {screen: Phone},
+    Verification: {screen:Verification},
+    CreateProfile: {screen: CreateProfile},
+    Confirmation: {screen: Confirmation},
 }, {
     headerMode: 'none',
 });

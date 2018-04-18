@@ -7,6 +7,12 @@ node_modules/
 
 android/app/src/main/java/com/missingpixel/smartcity/generated/ExponentBuildConstants\.java
 
+<<<<<<< Updated upstream
 ios/smartcity\.xcworkspace/xcuserdata/zaheedjaffer\.xcuserdatad/UserInterfaceState\.xcuserstate
 
 package-lock\.json
+=======
+src/js/shared/views/login/Phone\.js
+>>>>>>> Stashed changes
+
+\.idea/
