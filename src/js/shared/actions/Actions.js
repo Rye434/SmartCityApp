@@ -620,13 +620,24 @@ export function createUserByPhone(obj) {
         )
             .then((response) => {
                 console.log(JSON.parse(response.request.response))
-                dispatch(loginByPhone((obj.phone), obj.encCode))
+                //dispatch(loginByPhone((obj.phone), obj.encCode))
+                dispatch(userCreated(true))
             })
             .catch(function (error) {
                 console.log(error);
             });
     }
 }
+
+export function userCreated(bool) {
+    return {
+        type: USER_CREATED,
+        userCreated: bool
+    }
+
+}
+
+export const USER_CREATED = "USER_CREATED";
 
 export function updateUser(obj) {
     console.log("UPDATE_USER")

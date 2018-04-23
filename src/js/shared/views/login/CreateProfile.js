@@ -43,30 +43,48 @@ class CreateProfile extends Component {
 
 
         this.props.createUserByPhone(userObj)
-    }
-
-    componentDidUpdate(){
 
         if(this.props.requestObj == null) {
-            if (Platform.OS == 'ios') {
-                target = "Map"
+                    if (Platform.OS == 'ios') {
+                        target = "Map"
 
-            }
-            if (Platform.OS == 'android') {
-                target = "AndroidSideBar"
-            }
-        }
+                    }
+                    if (Platform.OS == 'android') {
+                        target = "AndroidSideBar"
+                    }
+                }
 
-        if(this.props.requestObj != null) {
-            target = "SubmissionDetails"
-        }
+                if(this.props.requestObj != null) {
+                    target = "Map"
+                }
 
-        if(this.props.responseCodeProfile != null) {
-            if ((this.props.responseCodeProfile.errorCode ==0) ) {
+
                 this.props.navigation.navigate(target)
-            }
-        }
+
     }
+
+    // componentDidUpdate(){
+    //
+    //     if(this.props.requestObj == null) {
+    //         if (Platform.OS == 'ios') {
+    //             target = "Map"
+    //
+    //         }
+    //         if (Platform.OS == 'android') {
+    //             target = "AndroidSideBar"
+    //         }
+    //     }
+    //
+    //     if(this.props.requestObj != null) {
+    //         target = "SubmissionDetails"
+    //     }
+    //
+    //     if(this.props.responseCodeProfile != null && this.props.userCreated == true) {
+    //         if ((this.props.responseCodeProfile.errorCode ==0) ) {
+    //             this.props.navigation.navigate(target)
+    //         }
+    //     }
+    // }
 
     async storeUserCode(code, phone) {
         try {
@@ -206,6 +224,7 @@ function mapStateToProps(state) {
         country: state.country,
         responseCodeProfile: state.responseCodeProfile,
         requestObj: state.requestObj,
+        userCreated: state.userCreated
 
     }
 }

@@ -10,9 +10,9 @@ module.exports = {
     MGIS_APP_ID:"6",
     ORGANIZATION_ID:"1",
 
-    MAPS_API_KEY_ANDROID: "AIzaSyCHHltdISA5_SWgYvkWkTPXnHkQMPbmMEY",
-    MAPS_API_KEY_IOS: "AIzaSyAf5hvqV6z0OL08xfpmuNYwPqGjeJuXseg",
-    MAPS_API_KEY_PLACES: "AIzaSyDvOmGVpn_LXS2ATViAcvZTniJHW3DDxQA",
+    MAPS_API_KEY_ANDROID: "AIzaSyAXfy2mRna8Er6PjMKbnp-t8NK_qZZqCuI",
+    MAPS_API_KEY_IOS: "AIzaSyAXfy2mRna8Er6PjMKbnp-t8NK_qZZqCuI",
+    MAPS_API_KEY_PLACES: "AIzaSyAXfy2mRna8Er6PjMKbnp-t8NK_qZZqCuI",
 
     APP_NAME:"SmartCity",
     

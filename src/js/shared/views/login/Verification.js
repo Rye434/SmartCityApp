@@ -7,7 +7,8 @@ import {
     Image,
     ImageBackground,
     Dimensions,
-    AsyncStorage
+    AsyncStorage,
+    Keyboard
 } from 'react-native';
 import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text, Drawer, Input, Label, Form, Item } from 'native-base';
 import {connect} from "react-redux";
@@ -72,7 +73,7 @@ class Verification extends Component {
                             <Item inlineLabel style={{width: deviceWidth * 0.8, alignSelf: 'center'}}>
                                 <Label style={{color: '#eee'}}>{Strings.FIELDS_CODE}</Label>
                                 <Input keyboardType='numeric' style={{color: '#eee'}}
-                                       onChangeText={(code) => this.props.setCode(code)} maxLength={6}/>
+                                       onChangeText={(code) => this.props.setCode(code)} maxLength={6} onBlur={Keyboard.dismiss}/>
                             </Item>
                         </Form>
                         <Button transparent style={{alignSelf: 'center', paddingTop: deviceHeight * .15,}}><Text>Didn't

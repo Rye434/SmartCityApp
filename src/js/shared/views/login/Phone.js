@@ -20,16 +20,12 @@ const Style = require('../../res/assets/styles/Styles');
 let button;
 let target;
 let code = null;
+let lock = false;
 
 
 class Phone extends Component {
 
-    proceed = () => {
-        this.props.checkByPhone(this.props.phone, code)
-        if(code!=null) {
-            this.storeUserPhone(this.props.phone)
-        }
-    }
+
 
     async storeUserPhone(phone) {
         try {
@@ -53,6 +49,13 @@ class Phone extends Component {
        this.tryLogin()
     }
 
+    proceed = () => {
+        this.props.checkByPhone(this.props.phone, code)
+        if(code!=null) {
+            this.storeUserPhone(this.props.phone)
+        }
+    }
+
     componentDidUpdate(){
         console.log(this.props.responseCodeProfile+"  :  ")
         if(this.props.responseCodeProfile != null) {
@@ -72,12 +75,18 @@ class Phone extends Component {
                     if(this.props.requestObj != null){
                         target = "SubmissionDetails"
                     }
-                    this.props.navigation.navigate(target)
+                    if(lock==false) {
+                        this.props.navigation.navigate(target)
+                        lock = true
+                    }
                 }
             }
             if (this.props.responseCodeProfile.errorCode == 83 || AsyncStorage.getItem('encCode')==null) {
                 target = "Verification"
-                this.props.navigation.navigate(target)
+                if(lock == false) {
+                    this.props.navigation.navigate(target)
+                    lock = true
+                }
             }
         }
     }

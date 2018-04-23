@@ -34,7 +34,8 @@ import {
     SET_ACTIVE_CATEGORY,
     SUBMISSION_CONFIRMATION_LOADING,
     SET_SUBMITTION_ISSUE_DESCRIPTION, UPDATE_LOGIN_STATUS,
-    SAVE_REQUEST_OBJ
+    SAVE_REQUEST_OBJ,
+    USER_CREATED
 } from "../actions/Actions";
 
 
@@ -251,6 +252,11 @@ export default function stocksApp(state, action) {
         case SAVE_REQUEST_OBJ:
             requestObj = action.requestObj
             newState = Object.assign({}, state, {requestObj});
+            //console.log(newState)
+            break;
+        case USER_CREATED:
+            userCreated = action.userCreated
+            newState = Object.assign({}, state, {userCreated});
             //console.log(newState)
             break;
         default:

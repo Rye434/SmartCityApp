@@ -48,8 +48,7 @@ class Confirmation extends Component {
                 style={{
                     flex: 1,
                     backgroundColor: 'transparent',
-                    flexDirection: 'column',
-                    alignItems:'center',
+                    flexDirection: 'column'
                 }}>
                 {header}
                 <Content>
