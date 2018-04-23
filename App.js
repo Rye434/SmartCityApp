@@ -59,6 +59,7 @@ let state = {
 
     loginStatus: false,
     requestObj:null,
+    userCreated: false,
 
 }
 
